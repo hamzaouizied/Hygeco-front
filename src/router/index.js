@@ -13,6 +13,10 @@ import General from "../views/pages/projects/General.vue";
 import Timeline from "../views/pages/projects/Timeline.vue";
 import NewProject from "../views/pages/projects/NewProject.vue";
 import Pricing from "../views/pages/Pricing.vue";
+import LandingPage from "../views/pages/LandingPage.vue";
+import PricingHygeco from "../views/pages/pricingHygeco.vue";
+
+
 import RTL from "../views/pages/Rtl.vue";
 import Charts from "../views/pages/Charts.vue";
 import SweetAlerts from "../views/pages/SweetAlerts.vue";
@@ -59,7 +63,7 @@ const routes = [
   {
     path: "/",
     name: "/",
-    redirect: "/dashboards/landing"
+    redirect: "/pages/LandingPage"
   },
   {
     path: "/dashboards/dashboard-default",
@@ -130,6 +134,16 @@ const routes = [
     path: "/pages/pricing-page",
     name: "Pricing Page",
     component: Pricing
+  },
+  {
+    path: "/pages/pricing-Hygeco",
+    name: "Pricing Hygeco",
+    component: PricingHygeco
+  },
+  {
+    path: "/pages/LandingPage",
+    name: "Landing Page",
+    component: LandingPage
   },
   {
     path: "/pages/rtl-page",
