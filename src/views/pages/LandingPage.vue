@@ -1,23 +1,64 @@
 <script setup>
-import { onMounted, onBeforeUnmount } from "vue";
+import { onMounted, onBeforeUnmount, ref } from "vue";
 import { useStore } from "vuex";
 import Navbar from "@/examples/PageLayout/NavbarHygeco.vue";
 // import PricingCard from "./components/PricingCard.vue";
 import AppFooter from "@/examples/PageLayout/Footer.vue";
-import AccordionItem from "./components/AccordionItem.vue";
+// import AccordionItem from "./components/AccordionItem.vue";
 import setNavPills from "@/assets/js/nav-pills.js";
-import ComplexBackgroundCard from '@/views/ecommerce/components/ComplexBackgroundCard.vue';
-
+// import ComplexBackgroundCard from "@/views/ecommerce/components/ComplexBackgroundCard.vue";
 
 const store = useStore();
+const existingSlides = [
+  {
+    imageUrl: require('../../assets/img/hygeco.jpg'),
+    text: "Let the green clean begin. Linen's bright, cleaning's right, Hygeco's here day or night!"
+  },
+  {
+    imageUrl: require('../../assets/img/hygecoo.jpg'),
+    text: "Another text for the second slide."
+  },
+  {
+    imageUrl: require('../../assets/img/laundry-machine.jpg'),
+    text: "Text for the third slide."
+  }
+];
+const testimonialSlides = [
+  {
+    name: "John Doe",
+    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    image: require('../../assets/img/img-1.jpg')
+  },
+  {
+    name: "Jane Smith",
+    text: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    image: require('../../assets/img/img-2.jpg')
+  },
+  {
+    name: "hygeco perso",
+    text: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    image: require('../../assets/img/img-1.jpg')
+  },
+  {
+    name: "Alice Johnson",
+    text: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+    image: require('../../assets/img/img-3.jpg')
+  }
+];
+// const slides = [...existingSlides, ...testimonialSlides];
+const currentIndexHead = ref(0);
+// const currentIndex = ref(0);
 
+let intervalId;
 onMounted(() => {
   store.state.showSidenav = false;
   store.state.showNavbar = false;
   store.state.showFooter = false;
   setNavPills();
+  startSlideshow();
 });
 onBeforeUnmount(() => {
+  stopSlideshow();
   store.state.showSidenav = false;
   store.state.showNavbar = false;
   store.state.showFooter = true;
@@ -28,427 +69,259 @@ onBeforeUnmount(() => {
     store.state.isPinned = true;
   }
 });
+function startSlideshow() {
+  intervalId = setInterval(() => {
+    currentIndexHead.value = (currentIndexHead.value + 1) % existingSlides.length;
+  }, 5000); // Change image every 5 seconds (adjust as needed)
+}
+// function startSlideshowTestimonial() {
+//   intervalId = setInterval(() => {
+//     currentIndex.value = (currentIndex.value + 1) % testimonialSlides.length;
+//   }, 5000); // Change image every 5 seconds (adjust as needed)
+// }
+function stopSlideshow() {
+  clearInterval(intervalId);
+}
+
 </script>
 <template>
- <navbar
-          is-blur="blur border-radius-lg my-3 py-2 start-0 end-0 mx-4 shadow"
-          btn-background="bg-gradient-success"
-          :dark-mode="true"
-        />
-  <div
-    class="page-header position-relative"
-    :style="{
-      backgroundImage:
-        'url(' + require('../../assets/img/hygeco.jpg') + ')',
-      backgroundSize: 'cover',
-      
-      
-    }"
-  >
-    <span class="mask bg-gradient-success opacity-6"></span>
+  <navbar is-blur="blur border-radius-lg my-3 py-2 start-0 end-0 mx-4 shadow" btn-background="bg-gradient-success"
+    :dark-mode="true" />
+  <div class="page-header position-relative" :style="{
+    backgroundImage: existingSlides[currentIndexHead] ? `url(${existingSlides[currentIndexHead].imageUrl})` : '',
+
+    backgroundSize: 'cover',
+    padding: '100px',
+  }">
     <div class="container pb-10 pb-lg-9 pt-7 postion-relative z-index-2">
       <div class="row">
-        <div class=" col-md-6 mt-4">
-          <h3 class="text-white" style="font-size: 4.875rem; color: #000000;">Let the green clean begin </h3>
-          <p class="text-white">
-            Linen's bright, cleaning's right,Hygeco's here day or night!
-          </p>
-        </div>
-      </div>
-      <div class="row">
-        <div class=" col-lg-4 col-md-6 col-7">
-          <div class="mt-5 nav-wrapper position-relative z-index-2">
-            <ul class="navbar-nav d-lg-block d-none">
-          <li class="nav-item">
-            <router-link
-            :to="{ name: 'Signin Basic' }"
-            class="mb-0 btn btn-sm me-1"
-            :class="btnBackground ? btnBackground : ' text-white'"
-            >
+        <div class="col-md-6 mt-4">
+          <h3 class="text-white" style="font-size: 2.5rem; color: #000000">
+            {{ existingSlides[currentIndexHead] ? existingSlides[currentIndexHead].text : '' }}
+          </h3>
+          <router-link :to="{ name: 'Signin Basic' }" class="mb-0 btn btn-sm me-1"
+            :class="btnBackground ? btnBackground : ' text-white'">
             Book Now
-            </router-link>
-          
-          </li>
-        </ul>
-            
-          </div>
+          </router-link>
         </div>
       </div>
     </div>
   </div>
-  <div class="row">
-            <div class="col-md-6"> 
-                <div class="col-xxl" style="padding: 70px">
-                    <div class="card flex-grow-1 mr-3">
-                    <div class="p-3 pb-0 card-header d-flex">
-                        <h6 class="my-auto">Services</h6>
-                        <div class="nav-wrapper position-relative ms-auto w-50">
-                        <ul class="p-1 nav nav-pills nav-fill" role="tablist">
-                            <li class="nav-item">
-                            <a
-                                class="px-0 py-1 mb-0 nav-link active"
-                                data-bs-toggle="tab"
-                                href="#cam1"
-                                role="tab"
-                                aria-controls="cam1"
-                                aria-selected="true"
-                                >Ménage</a
-                            >
-                            </li>
-                            <li class="nav-item">
-                            <a
-                                class="px-0 py-1 mb-0 nav-link"
-                                data-bs-toggle="tab"
-                                href="#cam2"
-                                role="tab"
-                                aria-controls="cam2"
-                                aria-selected="false"
-                                >Buandrie</a
-                            >
-                            </li>
-                            
-                        </ul>
-                        </div>
-                        
-                    </div>
-                    <div class="p-3 mt-2 card-body">
-                        <div id="v-pills-tabContent" class="tab-content">
-                        <div
-                            id="cam1"
-                            class="tab-pane fade show position-relative active height-400 border-radius-lg"
-                            role="tabpanel"
-                            aria-labelledby="cam1"
-                            :style="{
-                            backgroundImage:
-                                'url(' + require('../../assets/img/cleaning-window.jpg') + ')',
-                            backgroundSize: 'cover',
-                            
-                            }"
-                        >
-                        
-                        </div>
-                        <div
-                            id="cam2"
-                            class="tab-pane fade position-relative height-400 border-radius-lg"
-                            role="tabpanel"
-                            aria-labelledby="cam2"
-                            :style="{
-                            backgroundImage:
-                                'url(' + require('../../assets/img/laundry-machine.jpg') + ')',
-                            backgroundSize: 'cover',
-                            
-                            }"
-                        >
-                        
-                        </div>
-                        
-                        </div>
-                    </div>
-                    </div>
-                    
-                </div>
-                
-            </div>  
-              
-            <div class="col-md-6">
-                <div class="col-xl-7" style="padding: 70px">
-
-                        <h6>Nos Service</h6>
-                        <h2>Quels services offrons-nous ?</h2>
-                        <p>
-                            Découvrez Hygeco, votre partenaire ultime pour des services de nettoyage haut de gamme et une blanchisserie commerciale méticuleuse.
-                             Nous nous spécialisons dans l'amélioration de la propreté et garantissant votre confort. 
-                             Avec notre service de ramassage et de livraison sans faille directement à votre porte,
-                              Hygeco redéfinit la commodité et transforme votre domicile en un havre immaculé.
-                        </p>
-
-                        <router-link
-                        :to="{ name: 'Signin Basic' }"
-                        class="mb-0 btn btn-sm me-1"
-                        :class="btnBackground ? btnBackground : ' text-dark'"
-                        >
-                        Book Now
-                        </router-link>
-                    
-                </div>
-                
-          
-            </div>
- </div>
-  <div class="container my-6">
+  <div class="container">
     <div class="row">
-
-            <div class="mx-auto text-center col-md-6">
-            <h2>Étapes Faciles pour la Lessive</h2>
-            <p>
-                Nous prendrons soin de vos vêtements avec précision, garantissant une fraîcheur de qualité supérieure.
-                Découvrez la simplicité de vêtements propres et répétez chaque fois que nécessaire
-            </p>
+      <!-- Column for images -->
+      <div class="  col-md-6  " style="padding: 70px">
+        <div class="card flex-grow-1 mr-3">
+          <div class="p-3 pb-0 card-header d-flex">
+            <h6 class="my-auto">Services</h6>
+            <div class="nav-wrapper position-relative ms-auto w-50">
+              <ul class="p-1 nav nav-pills nav-fill" role="tablist">
+                <li class="nav-item">
+                  <a class="px-0 py-1 mb-0 nav-link active" data-bs-toggle="tab" href="#cam1" role="tab"
+                    aria-controls="cam1" aria-selected="true">Ménage</a>
+                </li>
+                <li class="nav-item">
+                  <a class="px-0 py-1 mb-0 nav-link" data-bs-toggle="tab" href="#cam2" role="tab" aria-controls="cam2"
+                    aria-selected="false">Buandrie</a>
+                </li>
+              </ul>
             </div>
-                <div class="row mt-4">
-                    <complex-background-card
-                    image=""
-                    description="Sélectionnez Votre Forfait Lessive."
-                    :action="{ route: 'javascript:;', label: 'Read more' }"
-                />
-                <complex-background-card
-                    image=""
-                    description="Réservez Votre Rendez-vous."
-                    :action="{ route: 'javascript:;', label: 'Read more' }"
-                />
-                <complex-background-card
-                    image=""
-                    description="Profitez de vos vêtements fraîchement lavés."
-                    :action="{ route: 'javascript:;', label: 'Read more' }"
-                />
-                
-                </div>
-     </div>
-     <br/>
-     <br/>
-     <br/>
-
-     <div class="row">
-
-        <div class="mx-auto text-center col-md-6">
+          </div>
+          <div class="p-3 mt-2 card-body">
+            <div id="v-pills-tabContent" class="tab-content">
+              <div id="cam1" class="tab-pane fade show position-relative active height-400 border-radius-lg opacity-6 "
+                role="tabpanel" aria-labelledby="cam1" :style="{
+                  backgroundImage:
+                    'url(' +
+                    require('../../assets/img/cleaning-window.jpg') +
+                    ')',
+                  backgroundSize: 'cover',
+                }"></div>
+              <div id="cam2" class="tab-pane fade position-relative height-400 border-radius-lg opacity-6"
+                role="tabpanel" aria-labelledby="cam2" :style="{
+                  backgroundImage:
+                    'url(' +
+                    require('../../assets/img/laundry-machine.jpg') +
+                    ')',
+                  backgroundSize: 'cover',
+                }">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Column for paragraph and button -->
+      <div class="col-md-6">
+        <div class="col-xxl-10" style="padding: 70px">
+          <h6>Nos Service</h6>
+          <h2>Quels services offrons-nous ?</h2>
+          <p>
+            Découvrez Hygeco, votre partenaire ultime pour des services de nettoyage haut de gamme et une
+            blanchisserie commerciale méticuleuse. Nous nous spécialisons dans l'amélioration de la propreté
+            et garantissant votre confort. Avec notre service de ramassage et de livraison sans faille
+            directement à votre porte, Hygeco redéfinit la commodité et transforme votre domicile en un
+            havre immaculé.
+          </p>
+          <router-link :to="{ name: 'Signin Basic' }" class="mb-0 btn btn-sm me-1"
+            :class="btnBackground ? btnBackground : ' text-dark'">Book Now</router-link>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="mx-auto text-center col-md-6">
         <h2>Étapes Faciles de Nettoyage</h2>
         <p>
-            Notre processus de nettoyage est effectué avec précision pour garantir une fraîcheur de première qualité. Adoptez la simplicité d'un espace impeccable, 
-            et n'hésitez pas à revenir chaque fois que la propreté vous appelle.
+          Notre processus de nettoyage est effectué avec précision pour garantir
+          une fraîcheur de première qualité. Adoptez la simplicité d'un espace
+          impeccable, et n'hésitez pas à revenir chaque fois que la propreté
+          vous appelle.
         </p>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="card h-100">
+          <img src='../../assets/img/img-3.jpg' class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Sélectionnez Votre Forfait.</h5>
+            <p class="card-text">Indiquez-nous ce que vous souhaitez faire nettoyer, et nous vous proposerons les
+              meilleurs prix du marché.</p>
+            <a href="#" class="btn btn-primary">Read more</a>
+          </div>
         </div>
-            <div class="row mt-4">
-                <complex-background-card
-                image=""
-                description="Sélectionnez Votre Forfait de Nettoyage."
-                :action="{ route: 'javascript:;', label: 'Read more' }"
-            />
-            <complex-background-card
-                image=""
-                description="Réservez Votre Rendez-vous."
-                :action="{ route: 'javascript:;', label: 'Read more' }"
-            />
-            <complex-background-card
-                image=""
-                description="Profitez d'une Maison Propre."
-                :action="{ route: 'javascript:;', label: 'Read more' }"
-            />
-            
-            </div>
-     </div>
-     <br/>
-     <br/>
-     <br/>
-  </div>  
-     <div class="row">
-            <div class="col-md-6"> 
-                <div class="col-xxl" style="padding: 70px">
-                    <div class="card flex-grow-1 mr-3">
-                    <div class="p-3 pb-0 card-header d-flex">
-                        
-                        <div class="nav-wrapper position-relative ms-auto w-50">
-                        
-                        </div>
-                        
-                    </div>
-                    <div class="p-3 mt-2 card-body">
-                        <div id="v-pills-tabContent" class="tab-content">
-                        <div
-                            id="cam1"
-                            class="tab-pane fade show position-relative active height-400 border-radius-lg"
-                            role="tabpanel"
-                            aria-labelledby="cam1"
-                            :style="{
-                            backgroundImage:
-                                'url(' + require('../../assets/img/hygecoo.jpg') + ')',
-                            backgroundSize: 'cover',
-                            
-                            }"
-                        >
-                        
-                        </div>
-                        
-                        </div>
-                    </div>
-                    </div>
-                    
-                </div>
-                
-            </div>  
-              
-            <div class="col-md-6">
-                <div class="col-xl-7" style="padding: 70px">
-
-                        <h6>À PROPOS DE NOUS</h6>
-                        <h2>Qui sommes-nous ?</h2>
-                        <p>
-                            Hygeco est une entreprise basée à Montréal qui propose une gamme de services de nettoyage et de blanchisserie professionnels,
-                             ainsi que des fournitures de literie et de produits de nettoyage pour des clients résidentiels et commerciaux.
-                              Avec un engagement à fournir des solutions écologiques, 
-                              le personnel expérimenté de Hygeco assure un nettoyage complet et efficace sans nuire à l'environnement.
-                               Que ce soit pour le nettoyage, la blanchisserie ou la literie, 
-                               les services de Hygeco sont adaptés pour répondre aux besoins spécifiques et aux budgets de ses clients.
-                        </p>
-
-                        <router-link
-                        :to="{ name: 'Signin Basic' }"
-                        class="mb-0 btn btn-sm me-1"
-                        :class="btnBackground ? btnBackground : ' text-dark'"
-                        >
-                        Book Now
-                        </router-link>
-                    
-                </div>
-                
-          
-            </div>
-     </div>
-  <div class="container my-6">
-   
-    
-    
-    <div class="row">
-      <div class="mx-auto col-md-10">
-        <div id="accordionRental" class="accordion">
-          <accordion-item
-            accordion-id="headingOne"
-            collapse-id="collapseOne"
-            active
-          >
-            <template #question>How do I order?</template>
-            <template #answer>
-              We’re not always in the position that we want to be at. We’re
-              constantly growing. We’re constantly making mistakes. We’re
-              constantly trying to express ourselves and actualize our dreams.
-              If you have the opportunity to play this game of life you need to
-              appreciate every moment. A lot of people don’t appreciate the
-              moment until it’s passed.
-            </template>
-          </accordion-item>
-          <accordion-item accordion-id="headingTwo" collapse-id="collapseTwo">
-            <template #question>How can i make the payment?</template>
-            <template #answer>
-              It really matters and then like it really doesn’t matter. What
-              matters is the people who are sparked by it. And the people who
-              are like offended by it, it doesn’t matter. Because it&#39;s
-              motivating the doers. Because I’m here to follow my dreams and and
-              inspire other people to follow their dreams, too.
-              <br />We’re not always in the position that we want to be at.
-              We’re constantly growing. We’re constantly making mistakes. We’re
-              constantly trying to express ourselves and actualize our dreams.
-              If you have the opportunity to play this game of life you need to
-              appreciate every moment. A lot of people don’t appreciate the
-              moment until it’s passed.
-            </template>
-          </accordion-item>
-
-          <accordion-item
-            accordion-id="headingThree"
-            collapse-id="collapseThree"
-          >
-            <template #question
-              >How much time does it take to receive the order?</template
-            >
-            <template #answer>
-              The time is now for it to be okay to be great. People in this
-              world shun people for being great. For being a bright color. For
-              standing out. But the time is now to be okay to be the greatest
-              you. Would you believe in what you believe in, if you were the
-              only one who believed it? If everything I did failed - which it
-              doesn&#39;t, it actually succeeds - just the fact that I&#39;m
-              willing to fail is an inspiration. People are so scared to lose
-              that they don&#39;t even try. Like, one thing people can&#39;t say
-              is that I&#39;m not trying, and I&#39;m not trying my hardest, and
-              I&#39;m not trying to do the best way I know how.
-            </template>
-          </accordion-item>
-
-          <accordion-item accordion-id="headingFour" collapse-id="collapseFour">
-            <template #question>Can I resell the products?</template>
-            <template #answer>
-              I always felt like I could do anything. That’s the main thing
-              people are controlled by! Thoughts- their perception of
-              themselves! They&#39;re slowed down by their perception of
-              themselves. If you&#39;re taught you can’t do anything, you won’t
-              do anything. I was taught I could do everything.
-              <br />
-              <br />If everything I did failed - which it doesn&#39;t, it
-              actually succeeds - just the fact that I&#39;m willing to fail is
-              an inspiration. People are so scared to lose that they don&#39;t
-              even even try. Like, one thing people can&#39;t say is that
-              I&#39;m not trying, and I&#39;m not trying my hardest, and I&#39;m
-              not trying trying to do the best way I know how.
-            </template>
-          </accordion-item>
-
-          <accordion-item
-            accordion-id="headingFifth"
-            collapse-id="collapseFifth"
-          >
-            <template #question>Where do I find the shipping details?</template>
-            <template #answer>
-              There’s nothing I really wanted to do in life that I wasn’t able
-              to get good at. That’s my skill. I’m not really specifically
-              talented at anything except for the ability to learn. That’s what
-              I do. That’s what I’m here for. Don’t be afraid to be wrong
-              because you can’t learn anything from a compliment. I always felt
-              like I could do anything. That’s the main thing people are
-              controlled by! Thoughts- their perception of themselves!
-              They&#39;re slowed down by their perception of themselves. If
-              you&#39;re taught you can’t do anything, you won’t do anything. I
-              was taught I could do everything.
-            </template>
-          </accordion-item>
+      </div>
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="card h-100">
+          <img src='../../assets/img/img-3.jpg' class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Réservez Votre Rendez-vous.</h5>
+            <p class="card-text">Explorez notre outil de planification en ligne pour sélectionner un horaire qui
+              correspond parfaitement à votre emploi du temps.</p>
+            <a href="#" class="btn btn-primary">Read more</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="card h-100">
+          <img src='../../assets/img/img-3.jpg' class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Profitez d'une Maison Propre</h5>
+            <p class="card-text">Saisissez la Sérénité d'une Maison Parfaitement Propre, Où Chaque Coin Brille de
+              Fraîcheur.Profitez d'une Maison Propre</p>
+            <a href="#" class="btn btn-primary">Read more</a>
+          </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="container my-6">
-  <div class="row">
-    <div class="mx-auto text-center col-8">
-        <h6 class="opacity-5">More than 50+ brands trust Hygeco</h6>
+  <br />
+  <br />
+  <div class="container">
+    <div class="row">
+      <div class="mx-auto text-center col-md-6">
+        <h2>Étapes Faciles de Lessive</h2>
+        <p>
+          Nous prendrons soin de vos vêtements avec précision, garantissant une fraîcheur de qualité supérieure.
+          Découvrez la facilité des vêtements propres et répétez chaque fois que nécessaire.
+        </p>
       </div>
-        <br/>
-        <br/>
-        <br/>
-    <div class="col-md-12">
-      <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-        <!-- Carousel Inner -->
-        <div class="carousel-inner">
-          <!-- Slide 1 -->
-          <div class="carousel-item active">
-            <div class="row justify-content-center">
-              <div class="mb-4 col-lg-2 col-md-4 col-6">
-                <img
-                  class="w-100 opacity-9"
-                  src="../../assets/img/logos/gray-logos/logo-coinbase.svg"
-                  alt="logo_coinbase"
-                />
-              </div>
-            </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="card h-100">
+          <img src='../../assets/img/img-3.jpg' class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Sélectionnez Votre Forfait Lessive</h5>
+            <p class="card-text">Indiquez-nous les services de lessive dont vous avez besoin, et nous vous proposerons
+              les meilleurs prix du marché.</p>
+            <a href="#" class="btn btn-primary">Read more</a>
           </div>
-          
-          <!-- Slide 2 -->
-          <div class="carousel-item">
-            <div class="row justify-content-center">
-              <div class="mb-4 col-lg-2 col-md-4 col-6">
-                <img
-                  class="w-100 opacity-9"
-                  src="../../assets/img/logos/gray-logos/logo-nasa.svg"
-                  alt="logo_nasa"
-                />
-              </div>
-            </div>
-          </div>
-          <!-- Add more slides if needed -->
         </div>
-        
-        <!-- Previous & Next Buttons -->
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+      </div>
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="card h-100">
+          <img src='../../assets/img/img-3.jpg' class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Réservez Votre Rendez-vous.</h5>
+            <p class="card-text">Explorez notre outil de planification en ligne pour choisir un créneau qui correspond
+              parfaitement à votre emploi du temps.</p>
+            <a href="#" class="btn btn-primary">Read more</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="card h-100">
+          <img src='../../assets/img/img-3.jpg' class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Vêtements fraîchement lavés</h5>
+            <p class="card-text">Immergez-vous dans le confort d'une garde-robe propre, où chaque vêtement se sent
+              rafraîchi et prêt à être porté.</p>
+            <a href="#" class="btn btn-primary">Read more</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 d-flex align-items-stretch" style="padding: 70px">
+        <div class="card  ">
+          <div class="card-body d-flex align-items-center justify-content-center p-0">
+            <img src="../../assets/img/hygecoo.jpg" alt="Hygeco Image" class="img-fluid w-100 h-100">
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6" style="padding: 70px">
+        <div class="col-xxl-10">
+          <h6>À PROPOS DE NOUS</h6>
+          <h2>Qui sommes-nous ?</h2>
+          <p>
+            Hygeco est une entreprise basée à Montréal qui propose une gamme de
+            services de nettoyage et de blanchisserie professionnels, ainsi que
+            des fournitures de literie et de produits de nettoyage pour des
+            clients résidentiels et commerciaux. Avec un engagement à fournir des
+            solutions écologiques, le personnel expérimenté de Hygeco assure un
+            nettoyage complet et efficace sans nuire à l'environnement. Que ce
+            soit pour le nettoyage, la blanchisserie ou la literie, les services
+            de Hygeco sont adaptés pour répondre aux besoins spécifiques et aux
+            budgets de ses clients.
+
+          </p>
+          <router-link :to="{ name: 'Signin Basic' }" class="mb-0 btn btn-sm me-1"
+            :class="btnBackground ? btnBackground : ' text-dark'">Book Now</router-link>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+  <div class="row align-items-center">
+    <div class="mx-auto text-center col-8">
+      <h6 class="opacity-5">Avis Clients</h6>
+    </div>
+    <div class="col-md-12 mt-4">
+      <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel" style="background-color: transparent;">
+        <div class="carousel-inner">
+          <div v-for="(testimonial, index) in Math.ceil(testimonialSlides.length / 3)" :key="index" class="carousel-item" :class="{ 'active': index === 0 }">
+            <div class="row justify-content-center align-items-center">
+              <div v-for="(testimonial, i) in testimonialSlides.slice(index * 3, (index + 1) * 3)" :key="i" class="col-lg-4 col-md-12 col-sm-12">
+                <div class="card">
+                  <div class="card-body">
+                    <img :src="testimonial.image" class="card-img-top" alt="...">
+                    <h5 class="card-title">{{ testimonial.name }}</h5>
+                    <p class="card-text">{{ testimonial.text }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Previous</span>
         </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+        <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Next</span>
         </button>
@@ -457,32 +330,161 @@ onBeforeUnmount(() => {
   </div>
 </div>
 
+  <br />
+  <br />
+  <div class="container">
+  <div class="row">
+    <div class="col-lg-4 d-flex align-items-stretch" style="padding: 70px">
+      
+          <!-- Contact Form -->
+          <form id="contactForm">
+            <div class="mb-3">
+              <label for="fullName" class="form-label">Nom Prénom</label>
+              <input type="text" class="form-control" id="fullName" name="fullName" required>
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="mb-3">
+              <label for="telephone" class="form-label">Téléphone</label>
+              <input type="tel" class="form-control" id="telephone" name="telephone" required>
+            </div>
+            <div class="mb-3">
+              <label for="message" class="form-label">Message</label>
+              <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+          <!-- End of Contact Form -->
+        </div>
+     
+    <div class="col-md-6" style="padding: 70px">
+      <div class="col-xxl-10">
+        <h6>Avez-vous des questions ?</h6>
+        <h2>Contactez-nous</h2>
+        <p>
+          Vous avez des questions ou êtes prêt à réserver votre prochain service de nettoyage ?
+           Nous sommes là pour vous aider !
+            Notre équipe dévouée chez Hygeco Cleaning Service n'est qu'à un message de distance !
+        </p>
+        <router-link :to="{ name: 'Signin Basic' }" class="mb-0 btn btn-sm me-1" :class="btnBackground ? btnBackground : ' text-dark'">Book Now</router-link>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="container-fluid">
+    <div class="row align-items-center">
+      <div class="mx-auto text-center col-8">
+        <h6 class="opacity-5">More than 50+ brands trust Hygeco</h6>
+      </div>
+      <div class="col-md-12 mt-4">
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="row justify-content-center align-items-center">
+                <div class="mb-4 col-lg-2 col-md-4 col-6">
+                  <img class="w-100 opacity-9" src="../../assets/img/logos/gray-logos/logo-coinbase.svg"
+                    alt="logo_coinbase">
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="row justify-content-center align-items-center">
+                <div class="mb-4 col-lg-2 col-md-4 col-6">
+                  <img class="w-100 opacity-9" src="../../assets/img/logos/gray-logos/logo-nasa.svg" alt="logo_nasa">
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="row justify-content-center align-items-center">
+                <div class="mb-4 col-lg-2 col-md-4 col-6">
+                  <img class="w-100 opacity-9" src="../../assets/img/logos/gray-logos/logo-netflix.svg" alt="logo_nasa">
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="row justify-content-center align-items-center">
+                <div class="mb-4 col-lg-2 col-md-4 col-6">
+                  <img class="w-100 opacity-9" src="../../assets/img/logos/gray-logos/logo-pinterest.svg"
+                    alt="logo_nasa">
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="row justify-content-center align-items-center">
+                <div class="mb-4 col-lg-2 col-md-4 col-6">
+                  <img class="w-100 opacity-9" src="../../assets/img/logos/gray-logos/logo-spotify.svg" alt="logo_nasa">
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="row justify-content-center align-items-center">
+                <div class="mb-4 col-lg-2 col-md-4 col-6">
+                  <img class="w-100 opacity-9" src="../../assets/img/logos/gray-logos/logo-vodafone.svg"
+                    alt="logo_nasa">
+                </div>
+              </div>
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true" style="display: none;"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true" style="display: none;"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
 
 
   <app-footer />
 </template>
 <style scoped>
-  .carousel-control-prev-icon,
-  .carousel-control-next-icon {
-    background-color: black; /* Change arrow color to black */
-  }
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: black;
+  /* display: none; */
+  /* Change arrow color to black */
+}
 
-  .carousel-control-prev,
-  .carousel-control-next {
-    filter: invert(1); /* Invert arrow color */
-  }
-  .carousel {
-    position: relative;
-    background: #30C7B5;
-  }
+.carousel-control-prev,
+.carousel-control-next {
+  filter: invert(1);
+  /* Invert arrow color */
+}
 
-  .carousel-indicators button {
-    background-color: #30C7B5; /* Change carousel indicators color */
-    border-color: #30C7B5; /* Change carousel indicators border color */
-  }
+.carousel {
+  position: relative;
+  background: #30c7b5;
+}
 
-  .carousel-indicators .active {
-    background-color: #30C7B5; /* Change active carousel indicator color */
-    border-color: #30C7B5; /* Change active carousel indicator border color */
+.carousel-indicators button {
+  background-color: #30c7b5;
+  /* Change carousel indicators color */
+  border-color: #30c7b5;
+  /* Change carousel indicators border color */
+}
+
+.carousel-indicators .active {
+  background-color: #30c7b5;
+  /* Change active carousel indicator color */
+  border-color: #30c7b5;
+  /* Change active carousel indicator border color */
+}
+#contactForm {
+    width: 100%;
+  }
+#contactForm .form-control {
+    width: 100%;
   }
 </style>
