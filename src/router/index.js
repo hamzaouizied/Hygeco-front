@@ -14,6 +14,8 @@ import Timeline from "../views/pages/projects/Timeline.vue";
 import NewProject from "../views/pages/projects/NewProject.vue";
 import Pricing from "../views/pages/Pricing.vue";
 import LandingPage from "../views/pages/LandingPage.vue";
+import About from "../views/pages/about.vue";
+
 import PricingHygeco from "../views/pages/pricingHygeco.vue";
 
 
@@ -140,6 +142,12 @@ const routes = [
     name: "Pricing Hygeco",
     component: PricingHygeco
   },
+  {
+    path: "/pages/about",
+    name: "about",
+    component: About
+  },
+  
   {
     path: "/pages/LandingPage",
     name: "Landing Page",
