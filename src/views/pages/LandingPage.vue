@@ -3,7 +3,7 @@ import { onMounted, onBeforeUnmount, ref } from "vue";
 import { useStore } from "vuex";
 import Navbar from "@/examples/PageLayout/NavbarHygeco.vue";
 // import PricingCard from "./components/PricingCard.vue";
-import AppFooter from "@/examples/PageLayout/Footer.vue";
+// import AppFooter from "@/examples/PageLayout/Footer.vue";
 // import AccordionItem from "./components/AccordionItem.vue";
 import setNavPills from "@/assets/js/nav-pills.js";
 // import ComplexBackgroundCard from "@/views/ecommerce/components/ComplexBackgroundCard.vue";
@@ -65,38 +65,38 @@ function stopSlideshow() {
 </script>
 
 <template>
-  <navbar
-    is-blur="blur border-radius-lg my-3 py-2 start-0 end-0 mx-4 shadow"
-    btn-background="bg-gradient-success"
-    :dark-mode="true"
-  />
+    <!-- <div class="green-bar" style="background-color: #34C759; height: 5px;"></div> -->
 
-  <div
-    class="page-header position-relative"
-    :style="{
+      <div class="container-fluid" style="background-color: #30c7b5;height: 41px;">
+        <div class="text-center">
+          <h3 style="color: white;">50% OFF</h3>
+        </div>
+      </div>
+
+  <navbar is-blur="blur border-radius-lg my-3 py-2 start-0 end-0 mx-4 shadow" btn-background="bg-gradient-success"
+    :dark-mode="true" style="position: absolute;" />
+
+
+  <div class="page-header position-relative" :style="{
       backgroundImage: existingSlides[currentIndexHead]
         ? `url(${existingSlides[currentIndexHead].imageUrl})`
         : '',
 
       backgroundSize: 'cover',
       padding: '100px',
-    }"
-  >
+    }">
     <div class="container pb-10 pb-lg-9 pt-7 postion-relative z-index-2">
       <div class="row">
         <div class="col-md-6 mt-4">
           <h3 class="text-white" style="font-size: 2.5rem; color: #000000">
             {{
-              existingSlides[currentIndexHead]
-                ? existingSlides[currentIndexHead].text
-                : ""
+            existingSlides[currentIndexHead]
+            ? existingSlides[currentIndexHead].text
+            : ""
             }}
           </h3>
-          <router-link
-            :to="{ name: 'Signin Basic' }"
-            class="mb-0 btn btn-sm me-1"
-            :class="btnBackground ? btnBackground : ' text-white'"
-          >
+          <router-link :to="{ name: 'Signin Basic' }" class="mb-0 btn btn-sm me-1"
+            :class="btnBackground ? btnBackground : ' text-white'">
             Book Now
           </router-link>
         </div>
@@ -104,40 +104,23 @@ function stopSlideshow() {
     </div>
   </div>
   <div class="container">
-    <section
-      class="choose-section1 overflow-hidden pb-90 pt-120 position-relative mt-5"
-    >
+    <section class="choose-section1 overflow-hidden pb-90 pt-120 position-relative mt-5">
       <div class="choose-wrapper pb-90 mt-5">
         <div class="container">
           <div class="row g-0 justify-content-between">
-            <div
-              class="col-xxl-4 col-xl-5 col-lg-5 col-md-8 order-1 order-lg-0"
-            >
+            <div class="col-xxl-4 col-xl-5 col-lg-5 col-md-8 order-1 order-lg-0">
               <div class="choose-left-cont">
                 <div class="thumb1">
-                  <img
-                    decoding="async"
+                  <img decoding="async"
                     src="https://www.4damstheme.com/clenis/wp-content/uploads/2024/04/choose-thumb.png"
-                    alt="Success Project "
-                  />
+                    alt="Success Project " />
                 </div>
                 <div class="prograss-box">
-                  <div
-                    class="icons d-flex align-items-center justify-content-center"
-                  >
-                    <svg
-                      width="87"
-                      height="91"
-                      viewBox="0 0 87 91"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        clip-rule="evenodd"
+                  <div class="icons d-flex align-items-center justify-content-center">
+                    <svg width="87" height="91" viewBox="0 0 87 91" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" clip-rule="evenodd"
                         d="M82.1357 59.7059C85.0651 59.7059 87.1191 62.5877 85.8233 65.2149C78.445 80.1742 63.0406 90.4652 45.2326 90.4652C20.2513 90.4652 0 70.2139 0 45.2326C0 20.2513 20.2513 0 45.2326 0C63.38 0 79.0313 10.6869 86.2364 26.1106C87.4589 28.7277 85.4107 31.5427 82.5221 31.5427C80.7738 31.5427 79.2229 30.4657 78.4502 28.8974C72.4161 16.6502 59.8084 8.22388 45.2326 8.22388C24.7934 8.22388 8.22409 24.7931 8.22409 45.2324C8.22409 65.6716 24.7934 82.2408 45.2326 82.2408C59.5292 82.2408 71.9324 74.1342 78.0962 62.2669C78.8877 60.7431 80.4186 59.7059 82.1357 59.7059Z"
-                        fill="#F3CB5F"
-                      ></path>
+                        fill="#30c7b5"></path>
                     </svg>
                     <span class="texts"> 85% </span>
                   </div>
@@ -151,28 +134,20 @@ function stopSlideshow() {
             <div class="col-xxl-7 col-xl-7 col-lg-7">
               <div class="choose-content-right">
                 <div class="cmn-section-title apointment-content">
-                  <div
-                    class="cmn--btn cmn-alt2 wow fadeInUp"
-                    data-wow-delay="1.5"
-                    style="visibility: visible; animation-name: fadeInUp"
-                  >
+                  <div class="cmn--btn cmn-alt2 wow fadeInUp" data-wow-delay="1.5"
+                    style="visibility: visible; animation-name: fadeInUp">
                     <span> Why Choose Us </span>
                   </div>
-                  <h2
-                    class="title mt-xxl-4 mt-2 mb-0 wow fadeInDown"
-                    data-wow-delay="1.5"
-                    style="visibility: visible; animation-name: fadeInDown"
-                  >
+                  <h2 class="title mt-xxl-4 mt-2 mb-0 wow fadeInDown" data-wow-delay="1.5"
+                    style="visibility: visible; animation-name: fadeInDown">
                     This Service Focus on Clean &amp; Maintaining Homes
                   </h2>
                 </div>
                 <div class="adjust-content">
                   <div class="thumb-ad">
-                    <img
-                      decoding="async"
+                    <img decoding="async"
                       src="https://www.4damstheme.com/clenis/wp-content/uploads/2024/04/choose-thumb1.png"
-                      alt="This Service Focus on Clean &amp; Maintaining Homes"
-                    />
+                      alt="This Service Focus on Clean &amp; Maintaining Homes" />
                   </div>
                   <div class="adjust-content-info">
                     <p>
@@ -181,17 +156,11 @@ function stopSlideshow() {
                       cranny untouched. We take pride in our ability to.
                     </p>
 
-                    <div
-                      class="adjust-item adjust-first-item wow fadeInDown"
-                      data-wow-delay="1.6"
-                      style="visibility: visible; animation-name: fadeInDown"
-                    >
+                    <div class="adjust-item adjust-first-item wow fadeInDown" data-wow-delay="1.6"
+                      style="visibility: visible; animation-name: fadeInDown">
                       <div class="icon">
-                        <img
-                          decoding="async"
-                          src="https://www.4damstheme.com/clenis/wp-content/uploads/2024/04/ad1.png"
-                          alt="Highly Rated Cleaning"
-                        />
+                        <img decoding="async" src="https://www.4damstheme.com/clenis/wp-content/uploads/2024/04/ad1.png"
+                          alt="Highly Rated Cleaning" />
                       </div>
                       <div class="conts">
                         <h3 class="title">Highly Rated Cleaning</h3>
@@ -201,17 +170,11 @@ function stopSlideshow() {
                         </p>
                       </div>
                     </div>
-                    <div
-                      class="adjust-item adjust-first-item wow fadeInDown"
-                      data-wow-delay="1.6"
-                      style="visibility: visible; animation-name: fadeInDown"
-                    >
+                    <div class="adjust-item adjust-first-item wow fadeInDown" data-wow-delay="1.6"
+                      style="visibility: visible; animation-name: fadeInDown">
                       <div class="icon">
-                        <img
-                          decoding="async"
-                          src="https://www.4damstheme.com/clenis/wp-content/uploads/2024/04/ad2.png"
-                          alt="House &amp; Toilet Cleaning"
-                        />
+                        <img decoding="async" src="https://www.4damstheme.com/clenis/wp-content/uploads/2024/04/ad2.png"
+                          alt="House &amp; Toilet Cleaning" />
                       </div>
                       <div class="conts">
                         <h3 class="title">House &amp; Toilet Cleaning</h3>
@@ -221,11 +184,8 @@ function stopSlideshow() {
                         </p>
                       </div>
                     </div>
-                    <a
-                      href="https://www.4damstheme.com/clenis/about-clenis/"
-                      target="_self"
-                      class="cmn--btn btn-custom-space"
-                    >
+                    <a href="https://www.4damstheme.com/clenis/about-clenis/" target="_self"
+                      class="cmn--btn btn-custom-space">
                       <span>More About Us</span>
                     </a>
                   </div>
@@ -234,18 +194,12 @@ function stopSlideshow() {
             </div>
           </div>
         </div>
-        <img
-          decoding="async"
+        <img decoding="async"
           src="https://www.4damstheme.com/clenis/wp-content/plugins/clenis-toolkit/widgets/img/service/choos-tablet.png"
-          alt="This Service Focus on Clean &amp; Maintaining Homes"
-          class="ripple"
-        />
-        <img
-          decoding="async"
+          alt="This Service Focus on Clean &amp; Maintaining Homes" class="ripple" />
+        <img decoding="async"
           src="https://www.4damstheme.com/clenis/wp-content/plugins/clenis-toolkit/widgets/img/service/ps.png"
-          alt="This Service Focus on Clean &amp; Maintaining Homes"
-          class="ripple-ps"
-        />
+          alt="This Service Focus on Clean &amp; Maintaining Homes" class="ripple-ps" />
       </div>
     </section>
   </div>
@@ -253,213 +207,124 @@ function stopSlideshow() {
     <section class="counter-section pt-120 mt-7">
       <div class="container">
         <div class="counter-wrapper">
-          <div
-            class="counter__items odometer-item wow fadeInDown"
-            data-wow-duration="0.4s"
-            style="
+          <div class="counter__items odometer-item wow fadeInDown" data-wow-duration="0.4s" style="
               visibility: visible;
               animation-duration: 0.4s;
               animation-name: fadeInDown;
-            "
-          >
+            ">
             <div class="cont d-flex align-items-center">
-              <span
-                class="odometer odometer-auto-theme"
-                data-odometer-final="38"
-                ><div class="odometer-inside">
-                  <span class="odometer-digit"
-                    ><span class="odometer-digit-spacer">8</span
-                    ><span class="odometer-digit-inner"
-                      ><span class="odometer-ribbon"
-                        ><span class="odometer-ribbon-inner"
-                          ><span class="odometer-value">3</span></span
-                        ></span
-                      ></span
-                    ></span
-                  ><span class="odometer-digit"
-                    ><span class="odometer-digit-spacer">8</span
-                    ><span class="odometer-digit-inner"
-                      ><span class="odometer-ribbon"
-                        ><span class="odometer-ribbon-inner"
-                          ><span class="odometer-value">8</span></span
-                        ></span
-                      ></span
-                    ></span
-                  >
-                </div></span
-              >
+              <span class="odometer odometer-auto-theme" data-odometer-final="38">
+                <div class="odometer-inside">
+                  <span class="odometer-digit"><span class="odometer-digit-spacer">8</span><span
+                      class="odometer-digit-inner"><span class="odometer-ribbon"><span
+                          class="odometer-ribbon-inner"><span
+                            class="odometer-value">3</span></span></span></span></span><span
+                    class="odometer-digit"><span class="odometer-digit-spacer">8</span><span
+                      class="odometer-digit-inner"><span class="odometer-ribbon"><span
+                          class="odometer-ribbon-inner"><span
+                            class="odometer-value">8</span></span></span></span></span>
+                </div>
+              </span>
               <span class="plus__icon">
-                <svg
-                  aria-hidden="true"
-                  class="e-font-icon-svg e-fas-plus"
-                  viewBox="0 0 448 512"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
+                <svg aria-hidden="true" class="e-font-icon-svg e-fas-plus" viewBox="0 0 448 512"
+                  xmlns="http://www.w3.org/2000/svg">
                   <path
-                    d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"
-                  ></path>
+                    d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z">
+                  </path>
                 </svg>
               </span>
             </div>
             <p>Years Experience</p>
           </div>
           <div class="vline"></div>
-          <div
-            class="counter__items odometer-item wow fadeInDown"
-            data-wow-duration="0.4s"
-            style="
+          <div class="counter__items odometer-item wow fadeInDown" data-wow-duration="0.4s" style="
               visibility: visible;
               animation-duration: 0.4s;
               animation-name: fadeInDown;
-            "
-          >
+            ">
             <div class="cont d-flex align-items-center">
-              <span
-                class="odometer odometer-auto-theme"
-                data-odometer-final="99"
-                ><div class="odometer-inside">
-                  <span class="odometer-digit"
-                    ><span class="odometer-digit-spacer">8</span
-                    ><span class="odometer-digit-inner"
-                      ><span class="odometer-ribbon"
-                        ><span class="odometer-ribbon-inner"
-                          ><span class="odometer-value">9</span></span
-                        ></span
-                      ></span
-                    ></span
-                  ><span class="odometer-digit"
-                    ><span class="odometer-digit-spacer">8</span
-                    ><span class="odometer-digit-inner"
-                      ><span class="odometer-ribbon"
-                        ><span class="odometer-ribbon-inner"
-                          ><span class="odometer-value">9</span></span
-                        ></span
-                      ></span
-                    ></span
-                  >
-                </div></span
-              >
+              <span class="odometer odometer-auto-theme" data-odometer-final="99">
+                <div class="odometer-inside">
+                  <span class="odometer-digit"><span class="odometer-digit-spacer">8</span><span
+                      class="odometer-digit-inner"><span class="odometer-ribbon"><span
+                          class="odometer-ribbon-inner"><span
+                            class="odometer-value">9</span></span></span></span></span><span
+                    class="odometer-digit"><span class="odometer-digit-spacer">8</span><span
+                      class="odometer-digit-inner"><span class="odometer-ribbon"><span
+                          class="odometer-ribbon-inner"><span
+                            class="odometer-value">9</span></span></span></span></span>
+                </div>
+              </span>
               <span class="plus__icon">
-                <svg
-                  aria-hidden="true"
-                  class="e-font-icon-svg e-fas-percent"
-                  viewBox="0 0 448 512"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
+                <svg aria-hidden="true" class="e-font-icon-svg e-fas-percent" viewBox="0 0 448 512"
+                  xmlns="http://www.w3.org/2000/svg">
                   <path
-                    d="M112 224c61.9 0 112-50.1 112-112S173.9 0 112 0 0 50.1 0 112s50.1 112 112 112zm0-160c26.5 0 48 21.5 48 48s-21.5 48-48 48-48-21.5-48-48 21.5-48 48-48zm224 224c-61.9 0-112 50.1-112 112s50.1 112 112 112 112-50.1 112-112-50.1-112-112-112zm0 160c-26.5 0-48-21.5-48-48s21.5-48 48-48 48 21.5 48 48-21.5 48-48 48zM392.3.2l31.6-.1c19.4-.1 30.9 21.8 19.7 37.8L77.4 501.6a23.95 23.95 0 0 1-19.6 10.2l-33.4.1c-19.5 0-30.9-21.9-19.7-37.8l368-463.7C377.2 4 384.5.2 392.3.2z"
-                  ></path>
+                    d="M112 224c61.9 0 112-50.1 112-112S173.9 0 112 0 0 50.1 0 112s50.1 112 112 112zm0-160c26.5 0 48 21.5 48 48s-21.5 48-48 48-48-21.5-48-48 21.5-48 48-48zm224 224c-61.9 0-112 50.1-112 112s50.1 112 112 112 112-50.1 112-112-50.1-112-112-112zm0 160c-26.5 0-48-21.5-48-48s21.5-48 48-48 48 21.5 48 48-21.5 48-48 48zM392.3.2l31.6-.1c19.4-.1 30.9 21.8 19.7 37.8L77.4 501.6a23.95 23.95 0 0 1-19.6 10.2l-33.4.1c-19.5 0-30.9-21.9-19.7-37.8l368-463.7C377.2 4 384.5.2 392.3.2z">
+                  </path>
                 </svg>
               </span>
             </div>
             <p>Successful Rate</p>
           </div>
           <div class="vline"></div>
-          <div
-            class="counter__items odometer-item wow fadeInDown"
-            data-wow-duration="0.4s"
-            style="
+          <div class="counter__items odometer-item wow fadeInDown" data-wow-duration="0.4s" style="
               visibility: visible;
               animation-duration: 0.4s;
               animation-name: fadeInDown;
-            "
-          >
+            ">
             <div class="cont d-flex align-items-center">
-              <span
-                class="odometer odometer-auto-theme"
-                data-odometer-final="643"
-                ><div class="odometer-inside">
-                  <span class="odometer-digit"
-                    ><span class="odometer-digit-spacer">8</span
-                    ><span class="odometer-digit-inner"
-                      ><span class="odometer-ribbon"
-                        ><span class="odometer-ribbon-inner"
-                          ><span class="odometer-value">6</span></span
-                        ></span
-                      ></span
-                    ></span
-                  ><span class="odometer-digit"
-                    ><span class="odometer-digit-spacer">8</span
-                    ><span class="odometer-digit-inner"
-                      ><span class="odometer-ribbon"
-                        ><span class="odometer-ribbon-inner"
-                          ><span class="odometer-value">4</span></span
-                        ></span
-                      ></span
-                    ></span
-                  ><span class="odometer-digit"
-                    ><span class="odometer-digit-spacer">8</span
-                    ><span class="odometer-digit-inner"
-                      ><span class="odometer-ribbon"
-                        ><span class="odometer-ribbon-inner"
-                          ><span class="odometer-value">3</span></span
-                        ></span
-                      ></span
-                    ></span
-                  >
-                </div></span
-              >
+              <span class="odometer odometer-auto-theme" data-odometer-final="643">
+                <div class="odometer-inside">
+                  <span class="odometer-digit"><span class="odometer-digit-spacer">8</span><span
+                      class="odometer-digit-inner"><span class="odometer-ribbon"><span
+                          class="odometer-ribbon-inner"><span
+                            class="odometer-value">6</span></span></span></span></span><span
+                    class="odometer-digit"><span class="odometer-digit-spacer">8</span><span
+                      class="odometer-digit-inner"><span class="odometer-ribbon"><span
+                          class="odometer-ribbon-inner"><span
+                            class="odometer-value">4</span></span></span></span></span><span
+                    class="odometer-digit"><span class="odometer-digit-spacer">8</span><span
+                      class="odometer-digit-inner"><span class="odometer-ribbon"><span
+                          class="odometer-ribbon-inner"><span
+                            class="odometer-value">3</span></span></span></span></span>
+                </div>
+              </span>
               <span class="plus__icon">
-                <svg
-                  aria-hidden="true"
-                  class="e-font-icon-svg e-fas-plus"
-                  viewBox="0 0 448 512"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
+                <svg aria-hidden="true" class="e-font-icon-svg e-fas-plus" viewBox="0 0 448 512"
+                  xmlns="http://www.w3.org/2000/svg">
                   <path
-                    d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"
-                  ></path>
+                    d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z">
+                  </path>
                 </svg>
               </span>
             </div>
             <p>Project Running</p>
           </div>
           <div class="vline"></div>
-          <div
-            class="counter__items odometer-item wow fadeInDown"
-            data-wow-duration="0.4s"
-            style="
+          <div class="counter__items odometer-item wow fadeInDown" data-wow-duration="0.4s" style="
               visibility: visible;
               animation-duration: 0.4s;
               animation-name: fadeInDown;
-            "
-          >
+            ">
             <div class="cont d-flex align-items-center">
-              <span
-                class="odometer odometer-auto-theme"
-                data-odometer-final="64"
-                ><div class="odometer-inside">
-                  <span class="odometer-digit"
-                    ><span class="odometer-digit-spacer">8</span
-                    ><span class="odometer-digit-inner"
-                      ><span class="odometer-ribbon"
-                        ><span class="odometer-ribbon-inner"
-                          ><span class="odometer-value">6</span></span
-                        ></span
-                      ></span
-                    ></span
-                  ><span class="odometer-digit"
-                    ><span class="odometer-digit-spacer">8</span
-                    ><span class="odometer-digit-inner"
-                      ><span class="odometer-ribbon"
-                        ><span class="odometer-ribbon-inner"
-                          ><span class="odometer-value">4</span></span
-                        ></span
-                      ></span
-                    ></span
-                  >
-                </div></span
-              >
+              <span class="odometer odometer-auto-theme" data-odometer-final="64">
+                <div class="odometer-inside">
+                  <span class="odometer-digit"><span class="odometer-digit-spacer">8</span><span
+                      class="odometer-digit-inner"><span class="odometer-ribbon"><span
+                          class="odometer-ribbon-inner"><span
+                            class="odometer-value">6</span></span></span></span></span><span
+                    class="odometer-digit"><span class="odometer-digit-spacer">8</span><span
+                      class="odometer-digit-inner"><span class="odometer-ribbon"><span
+                          class="odometer-ribbon-inner"><span
+                            class="odometer-value">4</span></span></span></span></span>
+                </div>
+              </span>
               <span class="plus__icon">
-                <svg
-                  aria-hidden="true"
-                  class="e-font-icon-svg e-fas-plus"
-                  viewBox="0 0 448 512"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
+                <svg aria-hidden="true" class="e-font-icon-svg e-fas-plus" viewBox="0 0 448 512"
+                  xmlns="http://www.w3.org/2000/svg">
                   <path
-                    d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"
-                  ></path>
+                    d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z">
+                  </path>
                 </svg>
               </span>
             </div>
@@ -469,59 +334,52 @@ function stopSlideshow() {
       </div>
     </section>
   </div>
+  <section class="relative bg-cover bg-center py-7 mt-10" :style="{ backgroundImage: 'url(https://radiustheme.com/demo/wordpress/themes/clenix/wp-content/uploads/2019/11/section-bg15.jpg)' }">
+    <div class="absolute inset-0  "></div>
+    <div class="container mx-auto relative flex justify-center items-center text-center">
+      <div class="max-w-lg">
+        <h2 class="text-white text-3xl md:text-4xl font-bold mb-4">Get started with your free estimate</h2>
+        <a href="#" class="bg-yellow-button text-gray-900 font-medium py-3 px-6 rounded">
+          Get an Estimate
+        </a>
+      </div>
+    </div>
+  </section>
   <div class="container">
     <div class="work-wrapper1 mt-7">
-      <img
-        decoding="async"
+      <img decoding="async"
         src="https://www.4damstheme.com/clenis/wp-content/plugins/clenis-toolkit/widgets/img/icon/flower.png"
-        alt="How It Works"
-        class="follower-section"
-      />
+        alt="How It Works" class="follower-section" />
       <div class="row justify-content-lg-between justify-content-center">
         <div class="col-lg-7">
           <div class="work-thumb">
-            <img
-              decoding="async"
-              src="https://www.4damstheme.com/clenis/wp-content/uploads/2024/04/work.png"
-              alt="How It Works"
-            />
+            <img decoding="async" src="https://www.4damstheme.com/clenis/wp-content/uploads/2024/04/work.png"
+              alt="How It Works" />
           </div>
         </div>
         <div class="col-lg-5 col-md-7">
           <div class="howwork-content">
             <div class="cmn-section-title">
-              <div
-                class="cmn--btn cmn-alt1 wow fadeInDown"
-                data-wow-delay="0.4"
-                style="visibility: visible; animation-name: fadeInDown"
-              >
-                <span> Working Process </span>
+              <div class="cmn--btn cmn-alt1 wow fadeInDown" data-wow-delay="0.4"
+                style="visibility: visible; animation-name: fadeInDown">
+                <!-- <span> Working Process </span> -->
               </div>
-              <h2
-                class="white mt-xxl-4 mt-2 wow fadeInUp"
-                data-wow-delay="0.5"
-                style="visibility: visible; animation-name: fadeInUp"
-              >
-                How It Works
+              <h2 class="white mt-xxl-4 mt-2 wow fadeInUp" data-wow-delay="0.5"
+                style="visibility: visible; animation-name: fadeInUp;color:#032b52 ;">
+                Nos Service 
               </h2>
-              <p
-                class="text-white wow fadeInDown"
-                data-wow-delay="0.6"
-                style="visibility: visible; animation-name: fadeInDown"
-              >
+              <!-- <p class="text-white wow fadeInDown" data-wow-delay="0.6"
+                style="visibility: visible; animation-name: fadeInDown">
                 We love help you get your clothes fresh and clean so we here for
                 you 24/7 for any question, concern or suggestion.
-              </p>
+              </p> -->
             </div>
             <div class="howit-work-info">
-              <div
-                class="howit-item wow fadeInUp"
-                data-wow-delay="0.7"
-                style="visibility: visible; animation-name: fadeInUp"
-              >
+              <div class="howit-item wow fadeInUp" data-wow-delay="0.7"
+                style="visibility: visible; animation-name: fadeInUp;padding: 35px;
+    padding-left: 0px;">
                 <h3 class="title d-flex align-items-center gap-2">
-                  <span class="base"> 01. </span>
-                  Assessment and Planning
+                  MENAGE
                 </h3>
                 <p class="pra">
                   The first step involves understanding the client's needs and
@@ -529,105 +387,314 @@ function stopSlideshow() {
                   outlines.
                 </p>
               </div>
-              <div
-                class="howit-item wow fadeInUp"
-                data-wow-delay="0.7"
-                style="visibility: visible; animation-name: fadeInUp"
-              >
-                <h3 class="title d-flex align-items-center gap-2">
-                  <span class="base"> 02. </span>
-                  Execution of Cleaning Services
-                </h3>
-                <p class="pra">
-                  The first step involves understanding the client's needs and
-                  expectations. This may include a consultation where the client
-                  outlines.
-                </p>
-              </div>
-              <div
-                class="howit-item wow fadeInUp"
-                data-wow-delay="0.7"
-                style="visibility: visible; animation-name: fadeInUp"
-              >
-                <h3 class="title d-flex align-items-center gap-2">
-                  <span class="base"> 03. </span>
-                  Post-Cleaning Follow-up
-                </h3>
-                <p class="pra">
-                  The first step involves understanding the client's needs and
-                  expectations. This may include a consultation where the client
-                  outlines.
-                </p>
-              </div>
+              
             </div>
           </div>
         </div>
+        
+       
       </div>
-      <img
-        decoding="async"
+      <img decoding="async"
         src="https://www.4damstheme.com/clenis/wp-content/plugins/clenis-toolkit/widgets/img/icon/working-ball.png"
-        alt="How It Works"
-        class="working-bable"
-      />
+        alt="How It Works" class="working-bable" />
     </div>
   </div>
+  <section class="working-process" style="text-align: center;
+  padding: 40px 20px;
+  background-color: #f9f9f9;" >
+    <div class="container" style=" max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;">
+      <div class="title-section" style="margin-bottom: 40px;" >
+        <h2 style="font-size: 2em;
+  margin-bottom: 10px;" >Our Working Process</h2>
+        <p style=" font-size: 1em;
+  color: #666;">Perspiciatis unde omnis iste natus error sit voluptatem accusantium dol oremque laudantium, totam remeaque ipsa.</p>
+      </div>
+      <div class="process-steps" style="display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;" >
+        <div class="step">
+          <div class="icon">
+            <i class="fa fa-calendar-check-o"></i>
+          </div>
+          <h3><a href="#">Book Online Form</a></h3>
+          <p>Ahen an unknown printer took a galley type and scrambled nknown printer.</p>
+        </div>
+        <div class="step">
+          <div class="icon">
+            <i class="fa fa-envelope-o"></i>
+          </div>
+          <h3><a href="#">Get Confirmation</a></h3>
+          <p>Ahen an unknown printer took a galley type and scrambled nknown printer.</p>
+        </div>
+        <div class="step">
+          <div class="icon">
+            <i class="fa fa-smile-o"></i>
+          </div>
+          <h3><a href="#">Let’s Enjoy</a></h3>
+          <p>Ahen an unknown printer took a galley type and scrambled nknown printer.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="container">
+    
+      <img decoding="async"
+        src="https://www.4damstheme.com/clenis/wp-content/plugins/clenis-toolkit/widgets/img/icon/flower.png"
+        alt="How It Works" class="follower-section" style="position: relative;
+  left: 30px;
+  top: -27px;" />
+      <div class="row justify-content-lg-between justify-content-center">
+        <div class="col-lg-5 col-md-7">
+          <div class="howwork-content">
+            <div class="cmn-section-title">
+              <div class="cmn--btn cmn-alt1 wow fadeInDown" data-wow-delay="0.4"
+                style="visibility: visible; animation-name: fadeInDown">
+                <!-- <span> Working Process </span> -->
+              </div>
+              <h2 class="white mt-xxl-4 mt-2 wow fadeInUp" data-wow-delay="0.5"
+                style="visibility: visible; animation-name: fadeInUp;color:#30c7b5 ;margin-bottom: -62px;">
+                Buandrie 
+              </h2>
+              <!-- <p class="text-white wow fadeInDown" data-wow-delay="0.6"
+                style="visibility: visible; animation-name: fadeInDown">
+                We love help you get your clothes fresh and clean so we here for
+                you 24/7 for any question, concern or suggestion.
+              </p> -->
+            </div>
+            <div class="howit-work-info">
+              <div class="howit-item wow fadeInUp" data-wow-delay="0.7"
+                style="visibility: visible; animation-name: fadeInUp;padding: 35px;
+    padding-left: 0px;">
+                
+                <p class="pra">
+                  The first step involves understanding the client's needs and
+                  expectations. This may include a consultation where the client
+                  outlines.
+                </p>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-7">
+          <div class="work-thumb">
+            <img decoding="async" src="https://www.4damstheme.com/clenis/wp-content/uploads/2024/04/work.png"
+              alt="How It Works" style="width: 90%;
+    border-radius: 60px;"/>
+          </div>
+        </div>
+       
+      </div>
+      <img decoding="async"
+        src="https://www.4damstheme.com/clenis/wp-content/plugins/clenis-toolkit/widgets/img/icon/working-ball.png"
+        alt="How It Works" class="working-bable" />
+    
+  </div>
+  <section class="working-process" style="text-align: center;
+  padding: 40px 20px;
+  background-color: #f9f9f9;" >
+    <div class="container" style=" max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;">
+      <div class="title-section" style="margin-bottom: 40px;" >
+        <h2 style="font-size: 2em;
+  margin-bottom: 10px;" >Our Working Process</h2>
+        <p style=" font-size: 1em;
+  color: #666;">Perspiciatis unde omnis iste natus error sit voluptatem accusantium dol oremque laudantium, totam remeaque ipsa.</p>
+      </div>
+      <div class="process-steps" style="display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;" >
+        <div class="step">
+          <div class="icon">
+            <i class="fa fa-calendar-check-o"></i>
+          </div>
+          <h3><a href="#">Book Online Form</a></h3>
+          <p>Ahen an unknown printer took a galley type and scrambled nknown printer.</p>
+        </div>
+        <div class="step">
+          <div class="icon">
+            <i class="fa fa-envelope-o"></i>
+          </div>
+          <h3><a href="#">Get Confirmation</a></h3>
+          <p>Ahen an unknown printer took a galley type and scrambled nknown printer.</p>
+        </div>
+        <div class="step">
+          <div class="icon">
+            <i class="fa fa-smile-o"></i>
+          </div>
+          <h3><a href="#">Let’s Enjoy</a></h3>
+          <p>Ahen an unknown printer took a galley type and scrambled nknown printer.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="testimonials"  >
+        <div class="heading text-center">
+            <h2>What's
+                <span>Clients</span>
+                Says?</h2>
+
+        </div>
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-12">
+                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                        <!-- Indicators-->
+                        <ol class="carousel-indicators">
+                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                        </ol>
+
+                        <div class="carousel-inner">
+                            <!-- Item-1 -->
+                            <div class="carousel-item active text-center">
+                                <img src="https://i.ibb.co/8x9xK4H/team.jpg" alt="" class="center-block team">
+                                <h3>Alamin Musa</h3>
+                                <h4>Front End Developer</h4>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
+                                    porttitordapibus dictum.<br>
+                                    Fusce faucibus ligula scelerisque, eleifend turpis in</p>
+                            </div>
+                            <!-- Item-2 -->
+                            <div class="carousel-item text-center">
+                                <img src="https://i.ibb.co/8x9xK4H/team.jpg" alt="" class="center-block team">
+                                <h3>Alamin Musa</h3>
+                                <h4>Front End Developer</h4>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
+                                    porttitordapibus dictum.<br>
+                                    Fusce faucibus ligula scelerisque, eleifend turpis in</p>
+                            </div>
+                            <!-- Item-3 -->
+                            <div class="carousel-item text-center">
+                                <img src="https://i.ibb.co/8x9xK4H/team.jpg" alt="" class="center-block team">
+                                <h3>Alamin Musa</h3>
+                                <h4>Front End Developer</h4>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
+                                    porttitordapibus dictum.<br>
+                                    Fusce faucibus ligula scelerisque, eleifend turpis in</p>
+                            </div>
+
+                        </div>
+                        <a
+                            class="carousel-control-prev control"
+                            data-target="#carouselExampleIndicators"
+                            role="button"
+                            data-slide="prev">
+                            <span class="fa fa-angle-left icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a
+                            class="carousel-control-next control"
+                            data-target="#carouselExampleIndicators"
+                            role="button"
+                            data-slide="next">
+                            <span class="fa fa-angle-right icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="container-fluid p-5" style="background-color: #30c7b5;    margin-bottom: 37px;
+" >      
+      <div class="page astro-J7PV25F6">
+  <nav style="--gap: 1rem;
+
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(275px, 1fr));
+        gap: var(--gap);
+
+        box-sizing: border-box;
+        width: 100vw;
+        max-width: 100ch;
+        margin: 0 auto;
+        padding: var(--gap);" >
+    <h1 class="logo clipped--br">
+      <span>Our Work</span>
+    </h1>
+
+    <a class="link clipped--br" href="/about">
+      
+      <p><span class="title">An introduction</span></p>
+    </a>
+
+    <a class="link clipped--br" href="/projects">
+      
+      <p><span class="title">Side projects</span></p>
+    </a>
+
+    <a class="link clipped--br" href="/articles">
+      <p>
+        <span class="subtitle">Thoughts on <br>development &amp; the web</span>
+      </p>
+      <p><span class="title">Some articles</span></p>
+    </a>
+
+    <a class="link clipped--br" href="/weeknotes">
+      <p>
+        <span class="subtitle">Tracking the <br>personal &amp; professional</span>
+      </p>
+      <p><span class="title">Weeknotes</span></p>
+    </a>
+
+    <a class="link clipped--br" href="/in-use">
+      <p>
+        <span class="subtitle">These are a few <br>of my favourite things</span>
+      </p>
+      <p><span class="title">In use</span></p>
+    </a>
+  </nav>
+</div></div>
+
   <div class="container-fluid">
     <section class="cleaning-quote position-relative">
       <div class="cleaning-thumbing">
-        <img
-          decoding="async"
+        <img decoding="async"
           src="https://www.4damstheme.com/clenis/wp-content/uploads/2024/04/cleaning-thumb-1024x399.png"
-          alt="Contact Us"
-        />
+          alt="Contact Us" />
       </div>
       <div class="container">
         <div class="row g-4">
           <div class="col-lg-5">
             <div class="cleaning-quote-content">
               <div class="cmn-section-title">
-                <div
-                  class="cmn--btn cmn-alt2 wow fadeInDown"
-                  data-wow-delay="0.4s"
-                  style="
+                <div class="cmn--btn cmn-alt2 wow fadeInDown" data-wow-delay="0.4s" style="
                     visibility: visible;
                     animation-delay: 0.4s;
                     animation-name: fadeInDown;
-                  "
-                >
-                  <span> Contact Us </span>
+                  ">
+                  <span style="    background-color: #30c7b5;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    font-size: x-large;"> Contact Us </span>
                 </div>
-                <h2
-                  class="white mt-xxl-4 mt-2 mb-0 wow fadeInUp"
-                  data-wow-delay="0.6s"
-                  style="
+                <h2 class="white mt-xxl-4 mt-2 mb-0 wow fadeInUp" data-wow-delay="0.6s" style="
                     visibility: visible;
                     animation-delay: 0.6s;
                     animation-name: fadeInUp;
-                  "
-                >
+                  ">
                   Request a free cleaning quote today
                 </h2>
               </div>
               <div class="cleaning-info">
-                <div
-                  class="cleaning-info-item wow fadeInDown"
-                  data-wow-delay="0.7s"
-                  style="
+                <div class="cleaning-info-item wow fadeInDown" data-wow-delay="0.7s" style="
                     visibility: visible;
                     animation-delay: 0.7s;
                     animation-name: fadeInDown;
-                  "
-                >
+                  ">
                   <div class="c-info-icon d-flex align-items-center">
-                    <svg
-                      aria-hidden="true"
-                      class="e-font-icon-svg e-fas-map-marker-alt"
-                      viewBox="0 0 384 512"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
+                    <svg aria-hidden="true" class="e-font-icon-svg e-fas-map-marker-alt" viewBox="0 0 384 512"
+                      xmlns="http://www.w3.org/2000/svg">
                       <path
-                        d="M172.268 501.67C26.97 291.031 0 269.413 0 192 0 85.961 85.961 0 192 0s192 85.961 192 192c0 77.413-26.97 99.031-172.268 309.67-9.535 13.774-29.93 13.773-39.464 0zM192 272c44.183 0 80-35.817 80-80s-35.817-80-80-80-80 35.817-80 80 35.817 80 80 80z"
-                      ></path>
+                        d="M172.268 501.67C26.97 291.031 0 269.413 0 192 0 85.961 85.961 0 192 0s192 85.961 192 192c0 77.413-26.97 99.031-172.268 309.67-9.535 13.774-29.93 13.773-39.464 0zM192 272c44.183 0 80-35.817 80-80s-35.817-80-80-80-80 35.817-80 80 35.817 80 80 80z">
+                      </path>
                     </svg>
                     <span class="pra"> Location </span>
                   </div>
@@ -636,25 +703,17 @@ function stopSlideshow() {
                     <span class="d-block"> London W1U 360, UK, </span>
                   </h3>
                 </div>
-                <div
-                  class="cleaning-info-item wow fadeInDown"
-                  data-wow-delay="0.7s"
-                  style="
+                <div class="cleaning-info-item wow fadeInDown" data-wow-delay="0.7s" style="
                     visibility: visible;
                     animation-delay: 0.7s;
                     animation-name: fadeInDown;
-                  "
-                >
+                  ">
                   <div class="c-info-icon d-flex align-items-center">
-                    <svg
-                      aria-hidden="true"
-                      class="e-font-icon-svg e-fas-envelope"
-                      viewBox="0 0 512 512"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
+                    <svg aria-hidden="true" class="e-font-icon-svg e-fas-envelope" viewBox="0 0 512 512"
+                      xmlns="http://www.w3.org/2000/svg">
                       <path
-                        d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z"
-                      ></path>
+                        d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z">
+                      </path>
                     </svg>
                     <span class="pra"> Mail Us </span>
                   </div>
@@ -672,61 +731,30 @@ function stopSlideshow() {
                 <p role="status" aria-live="polite" aria-atomic="true"></p>
                 <ul></ul>
               </div>
-              <form
-                action="/clenis/#wpcf7-f9-p72-o1"
-                method="post"
-                class="wpcf7-form init clenis-cf7-form"
-                aria-label="Contact form"
-                novalidate="novalidate"
-                data-status="init"
-              >
+              <form action="/clenis/#wpcf7-f9-p72-o1" method="post" class="wpcf7-form init clenis-cf7-form"
+                aria-label="Contact form" novalidate="novalidate" data-status="init">
                 <div style="display: none">
                   <input type="hidden" name="_wpcf7" value="9" />
                   <input type="hidden" name="_wpcf7_version" value="5.9.3" />
                   <input type="hidden" name="_wpcf7_locale" value="en_US" />
-                  <input
-                    type="hidden"
-                    name="_wpcf7_unit_tag"
-                    value="wpcf7-f9-p72-o1"
-                  />
-                  <input
-                    type="hidden"
-                    name="_wpcf7_container_post"
-                    value="72"
-                  />
-                  <input
-                    type="hidden"
-                    name="_wpcf7_posted_data_hash"
-                    value=""
-                  />
+                  <input type="hidden" name="_wpcf7_unit_tag" value="wpcf7-f9-p72-o1" />
+                  <input type="hidden" name="_wpcf7_container_post" value="72" />
+                  <input type="hidden" name="_wpcf7_posted_data_hash" value="" />
                 </div>
-                <div
-                  class="cleaning-form wow fadeInUp"
-                  data-wow-delay="0.6s"
-                  style="
+                <div class="cleaning-form wow fadeInUp" data-wow-delay="0.6s" style="
                     visibility: visible;
                     animation-delay: 0.6s;
                     animation-name: fadeInUp;
-                  "
-                >
+                  ">
                   <div class="row g-4">
                     <div class="col-lg-6 col-md-6">
                       <div class="clean-form-grp">
                         <p>
                           <label>First Name</label><br />
-                          <span
-                            class="wpcf7-form-control-wrap"
-                            data-name="text-454"
-                            ><input
-                              size="40"
-                              class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required"
-                              aria-required="true"
-                              aria-invalid="false"
-                              placeholder="First name"
-                              value=""
-                              type="text"
-                              name="text-454"
-                          /></span>
+                          <span class="wpcf7-form-control-wrap" data-name="text-454"><input size="40"
+                              class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true"
+                              aria-invalid="false" placeholder="First name" value="" type="text"
+                              name="text-454" /></span>
                         </p>
                       </div>
                     </div>
@@ -734,19 +762,10 @@ function stopSlideshow() {
                       <div class="clean-form-grp">
                         <p>
                           <label>Address</label><br />
-                          <span
-                            class="wpcf7-form-control-wrap"
-                            data-name="text-454"
-                            ><input
-                              size="40"
-                              class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required"
-                              aria-required="true"
-                              aria-invalid="false"
-                              placeholder="Your Address"
-                              value=""
-                              type="text"
-                              name="text-454"
-                          /></span>
+                          <span class="wpcf7-form-control-wrap" data-name="text-454"><input size="40"
+                              class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true"
+                              aria-invalid="false" placeholder="Your Address" value="" type="text"
+                              name="text-454" /></span>
                         </p>
                       </div>
                     </div>
@@ -754,19 +773,10 @@ function stopSlideshow() {
                       <div class="clean-form-grp">
                         <p>
                           <label>Your Email</label><br />
-                          <span
-                            class="wpcf7-form-control-wrap"
-                            data-name="email-332"
-                            ><input
-                              size="40"
+                          <span class="wpcf7-form-control-wrap" data-name="email-332"><input size="40"
                               class="wpcf7-form-control wpcf7-email wpcf7-validates-as-required wpcf7-text wpcf7-validates-as-email"
-                              aria-required="true"
-                              aria-invalid="false"
-                              placeholder="Your Email"
-                              value=""
-                              type="email"
-                              name="email-332"
-                          /></span>
+                              aria-required="true" aria-invalid="false" placeholder="Your Email" value="" type="email"
+                              name="email-332" /></span>
                         </p>
                       </div>
                     </div>
@@ -774,19 +784,20 @@ function stopSlideshow() {
                       <div class="clean-form-grp">
                         <p>
                           <label>Service</label><br />
-                          <span
-                            class="wpcf7-form-control-wrap"
-                            data-name="text-454"
-                            ><input
-                              size="40"
-                              class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required"
-                              aria-required="true"
-                              aria-invalid="false"
-                              placeholder="Service name"
-                              value=""
-                              type="text"
-                              name="text-454"
-                          /></span>
+                          <span class="wpcf7-form-control-wrap" data-name="text-454">
+                            <select class="wpcf7-form-control wpcf7-select" aria-invalid="false" name="service" style="border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    outline: none;
+    color: rgba(255, 255, 255, 0.55);
+    padding: 16px 23px;
+    background: transparent;
+    width: 100%;">
+              <option style="background-color: #30c7b5;" value="">Select a service</option>
+              <option style="background-color: #30c7b5;" value="Service 1">Service 1</option>
+              <option style="background-color: #30c7b5;" value="Service 2">Service 2</option>
+              <!-- Add more options as needed -->
+            </select>
+                          </span>
                         </p>
                       </div>
                     </div>
@@ -794,19 +805,16 @@ function stopSlideshow() {
                       <div class="clean-form-grp">
                         <p>
                           <label>Day of Service</label><br />
-                          <span
-                            class="wpcf7-form-control-wrap"
-                            data-name="text-454"
-                            ><input
-                              size="40"
-                              class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required"
-                              aria-required="true"
-                              aria-invalid="false"
-                              placeholder="Day of Service"
-                              value=""
-                              type="text"
-                              name="text-454"
-                          /></span>
+                          <span class="wpcf7-form-control-wrap" data-name="text-454"><input size="40"
+                              class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true"
+                              aria-invalid="false" placeholder="Day of Service" value="" type="date" style="border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    outline: none;
+    color: rgba(255, 255, 255, 0.55);
+    padding: 16px 23px;
+    background: transparent;
+    width: 100%;"
+                              name="text-454" /></span>
                         </p>
                       </div>
                     </div>
@@ -814,31 +822,21 @@ function stopSlideshow() {
                       <div class="clean-form-grp">
                         <p>
                           <label>Add a Note</label><br />
-                          <span
-                            class="wpcf7-form-control-wrap"
-                            data-name="textarea-35"
-                          >
-                            <textarea
-                              cols="40"
-                              rows="10"
-                              class="wpcf7-form-control wpcf7-textarea wpcf7-validates-as-required"
-                              aria-required="true"
-                              aria-invalid="false"
-                              placeholder="Add a note"
-                              name="textarea-35"
-                            ></textarea>
+                          <span class="wpcf7-form-control-wrap" data-name="textarea-35">
+                            <textarea cols="40" rows="10"
+                              class="wpcf7-form-control wpcf7-textarea wpcf7-validates-as-required" aria-required="true"
+                              aria-invalid="false" placeholder="Add a note" name="textarea-35"></textarea>
                           </span>
                         </p>
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="clean-form-grp">
-                        <p>
-                          <input
-                            class="wpcf7-form-control wpcf7-submit has-spinner cmn--btn cmn-alt2"
-                            type="submit"
-                            value="Submit Your Information"
-                          /><span class="wpcf7-spinner"></span>
+                        <p style="margin-bottom: 0px;">
+                          <input class="wpcf7-form-control wpcf7-submit has-spinner cmn--btn cmn-alt2" type="submit"
+                            value="Submit Your Information" style="border: unset;
+                            color: #30c7b5;background: #30c7b5;border-radius: 87px;    font-size: 16px;
+" /><span class="wpcf7-spinner"></span>
                         </p>
                       </div>
                     </div>
@@ -850,38 +848,31 @@ function stopSlideshow() {
           </div>
         </div>
       </div>
-      <img
-        decoding="async"
+      <img decoding="async"
         src="https://www.4damstheme.com/clenis/wp-content/plugins/clenis-toolkit/widgets/img/icon/working-ball.png"
-        alt="Contact Us"
-        class="cleaning-shape"
-      />
-      <img
-        decoding="async"
+        alt="Contact Us" class="cleaning-shape" />
+      <img decoding="async"
         src="https://www.4damstheme.com/clenis/wp-content/plugins/clenis-toolkit/widgets/img/icon/cirs.png"
-        alt="Contact Us"
-        class="working-cirs"
-      />
+        alt="Contact Us" class="working-cirs" />
     </section>
   </div>
-  <footer class="footer__section position-relative">
+  <footer class="footer__section position-relative"> 
     <div class="container">
-      <div class="newsletter-section">
+      <div class="newsletter-section" style="padding-top: 130px;padding-bottom: 65px;text-align: center;">
         <div id="block-15" class="footer-top-widget widget_block">
-          <h3
-            class="title subcribe-title wow fadeInDown"
-            data-wow-delay="0.4s"
-            style="
+          <h3 class="title subcribe-title wow fadeInDown" data-wow-delay="0.4s" style="
               visibility: visible;
               animation-delay: 0.4s;
               animation-name: fadeInDown;
-            "
-          >
+              font-size: 24px;
+              line-height: 120%;
+              font-weight: 700;
+            ">
             Subscribe to Our Newsletter
           </h3>
           <div class="wp-widget-group__inner-blocks">
             <p>
-              <script>
+              <!-- <script>
                 (function () {
                   window.mc4wp = window.mc4wp || {
                     listeners: [],
@@ -895,44 +886,39 @@ function stopSlideshow() {
                     },
                   };
                 })();
-              </script>
+              </script> -->
               <!-- Mailchimp for WordPress v4.9.12 - https://wordpress.org/plugins/mailchimp-for-wp/ -->
             </p>
-            <form
-              id="mc4wp-form-1"
-              class="mc4wp-form mc4wp-form-227"
-              method="post"
-              data-id="227"
-              data-name="subscription"
-            >
+            <form id="mc4wp-form-1" class="mc4wp-form mc4wp-form-227" method="post" data-id="227"
+              data-name="subscription">
               <div class="mc4wp-form-fields">
-                <label class="fz-16 title fw-700 prafont"
-                  >Enter your email</label
-                >
-                <input type="email" name="EMAIL" required="" />
-                <input
-                  class="cmn--btn"
-                  type="submit"
-                  value="Explore Our Offers"
-                />
+                <label class="fz-16 title fw-700 prafont">Enter your email</label>
+                <input type="email" name="EMAIL" required="" style="width: 100%;
+                  max-width: 500px;
+                  border-radius: 10px;
+                  border: 1px solid rgba(0, 0, 0, 0.09);
+                  color: var(--pra);
+                  padding: 13px 16px;
+                  margin-bottom: 10px;" />
+                <input class="cmn--btn" type="submit" value="Explore Our Offers" style="padding: 12px 28px 15px;
+                  color: white;
+                  font-size: 16px;
+                  font-style: normal;
+                  font-weight: 500;
+                  line-height: 28px;
+                  display: inline-block;
+                  position: relative;
+                  background: #30c7b5;
+                  overflow: hidden;
+                  border-radius: 100px;
+                  transition: all 0.5s;
+                  border: unset;
+                  margin-top: 10px;" />
               </div>
-              <label style="display: none !important"
-                >Leave this field empty if you're human:
-                <input
-                  type="text"
-                  name="_mc4wp_honeypot"
-                  value=""
-                  tabindex="-1"
-                  autocomplete="off" /></label
-              ><input
-                type="hidden"
-                name="_mc4wp_timestamp"
-                value="1715706989"
-              /><input type="hidden" name="_mc4wp_form_id" value="227" /><input
-                type="hidden"
-                name="_mc4wp_form_element_id"
-                value="mc4wp-form-1"
-              />
+              <label style="display: none !important">Leave this field empty if you're human:
+                <input type="text" name="_mc4wp_honeypot" value="" tabindex="-1" autocomplete="off" /></label><input
+                type="hidden" name="_mc4wp_timestamp" value="1715706989" /><input type="hidden" name="_mc4wp_form_id"
+                value="227" /><input type="hidden" name="_mc4wp_form_element_id" value="mc4wp-form-1" />
               <div class="mc4wp-response"></div>
             </form>
             <!-- / Mailchimp for WordPress Plugin -->
@@ -940,316 +926,273 @@ function stopSlideshow() {
           </div>
         </div>
       </div>
-      <div class="footer__top pb-120">
-        <div class="row g-4">
-          <div
-            class="col-xl-4 col-lg-3 col-md-5 col-sm-6 wow fadeInUp"
-            data-wow-duration="2.1s"
-            style="
+      <div class="footer__top pb-120" style="border-top: 1px solid rgba(0, 0, 0, 0.09);
+    padding-top: 60px;">
+        <div class="row g-4" style="margin-bottom: 30px;">
+          <div class="col-xl-4 col-lg-3 col-md-5 col-sm-6 wow fadeInUp" data-wow-duration="2.1s" style="
               visibility: visible;
               animation-duration: 2.1s;
               animation-name: fadeInUp;
-            "
-          >
-            <div class="footer__item">
-              <a href="https://www.4damstheme.com/clenis/" class="footer-logo">
-                <img
-                  src="https://www.4damstheme.com/clenis/wp-content/uploads/2024/04/logo-black-1.png"
-                  alt="Clenis"
-                />
+            ">
+            <div class="footer__item" style="margin-bottom: 24px;
+            display: block;">
+              <a href="https://www.4damstheme.com/clenis/" class="footer-logo" style="margin-bottom: 24px;
+            display: block;">
+                <img src="https://www.4damstheme.com/clenis/wp-content/uploads/2024/04/logo-black-1.png" alt="Clenis" />
               </a>
-              <div class="footer prag">
+              <div class="footer prag" style="color: #748AA0;
+                  font-size: 16px;
+                  font-style: normal;
+                  font-weight: 400;
+                  line-height: 28px;
+                  margin-bottom: 50px;
+                  max-width: 325px;
+                  margin-top: 40px;">
                 With a rich history spanning decades, our club has become a
                 symbol of excellence in the golfing community. offers a
                 challenging yet rewarding game play.
               </div>
-              <ul class="footer-social d-flex align-items-center">
-                <li>
-                  <a href="">
-                    <svg
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
+              <ul class="footer-social d-flex align-items-center" style="gap: 24px;">
+                <li style="list-style: none;">
+                  <a href="" style="text-decoration: none;
+                    text-transform: capitalize;
+                    margin: 0;
+                    color: #30c7b5;
+                    transition: all 0.3s;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path
                         d="M9.69771 13.2478C9.62571 13.2478 8.04171 13.2478 7.32171 13.2478C6.93771 13.2478 6.81771 13.1038 6.81771 12.7438C6.81771 11.7838 6.81771 10.7998 6.81771 9.83983C6.81771 9.45583 6.96171 9.33583 7.32171 9.33583H9.69771C9.69771 9.26383 9.69771 7.87183 9.69771 7.22383C9.69771 6.26383 9.86571 5.35183 10.3457 4.51183C10.8497 3.64783 11.5697 3.07183 12.4817 2.73583C13.0817 2.51983 13.6817 2.42383 14.3297 2.42383H16.6817C17.0177 2.42383 17.1617 2.56783 17.1617 2.90383V5.63983C17.1617 5.97583 17.0177 6.11983 16.6817 6.11983C16.0337 6.11983 15.3857 6.11983 14.7377 6.14383C14.0897 6.14383 13.7537 6.45583 13.7537 7.12783C13.7297 7.84783 13.7537 8.54383 13.7537 9.28783H16.5377C16.9217 9.28783 17.0657 9.43183 17.0657 9.81583V12.7198C17.0657 13.1038 16.9457 13.2238 16.5377 13.2238C15.6737 13.2238 13.8257 13.2238 13.7537 13.2238V21.0478C13.7537 21.4558 13.6337 21.5998 13.2017 21.5998C12.1937 21.5998 11.2097 21.5998 10.2017 21.5998C9.84171 21.5998 9.69771 21.4558 9.69771 21.0958C9.69771 18.5758 9.69771 13.3198 9.69771 13.2478Z"
-                        fill="#0236A6"
-                      ></path>
+                        fill="#30c7b5"></path>
                     </svg>
                   </a>
                 </li>
-                <li>
-                  <a href="">
-                    <svg
-                      width="25"
-                      height="24"
-                      viewBox="0 0 25 24"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
+                <li style="list-style: none;">
+                  <a href="" style="text-decoration: none;
+                    text-transform: capitalize;
+                    margin: 0;
+                    color: #30c7b5;
+                    transition: all 0.3s;">
+                    <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path
                         d="M18.8571 0H6.85714C3.49714 0 0.857143 2.64 0.857143 6V18C0.857143 21.36 3.49714 24 6.85714 24H18.8571C22.2171 24 24.8571 21.36 24.8571 18V6C24.8571 2.64 22.2171 0 18.8571 0ZM22.4571 18C22.4571 20.04 20.8971 21.6 18.8571 21.6H6.85714C4.81714 21.6 3.25714 20.04 3.25714 18V6C3.25714 3.96 4.81714 2.4 6.85714 2.4H18.8571C20.8971 2.4 22.4571 3.96 22.4571 6V18Z"
-                        fill="#032B52"
-                      ></path>
+                        fill="#30c7b5"></path>
                       <path
                         d="M12.8571 6C9.49714 6 6.85714 8.64 6.85714 12C6.85714 15.36 9.49714 18 12.8571 18C16.2171 18 18.8571 15.36 18.8571 12C18.8571 8.64 16.2171 6 12.8571 6ZM12.8571 15.6C10.8171 15.6 9.25714 14.04 9.25714 12C9.25714 9.96 10.8171 8.4 12.8571 8.4C14.8971 8.4 16.4571 9.96 16.4571 12C16.4571 14.04 14.8971 15.6 12.8571 15.6Z"
-                        fill="#032B52"
-                      ></path>
+                        fill="#30c7b5"></path>
                       <path
                         d="M18.8566 7.1998C19.5194 7.1998 20.0566 6.66255 20.0566 5.9998C20.0566 5.33706 19.5194 4.7998 18.8566 4.7998C18.1939 4.7998 17.6566 5.33706 17.6566 5.9998C17.6566 6.66255 18.1939 7.1998 18.8566 7.1998Z"
-                        fill="#032B52"
-                      ></path>
+                        fill="#30c7b5"></path>
                     </svg>
                   </a>
                 </li>
-                <li>
-                  <a href="">
-                    <svg
-                      width="23"
-                      height="20"
-                      viewBox="0 0 23 20"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
+                <li style="list-style: none;">
+                  <a href="" style="text-decoration: none;
+                    text-transform: capitalize;
+                    margin: 0;
+                    color: #30c7b5;
+                    transition: all 0.3s;">
+                    <svg width="23" height="20" viewBox="0 0 23 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path
                         d="M17.9178 0.25H21.2258L13.9988 8.51L22.5008 19.75H15.8438L10.6298 12.933L4.66383 19.75H1.35383L9.08383 10.915L0.927826 0.25H7.75383L12.4668 6.481L17.9178 0.25ZM16.7568 17.77H18.5898L6.75783 2.126H4.79083L16.7568 17.77Z"
-                        fill="#032B52"
-                      ></path>
+                        fill="#30c7b5"></path>
                     </svg>
                   </a>
                 </li>
               </ul>
             </div>
           </div>
-          <div
-            class="col-xl-2 col-lg-2 col-md-4 col-sm-6 wow fadeInUp"
-            data-wow-duration="2.3s"
-            style="
+          <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 wow fadeInUp" data-wow-duration="2.3s" style="
               visibility: visible;
               animation-duration: 2.3s;
               animation-name: fadeInUp;
-            "
-          >
+            ">
             <div id="block-16" class="widget-footer widget_block footer__item">
-              <h4 class="footer__title">Quick links</h4>
+              <h4 class="footer__title" style="font-weight: 700;
+                  text-transform: capitalize;
+                  color: #30c7b5;
+                  display: inline-block;
+                  margin-bottom: 41px;">Quick links</h4>
               <div class="wp-widget-group__inner-blocks">
-                <ul>
+                <ul style="padding: 0;
+                    margin: 0;
+                    list-style: none;">
                   <li>
-                    <a href="https://www.4damstheme.com/clenis/about-clenis/"
-                      >About Us</a
-                    >
+                    <a href="https://www.4damstheme.com/clenis/about-clenis/">About Us</a>
                   </li>
 
                   <li>
-                    <a href="https://www.4damstheme.com/clenis/contact-us/"
-                      >Contact Us</a
-                    >
+                    <a href="https://www.4damstheme.com/clenis/contact-us/">Contact Us</a>
                   </li>
 
                   <li>
-                    <a href="https://www.4damstheme.com/clenis/team-member/"
-                      >Our Members</a
-                    >
+                    <a href="https://www.4damstheme.com/clenis/team-member/">Our Members</a>
                   </li>
 
                   <li>
-                    <a href="https://www.4damstheme.com/clenis/our-services/"
-                      >Services</a
-                    >
+                    <a href="https://www.4damstheme.com/clenis/our-services/">Services</a>
                   </li>
 
                   <li>
-                    <a href="https://www.4damstheme.com/clenis/faqs-page/"
-                      >FAQ'S</a
-                    >
+                    <a href="https://www.4damstheme.com/clenis/faqs-page/">FAQ'S</a>
                   </li>
                 </ul>
               </div>
             </div>
           </div>
-          <div
-            class="col-xl-2 col-lg-2 col-md-4 col-sm-6 wow fadeInUp"
-            data-wow-duration="2.3s"
-            style="
+          <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 wow fadeInUp" data-wow-duration="2.3s" style="
               visibility: visible;
               animation-duration: 2.3s;
               animation-name: fadeInUp;
-            "
-          >
+            ">
             <div id="block-17" class="widget-footer widget_block footer__item">
-              <h4 class="footer__title">Services</h4>
+              <h4 class="footer__title" style="font-weight: 700;
+                  text-transform: capitalize;
+                  color: #30c7b5;
+                  display: inline-block;
+                  margin-bottom: 41px;">Services</h4>
               <div class="wp-widget-group__inner-blocks">
-                <ul>
+                <ul style="padding: 0;
+                        margin: 0;
+                        list-style: none;">
                   <li>
-                    <a href="https://www.4damstheme.com/clenis/our-project/"
-                      >Home Cleaning</a
-                    >
+                    <a href="https://www.4damstheme.com/clenis/our-project/">Home Cleaning</a>
                   </li>
 
                   <li>
-                    <a href="https://www.4damstheme.com/clenis/our-services/"
-                      >Office Cleaning</a
-                    >
+                    <a href="https://www.4damstheme.com/clenis/our-services/">Office Cleaning</a>
                   </li>
 
                   <li>
-                    <a href="https://www.4damstheme.com/clenis/our-services/"
-                      >Kitchen Cleaning</a
-                    >
+                    <a href="https://www.4damstheme.com/clenis/our-services/">Kitchen Cleaning</a>
                   </li>
 
                   <li>
-                    <a href="https://www.4damstheme.com/clenis/our-project/"
-                      >Floor Cleaning</a
-                    >
+                    <a href="https://www.4damstheme.com/clenis/our-project/">Floor Cleaning</a>
                   </li>
 
                   <li>
-                    <a href="https://www.4damstheme.com/clenis/our-services/"
-                      >Car Cleaning</a
-                    >
+                    <a href="https://www.4damstheme.com/clenis/our-services/">Car Cleaning</a>
                   </li>
                 </ul>
               </div>
             </div>
           </div>
-          <div
-            class="col-xl-2 col-lg-2 col-md-4 col-sm-6 wow fadeInUp"
-            data-wow-duration="2.3s"
-            style="
+          <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 wow fadeInUp" data-wow-duration="2.3s" style="
               visibility: visible;
               animation-duration: 2.3s;
               animation-name: fadeInUp;
-            "
-          >
+            ">
             <div id="block-18" class="widget-footer widget_block footer__item">
-              <h4 class="footer__title">Company</h4>
+              <h4 class="footer__title" style="font-weight: 700;
+                  text-transform: capitalize;
+                  color: #30c7b5;
+                  display: inline-block;
+                  margin-bottom: 41px;">Company</h4>
               <div class="wp-widget-group__inner-blocks">
-                <ul>
+                <ul style="padding: 0;
+                      margin: 0;
+                      list-style: none;">
                   <li>
-                    <a href="https://www.4damstheme.com/clenis/about-clenis/"
-                      >Terms &amp; Condition</a
-                    >
+                    <a href="https://www.4damstheme.com/clenis/about-clenis/">Terms &amp; Condition</a>
                   </li>
 
                   <li>
-                    <a href="https://www.4damstheme.com/clenis/faqs-page/"
-                      >Our History</a
-                    >
+                    <a href="https://www.4damstheme.com/clenis/faqs-page/">Our History</a>
                   </li>
 
                   <li>
-                    <a href="https://www.4damstheme.com/clenis/about-clenis/"
-                      >Our Gallery</a
-                    >
+                    <a href="https://www.4damstheme.com/clenis/about-clenis/">Our Gallery</a>
                   </li>
 
                   <li>
-                    <a href="https://www.4damstheme.com/clenis/about-clenis/"
-                      >Privacy Policy</a
-                    >
+                    <a href="https://www.4damstheme.com/clenis/about-clenis/">Privacy Policy</a>
                   </li>
 
                   <li>
-                    <a href="https://www.4damstheme.com/clenis/about-clenis/"
-                      >Testimonial</a
-                    >
+                    <a href="https://www.4damstheme.com/clenis/about-clenis/">Testimonial</a>
                   </li>
                 </ul>
               </div>
             </div>
           </div>
-          <div
-            class="col-xl-2 col-lg-2 col-md-4 col-sm-6 wow fadeInUp"
-            data-wow-duration="2.3s"
-            style="
+          <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 wow fadeInUp" data-wow-duration="2.3s" style="
               visibility: visible;
               animation-duration: 2.3s;
               animation-name: fadeInUp;
-            "
-          >
+            ">
             <div id="block-19" class="widget-footer widget_block footer__item">
-              <h4 class="footer__title">Our Contact</h4>
+              <h4 class="footer__title" style="font-weight: 700;
+                  text-transform: capitalize;
+                  color: #30c7b5;
+                  display: inline-block;
+                  margin-bottom: 41px;">Our Contact</h4>
               <div class="wp-widget-group__inner-blocks">
-                <ul class="get__touch">
-                  <li>
-                    <svg
-                      width="16"
-                      height="15"
-                      viewBox="0 0 16 15"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
+                <ul style="padding: 0;
+                    margin: 0;
+                    list-style: none;">
+                  <li style="margin-bottom: 24px;">
+                    <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path
                         d="M3.84091 12.25L0.5 14.875V1C0.5 0.58579 0.83579 0.25 1.25 0.25H14.75C15.1642 0.25 15.5 0.58579 15.5 1V11.5C15.5 11.9142 15.1642 12.25 14.75 12.25H3.84091ZM3.32211 10.75H14V1.75H2V11.7888L3.32211 10.75ZM7.25 5.5H8.75V7H7.25V5.5ZM4.25 5.5H5.75V7H4.25V5.5ZM10.25 5.5H11.75V7H10.25V5.5Z"
-                        fill="#2295FF"
-                      ></path>
+                        fill="#2295FF"></path>
                     </svg>
-                    <a href="mailto:helloclenis@gmail.com">
+                    <a href="mailto:helloclenis@gmail.com" style="transition: all 0.4s;
+                          font-size: 16px;
+                          font-weight: 400;
+                          color: #748aa0;">
                       helloclenis@gmail.com
                     </a>
                   </li>
-                  <li>
-                    <svg
-                      width="14"
-                      height="14"
-                      viewBox="0 0 14 14"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
+                  <li style="margin-bottom: 24px;">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path
                         d="M5.02417 6.01158C5.7265 7.2466 6.7534 8.2735 7.98842 8.9758L8.6518 8.04708C8.87238 7.73838 9.2887 7.64297 9.6217 7.82485C10.6768 8.40123 11.8428 8.75148 13.0592 8.84778C13.4492 8.87868 13.75 9.20417 13.75 9.59545V12.9426C13.75 13.3271 13.4591 13.6493 13.0766 13.6886C12.6792 13.7295 12.2783 13.75 11.875 13.75C5.45469 13.75 0.25 8.5453 0.25 2.125C0.25 1.7217 0.270565 1.32078 0.311418 0.92332C0.350725 0.540812 0.672955 0.25 1.05749 0.25H4.40456C4.79583 0.25 5.12135 0.55078 5.15222 0.940817C5.2485 2.15716 5.59877 3.32323 6.17515 4.37833C6.35703 4.7113 6.26162 5.12766 5.95292 5.34818L5.02417 6.01158ZM3.13319 5.5189L4.55815 4.50107C4.1541 3.62885 3.87721 2.70387 3.73545 1.75H1.7568C1.75227 1.87474 1.75 1.99975 1.75 2.125C1.75 7.71685 6.28315 12.25 11.875 12.25C12.0002 12.25 12.1253 12.2478 12.25 12.2432V10.2645C11.2962 10.1228 10.3712 9.84587 9.49892 9.44185L8.4811 10.8668C8.06935 10.7069 7.6717 10.5186 7.29055 10.3046L7.24697 10.2797C5.77728 9.44402 4.55601 8.22272 3.72025 6.75303L3.69545 6.70945C3.48137 6.3283 3.29316 5.93065 3.13319 5.5189Z"
-                        fill="#2295FF"
-                      ></path>
+                        fill="#2295FF"></path>
                     </svg>
-                    <span> +48 74326 02396 </span>
+                    <span style="color:#748aa0;
+                                      font-size: 16px;
+                                      font-style: normal;
+                                      font-weight: 400;
+                                      line-height: 140%;">
+                      +48 74326 02396 </span>
                   </li>
-                  <li>
-                    <svg
-                      width="14"
-                      height="14"
-                      viewBox="0 0 14 14"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
+                  <li style="margin-bottom: 24px;">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path
                         d="M5.02417 6.01158C5.7265 7.2466 6.7534 8.2735 7.98842 8.9758L8.6518 8.04708C8.87238 7.73838 9.2887 7.64297 9.6217 7.82485C10.6768 8.40123 11.8428 8.75148 13.0592 8.84778C13.4492 8.87868 13.75 9.20417 13.75 9.59545V12.9426C13.75 13.3271 13.4591 13.6493 13.0766 13.6886C12.6792 13.7295 12.2783 13.75 11.875 13.75C5.45469 13.75 0.25 8.5453 0.25 2.125C0.25 1.7217 0.270565 1.32078 0.311418 0.92332C0.350725 0.540812 0.672955 0.25 1.05749 0.25H4.40456C4.79583 0.25 5.12135 0.55078 5.15222 0.940817C5.2485 2.15716 5.59877 3.32323 6.17515 4.37833C6.35703 4.7113 6.26162 5.12766 5.95292 5.34818L5.02417 6.01158ZM3.13319 5.5189L4.55815 4.50107C4.1541 3.62885 3.87721 2.70387 3.73545 1.75H1.7568C1.75227 1.87474 1.75 1.99975 1.75 2.125C1.75 7.71685 6.28315 12.25 11.875 12.25C12.0002 12.25 12.1253 12.2478 12.25 12.2432V10.2645C11.2962 10.1228 10.3712 9.84587 9.49892 9.44185L8.4811 10.8668C8.06935 10.7069 7.6717 10.5186 7.29055 10.3046L7.24697 10.2797C5.77728 9.44402 4.55601 8.22272 3.72025 6.75303L3.69545 6.70945C3.48137 6.3283 3.29316 5.93065 3.13319 5.5189Z"
-                        fill="#2295FF"
-                      ></path>
+                        fill="#2295FF"></path>
                     </svg>
-                    <span> +48 64453 96533 </span>
+                    <span style="color:#748aa0;
+                                      font-size: 16px;
+                                      font-style: normal;
+                                      font-weight: 400;
+                                      line-height: 140%;"> +48 64453 96533 </span>
                   </li>
-                  <li>
-                    <svg
-                      width="16"
-                      height="16"
-                      viewBox="0 0 16 16"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
+                  <li style="margin-bottom: 24px;">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path
                         d="M5.75 0.75V2.25H10.25V0.75H11.75V2.25H14.75C15.1642 2.25 15.5 2.58579 15.5 3V15C15.5 15.4142 15.1642 15.75 14.75 15.75H1.25C0.83579 15.75 0.5 15.4142 0.5 15V3C0.5 2.58579 0.83579 2.25 1.25 2.25H4.25V0.75H5.75ZM14 8.25H2V14.25H14V8.25ZM4.25 3.75H2V6.75H14V3.75H11.75V5.25H10.25V3.75H5.75V5.25H4.25V3.75Z"
-                        fill="#2295FF"
-                      ></path>
+                        fill="#2295FF"></path>
                     </svg>
-                    <span> Mon - Fri 12:00 - 18:00 </span>
+                    <span style="color:#748aa0;
+                                      font-size: 16px;
+                                      font-style: normal;
+                                      font-weight: 400;
+                                      line-height: 140%;"> Mon - Fri 12:00 - 18:00 </span>
                   </li>
-                  <li>
-                    <svg
-                      width="14"
-                      height="17"
-                      viewBox="0 0 14 17"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
+                  <li style="display: flex;
+    align-items: center;
+    gap: 9px;">
+                    <svg width="14" height="17" viewBox="0 0 14 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path
                         d="M7 14.6746L10.7123 10.9623C12.7625 8.91208 12.7625 5.58794 10.7123 3.53769C8.66208 1.48744 5.33794 1.48744 3.28769 3.53769C1.23744 5.58794 1.23744 8.91208 3.28769 10.9623L7 14.6746ZM7 16.7959L2.22703 12.023C-0.40901 9.3869 -0.40901 5.11307 2.22703 2.47703C4.86307 -0.15901 9.1369 -0.15901 11.773 2.47703C14.409 5.11307 14.409 9.3869 11.773 12.023L7 16.7959ZM7 8.75C7.82845 8.75 8.5 8.07845 8.5 7.25C8.5 6.42157 7.82845 5.75 7 5.75C6.17155 5.75 5.5 6.42157 5.5 7.25C5.5 8.07845 6.17155 8.75 7 8.75ZM7 10.25C5.34314 10.25 4 8.90683 4 7.25C4 5.59314 5.34314 4.25 7 4.25C8.65683 4.25 10 5.59314 10 7.25C10 8.90683 8.65683 10.25 7 10.25Z"
-                        fill="#2295FF"
-                      ></path>
+                        fill="#2295FF"></path>
                     </svg>
-                    <span> Hilton, TY56/90 NY, USA </span>
+                    <span style="color:#748aa0;
+                                      font-size: 16px;
+                                      font-style: normal;
+                                      font-weight: 400;
+                                      line-height: 140%;"> Hilton, TY56/90 NY, USA </span>
                   </li>
                 </ul>
               </div>
@@ -1258,54 +1201,31 @@ function stopSlideshow() {
         </div>
       </div>
     </div>
-    <div class="footer__bottom">
-      <p>© Clenis All Rights Reserved Developed By 4damsthemes</p>
+    <div class="footer__bottom" style="background: #30c7b5;">
+      <p style="padding: 25px 5px;
+    color: #748aa0;
+    text-align: center;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 30px;
+    text-transform: capitalize;
+    margin: 0;">© Clenis All Rights Reserved Developed By 4damsthemes</p>
     </div>
-    <img
-      src="https://www.4damstheme.com/clenis/wp-content/themes/clenis/assets/images/footer/footer-spra.png"
-      alt="Footer backgound image"
-      class="footer-spara"
-    />
-    <img
-      src="https://www.4damstheme.com/clenis/wp-content/themes/clenis/assets/images/icon/working-ball.png"
-      alt="Footer backgound image"
-      class="footer-working"
-    />
+    <img src="https://www.4damstheme.com/clenis/wp-content/themes/clenis/assets/images/footer/footer-spra.png"
+      alt="Footer backgound image" class="footer-spara" style="position: absolute;
+    right: 60px;
+    bottom: 220px;" />
+    <img src="https://www.4damstheme.com/clenis/wp-content/themes/clenis/assets/images/icon/working-ball.png"
+      alt="Footer backgound image" class="footer-working" style="position: absolute;
+    bottom: 420px;
+    left: 60px;
+    animation: updown 2s linear infinite;" />
   </footer>
-  <app-footer />
+  <!-- <app-footer /> -->
 </template>
 <style scoped>
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-  background-color: black;
-  /* display: none; */
-  /* Change arrow color to black */
-}
 
-.carousel-control-prev,
-.carousel-control-next {
-  filter: invert(1);
-  /* Invert arrow color */
-}
-
-.carousel {
-  position: relative;
-  background: #30c7b5;
-}
-
-.carousel-indicators button {
-  background-color: #30c7b5;
-  /* Change carousel indicators color */
-  border-color: #30c7b5;
-  /* Change carousel indicators border color */
-}
-
-.carousel-indicators .active {
-  background-color: #30c7b5;
-  /* Change active carousel indicator color */
-  border-color: #30c7b5;
-  /* Change active carousel indicator border color */
-}
 #contactForm {
   width: 100%;
 }
@@ -1658,7 +1578,7 @@ function stopSlideshow() {
 
 .counter-wrapper {
   border-radius: 60px;
-  background: #f3cb5f;
+  background: #30c7b5;
   padding: 80px 80px;
 }
 
@@ -1672,7 +1592,7 @@ function stopSlideshow() {
   left: 0;
   content: "";
   border-radius: 484px;
-  background: #f3cb5f;
+  background: #30c7b5;
   filter: blur(350px);
   width: 490px;
   height: 490px;
@@ -1689,7 +1609,7 @@ function stopSlideshow() {
   content: "";
   top: 0;
   left: 0;
-  background: #0236a6;
+  background: #30c7b5;
   z-index: 0;
   border-radius: 60px;
 }
@@ -1848,6 +1768,17 @@ function stopSlideshow() {
 .options .option:not(.active) {
   flex-grow: 1;
   border-radius: 5px;
+}
+.bg-yellow-button {
+  background-color: #FFEA00; /* Yellow color */
+  color: #333; /* Dark text color */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+}
+
+/* Hover effect for button */
+.bg-yellow-button:hover {
+  background-color: #FFF; /* White background color */
+  color: #FFEA00; /* Yellow text color */
 }
 .options .option:not(.active) .shadow {
   bottom: -40px;
@@ -2589,36 +2520,7 @@ function stopSlideshow() {
   top: -151px;
 }
 
-.testimonial-section {
-  background: url(https://www.ples36.fr/wp-content/uploads/2023/05/logo-ess.png)
-    no-repeat center center;
-  background-size: cover;
-}
-.testimonial-section .swiper-slide {
-  padding-bottom: 30px;
-}
-.testimonial-section .tes-paginatio {
-  text-align: center;
-  margin-top: 50px;
-}
-.testimonial-section .tes-paginatio .swiper-pagination-bullet {
-  width: 15px;
-  height: 15px;
-  border-radius: 50%;
-  border: 1px solid var(--base);
-  opacity: 1;
-  background: transparent;
-}
-.testimonial-section
-  .tes-paginatio
-  .swiper-pagination-bullet.swiper-pagination-bullet-active {
-  background: var(--base);
-}
-@media (max-width: 1399px) {
-  .testimonial-section .tes-paginatio {
-    margin-top: 30px;
-  }
-}
+
 
 .testimonail-items {
   border-radius: 10px;
@@ -2659,7 +2561,7 @@ function stopSlideshow() {
 }
 .testimonail-items .ratting li i {
   font-size: 22px;
-  color: #f3cb5f;
+  color: #30c7b5;
 }
 .testimonail-items .quote-wrap {
   display: flex;
@@ -2706,7 +2608,7 @@ function stopSlideshow() {
 }
 .testimonail-itemsv2 .ratting li i {
   font-size: 22px;
-  color: #f3cb5f;
+  color: #30c7b5;
 }
 .testimonail-itemsv2 p {
   color: #032b52;
@@ -2811,7 +2713,7 @@ function stopSlideshow() {
   height: 20px;
 }
 .cleaning-info-item .c-info-icon svg {
-  fill: #0236a6;
+  fill: #30c7b5;
 }
 .cleaning-info-item:not(:last-child) {
   margin-bottom: 50px;
@@ -2840,7 +2742,7 @@ function stopSlideshow() {
 
 .cleaning-form {
   border-radius: 60px;
-  background: #0236a6;
+  background: #30c7b5;
   padding: 60px 60px;
 }
 @media (max-width: 991px) {
@@ -2876,7 +2778,7 @@ function stopSlideshow() {
   color: #032b52;
 }
 .wpcf7 form .wpcf7-response-output {
-  color: #032b52;
+  color: #30c7b5;
 }
 .clean-form-grp textarea {
   height: 170px;
@@ -2987,5 +2889,306 @@ function stopSlideshow() {
 .cleaning-quote {
   opacity: 0;
   animation: fadeInUp 1s ease forwards;
+}
+.step {
+  flex: 1 1 calc(33.333% - 20px);
+  box-sizing: border-box;
+  margin-bottom: 40px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.step:hover {
+  transform: translateY(-10px);
+}
+
+.icon {
+  font-size: 48px;
+  color: #3498db;
+  margin-bottom: 20px;
+}
+
+.step h3 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.step p {
+  font-size: 1em;
+  color: #666;
+}
+
+@media (max-width: 768px) {
+  .process-steps {
+    flex-direction: column;
+  }
+
+  .step {
+    flex: 1 1 100%;
+    margin-bottom: 20px;
+  }
+}
+.testimonials {
+    background: url("https://www.4damstheme.com/clenis/wp-content/plugins/clenis-toolkit/widgets/img/testimonail/testi-bg.png") center center no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    padding: 130px 0 150px;
+    color: #ffffff;
+    position: relative;
+    margin-bottom: 90px;
+
+}
+.testimonials:before {
+    content: "";
+    background: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    position: absolute;
+    left: 0;
+}
+.testimonials .heading h2 {
+    font-size: 25px;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.testimonials .heading h2 span {
+    color: #30c7b5;
+}
+
+.testimonials p {
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.7;
+    color: #d1e5e7;
+    margin: 20px 0;
+    padding: 0;
+}
+
+/* Image */
+.testimonials .carousel-inner .carousel-item .team {
+    width: 100px;
+    height: 100px;
+    border: 2px solid #30c7b5;
+    border-radius: 100%;
+    padding: 5px;
+    margin: 50px 0 15px;
+}
+
+.testimonials .carousel-inner .carousel-item h3 {
+    font-size: 20px;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.testimonials .carousel-inner .carousel-item h4 {
+    font-size: 14px;
+    font-weight: 300;
+    color: #e2e1e1;
+    margin-bottom: 20px;
+}
+
+.testimonials .carousel-indicators {
+    bottom: -30px;
+}
+
+.testimonials .carousel-indicators li {
+    background-color: #b8b7b7;
+    border-radius: 30px;
+    height: 4px;
+    width: 40px;
+}
+
+.testimonials .carousel-indicators .active {
+    background-color: #30c7b5;
+}
+
+.testimonials .control span {
+    cursor: pointer;
+}
+
+.testimonials .icon {
+    height: 40px;
+    width: 40px;
+    background-size: 100%, 100%;
+    border-radius: 50%;
+    font-size: 30px;
+    background-image: none;
+    color: #ffffff;
+}
+.heading {
+    position: relative;
+}
+:root {
+  --clip-size: 1.5rem;
+  --clip-bottom-right: polygon(
+    0 0,
+    100% 0,
+    100% calc(100% - var(--clip-size)),
+    calc(100% - var(--clip-size)) 100%,
+    0% 100%,
+    0 0
+  );
+  --clip-bottom-left: polygon(
+    0 0,
+    100% 0,
+    100% 100%,
+    var(--clip-size) 100%,
+    0 calc(100% - var(--clip-size)),
+    0 0
+  );
+  --nav-x: 0;
+  --width-nav: 20ch;
+}
+
+:root {
+  --bg: #eee;
+  --fg: #494949;
+  --border: rgba(120, 120, 130, 0.3);
+  --hover: rgba(100, 100, 130, 0.2);
+  --confirmation: #268500;
+}
+
+:where(html) {
+  min-height: 100%;
+  background-color: #242932;
+  color: #d8dee9;
+}
+
+:where(body) {
+  margin: 0;
+  font-family: system-ui, Verdana, sans-serif;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  line-height: 1.5;
+}
+
+:where(h1, .title) {
+  font-family: Josefin Sans, sans-serif;
+  font-style: normal;
+  text-transform: uppercase;
+}
+
+:where(a) {
+  color: inherit;
+}
+
+:where(.clipped, .clipped--br) {
+  clip-path: var(--clip-bottom-right);
+}
+
+:where(h1, h2, h3, p) {
+  margin: 0;
+}
+
+.page {
+  display: grid;
+  align-items: center;
+  overflow-x: hidden;
+  overflow-y: auto;
+  min-height: 100vh;
+  min-height: 100svh;
+}
+
+/* nav {
+  --gap: 1rem;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(275px, 1fr));
+  gap: var(--gap);
+
+  box-sizing: border-box;
+  width: 100vw;
+  max-width: 100ch;
+  margin: 0 auto;
+  padding: var(--gap);
+} */
+
+.logo {
+  --gap: 1rem;
+
+  display: grid;
+  grid-template-columns: auto auto;
+  place-content: end start;
+
+  padding: var(--gap);
+  background: #0000001d;
+  color: #70757e;
+}
+
+.link {
+  --border: calc(100% - 2rem);
+  --gap: clamp(1.2rem, calc(1.18rem + 0.1vw), 1.25rem);
+  --colour: color-mix(in srgb, black 70%, var(--bg));
+  --bg-stripe: color-mix(in srgb, black 8%, var(--bg));
+
+  display: grid;
+  align-content: end;
+  gap: var(--gap);
+
+  aspect-ratio: 1;
+  padding: 1rem;
+  line-height: 1;
+  text-decoration: none;
+  
+  transition: background-size 0.25s;
+
+  background: var(--bg)
+    repeating-linear-gradient(
+      -45deg,
+      transparent 0,
+      transparent 1rem,
+      var(--bg-stripe) 0,
+      var(--bg-stripe) 2rem
+    );
+  background-size: var(--border) var(--border);
+  background-position: center;
+  background-repeat: no-repeat;
+  color: var(--colour);
+  
+  &:hover,
+  &:focus {
+    --border: 70%;
+  }
+
+  & span {
+    
+    background: var(--bg);
+
+    &.subtitle {
+      padding: 4px 0;
+      font-family: Lora, serif;
+      font-size: 1.45rem;
+      line-height: 1.5;
+    }
+
+    &.title {
+      padding: 12px 0 6px;
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      line-height: 1.2;
+    }
+  }
+
+  &[href="/about"] {
+    --bg: #be6069;
+  }
+  &[href="/projects"] {
+    --bg: #d18771;
+  }
+  &[href="/articles"] {
+    --bg: #ebca89;
+  }
+  &[href="/weeknotes"] {
+    --bg: #a4bf8d;
+  }
+  &[href="/in-use"] {
+    --bg: #b48ead;
+  }
 }
 </style>
