@@ -15,6 +15,8 @@ import NewProject from "../views/pages/projects/NewProject.vue";
 import Pricing from "../views/pages/Pricing.vue";
 import LandingPage from "../views/pages/LandingPage.vue";
 import PricingHygeco from "../views/pages/pricingHygeco.vue";
+import Contact from "../views/pages/contact.vue";
+
 
 
 import RTL from "../views/pages/Rtl.vue";
@@ -134,6 +136,11 @@ const routes = [
     path: "/pages/pricing-page",
     name: "Pricing Page",
     component: Pricing
+  },
+  {
+    path: "/pages/contact",
+    name: "contact",
+    component: Contact
   },
   {
     path: "/pages/pricing-Hygeco",

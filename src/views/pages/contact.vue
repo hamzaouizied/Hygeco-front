@@ -1,43 +1,28 @@
 <script setup>
-import { onMounted, onBeforeUnmount, ref } from "vue";
+import { onMounted, onBeforeUnmount} from "vue";
 import { useStore } from "vuex";
 import Navbar from "@/examples/PageLayout/NavbarHygeco.vue";
 // import PricingCard from "./components/PricingCard.vue";
 // import AppFooter from "@/examples/PageLayout/Footer.vue";
 // import AccordionItem from "./components/AccordionItem.vue";
 import setNavPills from "@/assets/js/nav-pills.js";
-// import ComplexBackgroundCard from "@/views/ecommerce/components/ComplexBackgroundCard.vue";
+import ComplexBackgroundCard from "@/views/ecommerce/components/ComplexBackgroundCard.vue";
+import PlayerCard from "@/views/dashboards/components/PlayerCard.vue";
+
 
 const store = useStore();
-const existingSlides = [
-  {
-    imageUrl: require("../../assets/img/hygeco.jpg"),
-    text: "Let the green clean begin. Linen's bright, cleaning's right, Hygeco's here day or night!",
-  },
-  {
-    imageUrl: require("../../assets/img/hygecoo.jpg"),
-    text: "Another text for the second slide.",
-  },
-  {
-    imageUrl: require("../../assets/img/laundry-machine.jpg"),
-    text: "Text for the third slide.",
-  },
-];
+
 
 // const slides = [...existingSlides, ...testimonialSlides];
-const currentIndexHead = ref(0);
 // const currentIndex = ref(0);
 
-let intervalId;
 onMounted(() => {
   store.state.showSidenav = false;
   store.state.showNavbar = false;
   store.state.showFooter = false;
   setNavPills();
-  startSlideshow();
 });
 onBeforeUnmount(() => {
-  stopSlideshow();
   store.state.showSidenav = false;
   store.state.showNavbar = false;
   store.state.showFooter = true;
@@ -48,607 +33,82 @@ onBeforeUnmount(() => {
     store.state.isPinned = true;
   }
 });
-function startSlideshow() {
-  intervalId = setInterval(() => {
-    currentIndexHead.value =
-      (currentIndexHead.value + 1) % existingSlides.length;
-  }, 5000); // Change image every 5 seconds (adjust as needed)
-}
-// function startSlideshowTestimonial() {
-//   intervalId = setInterval(() => {
-//     currentIndex.value = (currentIndex.value + 1) % testimonialSlides.length;
-//   }, 5000); // Change image every 5 seconds (adjust as needed)
-// }
-function stopSlideshow() {
-  clearInterval(intervalId);
-}
+
 </script>
 
 <template>
-  <!-- <div class="green-bar" style="background-color: #34C759; height: 5px;"></div> -->
+    <!-- <div class="green-bar" style="background-color: #34C759; height: 5px;"></div> -->
 
-  <div class="container-fluid" style="background-color: #30c7b5;height: 41px;">
-    <div class="text-center">
-      <h3 style="color: white;">50% OFF</h3>
-    </div>
-  </div>
+      <div class="container-fluid" style="background-color: #30c7b5;height: 41px;">
+        <div class="text-center">
+          <h3 style="color: white;">50% OFF</h3>
+        </div>
+      </div>
 
   <navbar is-blur="blur border-radius-lg my-3 py-2 start-0 end-0 mx-4 shadow" btn-background="bg-gradient-success"
     :dark-mode="true" style="position: absolute;" />
 
 
-  <div class="page-header position-relative" :style="{
-    backgroundImage: existingSlides[currentIndexHead]
-      ? `url(${existingSlides[currentIndexHead].imageUrl})`
-      : '',
-
+    <div class="page-header position-relative" :style="{
+    backgroundImage: 'url(' + require('../../assets/img/hygeco.jpg') + ')',
     backgroundSize: 'cover',
     padding: '100px',
   }">
-    <div class="container pb-10 pb-lg-9 pt-7 postion-relative z-index-2">
-      <div class="row">
-        <div class="col-md-6 mt-4">
-          <h3 class="text-white" style="font-size: 2.5rem; color: #000000">
-            {{
-              existingSlides[currentIndexHead]
-                ? existingSlides[currentIndexHead].text
-                : ""
-            }}
-          </h3>
-          <router-link :to="{ name: 'Signin Basic' }" class="mb-0 btn btn-sm me-1"
-            :class="btnBackground ? btnBackground : ' text-white'">
-            Book Now
-          </router-link>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="container">
-    <section class="choose-section1 overflow-hidden pb-90 pt-120 position-relative mt-5">
-      <div class="choose-wrapper pb-90 mt-5">
-        <div class="container">
-          <div class="row g-0 justify-content-between">
-            <div class="col-xxl-4 col-xl-5 col-lg-5 col-md-8 order-1 order-lg-0">
-              <div class="choose-left-cont">
-                <div class="thumb1">
-                  <img decoding="async"
-                    src="https://www.4damstheme.com/clenis/wp-content/uploads/2024/04/choose-thumb.png"
-                    alt="Success Project " />
-                </div>
-                <div class="prograss-box">
-                  <div class="icons d-flex align-items-center justify-content-center">
-                    <svg width="87" height="91" viewBox="0 0 87 91" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path fill-rule="evenodd" clip-rule="evenodd"
-                        d="M82.1357 59.7059C85.0651 59.7059 87.1191 62.5877 85.8233 65.2149C78.445 80.1742 63.0406 90.4652 45.2326 90.4652C20.2513 90.4652 0 70.2139 0 45.2326C0 20.2513 20.2513 0 45.2326 0C63.38 0 79.0313 10.6869 86.2364 26.1106C87.4589 28.7277 85.4107 31.5427 82.5221 31.5427C80.7738 31.5427 79.2229 30.4657 78.4502 28.8974C72.4161 16.6502 59.8084 8.22388 45.2326 8.22388C24.7934 8.22388 8.22409 24.7931 8.22409 45.2324C8.22409 65.6716 24.7934 82.2408 45.2326 82.2408C59.5292 82.2408 71.9324 74.1342 78.0962 62.2669C78.8877 60.7431 80.4186 59.7059 82.1357 59.7059Z"
-                        fill="#30c7b5"></path>
-                    </svg>
-                    <span class="texts"> 85% </span>
-                  </div>
-                  <div class="content">
-                    <h3 class="title">Success Project</h3>
-                    <p>We completed 85% success project in business.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-xxl-7 col-xl-7 col-lg-7">
-              <div class="choose-content-right">
-                <div class="cmn-section-title apointment-content">
-                  <div class="cmn--btn cmn-alt2 wow fadeInUp" data-wow-delay="1.5"
-                    style="visibility: visible; animation-name: fadeInUp">
-                    <span> Why Choose Us </span>
-                  </div>
-                  <h2 class="title mt-xxl-4 mt-2 mb-0 wow fadeInDown" data-wow-delay="1.5"
-                    style="visibility: visible; animation-name: fadeInDown">
-                    This Service Focus on Clean &amp; Maintaining Homes
-                  </h2>
-                </div>
-                <div class="adjust-content">
-                  <div class="thumb-ad">
-                    <img decoding="async"
-                      src="https://www.4damstheme.com/clenis/wp-content/uploads/2024/04/choose-thumb1.png"
-                      alt="This Service Focus on Clean &amp; Maintaining Homes" />
-                  </div>
-                  <div class="adjust-content-info">
-                    <p>
-                      We believe in the power of attention to detail. Our
-                      cleaners are meticulous in their work, leaving no nook or
-                      cranny untouched. We take pride in our ability to.
+        <span class="mask bg-gradient-dark opacity-6"></span>
+
+        <div class="container pb-10 pb-lg-9 pt-7 postion-relative z-index-2">
+            <div class="row">
+                <div class="mx-auto text-center col-md-6 mt-4">
+                    <h3 class="text-white">Contactez-Nous </h3>
+                    <p class="text-white">
+                        Hygeco is a Montreal-based company that offers a range of professional cleaning and laundry
+                        services
                     </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="mx-auto text-center col-lg-4 col-md-6 col-7">
 
-                    <div class="adjust-item adjust-first-item wow fadeInDown" data-wow-delay="1.6"
-                      style="visibility: visible; animation-name: fadeInDown">
-                      <div class="icon">
-                        <img decoding="async" src="https://www.4damstheme.com/clenis/wp-content/uploads/2024/04/ad1.png"
-                          alt="Highly Rated Cleaning" />
-                      </div>
-                      <div class="conts">
-                        <h3 class="title">Highly Rated Cleaning</h3>
-                        <p>
-                          This service focuses on cleaning and maintaining
-                          homes. It typically includes tasks.
-                        </p>
-                      </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mt-n8" style="padding: 20px;">
+        <div class="container">
+            <div class="tab-content tab-space">
+                <div id="monthly" class="tab-pane active">
+                    <div class="row">
+                        <div class="mb-4 col-lg-4 mb-lg-0">
+                            <div class="card-container mt-4 mt-lg-0">
+                                <complex-background-card class="h-100 w-100"
+                                    image="https://demos.creative-tim.com/soft-ui-dashboard-pro/assets/img/office-dark.jpg"
+                                    description="We love to help you to get your clothes fresh and clean so we are here for you 24/7 for any question, concern or suggestion. The account manager and the ease of a state-of-the-art app that makes it possible."
+                                    :action="{ route: 'javascript:;', label: 'Contact With Us' }" />
+                            </div>
+                        </div>
+                        <div class="mb-4 col-lg-4 mb-lg-0">
+                            <div class="card-container mt-4 mt-lg-0">
+                                <complex-background-card class="h-100 w-100"
+                                    image="https://demos.creative-tim.com/soft-ui-dashboard-pro/assets/img/office-dark.jpg"
+                                    description="We love to help you to get your clothes fresh and clean so we are here for you 24/7 for any question, concern or suggestion. The account manager and the ease of a state-of-the-art app that makes it possible."
+                                    :action="{ route: 'javascript:;', label: 'View Our Offers' }" />
+                            </div>
+                        </div>
+                        <div class="mb-4 col-lg-4 mb-lg-0">
+                            <div class="card-container mt-4 mt-lg-0">
+                                <complex-background-card class="h-100 w-100"
+                                    image="https://demos.creative-tim.com/soft-ui-dashboard-pro/assets/img/office-dark.jpg"
+                                    description="We love to help you to get your clothes fresh and clean so we are here for you 24/7 for any question, concern or suggestion. The account manager and the ease of a state-of-the-art app that makes it possible."
+                                    :action="{ route: 'javascript:;', label: 'Meet With Our Staff' }" />
+                            </div>
+                        </div>
                     </div>
-                    <div class="adjust-item adjust-first-item wow fadeInDown" data-wow-delay="1.6"
-                      style="visibility: visible; animation-name: fadeInDown">
-                      <div class="icon">
-                        <img decoding="async" src="https://www.4damstheme.com/clenis/wp-content/uploads/2024/04/ad2.png"
-                          alt="House &amp; Toilet Cleaning" />
-                      </div>
-                      <div class="conts">
-                        <h3 class="title">House &amp; Toilet Cleaning</h3>
-                        <p>
-                          With Shine Bright Cleaning Services, you can trust us
-                          to make your space shine like .
-                        </p>
-                      </div>
-                    </div>
-                    <a href="https://www.4damstheme.com/clenis/about-clenis/" target="_self"
-                      class="cmn--btn btn-custom-space">
-                      <span>More About Us</span>
-                    </a>
-                  </div>
                 </div>
-              </div>
+
             </div>
-          </div>
         </div>
-        <img decoding="async"
-          src="https://www.4damstheme.com/clenis/wp-content/plugins/clenis-toolkit/widgets/img/service/choos-tablet.png"
-          alt="This Service Focus on Clean &amp; Maintaining Homes" class="ripple" />
-        <img decoding="async"
-          src="https://www.4damstheme.com/clenis/wp-content/plugins/clenis-toolkit/widgets/img/service/ps.png"
-          alt="This Service Focus on Clean &amp; Maintaining Homes" class="ripple-ps" />
-      </div>
-    </section>
-  </div>
-  <div class="container">
-    <section class="counter-section pt-120 mt-7">
-      <div class="container">
-        <div class="counter-wrapper">
-          <div class="counter__items odometer-item wow fadeInDown" data-wow-duration="0.4s" style="
-              visibility: visible;
-              animation-duration: 0.4s;
-              animation-name: fadeInDown;
-            ">
-            <div class="cont d-flex align-items-center">
-              <span class="odometer odometer-auto-theme" data-odometer-final="38">
-                <div class="odometer-inside">
-                  <span class="odometer-digit"><span class="odometer-digit-spacer">8</span><span
-                      class="odometer-digit-inner"><span class="odometer-ribbon"><span
-                          class="odometer-ribbon-inner"><span
-                            class="odometer-value">3</span></span></span></span></span><span
-                    class="odometer-digit"><span class="odometer-digit-spacer">8</span><span
-                      class="odometer-digit-inner"><span class="odometer-ribbon"><span
-                          class="odometer-ribbon-inner"><span
-                            class="odometer-value">8</span></span></span></span></span>
-                </div>
-              </span>
-              <span class="plus__icon">
-                <svg aria-hidden="true" class="e-font-icon-svg e-fas-plus" viewBox="0 0 448 512"
-                  xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z">
-                  </path>
-                </svg>
-              </span>
-            </div>
-            <p>Years Experience</p>
-          </div>
-          <div class="vline"></div>
-          <div class="counter__items odometer-item wow fadeInDown" data-wow-duration="0.4s" style="
-              visibility: visible;
-              animation-duration: 0.4s;
-              animation-name: fadeInDown;
-            ">
-            <div class="cont d-flex align-items-center">
-              <span class="odometer odometer-auto-theme" data-odometer-final="99">
-                <div class="odometer-inside">
-                  <span class="odometer-digit"><span class="odometer-digit-spacer">8</span><span
-                      class="odometer-digit-inner"><span class="odometer-ribbon"><span
-                          class="odometer-ribbon-inner"><span
-                            class="odometer-value">9</span></span></span></span></span><span
-                    class="odometer-digit"><span class="odometer-digit-spacer">8</span><span
-                      class="odometer-digit-inner"><span class="odometer-ribbon"><span
-                          class="odometer-ribbon-inner"><span
-                            class="odometer-value">9</span></span></span></span></span>
-                </div>
-              </span>
-              <span class="plus__icon">
-                <svg aria-hidden="true" class="e-font-icon-svg e-fas-percent" viewBox="0 0 448 512"
-                  xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M112 224c61.9 0 112-50.1 112-112S173.9 0 112 0 0 50.1 0 112s50.1 112 112 112zm0-160c26.5 0 48 21.5 48 48s-21.5 48-48 48-48-21.5-48-48 21.5-48 48-48zm224 224c-61.9 0-112 50.1-112 112s50.1 112 112 112 112-50.1 112-112-50.1-112-112-112zm0 160c-26.5 0-48-21.5-48-48s21.5-48 48-48 48 21.5 48 48-21.5 48-48 48zM392.3.2l31.6-.1c19.4-.1 30.9 21.8 19.7 37.8L77.4 501.6a23.95 23.95 0 0 1-19.6 10.2l-33.4.1c-19.5 0-30.9-21.9-19.7-37.8l368-463.7C377.2 4 384.5.2 392.3.2z">
-                  </path>
-                </svg>
-              </span>
-            </div>
-            <p>Successful Rate</p>
-          </div>
-          <div class="vline"></div>
-          <div class="counter__items odometer-item wow fadeInDown" data-wow-duration="0.4s" style="
-              visibility: visible;
-              animation-duration: 0.4s;
-              animation-name: fadeInDown;
-            ">
-            <div class="cont d-flex align-items-center">
-              <span class="odometer odometer-auto-theme" data-odometer-final="643">
-                <div class="odometer-inside">
-                  <span class="odometer-digit"><span class="odometer-digit-spacer">8</span><span
-                      class="odometer-digit-inner"><span class="odometer-ribbon"><span
-                          class="odometer-ribbon-inner"><span
-                            class="odometer-value">6</span></span></span></span></span><span
-                    class="odometer-digit"><span class="odometer-digit-spacer">8</span><span
-                      class="odometer-digit-inner"><span class="odometer-ribbon"><span
-                          class="odometer-ribbon-inner"><span
-                            class="odometer-value">4</span></span></span></span></span><span
-                    class="odometer-digit"><span class="odometer-digit-spacer">8</span><span
-                      class="odometer-digit-inner"><span class="odometer-ribbon"><span
-                          class="odometer-ribbon-inner"><span
-                            class="odometer-value">3</span></span></span></span></span>
-                </div>
-              </span>
-              <span class="plus__icon">
-                <svg aria-hidden="true" class="e-font-icon-svg e-fas-plus" viewBox="0 0 448 512"
-                  xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z">
-                  </path>
-                </svg>
-              </span>
-            </div>
-            <p>Project Running</p>
-          </div>
-          <div class="vline"></div>
-          <div class="counter__items odometer-item wow fadeInDown" data-wow-duration="0.4s" style="
-              visibility: visible;
-              animation-duration: 0.4s;
-              animation-name: fadeInDown;
-            ">
-            <div class="cont d-flex align-items-center">
-              <span class="odometer odometer-auto-theme" data-odometer-final="64">
-                <div class="odometer-inside">
-                  <span class="odometer-digit"><span class="odometer-digit-spacer">8</span><span
-                      class="odometer-digit-inner"><span class="odometer-ribbon"><span
-                          class="odometer-ribbon-inner"><span
-                            class="odometer-value">6</span></span></span></span></span><span
-                    class="odometer-digit"><span class="odometer-digit-spacer">8</span><span
-                      class="odometer-digit-inner"><span class="odometer-ribbon"><span
-                          class="odometer-ribbon-inner"><span
-                            class="odometer-value">4</span></span></span></span></span>
-                </div>
-              </span>
-              <span class="plus__icon">
-                <svg aria-hidden="true" class="e-font-icon-svg e-fas-plus" viewBox="0 0 448 512"
-                  xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z">
-                  </path>
-                </svg>
-              </span>
-            </div>
-            <p>Our Team Member</p>
-          </div>
-        </div>
-      </div>
-    </section>
-  </div>
-  <section class="relative bg-cover bg-center py-7 mt-10"
-    :style="{ backgroundImage: 'url(https://radiustheme.com/demo/wordpress/themes/clenix/wp-content/uploads/2019/11/section-bg15.jpg)' }">
-    <div class="absolute inset-0  "></div>
-    <div class="container mx-auto relative flex justify-center items-center text-center">
-      <div class="max-w-lg">
-        <h2 class="text-white text-3xl md:text-4xl font-bold mb-4">Get started with your free estimate</h2>
-        <a href="#" class="bg-yellow-button text-gray-900 font-medium py-3 px-6 rounded">
-          Get an Estimate
-        </a>
-      </div>
     </div>
-  </section>
-  <div class="container">
-    <div class="work-wrapper1 mt-7">
-      <img decoding="async"
-        src="https://www.4damstheme.com/clenis/wp-content/plugins/clenis-toolkit/widgets/img/icon/flower.png"
-        alt="How It Works" class="follower-section" />
-      <div class="row justify-content-lg-between justify-content-center">
-        <div class="col-lg-7">
-          <div class="work-thumb">
-            <img decoding="async" src="https://www.4damstheme.com/clenis/wp-content/uploads/2024/04/work.png"
-              alt="How It Works" />
-          </div>
-        </div>
-        <div class="col-lg-5 col-md-7">
-          <div class="howwork-content">
-            <div class="cmn-section-title">
-              <div class="cmn--btn cmn-alt1 wow fadeInDown" data-wow-delay="0.4"
-                style="visibility: visible; animation-name: fadeInDown">
-                <!-- <span> Working Process </span> -->
-              </div>
-              <h2 class="white mt-xxl-4 mt-2 wow fadeInUp" data-wow-delay="0.5"
-                style="visibility: visible; animation-name: fadeInUp;color:#032b52 ;">
-                Nos Service
-              </h2>
-              <!-- <p class="text-white wow fadeInDown" data-wow-delay="0.6"
-                style="visibility: visible; animation-name: fadeInDown">
-                We love help you get your clothes fresh and clean so we here for
-                you 24/7 for any question, concern or suggestion.
-              </p> -->
-            </div>
-            <div class="howit-work-info">
-              <div class="howit-item wow fadeInUp" data-wow-delay="0.7" style="visibility: visible; animation-name: fadeInUp;padding: 35px;
-    padding-left: 0px;">
-                <h3 class="title d-flex align-items-center gap-2">
-                  MENAGE
-                </h3>
-                <p class="pra">
-                  The first step involves understanding the client's needs and
-                  expectations. This may include a consultation where the client
-                  outlines.
-                </p>
-              </div>
-
-            </div>
-          </div>
-        </div>
-
-
-      </div>
-      <img decoding="async"
-        src="https://www.4damstheme.com/clenis/wp-content/plugins/clenis-toolkit/widgets/img/icon/working-ball.png"
-        alt="How It Works" class="working-bable" />
-    </div>
-  </div>
-  <section class="working-process" style="text-align: center;
-  padding: 40px 20px;
-  background-color: #f9f9f9;">
-    <div class="container" style=" max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 15px;">
-      <div class="title-section" style="margin-bottom: 40px;">
-        <h2 style="font-size: 2em;
-  margin-bottom: 10px;">Our Working Process</h2>
-        <p style=" font-size: 1em;
-  color: #666;">Perspiciatis unde omnis iste natus error sit voluptatem accusantium dol oremque laudantium, totam
-          remeaque ipsa.</p>
-      </div>
-      <div class="process-steps" style="display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;">
-        <div class="step">
-          <div class="icon">
-            <i class="fa fa-calendar-check-o"></i>
-          </div>
-          <h3><a href="#">Book Online Form</a></h3>
-          <p>Ahen an unknown printer took a galley type and scrambled nknown printer.</p>
-        </div>
-        <div class="step">
-          <div class="icon">
-            <i class="fa fa-envelope-o"></i>
-          </div>
-          <h3><a href="#">Get Confirmation</a></h3>
-          <p>Ahen an unknown printer took a galley type and scrambled nknown printer.</p>
-        </div>
-        <div class="step">
-          <div class="icon">
-            <i class="fa fa-smile-o"></i>
-          </div>
-          <h3><a href="#">Let’s Enjoy</a></h3>
-          <p>Ahen an unknown printer took a galley type and scrambled nknown printer.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-  <div class="container">
-
-    <img decoding="async"
-      src="https://www.4damstheme.com/clenis/wp-content/plugins/clenis-toolkit/widgets/img/icon/flower.png"
-      alt="How It Works" class="follower-section" style="position: relative;
-  left: 30px;
-  top: -27px;" />
-    <div class="row justify-content-lg-between justify-content-center">
-      <div class="col-lg-5 col-md-7">
-        <div class="howwork-content">
-          <div class="cmn-section-title">
-            <div class="cmn--btn cmn-alt1 wow fadeInDown" data-wow-delay="0.4"
-              style="visibility: visible; animation-name: fadeInDown">
-              <!-- <span> Working Process </span> -->
-            </div>
-            <h2 class="white mt-xxl-4 mt-2 wow fadeInUp" data-wow-delay="0.5"
-              style="visibility: visible; animation-name: fadeInUp;color:#30c7b5 ;margin-bottom: -62px;">
-              Buandrie
-            </h2>
-            <!-- <p class="text-white wow fadeInDown" data-wow-delay="0.6"
-                style="visibility: visible; animation-name: fadeInDown">
-                We love help you get your clothes fresh and clean so we here for
-                you 24/7 for any question, concern or suggestion.
-              </p> -->
-          </div>
-          <div class="howit-work-info">
-            <div class="howit-item wow fadeInUp" data-wow-delay="0.7" style="visibility: visible; animation-name: fadeInUp;padding: 35px;
-    padding-left: 0px;">
-
-              <p class="pra">
-                The first step involves understanding the client's needs and
-                expectations. This may include a consultation where the client
-                outlines.
-              </p>
-            </div>
-
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-7">
-        <div class="work-thumb">
-          <img decoding="async" src="https://www.4damstheme.com/clenis/wp-content/uploads/2024/04/work.png"
-            alt="How It Works" style="width: 90%;
-    border-radius: 60px;" />
-        </div>
-      </div>
-
-    </div>
-    <img decoding="async"
-      src="https://www.4damstheme.com/clenis/wp-content/plugins/clenis-toolkit/widgets/img/icon/working-ball.png"
-      alt="How It Works" class="working-bable" />
-
-  </div>
-  <section class="working-process" style="text-align: center;
-  padding: 40px 20px;
-  background-color: #f9f9f9;">
-    <div class="container" style=" max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 15px;">
-      <div class="title-section" style="margin-bottom: 40px;">
-        <h2 style="font-size: 2em;
-  margin-bottom: 10px;">Our Working Process</h2>
-        <p style=" font-size: 1em;
-  color: #666;">Perspiciatis unde omnis iste natus error sit voluptatem accusantium dol oremque laudantium, totam
-          remeaque ipsa.</p>
-      </div>
-      <div class="process-steps" style="display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;">
-        <div class="step">
-          <div class="icon">
-            <i class="fa fa-calendar-check-o"></i>
-          </div>
-          <h3><a href="#">Book Online Form</a></h3>
-          <p>Ahen an unknown printer took a galley type and scrambled nknown printer.</p>
-        </div>
-        <div class="step">
-          <div class="icon">
-            <i class="fa fa-envelope-o"></i>
-          </div>
-          <h3><a href="#">Get Confirmation</a></h3>
-          <p>Ahen an unknown printer took a galley type and scrambled nknown printer.</p>
-        </div>
-        <div class="step">
-          <div class="icon">
-            <i class="fa fa-smile-o"></i>
-          </div>
-          <h3><a href="#">Let’s Enjoy</a></h3>
-          <p>Ahen an unknown printer took a galley type and scrambled nknown printer.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section class="testimonials">
-    <div class="heading text-center">
-      <h2>What's
-        <span>Clients</span>
-        Says?
-      </h2>
-
-    </div>
-    <div class="container">
-      <div class="row text-center">
-        <div class="col-md-12">
-          <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-            <!-- Indicators-->
-            <ol class="carousel-indicators">
-              <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-              <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-              <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-            </ol>
-
-            <div class="carousel-inner">
-              <!-- Item-1 -->
-              <div class="carousel-item active text-center">
-                <img src="https://i.ibb.co/8x9xK4H/team.jpg" alt="" class="center-block team">
-                <h3>Alamin Musa</h3>
-                <h4>Front End Developer</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
-                  porttitordapibus dictum.<br>
-                  Fusce faucibus ligula scelerisque, eleifend turpis in</p>
-              </div>
-              <!-- Item-2 -->
-              <div class="carousel-item text-center">
-                <img src="https://i.ibb.co/8x9xK4H/team.jpg" alt="" class="center-block team">
-                <h3>Alamin Musa</h3>
-                <h4>Front End Developer</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
-                  porttitordapibus dictum.<br>
-                  Fusce faucibus ligula scelerisque, eleifend turpis in</p>
-              </div>
-              <!-- Item-3 -->
-              <div class="carousel-item text-center">
-                <img src="https://i.ibb.co/8x9xK4H/team.jpg" alt="" class="center-block team">
-                <h3>Alamin Musa</h3>
-                <h4>Front End Developer</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
-                  porttitordapibus dictum.<br>
-                  Fusce faucibus ligula scelerisque, eleifend turpis in</p>
-              </div>
-
-            </div>
-            <a class="carousel-control-prev control" data-target="#carouselExampleIndicators" role="button"
-              data-slide="prev">
-              <span class="fa fa-angle-left icon" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next control" data-target="#carouselExampleIndicators" role="button"
-              data-slide="next">
-              <span class="fa fa-angle-right icon" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <div class="container-fluid p-5" style="background-color: #30c7b5;    margin-bottom: 37px;
-">
-    <div class="page astro-J7PV25F6">
-      <nav style="--gap: 1rem;
-
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(275px, 1fr));
-        gap: var(--gap);
-
-        box-sizing: border-box;
-        width: 100vw;
-        max-width: 100ch;
-        margin: 0 auto;
-        padding: var(--gap);">
-        <h1 class="logo clipped--br">
-          <span>Our Work</span>
-        </h1>
-
-        <a class="link clipped--br" href="/about">
-
-          <p><span class="title">An introduction</span></p>
-        </a>
-
-        <a class="link clipped--br" href="/projects">
-
-          <p><span class="title">Side projects</span></p>
-        </a>
-
-        <a class="link clipped--br" href="/articles">
-          <p>
-            <span class="subtitle">Thoughts on <br>development &amp; the web</span>
-          </p>
-          <p><span class="title">Some articles</span></p>
-        </a>
-
-        <a class="link clipped--br" href="/weeknotes">
-          <p>
-            <span class="subtitle">Tracking the <br>personal &amp; professional</span>
-          </p>
-          <p><span class="title">Weeknotes</span></p>
-        </a>
-
-        <a class="link clipped--br" href="/in-use">
-          <p>
-            <span class="subtitle">These are a few <br>of my favourite things</span>
-          </p>
-          <p><span class="title">In use</span></p>
-        </a>
-      </nav>
-    </div>
-  </div>
-
-  <div class="container-fluid">
+  <div class="container-fluid ">
     <section class="cleaning-quote position-relative">
       <div class="cleaning-thumbing">
         <img decoding="async"
@@ -852,7 +312,15 @@ function stopSlideshow() {
         alt="Contact Us" class="working-cirs" />
     </section>
   </div>
-  <footer class="footer__section position-relative">
+  <div class="container" >
+    <div class="row">
+      <div class="col-12">
+        <player-card />
+      </div>
+    </div>
+  </div>
+  
+  <footer class="footer__section position-relative"> 
     <div class="container">
       <div class="newsletter-section" style="padding-top: 130px;padding-bottom: 65px;text-align: center;">
         <div id="block-15" class="footer-top-widget widget_block">
@@ -1221,13 +689,8 @@ function stopSlideshow() {
   <!-- <app-footer /> -->
 </template>
 <style scoped>
-#contactForm {
-  width: 100%;
-}
 
-#contactForm .form-control {
-  width: 100%;
-}
+
 
 .choose-section1::before {
   position: absolute;
@@ -1240,7 +703,6 @@ function stopSlideshow() {
   background: none;
   filter: blur(350px);
 }
-
 .choose-section1::after {
   position: absolute;
   bottom: 0;
@@ -1257,26 +719,22 @@ function stopSlideshow() {
   position: relative;
   z-index: 1;
 }
-
 .choose-wrapper .ripple {
   position: absolute;
   top: 150px;
   left: 260px;
   animation: updown 2s linear infinite;
 }
-
 @media (max-width: 991px) {
   .choose-wrapper .ripple {
     display: none;
   }
 }
-
 .choose-wrapper .ripple-ps {
   position: absolute;
   top: 80px;
   right: 150px;
 }
-
 @media (max-width: 1399px) {
   .choose-wrapper .ripple-ps {
     display: none;
@@ -1288,16 +746,13 @@ function stopSlideshow() {
     transform: translateY(-14px);
   }
 }
-
 .choose-left-cont .thumb1 {
   width: 100%;
 }
-
 .choose-left-cont .thumb1 img {
   border-radius: 10px;
   width: 100%;
 }
-
 @media (max-width: 991px) {
   .choose-left-cont .thumb1 {
     display: none;
@@ -1316,21 +771,17 @@ function stopSlideshow() {
   z-index: 2;
   position: relative;
 }
-
 .prograss-box .content {
   width: calc(100% - 104px);
 }
-
 .prograss-box .content h3 {
   margin-bottom: 14px;
 }
-
 .prograss-box .content p {
   font-size: 16px;
   color: var(--pra);
   margin-bottom: 0;
 }
-
 .prograss-box .icons {
   position: relative;
   display: block;
@@ -1340,7 +791,6 @@ function stopSlideshow() {
   background: var(--base);
   padding: 0px 4px 0 0;
 }
-
 .prograss-box .icons .texts {
   font-size: 24px;
   font-weight: 700;
@@ -1352,14 +802,12 @@ function stopSlideshow() {
   left: 50%;
   transform: translate(-50%, -50%);
 }
-
 @media (max-width: 575px) {
   .prograss-box {
     padding: 18px 10px;
     margin-left: 0;
     margin-top: 20px;
   }
-
   .prograss-box .content h3 {
     margin-bottom: 8px;
   }
@@ -1368,105 +816,85 @@ function stopSlideshow() {
 .choose-content-right .cmn-section-title {
   margin-bottom: 35px;
 }
-
 @media (max-width: 1399px) {
   .choose-content-right .cmn-section-title {
     padding-left: 20px;
   }
 }
-
 @media (max-width: 991px) {
   .choose-content-right .cmn-section-title {
     padding-left: 4px;
   }
 }
-
 .choose-content-right .adjust-first-item {
   margin-bottom: 45px;
 }
-
 .choose-content-right .adjust-content {
   display: flex;
   justify-content: space-between;
   gap: 24px;
 }
-
 .choose-content-right .adjust-content .adjust-content-info {
   max-width: 400px;
 }
-
 .choose-content-right .adjust-content .thumb-ad {
   max-width: 421px;
   height: 449px;
   margin-left: -140px;
 }
-
 .choose-content-right .adjust-content .thumb-ad img {
   width: 100%;
   height: 100%;
 }
-
 @media (max-width: 1199px) {
   .choose-content-right .adjust-content .thumb-ad {
     height: auto;
   }
-
   .choose-content-right .adjust-content .thumb-ad img {
     height: auto;
   }
 }
-
 .choose-content-right .adjust-content .adjust-item {
   display: flex;
   gap: 28px;
 }
-
 .choose-content-right .adjust-content .adjust-item .conts h3 {
   margin-bottom: 10px;
 }
-
 .choose-content-right .adjust-content .adjust-item .conts p {
   margin: 0;
 }
-
 @media (max-width: 991px) {
   .choose-content-right .adjust-content .thumb-ad {
     margin-left: 4px;
   }
 }
-
 .choose-content-right .btn-custom-space {
   margin-top: 40px;
 }
-
 @media (max-width: 991px) {
   .choose-content-right .adjust-first-item {
     margin-bottom: 24px;
   }
-
   .choose-content-right .btn-custom-space {
     margin-top: 24px;
   }
 }
-
 @media (max-width: 767px) {
   .choose-content-right .adjust-content {
     flex-wrap: wrap;
     display: flex;
     width: 100%;
   }
-
   .choose-content-right .adjust-content .thumb-ad {
     max-width: 100%;
     width: 100% !important;
     height: 100%;
   }
-
   .choose-content-right .adjust-content .thumb-ad img {
     width: 100% !important;
     height: 100%;
   }
-
   .choose-content-right .adjust-content .adjust-content-info {
     max-width: 100%;
   }
@@ -1483,7 +911,6 @@ function stopSlideshow() {
   padding: 10px 0;
   height: 90px;
 }
-
 @media (max-width: 767px) {
   .text-slider {
     padding: 0px 0;
@@ -1511,7 +938,6 @@ function stopSlideshow() {
   float: left;
   transition: animation 0.2s ease-out;
 }
-
 .marquee-item img {
   width: 36px;
 }
@@ -1520,12 +946,10 @@ function stopSlideshow() {
   0% {
     left: 0;
   }
-
   100% {
     left: -100%;
   }
 }
-
 .sotrk-t {
   font-family: "Geologica Cursive";
   font-size: 50px;
@@ -1537,7 +961,6 @@ function stopSlideshow() {
   -webkit-text-stroke-color: rgba(3, 43, 82, 0.35);
   background: transparent;
 }
-
 @media (max-width: 767px) {
   .sotrk-t {
     font-size: 36px;
@@ -1554,41 +977,34 @@ function stopSlideshow() {
   align-items: center;
   justify-content: space-between;
 }
-
 .counter-wrapper .vline {
   border-width: 1px;
   border: 1px solid rgba(3, 43, 82, 0.17);
   height: 100px;
 }
-
 @media (max-width: 767px) {
   .counter-wrapper {
     flex-wrap: wrap;
     justify-content: center;
     gap: 30px 100px;
   }
-
   .counter-wrapper .vline {
     display: none;
   }
-
   .counter-wrapper .cont {
     justify-content: center;
     margin-bottom: 0 !important;
   }
-
   .counter-wrapper .cont span {
     font-size: 36px !important;
   }
 }
-
 @media (max-width: 500px) {
   .counter-wrapper {
     flex-wrap: wrap;
     justify-content: center;
     gap: 10px 30px;
   }
-
   .counter-wrapper .vline {
     display: none;
   }
@@ -1604,12 +1020,10 @@ function stopSlideshow() {
   color: #032b52;
   line-height: 64px;
 }
-
 .plus__icon svg {
   width: 30px;
   height: 30px;
 }
-
 .plus__icon svg {
   fill: #032b52;
 }
@@ -1631,7 +1045,6 @@ function stopSlideshow() {
   position: relative;
   overflow: hidden;
 }
-
 .howit-worksection::before {
   position: absolute;
   top: 0;
@@ -1648,7 +1061,6 @@ function stopSlideshow() {
   position: relative;
   padding-top: 80px;
 }
-
 .work-wrapper1::before {
   position: absolute;
   width: 100%;
@@ -1660,22 +1072,18 @@ function stopSlideshow() {
   z-index: 0;
   border-radius: 60px;
 }
-
 @media (max-width: 1399px) {
   .work-wrapper1 {
     padding-top: 60px;
   }
-
   .work-wrapper1::before {
     height: 290px;
   }
 }
-
 @media (max-width: 1199px) {
   .work-wrapper1 {
     padding-top: 20px;
   }
-
   .work-wrapper1::before {
     height: 230px;
   }
@@ -1687,18 +1095,15 @@ function stopSlideshow() {
   max-width: 613px;
   margin: 0 auto;
 }
-
 .work-thumb img {
   width: 100%;
   border-radius: 60px;
 }
-
 @media (max-width: 1199px) {
   .work-thumb {
     padding-left: 20px;
   }
 }
-
 @media (max-width: 991px) {
   .work-thumb {
     padding-right: 20px;
@@ -1708,91 +1113,72 @@ function stopSlideshow() {
 .howwork-content {
   position: relative;
 }
-
 .howwork-content .cmn-section-title {
   margin-bottom: 90px;
 }
-
 .howwork-content .cmn-section-title p {
   color: rgba(255, 255, 255, 0.75) !important;
 }
-
 .howwork-content .howit-work-info .howit-item h3 {
   margin-bottom: 12px;
 }
-
 .howwork-content .howit-work-info .howit-item:not(:last-child) {
   margin-bottom: 40px;
 }
-
 @media (max-width: 1399px) {
   .howwork-content .cmn-section-title {
     margin-bottom: 60px;
   }
-
   .howwork-content .cmn-section-title h2 {
     margin-bottom: 14px;
   }
-
   .howwork-content .howit-work-info .howit-item:not(:last-child) {
     margin-bottom: 30px;
   }
 }
-
 @media (max-width: 1199px) {
   .howwork-content .cmn-section-title {
     margin-bottom: 50px;
   }
-
   .howwork-content .cmn-section-title h2 {
     margin-bottom: 14px;
   }
-
   .howwork-content .howit-work-info .howit-item:not(:last-child) {
     margin-bottom: 16px;
   }
 }
-
 @media (max-width: 991px) {
   .howwork-content {
     text-align: center;
     margin: 0 auto;
   }
-
   .howwork-content .howit-work-info {
     text-align: center;
     margin: 0 auto;
   }
-
   .howwork-content .howit-work-info .howit-item:not(:last-child) {
     margin-bottom: 22px;
   }
-
   .howwork-content .howit-work-info .howit-item h3 {
     justify-content: center;
     display: grid !important;
   }
-
   .howwork-content .cmn-section-title {
     text-align: center;
     margin: 0 auto;
     margin-top: 30px;
     margin-bottom: 40px;
   }
-
   .howwork-content .cmn-section-title .cmn-alt1 {
     background: var(--subtitle);
   }
-
   .howwork-content .cmn-section-title .cmn-alt1 span {
     color: #000;
   }
-
   .howwork-content .cmn-section-title h2 {
     margin-bottom: 14px;
     color: var(--title) !important;
   }
-
   .howwork-content .cmn-section-title p {
     color: var(--pra) !important;
   }
@@ -1806,7 +1192,6 @@ function stopSlideshow() {
   max-width: 100%;
   height: 550px;
 }
-
 .options .option {
   position: relative;
   overflow: hidden;
@@ -1817,83 +1202,65 @@ function stopSlideshow() {
   cursor: pointer;
   transition: 0.5s cubic-bezier(0.05, 0.61, 0.41, 0.95);
 }
-
 .options .option:nth-child(1) {
   --defaultBackground: #ff8000;
 }
-
 .options .option.active {
   flex-grow: 10000;
   transform: scale(1);
   border-radius: 5px;
   background-size: auto 100%;
 }
-
 .options .option.active .shadow {
   box-shadow:
     inset 0 -120px 120px -120px black,
     inset 0 -120px 120px -100px black;
 }
-
 .options .option.active .label {
   bottom: 20px;
   left: 20px;
 }
-
-.options .option.active .label .info>div {
+.options .option.active .label .info > div {
   left: 0px;
   opacity: 1;
 }
-
 .options .option:not(.active) {
   flex-grow: 1;
   border-radius: 5px;
 }
-
 .bg-yellow-button {
-  background-color: #FFEA00;
-  /* Yellow color */
-  color: #333;
-  /* Dark text color */
-  transition: background-color 0.3s ease, color 0.3s ease;
-  /* Smooth transition */
+  background-color: #FFEA00; /* Yellow color */
+  color: #333; /* Dark text color */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
 }
 
 /* Hover effect for button */
 .bg-yellow-button:hover {
-  background-color: #FFF;
-  /* White background color */
-  color: #FFEA00;
-  /* Yellow text color */
+  background-color: #FFF; /* White background color */
+  color: #FFEA00; /* Yellow text color */
 }
-
 .options .option:not(.active) .shadow {
   bottom: -40px;
   box-shadow:
     inset 0 -120px 0px -120px black,
     inset 0 -120px 0px -100px black;
 }
-
 .options .option:not(.active) .label {
   bottom: 10px;
   left: 10px;
 }
-
-.options .option:not(.active) .label .info>div {
+.options .option:not(.active) .label .info > div {
   left: 20px;
   opacity: 0;
 }
-
 .options .option:not(.active) .label .icon-custom {
   display: flex !important;
 }
-
 .options .option:not(.active) .label .info {
   opacity: 0;
   visibility: hidden;
   transition: all 0.4s;
 }
-
 .options .option .shadow {
   position: absolute;
   bottom: 0px;
@@ -1902,7 +1269,6 @@ function stopSlideshow() {
   height: 120px;
   transition: 0.5s cubic-bezier(0.05, 0.61, 0.41, 0.95);
 }
-
 .options .option .label {
   display: flex;
   align-items: flex-end;
@@ -1910,7 +1276,6 @@ function stopSlideshow() {
   right: 0px;
   transition: 0.5s cubic-bezier(0.05, 0.61, 0.41, 0.95);
 }
-
 .options .option .label .icon-custom {
   display: none;
   justify-content: center;
@@ -1921,13 +1286,11 @@ function stopSlideshow() {
   border-radius: 0px 10px;
   background: #f0f8ff;
 }
-
 .options .option .label .icon-custom h3 {
   transform: rotate(-90deg);
   color: var(--title);
   min-width: 187px;
 }
-
 .options .option .label .info {
   display: flex;
   justify-content: center;
@@ -1943,12 +1306,10 @@ function stopSlideshow() {
   transition: all 0.4s;
   height: 116px;
 }
-
 .options .option .label .info i {
   font-size: 24px;
   color: var(--subtitle);
 }
-
 .options .option .label .info .main {
   font-weight: bold;
   font-size: 24px;
@@ -1956,70 +1317,57 @@ function stopSlideshow() {
   color: var(--white);
   margin-bottom: 10px;
 }
-
 .options .option .label .info .sub {
   transition-delay: 0.1s;
   font-size: 16px;
   font-weight: 400;
   color: var(--subtitle);
 }
-
 @media (max-width: 1199px) {
   .options {
     display: flex;
     height: 450px;
   }
-
   .options .option {
     min-width: 80px;
     margin: 10px;
   }
-
   .options .option.active .label {
     bottom: 10px;
     left: 10px;
   }
-
-  .options .option.active .label .info>div {
+  .options .option.active .label .info > div {
     left: 0px;
     opacity: 1;
   }
-
   .options .option:not(.active) .label {
     bottom: 10px;
     left: 10px;
   }
-
-  .options .option:not(.active) .label .info>div {
+  .options .option:not(.active) .label .info > div {
     left: 20px;
     opacity: 0;
   }
-
   .options .option:not(.active) .label .icon-custom {
     display: flex !important;
   }
-
   .options .option:not(.active) .label .info {
     opacity: 0;
     visibility: hidden;
     transition: all 0.4s;
   }
-
   .options .option .shadow {
     height: 120px;
   }
-
   .options .option .label .icon-custom {
     min-width: 30px;
     max-width: 30px;
     height: 170px;
   }
-
   .options .option .label .icon-custom h3 {
     min-width: 140px;
     font-size: 16px;
   }
-
   .options .option .label .info {
     display: grid;
     justify-content: center;
@@ -2027,37 +1375,31 @@ function stopSlideshow() {
     padding: 18px 20px;
     height: 116px;
   }
-
   .options .option .label .info i {
     font-size: 18px;
   }
-
   .options .option .label .info .main {
     font-size: 16px;
     font-weight: 500;
     margin-bottom: 2px;
   }
-
   .options .option .label .info .sub {
     transition-delay: 0.1s;
     font-size: 14px;
     font-weight: 400;
   }
 }
-
 @media (max-width: 1199px) and (max-width: 575px) {
   .options .option:nth-child(1) {
     display: none;
   }
 }
-
 @media (max-width: 575px) {
   .options {
     display: grid;
     flex-wrap: wrap;
     height: 1300px;
   }
-
   .options .option {
     min-height: 400px;
   }
@@ -2068,7 +1410,6 @@ function stopSlideshow() {
   bottom: 0;
   right: -40px;
 }
-
 @media (max-width: 1399px) {
   .follower-tung {
     display: none;
@@ -2093,12 +1434,10 @@ function stopSlideshow() {
   transition: all 0.4s;
   height: 116px;
 }
-
 .project-made-item .info i {
   font-size: 24px;
   color: var(--subtitle);
 }
-
 .project-made-item .info .main {
   font-weight: bold;
   font-size: 24px;
@@ -2106,7 +1445,6 @@ function stopSlideshow() {
   color: var(--white);
   margin-bottom: 10px;
 }
-
 .project-made-item .info .sub {
   transition-delay: 0.1s;
   font-size: 16px;
@@ -2118,11 +1456,9 @@ function stopSlideshow() {
   transition: all 0.4s;
   width: 100%;
 }
-
 .custom-project-slidewrap .swiper-slide .info {
   opacity: 0;
 }
-
 .custom-project-slidewrap .swiper-slide img {
   width: 100%;
   border-radius: 10px;
@@ -2130,20 +1466,16 @@ function stopSlideshow() {
   height: 462px;
   object-fit: cover;
 }
-
 .custom-project-slidewrap .swiper-slide-duplicate-active img,
 .custom-project-slidewrap .swiper-slide.swiper-slide-active img {
   border-radius: 10px;
 }
-
 @media (min-width: 992px) {
-
   .custom-project-slidewrap .swiper-slide-duplicate-active,
   .custom-project-slidewrap .swiper-slide.swiper-slide-active {
     width: 638px !important;
   }
 }
-
 .custom-project-slidewrap .swiper-slide-duplicate-active .info,
 .custom-project-slidewrap .swiper-slide.swiper-slide-active .info {
   opacity: 1;
@@ -2153,36 +1485,29 @@ function stopSlideshow() {
   overflow: hidden;
   border-radius: 10px;
 }
-
 .project-custom-madewrap .project-made-item .info {
   position: absolute;
   bottom: 10px;
   left: 10px;
   background: #f0f9fc;
 }
-
 .project-custom-madewrap .project-made-item .info i {
   color: var(--title) !important;
 }
-
 .project-custom-madewrap .project-made-item .info .cont .main {
   color: var(--title) !important;
 }
-
 .project-custom-madewrap .project-made-item .info .cont .sub {
   color: var(--base) !important;
 }
-
 @media (max-width: 1199px) {
   .project-custom-madewrap .project-made-item .info {
     padding: 10px 16px;
   }
-
   .project-custom-madewrap .project-made-item .info .cont .main {
     font-size: 18px;
   }
 }
-
 .project-custom-madewrap .custom-left-right2 {
   position: absolute;
   top: 50%;
@@ -2193,32 +1518,25 @@ function stopSlideshow() {
   justify-content: space-between;
   width: 100%;
 }
-
 .project-custom-madewrap .custom-left-right2 .mcustom__next2 {
   margin-left: -20px;
 }
-
 .project-custom-madewrap .custom-left-right2 .mcustom__next2:hover {
   cursor: pointer;
 }
-
 .project-custom-madewrap .custom-left-right2 .mcustom__prev2 {
   margin-right: -20px;
 }
-
 .project-custom-madewrap .custom-left-right2:hover {
   cursor: pointer;
 }
-
 @media (max-width: 1399px) {
   .project-custom-madewrap .custom-left-right2 .mcustom__next2 {
     margin-left: 5px;
   }
-
   .project-custom-madewrap .custom-left-right2 .mcustom__next2:hover {
     cursor: pointer;
   }
-
   .project-custom-madewrap .custom-left-right2 .mcustom__prev2 {
     margin-right: 5px;
   }
@@ -2227,16 +1545,13 @@ function stopSlideshow() {
 .main-project-madeitem {
   position: relative;
 }
-
 .main-project-madeitem .thumb {
   width: 100%;
 }
-
 .main-project-madeitem .thumb img {
   width: 100%;
   border-radius: 5px;
 }
-
 .main-project-madeitem .info {
   max-width: 364px;
   background: var(--white);
@@ -2247,7 +1562,6 @@ function stopSlideshow() {
   visibility: hidden;
   opacity: 0;
 }
-
 .main-project-madeitem .info .cont .main {
   font-size: 18px;
   color: var(--title);
@@ -2256,31 +1570,25 @@ function stopSlideshow() {
   font-weight: 700;
   margin-bottom: 4px;
 }
-
 .main-project-madeitem .info .cont .sub {
   color: var(--base);
 }
-
 .main-project-madeitem .info i {
   color: var(--title);
 }
-
 .main-project-madeitem:hover .info {
   bottom: 30px;
   left: 30px;
   visibility: visible;
   opacity: 1;
 }
-
 @media (max-width: 1399px) {
   .main-project-madeitem .info {
     padding: 10px 10px;
   }
-
   .main-project-madeitem .info .cont .main {
     font-size: 18px;
   }
-
   .main-project-madeitem:hover .info {
     bottom: 10px;
     left: 10px;
@@ -2293,22 +1601,18 @@ function stopSlideshow() {
   max-width: 290px;
   padding: 35px 24px;
 }
-
 .made-smallitem .info .cont .main {
   font-size: 18px;
 }
-
 .made-smallitem:hover .info {
   left: 10px;
   bottom: 10px;
 }
-
 @media (max-width: 1399px) {
   .made-smallitem .info {
     padding: 18px 18px;
   }
 }
-
 @media (max-width: 1199px) {
   .made-smallitem .info {
     max-width: 200px !important;
@@ -2319,12 +1623,10 @@ function stopSlideshow() {
   width: 100%;
   margin-bottom: 40px;
 }
-
 .project-big img {
   width: 100%;
   border-radius: 60px;
 }
-
 @media (max-width: 1399px) {
   .project-big {
     margin-bottom: 20px;
@@ -2345,15 +1647,12 @@ function stopSlideshow() {
   margin-top: 39px;
   margin-bottom: 39px;
 }
-
 .project-details-vidwrap .thumb {
   border-radius: 60px;
 }
-
 .project-details-vidwrap .thumb img {
   border-radius: 60px;
 }
-
 .project-details-vidwrap .thumb .provid {
   width: 86px;
   height: 86px;
@@ -2367,20 +1666,16 @@ function stopSlideshow() {
   left: 50%;
   transform: translate(-50%, -50%);
 }
-
 .project-details-vidwrap .thumb .provid i {
   font-size: 36px;
   color: var(--title);
 }
-
 .project-details-vidwrap .content h3 {
   margin-bottom: 10px;
 }
-
 .project-details-vidwrap .content .por-cont-list {
   margin-top: 20px;
 }
-
 .project-details-vidwrap .content .por-cont-list li {
   display: flex;
   align-items: center;
@@ -2388,45 +1683,37 @@ function stopSlideshow() {
   font-size: 16px;
   color: var(--pra);
 }
-
 .project-details-vidwrap .content .por-cont-list li:not(:last-child) {
   margin-bottom: 16px;
 }
-
 @media (max-width: 767px) {
   .project-details-vidwrap {
     flex-wrap: wrap;
     gap: 20px;
     margin-top: 28px;
   }
-
   .project-details-vidwrap .content h3 {
     margin-bottom: 10px;
   }
-
   .project-details-vidwrap .content .por-cont-list li:not(:last-child) {
     margin-bottom: 8px;
   }
 }
-
 .cmn-padding {
   padding: 45px 45px;
   border-radius: 10px;
   background: #f0f8ff;
 }
-
 @media (max-width: 1399px) {
   .cmn-padding {
     padding: 24px 20px;
   }
 }
-
 .callbox .call-item {
   display: flex;
   align-items: center;
   gap: 20px;
 }
-
 .callbox .call-item .icon {
   background: var(--subtitle);
   border-radius: 50%;
@@ -2437,25 +1724,21 @@ function stopSlideshow() {
   height: 56px;
   transition: all 0.4s;
 }
-
 .callbox .call-item .icon svg {
   width: 24px;
   height: 24px;
 }
-
 .callbox .call-item .icon i {
   color: var(--title);
   transition: all 0.4s;
   font-size: 24px;
 }
-
 .callbox .call-item .cont .callsub {
   font-size: 16px;
   color: var(--pra);
   display: block;
   margin-bottom: 5px;
 }
-
 .callbox .call-item .cont span,
 .callbox .call-item .cont a {
   font-size: 24px;
@@ -2463,43 +1746,34 @@ function stopSlideshow() {
   font-weight: 700;
   transition: all 0.4s;
 }
-
 .callbox .call-item:hover .icon {
   background: var(--base);
 }
-
 .callbox .call-item:hover .icon svg {
   fill: var(--white);
 }
-
 .callbox .call-item:hover .icon i {
   color: var(--white);
 }
-
 @media (max-width: 1199px) {
   .callbox .call-item {
     gap: 14px;
   }
-
   .callbox .call-item .icon {
     width: 48px;
     height: 48px;
   }
-
   .callbox .call-item .icon svg {
     width: 20px;
     height: 20px;
   }
-
   .callbox .call-item .icon i {
     font-size: 20px;
   }
-
   .callbox .call-item .cont a {
     font-size: 18px;
   }
 }
-
 .se-boxlist2 li {
   display: flex;
   align-items: center;
@@ -2507,71 +1781,57 @@ function stopSlideshow() {
   border-bottom: 1px solid rgba(0, 0, 0, 0.09);
   padding-bottom: 20px;
 }
-
 .se-boxlist2 li .bold {
   font-size: 16px;
   font-weight: 700;
   color: var(--title);
 }
-
 .se-boxlist2 li .bold-m {
   font-size: 16px;
   font-weight: 400;
   color: var(--pra);
 }
-
 .se-boxlist2 li:not(:first-child) {
   padding-top: 20px;
 }
-
 .se-boxlist2 li:hover a {
   color: var(--base);
 }
-
 .cmn-padding {
   padding: 45px 45px;
   border-radius: 10px;
   background: #f0f8ff;
 }
-
 @media (max-width: 1399px) {
   .cmn-padding {
     padding: 24px 20px;
   }
 }
-
 .pt-cust23 {
   padding-top: 23px;
 }
-
 .project-social li a {
   background: rgba(2, 54, 166, 0.1);
   border: unset;
 }
-
 .project-social li a svg {
   width: 20px;
 }
-
 .project-social li a svg path {
   stroke: rgba(2, 54, 166, 0.5803921569);
   opacity: 58%;
 }
-
 .project-social li a:hover {
   background: var(--base);
 }
-
 .project-social li a:hover svg path {
   stroke: var(--white);
   opacity: 100%;
 }
-
 .details-pages .thumb {
   width: 100%;
   border-radius: 60px;
 }
-
 .details-pages .thumb img {
   width: 100%;
   border-radius: 60px;
@@ -2583,26 +1843,21 @@ function stopSlideshow() {
   margin-bottom: 34px;
   margin-top: 40px;
 }
-
 .cmn-box-cont1 h2 {
   margin-bottom: 20px;
 }
-
 .cmn-box-cont1 .text1 {
   margin-bottom: 34px;
 }
-
 .cmn-box-cont1 .text2 {
   margin-bottom: 25px;
 }
-
 .cmn-box-cont1 .con-checkbox {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   margin-bottom: 10px;
 }
-
 .cmn-box-cont1 .con-checkbox li {
   display: flex;
   align-items: center;
@@ -2610,82 +1865,66 @@ function stopSlideshow() {
   padding: 15px 0px;
   width: 33.3333333333%;
 }
-
 .cmn-box-cont1 .con-checkbox li span {
   font-size: 18px;
   font-weight: 500;
   color: var(--title);
 }
-
 .cmn-box-cont1 .text3 {
   margin-top: 25px;
 }
-
 @media (max-width: 1399px) {
   .cmn-box-cont1 {
     padding-bottom: 30px;
     margin-bottom: 20px;
     margin-top: 30px;
   }
-
   .cmn-box-cont1 h2 {
     margin-bottom: 14px;
   }
-
   .cmn-box-cont1 .text1 {
     margin-bottom: 14px;
   }
-
   .cmn-box-cont1 .text2 {
     margin-bottom: 16px;
   }
-
   .cmn-box-cont1 .text3 {
     margin-top: 14px;
   }
 }
-
 @media (max-width: 1199px) {
   .cmn-box-cont1 {
     margin-top: 24px;
     padding-bottom: 24px;
   }
-
   .cmn-box-cont1 .con-checkbox {
     margin-bottom: 10px;
   }
-
   .cmn-box-cont1 .con-checkbox li {
     padding: 5px 0px;
     width: 50%;
   }
-
   .cmn-box-cont1 .con-checkbox li span {
     font-size: 16px;
     font-weight: 500;
   }
 }
-
 @media (max-width: 500px) {
   .cmn-box-cont1 {
     margin-top: 20px;
     padding-bottom: 20px;
   }
-
   .cmn-box-cont1 .con-checkbox {
     margin-bottom: 0px;
   }
-
   .cmn-box-cont1 .con-checkbox li {
     padding: 5px 0px;
     width: 100%;
   }
 }
-
 .cmn-box-cont2 h3 {
   margin-bottom: 16px;
 }
-
 .cmn-box-cont2 .fasi-text {
   margin-bottom: 22px;
 }
@@ -2695,11 +1934,9 @@ function stopSlideshow() {
   flex-wrap: wrap;
   gap: 50px 50px;
 }
-
 .details-fasterwrap .faster-item img {
   width: 34px;
 }
-
 .details-fasterwrap .faster-item p {
   font-size: 16px;
   color: var(--pra);
@@ -2707,37 +1944,30 @@ function stopSlideshow() {
   margin-top: 16px;
   max-width: 231px;
 }
-
 @media (max-width: 1199px) {
   .details-fasterwrap {
     gap: 24px 0px;
   }
-
   .details-fasterwrap .faster-item {
     padding-left: 10px;
     width: 50%;
   }
-
   .details-fasterwrap .faster-item p {
     margin-top: 10px;
   }
 }
-
 @media screen and (max-width: 400px) {
   .details-fasterwrap .faster-item {
     padding-left: 10px;
     width: 100%;
   }
-
   .details-fasterwrap .faster-item p {
     margin-top: 10px;
   }
 }
-
 .wman-thumb {
   width: 100%;
 }
-
 .wman-thumb img {
   width: 100%;
   border-radius: 8px;
@@ -2757,21 +1987,18 @@ function stopSlideshow() {
   background: #fff;
   overflow: visible;
 }
-
 .testimonail-items p {
   padding-bottom: 24px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.09);
   margin-bottom: 24px;
   font-weight: 16;
 }
-
 .testimonail-items .content {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 30px;
 }
-
 .testimonail-items .content .degination .name {
   font-size: 18px;
   font-weight: 700;
@@ -2779,27 +2006,22 @@ function stopSlideshow() {
   margin-bottom: 9px;
   display: block;
 }
-
 .testimonail-items .content .degination .gra {
   font-size: 16px;
   color: var(--pra);
   display: block;
 }
-
 .testimonail-items .content .days {
   font-size: 16px;
   color: var(--pra);
 }
-
 .testimonail-items .ratting {
   margin-bottom: 22px;
 }
-
 .testimonail-items .ratting li i {
   font-size: 22px;
   color: #30c7b5;
 }
-
 .testimonail-items .quote-wrap {
   display: flex;
   align-items: center;
@@ -2807,38 +2029,30 @@ function stopSlideshow() {
   transform: translateY(20px);
   margin-top: -20px;
 }
-
 .testimonail-items .quote-wrap .joh {
   width: 64px;
   height: 64px;
 }
-
 .testimonail-items .quote-wrap .joh img {
   border-radius: 50%;
 }
-
 .testimonail-items .quote-wrap .qicon {
   margin-bottom: -20px;
 }
-
 @media (max-width: 1399px) {
   .testimonail-items {
     padding: 25px 25px 0;
   }
-
   .testimonail-items p {
     padding-bottom: 18px;
     margin-bottom: 18px;
   }
-
   .testimonail-items .content {
     margin-bottom: 20px;
   }
-
   .testimonail-items .content .degination .name {
     margin-bottom: 4px;
   }
-
   .testimonail-items .ratting {
     margin-bottom: 18px;
   }
@@ -2848,16 +2062,13 @@ function stopSlideshow() {
   max-width: 850px;
   margin: 0 auto;
 }
-
 .testimonail-itemsv2 .ratting {
   margin-bottom: 22px;
 }
-
 .testimonail-itemsv2 .ratting li i {
   font-size: 22px;
   color: #30c7b5;
 }
-
 .testimonail-itemsv2 p {
   color: #032b52;
   text-align: center;
@@ -2867,7 +2078,6 @@ function stopSlideshow() {
   line-height: 36px;
   margin-bottom: 60px;
 }
-
 .testimonail-itemsv2 .quote-wrap {
   display: flex;
   align-items: center;
@@ -2875,20 +2085,16 @@ function stopSlideshow() {
   max-width: 630px;
   margin: 0 auto;
 }
-
 .testimonail-itemsv2 .quote-wrap .joh {
   width: 64px;
   height: 64px;
 }
-
 .testimonail-itemsv2 .quote-wrap .joh img {
   border-radius: 50%;
 }
-
 .testimonail-itemsv2 .quote-wrap .qicon {
   margin-bottom: -20px;
 }
-
 .testimonail-itemsv2 .degination .name {
   font-size: 18px;
   font-weight: 700;
@@ -2896,17 +2102,14 @@ function stopSlideshow() {
   margin-bottom: 2px;
   display: block;
 }
-
 .testimonail-itemsv2 .degination .gra {
   font-size: 16px;
   color: var(--pra);
   display: block;
 }
-
 .testimonail-itemsv2 .man-designation {
   gap: 24px;
 }
-
 @media (max-width: 767px) {
   .testimonail-itemsv2 p {
     font-size: 18px;
@@ -2914,7 +2117,6 @@ function stopSlideshow() {
     margin-bottom: 40px;
   }
 }
-
 @media (max-width: 575px) {
   .testimonail-itemsv2 p {
     font-size: 18px;
@@ -2927,21 +2129,17 @@ function stopSlideshow() {
   width: 100%;
   margin-bottom: -400px;
 }
-
 .cleaning-thumbing img {
   width: 100%;
 }
-
 @media (max-width: 1199px) {
   .cleaning-thumbing {
     margin-bottom: 30px;
   }
 }
-
 .cmn-section-title h2 {
   font-size: 51px;
 }
-
 .cleaning-quote-content .cleaning-info {
   margin-top: 200px;
 }
@@ -2950,12 +2148,10 @@ function stopSlideshow() {
   .cleaning-quote-content .cleaning-info {
     margin-top: 60px;
   }
-
   .cleaning-quote-content .cmn-section-title h2 {
     color: var(--title) !important;
   }
 }
-
 @media (max-width: 991px) {
   .cleaning-quote-content .cleaning-info {
     margin-top: 34px;
@@ -2966,47 +2162,38 @@ function stopSlideshow() {
   gap: 6px;
   margin-bottom: 20px;
 }
-
 .cleaning-info-item .c-info-icon span {
   font-weight: 400;
   font-family: "DM Sans", sans-serif;
   color: #748aa0;
 }
-
 .cleaning-info-item .c-info-icon svg {
   width: 20px;
   height: 20px;
 }
-
 .cleaning-info-item .c-info-icon svg {
   fill: #30c7b5;
 }
-
 .cleaning-info-item:not(:last-child) {
   margin-bottom: 50px;
 }
-
 @media (max-width: 1199px) {
   .cleaning-info-item:not(:last-child) {
     margin-bottom: 30px;
   }
-
   .cleaning-info-item .c-info-icon {
     margin-bottom: 10px !important;
   }
 }
-
 @media (max-width: 991px) {
   .cleaning-info-item h3 {
     font-size: 18px;
     line-height: 1.5;
     font-weight: 500;
   }
-
   .cleaning-info-item:not(:last-child) {
     margin-bottom: 20px;
   }
-
   .cleaning-info-item .c-info-icon {
     margin-bottom: 10px !important;
   }
@@ -3017,7 +2204,6 @@ function stopSlideshow() {
   background: #30c7b5;
   padding: 60px 60px;
 }
-
 @media (max-width: 991px) {
   .cleaning-form {
     padding: 36px 20px;
@@ -3032,7 +2218,6 @@ function stopSlideshow() {
   display: block;
   margin-bottom: -13px;
 }
-
 .clean-form-grp textarea,
 .clean-form-grp input[type="email"],
 .clean-form-grp input[type="text"] {
@@ -3044,41 +2229,33 @@ function stopSlideshow() {
   background: transparent;
   width: 100%;
 }
-
 .clean-form-grp ::placeholder {
   color: rgba(255, 255, 255, 0.55);
 }
-
 .clean-form-grp input[type="submit"] {
   border: unset;
   color: #032b52;
 }
-
 .wpcf7 form .wpcf7-response-output {
   color: #30c7b5;
 }
-
 .clean-form-grp textarea {
   height: 170px;
 }
-
 .clean-form-grp p {
   margin-bottom: 0px;
 }
-
 .working-customwrap {
   display: flex;
   align-items: center;
   position: relative;
   gap: 14px;
 }
-
 .working-customwrap .working-itemv2 {
   max-width: 400px;
   text-align: center;
   margin: 0 auto;
 }
-
 .working-customwrap .working-itemv2 .seri {
   width: 56px;
   height: 56px;
@@ -3092,68 +2269,55 @@ function stopSlideshow() {
   background: var(--base);
   margin: 0 auto 30px;
 }
-
 .working-customwrap .working-itemv2 h3 {
   margin-bottom: 18px;
 }
-
 .working-customwrap .working-itemv2 p {
   color: var(--pra);
 }
-
 .working-customwrap .work-line {
   border: 1px solid rgba(0, 0, 0, 0.09);
   height: 256px;
   border-width: 1;
 }
-
 .working-customwrap .waroow-rotate1 {
   position: absolute;
   left: 320px;
   top: 10px;
 }
-
 .working-customwrap .waroow-rotate2 {
   position: absolute;
   right: 340px;
   top: 10px;
 }
-
 @media (max-width: 1199px) {
-
   .working-customwrap .waroow-rotate1,
   .working-customwrap .waroow-rotate2 {
     display: none;
   }
-
   .working-customwrap .working-itemv2 {
     max-width: 400px;
     text-align: center;
     margin: 0 auto;
   }
-
   .working-customwrap .working-itemv2 .seri {
     width: 50px;
     height: 50px;
     font-size: 14px;
     margin: 0 auto 10px;
   }
-
   .working-customwrap .working-itemv2 h3 {
     margin-bottom: 10px;
     font-size: 20px;
   }
-
   .working-customwrap .working-itemv2 p {
     color: var(--pra);
   }
 }
-
 @media (max-width: 991px) {
   .working-customwrap {
     flex-wrap: wrap;
   }
-
   .working-customwrap .work-line {
     display: none;
   }
@@ -3176,18 +2340,15 @@ function stopSlideshow() {
     opacity: 0;
     transform: translateY(50px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
-
 .cleaning-quote {
   opacity: 0;
   animation: fadeInUp 1s ease forwards;
 }
-
 .step {
   flex: 1 1 calc(33.333% - 20px);
   box-sizing: border-box;
@@ -3229,117 +2390,116 @@ function stopSlideshow() {
     margin-bottom: 20px;
   }
 }
-
 .testimonials {
-  background: url("https://www.4damstheme.com/clenis/wp-content/plugins/clenis-toolkit/widgets/img/testimonail/testi-bg.png") center center no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-  padding: 130px 0 150px;
-  color: #ffffff;
-  position: relative;
-  margin-bottom: 90px;
+    background: url("https://www.4damstheme.com/clenis/wp-content/plugins/clenis-toolkit/widgets/img/testimonail/testi-bg.png") center center no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    padding: 130px 0 150px;
+    color: #ffffff;
+    position: relative;
+    margin-bottom: 90px;
 
 }
-
 .testimonials:before {
-  content: "";
-  background: rgba(0, 0, 0, 0.5);
-  width: 100%;
-  height: 100%;
-  top: 0;
-  position: absolute;
-  left: 0;
+    content: "";
+    background: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    position: absolute;
+    left: 0;
 }
-
 .testimonials .heading h2 {
-  font-size: 25px;
-  font-weight: 700;
-  color: #ffffff;
+    font-size: 25px;
+    font-weight: 700;
+    color: #ffffff;
 }
 
 .testimonials .heading h2 span {
-  color: #30c7b5;
+    color: #30c7b5;
 }
 
 .testimonials p {
-  font-size: 15px;
-  font-weight: 400;
-  line-height: 1.7;
-  color: #d1e5e7;
-  margin: 20px 0;
-  padding: 0;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.7;
+    color: #d1e5e7;
+    margin: 20px 0;
+    padding: 0;
 }
 
 /* Image */
 .testimonials .carousel-inner .carousel-item .team {
-  width: 100px;
-  height: 100px;
-  border: 2px solid #30c7b5;
-  border-radius: 100%;
-  padding: 5px;
-  margin: 50px 0 15px;
+    width: 100px;
+    height: 100px;
+    border: 2px solid #30c7b5;
+    border-radius: 100%;
+    padding: 5px;
+    margin: 50px 0 15px;
 }
 
 .testimonials .carousel-inner .carousel-item h3 {
-  font-size: 20px;
-  color: #ffffff;
-  font-weight: 600;
+    font-size: 20px;
+    color: #ffffff;
+    font-weight: 600;
 }
 
 .testimonials .carousel-inner .carousel-item h4 {
-  font-size: 14px;
-  font-weight: 300;
-  color: #e2e1e1;
-  margin-bottom: 20px;
+    font-size: 14px;
+    font-weight: 300;
+    color: #e2e1e1;
+    margin-bottom: 20px;
 }
 
 .testimonials .carousel-indicators {
-  bottom: -30px;
+    bottom: -30px;
 }
 
 .testimonials .carousel-indicators li {
-  background-color: #b8b7b7;
-  border-radius: 30px;
-  height: 4px;
-  width: 40px;
+    background-color: #b8b7b7;
+    border-radius: 30px;
+    height: 4px;
+    width: 40px;
 }
 
 .testimonials .carousel-indicators .active {
-  background-color: #30c7b5;
+    background-color: #30c7b5;
 }
 
 .testimonials .control span {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 .testimonials .icon {
-  height: 40px;
-  width: 40px;
-  background-size: 100%, 100%;
-  border-radius: 50%;
-  font-size: 30px;
-  background-image: none;
-  color: #ffffff;
+    height: 40px;
+    width: 40px;
+    background-size: 100%, 100%;
+    border-radius: 50%;
+    font-size: 30px;
+    background-image: none;
+    color: #ffffff;
 }
-
 .heading {
-  position: relative;
+    position: relative;
 }
-
 :root {
   --clip-size: 1.5rem;
-  --clip-bottom-right: polygon(0 0,
-      100% 0,
-      100% calc(100% - var(--clip-size)),
-      calc(100% - var(--clip-size)) 100%,
-      0% 100%,
-      0 0);
-  --clip-bottom-left: polygon(0 0,
-      100% 0,
-      100% 100%,
-      var(--clip-size) 100%,
-      0 calc(100% - var(--clip-size)),
-      0 0);
+  --clip-bottom-right: polygon(
+    0 0,
+    100% 0,
+    100% calc(100% - var(--clip-size)),
+    calc(100% - var(--clip-size)) 100%,
+    0% 100%,
+    0 0
+  );
+  --clip-bottom-left: polygon(
+    0 0,
+    100% 0,
+    100% 100%,
+    var(--clip-size) 100%,
+    0 calc(100% - var(--clip-size)),
+    0 0
+  );
   --nav-x: 0;
   --width-nav: 20ch;
 }
@@ -3433,26 +2593,29 @@ function stopSlideshow() {
   padding: 1rem;
   line-height: 1;
   text-decoration: none;
-
+  
   transition: background-size 0.25s;
 
-  background: var(--bg) repeating-linear-gradient(-45deg,
+  background: var(--bg)
+    repeating-linear-gradient(
+      -45deg,
       transparent 0,
       transparent 1rem,
       var(--bg-stripe) 0,
-      var(--bg-stripe) 2rem);
+      var(--bg-stripe) 2rem
+    );
   background-size: var(--border) var(--border);
   background-position: center;
   background-repeat: no-repeat;
   color: var(--colour);
-
+  
   &:hover,
   &:focus {
     --border: 70%;
   }
 
   & span {
-
+    
     background: var(--bg);
 
     &.subtitle {
@@ -3474,19 +2637,15 @@ function stopSlideshow() {
   &[href="/about"] {
     --bg: #be6069;
   }
-
   &[href="/projects"] {
     --bg: #d18771;
   }
-
   &[href="/articles"] {
     --bg: #ebca89;
   }
-
   &[href="/weeknotes"] {
     --bg: #a4bf8d;
   }
-
   &[href="/in-use"] {
     --bg: #b48ead;
   }
