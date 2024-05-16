@@ -19,8 +19,8 @@ defineProps({
 <template>
   <!-- Navbar -->
   <nav
-    class="navbar navbar-expand-lg top-0 z-index-3  mt-4"
-    :class="isBlur ? isBlur : 'shadow-none my-2 navbar-transparent w-100'" style="padding-top: 5rem;"
+    class="navbar navbar-expand-lg top-0 z-index-3  "
+    :class="isBlur ? isBlur : 'shadow-none my-2 navbar-transparent w-100'" style="margin-top: 3.5rem !important;"
   >
     <div class="container ps-2 pe-0">
       <router-link
@@ -177,7 +177,7 @@ defineProps({
             <router-link :to="{ name: 'Landing Page' }" class="nav-link">À propos</router-link>
             </li>
             <li class="mx-2 nav-item">
-            <router-link :to="{ name: 'Landing Page' }" class="nav-link">Contactez-Nous </router-link>
+            <router-link :to="{ name: 'contact' }" class="nav-link">Contactez-Nous </router-link>
             </li>
 
         </ul>

@@ -22,8 +22,8 @@ onMounted(() => {
   tiles.value = new L.tileLayer(
     "https://{s}.basemaps.cartocdn.com/rastertiles/light_all/{z}/{x}/{y}.png",
     {
-      attribution:
-        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+      attribution:'',
+        // '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
       subdomains: "abcd",
       maxZoom: "19",
     }
@@ -43,13 +43,13 @@ onMounted(() => {
 </script>
 <template>
   <div class="card shadow-lg">
-    <div class="card-header " style="background-color: #30c7b5;">
+    <div class="card-header " style="background-color: #30c7b5;padding: 0.5rem;">
       
     </div>
     <div class="card-body px-0 py-0">
       <div id="mapid" class="leaflet"></div>
     </div>
-    <div class="card-footer" style="background-color: #30c7b5;">
+    <div class="card-footer" style="background-color: #30c7b5;padding: 0.5rem;">
       
       </div>
   </div>

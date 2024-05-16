@@ -6,6 +6,8 @@ import Navbar from "@/examples/PageLayout/NavbarHygeco.vue";
 // import AppFooter from "@/examples/PageLayout/Footer.vue";
 // import AccordionItem from "./components/AccordionItem.vue";
 import setNavPills from "@/assets/js/nav-pills.js";
+import ProjectGallerie from "./components/ProjectGallerie.vue";
+
 // import ComplexBackgroundCard from "@/views/ecommerce/components/ComplexBackgroundCard.vue";
 
 const store = useStore();
@@ -361,10 +363,10 @@ function stopSlideshow() {
         <div class="col-lg-5 col-md-7">
           <div class="howwork-content">
             <div class="cmn-section-title">
-              <div class="cmn--btn cmn-alt1 wow fadeInDown" data-wow-delay="0.4"
+              <!-- <div class="cmn--btn cmn-alt1 wow fadeInDown" data-wow-delay="0.4"
                 style="visibility: visible; animation-name: fadeInDown">
-                <!-- <span> Working Process </span> -->
-              </div>
+                <span> Working Process </span>
+              </div> -->
               <h2 class="white mt-xxl-4 mt-2 wow fadeInUp" data-wow-delay="0.5"
                 style="visibility: visible; animation-name: fadeInUp;color:#032b52 ;">
                 Nos Service
@@ -439,6 +441,8 @@ function stopSlideshow() {
       </div>
     </div>
   </section>
+  <ProjectGallerie />
+
   <div class="container">
 
     <img decoding="async"
@@ -450,10 +454,10 @@ function stopSlideshow() {
       <div class="col-lg-5 col-md-7">
         <div class="howwork-content">
           <div class="cmn-section-title">
-            <div class="cmn--btn cmn-alt1 wow fadeInDown" data-wow-delay="0.4"
+            <!-- <div class="cmn--btn cmn-alt1 wow fadeInDown" data-wow-delay="0.4"
               style="visibility: visible; animation-name: fadeInDown">
-              <!-- <span> Working Process </span> -->
-            </div>
+              <span> Working Process </span>
+            </div> -->
             <h2 class="white mt-xxl-4 mt-2 wow fadeInUp" data-wow-delay="0.5"
               style="visibility: visible; animation-name: fadeInUp;color:#30c7b5 ;margin-bottom: -62px;">
               Buandrie
@@ -596,57 +600,7 @@ function stopSlideshow() {
       </div>
     </div>
   </section>
-  <div class="container-fluid p-5" style="background-color: #30c7b5;    margin-bottom: 37px;
-">
-    <div class="page astro-J7PV25F6">
-      <nav style="--gap: 1rem;
 
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(275px, 1fr));
-        gap: var(--gap);
-
-        box-sizing: border-box;
-        width: 100vw;
-        max-width: 100ch;
-        margin: 0 auto;
-        padding: var(--gap);">
-        <h1 class="logo clipped--br">
-          <span>Our Work</span>
-        </h1>
-
-        <a class="link clipped--br" href="/about">
-
-          <p><span class="title">An introduction</span></p>
-        </a>
-
-        <a class="link clipped--br" href="/projects">
-
-          <p><span class="title">Side projects</span></p>
-        </a>
-
-        <a class="link clipped--br" href="/articles">
-          <p>
-            <span class="subtitle">Thoughts on <br>development &amp; the web</span>
-          </p>
-          <p><span class="title">Some articles</span></p>
-        </a>
-
-        <a class="link clipped--br" href="/weeknotes">
-          <p>
-            <span class="subtitle">Tracking the <br>personal &amp; professional</span>
-          </p>
-          <p><span class="title">Weeknotes</span></p>
-        </a>
-
-        <a class="link clipped--br" href="/in-use">
-          <p>
-            <span class="subtitle">These are a few <br>of my favourite things</span>
-          </p>
-          <p><span class="title">In use</span></p>
-        </a>
-      </nav>
-    </div>
-  </div>
 
   <div class="container-fluid">
     <section class="cleaning-quote position-relative">
@@ -665,22 +619,36 @@ function stopSlideshow() {
                     animation-delay: 0.4s;
                     animation-name: fadeInDown;
                   ">
-                  <span style="    background-color: #30c7b5;
-                  border-top-left-radius: 5px;
-                  border-top-right-radius: 5px;
-                  border-bottom-left-radius: 5px;
-                  border-bottom-right-radius: 5px;
-                  font-size: x-large;"> Contact Us </span>
+                  <span > Contact Us </span>
                 </div>
                 <h2 class="white mt-xxl-4 mt-2 mb-0 wow fadeInUp" data-wow-delay="0.6s" style="
                     visibility: visible;
                     animation-delay: 0.6s;
-                    animation-name: fadeInUp;
+                    animation-name: fadeInUp;color:white;
                   ">
                   Request a free cleaning quote today
                 </h2>
               </div>
               <div class="cleaning-info">
+                <div class="cleaning-info-item wow fadeInDown" data-wow-delay="0.7s" style="
+                    visibility: visible;
+                    animation-delay: 0.7s;
+                    animation-name: fadeInDown;
+                  ">
+                  <div class="c-info-icon d-flex align-items-center">
+                    <svg aria-hidden="true" class="e-font-icon-svg e-fas-map-marker-alt" viewBox="0 0 384 512"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M172.268 501.67C26.97 291.031 0 269.413 0 192 0 85.961 85.961 0 192 0s192 85.961 192 192c0 77.413-26.97 99.031-172.268 309.67-9.535 13.774-29.93 13.773-39.464 0zM192 272c44.183 0 80-35.817 80-80s-35.817-80-80-80-80 35.817-80 80 35.817 80 80 80z">
+                      </path>
+                    </svg>
+                    <span class="pra"> Telephone </span>
+                  </div>
+                  <h3 class="title">
+                    +48 74326 02396
+                    <span class="d-block"> +48 64453 96533 </span>
+                  </h3>
+                </div>
                 <div class="cleaning-info-item wow fadeInDown" data-wow-delay="0.7s" style="
                     visibility: visible;
                     animation-delay: 0.7s;
@@ -3234,7 +3202,7 @@ function stopSlideshow() {
   background: url("https://www.4damstheme.com/clenis/wp-content/plugins/clenis-toolkit/widgets/img/testimonail/testi-bg.png") center center no-repeat;
   background-size: cover;
   background-attachment: fixed;
-  padding: 130px 0 150px;
+  padding: 32px 0 59px;
   color: #ffffff;
   position: relative;
   margin-bottom: 90px;
@@ -3490,5 +3458,19 @@ function stopSlideshow() {
   &[href="/in-use"] {
     --bg: #b48ead;
   }
+}
+.cmn--btn {
+  padding: 12px 28px 15px;
+    color: var(--white);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 28px;
+    display: inline-block;
+    position: relative;
+    background: yellow;
+    overflow: hidden;
+    border-radius: 100px;
+    transition: all 0.5s;
 }
 </style>

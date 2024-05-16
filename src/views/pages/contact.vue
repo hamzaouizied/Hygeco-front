@@ -6,8 +6,10 @@ import Navbar from "@/examples/PageLayout/NavbarHygeco.vue";
 // import AppFooter from "@/examples/PageLayout/Footer.vue";
 // import AccordionItem from "./components/AccordionItem.vue";
 import setNavPills from "@/assets/js/nav-pills.js";
-import ComplexBackgroundCard from "@/views/ecommerce/components/ComplexBackgroundCard.vue";
+// import ComplexBackgroundCard from "@/views/ecommerce/components/ComplexBackgroundCard.vue";
 import PlayerCard from "@/views/dashboards/components/PlayerCard.vue";
+import TeamCard from "./components/TeamCard.vue";
+
 
 
 const store = useStore();
@@ -54,7 +56,6 @@ onBeforeUnmount(() => {
     backgroundSize: 'cover',
     padding: '100px',
   }">
-        <span class="mask bg-gradient-dark opacity-6"></span>
 
         <div class="container pb-10 pb-lg-9 pt-7 postion-relative z-index-2">
             <div class="row">
@@ -73,42 +74,8 @@ onBeforeUnmount(() => {
             </div>
         </div>
     </div>
-    <div class="mt-n8" style="padding: 20px;">
-        <div class="container">
-            <div class="tab-content tab-space">
-                <div id="monthly" class="tab-pane active">
-                    <div class="row">
-                        <div class="mb-4 col-lg-4 mb-lg-0">
-                            <div class="card-container mt-4 mt-lg-0">
-                                <complex-background-card class="h-100 w-100"
-                                    image="https://demos.creative-tim.com/soft-ui-dashboard-pro/assets/img/office-dark.jpg"
-                                    description="We love to help you to get your clothes fresh and clean so we are here for you 24/7 for any question, concern or suggestion. The account manager and the ease of a state-of-the-art app that makes it possible."
-                                    :action="{ route: 'javascript:;', label: 'Contact With Us' }" />
-                            </div>
-                        </div>
-                        <div class="mb-4 col-lg-4 mb-lg-0">
-                            <div class="card-container mt-4 mt-lg-0">
-                                <complex-background-card class="h-100 w-100"
-                                    image="https://demos.creative-tim.com/soft-ui-dashboard-pro/assets/img/office-dark.jpg"
-                                    description="We love to help you to get your clothes fresh and clean so we are here for you 24/7 for any question, concern or suggestion. The account manager and the ease of a state-of-the-art app that makes it possible."
-                                    :action="{ route: 'javascript:;', label: 'View Our Offers' }" />
-                            </div>
-                        </div>
-                        <div class="mb-4 col-lg-4 mb-lg-0">
-                            <div class="card-container mt-4 mt-lg-0">
-                                <complex-background-card class="h-100 w-100"
-                                    image="https://demos.creative-tim.com/soft-ui-dashboard-pro/assets/img/office-dark.jpg"
-                                    description="We love to help you to get your clothes fresh and clean so we are here for you 24/7 for any question, concern or suggestion. The account manager and the ease of a state-of-the-art app that makes it possible."
-                                    :action="{ route: 'javascript:;', label: 'Meet With Our Staff' }" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-  <div class="container-fluid ">
+   
+  <div class="container-fluid p-5 ">
     <section class="cleaning-quote position-relative">
       <div class="cleaning-thumbing">
         <img decoding="async"
@@ -125,22 +92,37 @@ onBeforeUnmount(() => {
                     animation-delay: 0.4s;
                     animation-name: fadeInDown;
                   ">
-                  <span style="    background-color: #30c7b5;
-                  border-top-left-radius: 5px;
-                  border-top-right-radius: 5px;
-                  border-bottom-left-radius: 5px;
-                  border-bottom-right-radius: 5px;
-                  font-size: x-large;"> Contact Us </span>
+                  <span > Contact Us </span>
                 </div>
                 <h2 class="white mt-xxl-4 mt-2 mb-0 wow fadeInUp" data-wow-delay="0.6s" style="
                     visibility: visible;
                     animation-delay: 0.6s;
-                    animation-name: fadeInUp;
+                    animation-name: fadeInUp;color:white;
                   ">
                   Request a free cleaning quote today
                 </h2>
               </div>
               <div class="cleaning-info">
+                <div class="cleaning-info-item wow fadeInDown" data-wow-delay="0.7s" style="
+    visibility: visible;
+    animation-delay: 0.7s;
+    animation-name: fadeInDown;
+">
+    <div class="c-info-icon d-flex align-items-center">
+        <!-- Replace the existing SVG with a telephone icon SVG -->
+        <svg aria-hidden="true" class="e-font-icon-svg e-fas-map-marker-alt" viewBox="0 0 384 512"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M172.268 501.67C26.97 291.031 0 269.413 0 192 0 85.961 85.961 0 192 0s192 85.961 192 192c0 77.413-26.97 99.031-172.268 309.67-9.535 13.774-29.93 13.773-39.464 0zM192 272c44.183 0 80-35.817 80-80s-35.817-80-80-80-80 35.817-80 80 35.817 80 80 80z">
+                      </path>
+                    </svg>
+        <span class="pra"> Telephone </span>
+    </div>
+    <h3 class="title" style="font-size: 1.5rem;" >
+        +48 74326 02396
+        <span class="d-block"> +48 64453 96533 </span>
+    </h3>
+</div>
                 <div class="cleaning-info-item wow fadeInDown" data-wow-delay="0.7s" style="
                     visibility: visible;
                     animation-delay: 0.7s;
@@ -155,7 +137,7 @@ onBeforeUnmount(() => {
                     </svg>
                     <span class="pra"> Location </span>
                   </div>
-                  <h3 class="title">
+                  <h3 class="title" style="font-size: 1.5rem;">
                     20 Manchester Square
                     <span class="d-block"> London W1U 360, UK, </span>
                   </h3>
@@ -174,7 +156,7 @@ onBeforeUnmount(() => {
                     </svg>
                     <span class="pra"> Mail Us </span>
                   </div>
-                  <h3 class="title">
+                  <h3 class="title" style="font-size: 1.5rem;">
                     helloclenis@gmail.com
                     <span class="d-block"> clenissupport@gmail.com </span>
                   </h3>
@@ -312,6 +294,7 @@ onBeforeUnmount(() => {
         alt="Contact Us" class="working-cirs" />
     </section>
   </div>
+  <TeamCard />
   <div class="container" >
     <div class="row">
       <div class="col-12">
@@ -2532,6 +2515,7 @@ onBeforeUnmount(() => {
   text-transform: uppercase;
 }
 
+
 :where(a) {
   color: inherit;
 }
@@ -2578,6 +2562,7 @@ onBeforeUnmount(() => {
   background: #0000001d;
   color: #70757e;
 }
+
 
 .link {
   --border: calc(100% - 2rem);
@@ -2649,5 +2634,19 @@ onBeforeUnmount(() => {
   &[href="/in-use"] {
     --bg: #b48ead;
   }
+}
+.cmn--btn {
+  padding: 12px 28px 15px;
+    color: var(--white);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 28px;
+    display: inline-block;
+    position: relative;
+    background: #30c7b5;
+    overflow: hidden;
+    border-radius: 100px;
+    transition: all 0.5s;
 }
 </style>
