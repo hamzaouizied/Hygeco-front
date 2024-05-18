@@ -12,23 +12,33 @@ Coded by www.creative-tim.com
 
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 -->
-<script setup>
-import { computed } from "vue";
-import { useStore } from "vuex";
-
+<script>
+import { mapState } from "vuex";
 import Sidenav from "./examples/Sidenav";
 import Configurator from "@/examples/Configurator.vue";
 import Navbar from "@/examples/Navbars/Navbar.vue";
 import AppFooter from "@/examples/Footer.vue";
 
-const store = useStore();
-const layout = computed(() => store.state.layout);
-const showSidenav = computed(() => store.state.showSidenav);
-const showNavbar = computed(() => store.state.showNavbar);
-const showFooter = computed(() => store.state.showFooter);
-const showConfig = computed(() => store.state.showConfig);
-const hideConfigButton = computed(() => store.state.hideConfigButton);
+export default {
+  components: {
+    Sidenav,
+    Configurator,
+    Navbar,
+    AppFooter,
+  },
+  computed: {
+    ...mapState({
+      layout: state => state.layout,
+      showSidenav: state => state.showSidenav,
+      showNavbar: state => state.showNavbar,
+      showFooter: state => state.showFooter,
+      showConfig: state => state.showConfig,
+      hideConfigButton: state => state.hideConfigButton,
+    }),
+  },
+};
 </script>
+
 <template>
   <div
     v-show="layout === 'landing'"
