@@ -17,6 +17,8 @@ import LandingPage from "../views/pages/LandingPage.vue";
 import PricingHygeco from "../views/pages/pricingHygeco.vue";
 import Contact from "../views/pages/contact.vue";
 import Menage from "../views/pages/ServiceMenage.vue";
+import LandingPage2 from "../views/pages/LandingPage2.vue";
+
 
 
 
@@ -68,6 +70,11 @@ const routes = [
     path: "/",
     name: "/",
     redirect: "/pages/LandingPage"
+  },
+  {
+    path: "/pages/landingpage2",
+    name: "landingpage2",
+    component: LandingPage2
   },
   {
     path: "/dashboards/dashboard-default",

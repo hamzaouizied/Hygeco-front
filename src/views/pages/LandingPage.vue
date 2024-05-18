@@ -1,6 +1,6 @@
-<script setup>
-import { onMounted, onBeforeUnmount, ref } from "vue";
-import { useStore } from "vuex";
+<script>
+import { ref } from 'vue';
+import { useStore } from 'vuex';
 import Navbar from "@/examples/PageLayout/NavbarHygeco.vue";
 // import PricingCard from "./components/PricingCard.vue";
 // import AppFooter from "@/examples/PageLayout/Footer.vue";
@@ -9,83 +9,96 @@ import setNavPills from "@/assets/js/nav-pills.js";
 import ProjectGallerie from "./components/ProjectGallerie.vue";
 import TeamCard from "./components/TeamCard.vue";
 
-
 // import ComplexBackgroundCard from "@/views/ecommerce/components/ComplexBackgroundCard.vue";
 
-const store = useStore();
-const existingSlides = [
-  {
-    imageUrl: require("../../assets/img/header1.png"),
-    text: "Let the green clean begin. Linen's bright, cleaning's right, Hygeco's here day or night!",
+export default {
+  components: {
+    Navbar,
+    ProjectGallerie,
+    TeamCard
+    // PricingCard,
+    // AppFooter,
+    // AccordionItem,
+    // ComplexBackgroundCard,
   },
-  {
-    imageUrl: require("../../assets/img/header2.png"),
-    text: "Let the green clean begin. Linen's bright, cleaning's right, Hygeco's here day or night!",
+  data() {
+    return {
+      store: useStore(),
+      currentIndexHead: 0,
+      existingSlides: [
+        {
+          imageUrl: require("../../assets/img/header1.png"),
+          text: "Let the green clean begin. Linen's bright, cleaning's right, Hygeco's here day or night!",
+        },
+        {
+          imageUrl: require("../../assets/img/header2.png"),
+          text: "Let the green clean begin. Linen's bright, cleaning's right, Hygeco's here day or night!",
+        },
+      ],
+      intervalId: null,
+    };
   },
-  
-];
-
-// const slides = [...existingSlides, ...testimonialSlides];
-const currentIndexHead = ref(0);
-// const currentIndex = ref(0);
-
-let intervalId;
-onMounted(() => {
-  store.state.showSidenav = false;
-  store.state.showNavbar = false;
-  store.state.showFooter = false;
-  setNavPills();
-  startSlideshow();
-});
-onBeforeUnmount(() => {
-  stopSlideshow();
-  store.state.showSidenav = false;
-  store.state.showNavbar = false;
-  store.state.showFooter = true;
-  if (store.state.isPinned === false) {
-    const sidenav_show = document.querySelector(".g-sidenav-show");
-    sidenav_show.classList.remove("g-sidenav-hidden");
-    sidenav_show.classList.add("g-sidenav-pinned");
-    store.state.isPinned = true;
+  mounted() {
+    this.store.state.showSidenav = false;
+    this.store.state.showNavbar = false;
+    this.store.state.showFooter = false;
+    setNavPills();
+    this.startSlideshow();
+  },
+  beforeUnmount() {
+    this.stopSlideshow();
+    this.store.state.showSidenav = false;
+    this.store.state.showNavbar = false;
+    this.store.state.showFooter = true;
+    if (this.store.state.isPinned === false) {
+      const sidenav_show = document.querySelector(".g-sidenav-show");
+      sidenav_show.classList.remove("g-sidenav-hidden");
+      sidenav_show.classList.add("g-sidenav-pinned");
+      this.store.state.isPinned = true;
+    }
+  },
+  methods: {
+    startSlideshow() {
+      this.intervalId = setInterval(() => {
+        this.currentIndexHead =
+          (this.currentIndexHead + 1) % this.existingSlides.length;
+      }, 5000); // Change image every 5 seconds (adjust as needed)
+    },
+    stopSlideshow() {
+      clearInterval(this.intervalId);
+    }
   }
-});
-function startSlideshow() {
-  intervalId = setInterval(() => {
-    currentIndexHead.value =
-      (currentIndexHead.value + 1) % existingSlides.length;
-  }, 5000); // Change image every 5 seconds (adjust as needed)
-}
-// function startSlideshowTestimonial() {
-//   intervalId = setInterval(() => {
-//     currentIndex.value = (currentIndex.value + 1) % testimonialSlides.length;
-//   }, 5000); // Change image every 5 seconds (adjust as needed)
-// }
-function stopSlideshow() {
-  clearInterval(intervalId);
-}
+};
 </script>
+
 
 <template>
   <!-- <div class="green-bar" style="background-color: #34C759; height: 5px;"></div> -->
 
-  <div class="container-fluid" style="background-color: #30c7b5;height: 41px;">
+  <div class="container-fluid" style="background-color: #30c7b5; height: 41px">
     <div class="text-center">
-      <h3 style="color: white;">50% OFF</h3>
+      <h3 style="color: white">50% OFF</h3>
     </div>
   </div>
 
-  <navbar is-blur="blur border-radius-lg my-3 py-2 start-0 end-0 mx-4 shadow" btn-background="bg-gradient-success"
-    :dark-mode="true" style="position: absolute;" />
+  <navbar
+    is-blur="blur border-radius-lg my-3 py-2 start-0 end-0 mx-4 shadow"
+    btn-background="bg-gradient-success"
+    :dark-mode="true"
+    style="position: absolute"
+  />
 
+  <div
+    class="page-header position-relative"
+    :style="{
+      backgroundImage: existingSlides[currentIndexHead]
+        ? `url(${existingSlides[currentIndexHead].imageUrl})`
+        : '',
 
-  <div class="page-header position-relative" :style="{
-    backgroundImage: existingSlides[currentIndexHead]
-      ? `url(${existingSlides[currentIndexHead].imageUrl})`
-      : '',
-
-    backgroundSize: 'cover',
-    // padding: '60px',
-  }">
+      backgroundSize: 'cover',
+      // padding: '60px',
+    }"
+  >
     <div class="container pb-10 pb-lg-9 pt-7 postion-relative z-index-2">
       <div class="row">
         <div class="col-md-6 mt-4">
@@ -96,8 +109,11 @@ function stopSlideshow() {
                 : ""
             }}
           </h3>
-          <router-link :to="{ name: 'Signin Basic' }" class="mb-0 btn btn-sm me-1"
-            :class="btnBackground ? btnBackground : ' text-white'">
+          <router-link
+            :to="{ name: 'Signin Basic' }"
+            class="mb-0 btn btn-sm me-1"
+            :class="btnBackground ? btnBackground : ' text-white'"
+          >
             Book Now
           </router-link>
         </div>
@@ -110,22 +126,38 @@ function stopSlideshow() {
     <section class="counter-section pt-120 mt-7">
       <div class="container">
         <div class="counter-wrapper">
-          <div class="counter__items odometer-item wow fadeInDown" data-wow-duration="0.4s" style="
+          <div
+            class="counter__items odometer-item wow fadeInDown"
+            data-wow-duration="0.4s"
+            style="
               visibility: visible;
               animation-duration: 0.4s;
               animation-name: fadeInDown;
-            ">
+            "
+          >
             <div class="cont d-flex align-items-center">
-              <span class="odometer odometer-auto-theme" data-odometer-final="38">
+              <span
+                class="odometer odometer-auto-theme"
+                data-odometer-final="38"
+              >
                 <div class="odometer-inside">
-                  <span class="odometer-digit"><span
-                      class="odometer-digit-inner"><span class="odometer-ribbon"><span
-                          class="odometer-ribbon-inner"><span
-                            class="odometer-value">3</span></span></span></span></span><span
-                    class="odometer-digit"><span
-                      class="odometer-digit-inner"><span class="odometer-ribbon"><span
-                          class="odometer-ribbon-inner"><span
-                            class="odometer-value">8</span></span></span></span></span>
+                  <span class="odometer-digit"
+                    ><span class="odometer-digit-inner"
+                      ><span class="odometer-ribbon"
+                        ><span class="odometer-ribbon-inner"
+                          ><span class="odometer-value">3</span></span
+                        ></span
+                      ></span
+                    ></span
+                  ><span class="odometer-digit"
+                    ><span class="odometer-digit-inner"
+                      ><span class="odometer-ribbon"
+                        ><span class="odometer-ribbon-inner"
+                          ><span class="odometer-value">8</span></span
+                        ></span
+                      ></span
+                    ></span
+                  >
                 </div>
               </span>
               <!-- <span class="plus__icon">
@@ -140,25 +172,38 @@ function stopSlideshow() {
             <p>Years Experience</p>
           </div>
           <div class="vline"></div>
-          <div class="counter__items odometer-item wow fadeInDown" data-wow-duration="0.4s" style="
+          <div
+            class="counter__items odometer-item wow fadeInDown"
+            data-wow-duration="0.4s"
+            style="
               visibility: visible;
               animation-duration: 0.4s;
               animation-name: fadeInDown;
-            ">
+            "
+          >
             <div class="cont d-flex align-items-center">
-              <span class="odometer odometer-auto-theme" data-odometer-final="99">
+              <span
+                class="odometer odometer-auto-theme"
+                data-odometer-final="99"
+              >
                 <div class="odometer-inside">
-                  <span class="odometer-digit"><span
-                      class="odometer-digit-inner"><span class="odometer-ribbon"><span
-                          class="odometer-ribbon-inner"></span></span></span></span><span
-                    class="odometer-digit"><span
-                      class="odometer-digit-inner"><span class="odometer-ribbon"><span
-                          class="odometer-ribbon-inner"><span
-                            class="odometer-value">9</span>
-                            <span
-                            class="odometer-value">9</span>
-                          <span
-                            class="odometer-value">9</span></span></span></span></span>
+                  <span class="odometer-digit"
+                    ><span class="odometer-digit-inner"
+                      ><span class="odometer-ribbon"
+                        ><span
+                          class="odometer-ribbon-inner"
+                        ></span></span></span></span
+                  ><span class="odometer-digit"
+                    ><span class="odometer-digit-inner"
+                      ><span class="odometer-ribbon"
+                        ><span class="odometer-ribbon-inner"
+                          ><span class="odometer-value">9</span>
+                          <span class="odometer-value">9</span>
+                          <span class="odometer-value">9</span></span
+                        ></span
+                      ></span
+                    ></span
+                  >
                 </div>
               </span>
               <!-- <span class="plus__icon">
@@ -173,50 +218,85 @@ function stopSlideshow() {
             <p>Successful Rate</p>
           </div>
           <div class="vline"></div>
-          <div class="counter__items odometer-item wow fadeInDown" data-wow-duration="0.4s" style="
+          <div
+            class="counter__items odometer-item wow fadeInDown"
+            data-wow-duration="0.4s"
+            style="
               visibility: visible;
               animation-duration: 0.4s;
               animation-name: fadeInDown;
-            ">
+            "
+          >
             <div class="cont d-flex align-items-center">
-              <span class="odometer odometer-auto-theme" data-odometer-final="643">
+              <span
+                class="odometer odometer-auto-theme"
+                data-odometer-final="643"
+              >
                 <div class="odometer-inside">
-                  <span class="odometer-digit"><span
-                      class="odometer-digit-inner"><span class="odometer-ribbon"><span
-                          class="odometer-ribbon-inner"></span></span></span></span><span
-                    class="odometer-digit"><span
-                      class="odometer-digit-inner"><span class="odometer-ribbon"><span
-                          class="odometer-ribbon-inner"><span
-                            class="odometer-value">4</span></span></span></span></span><span
-                    class="odometer-digit"><span class="odometer-digit-spacer">8</span><span
-                      class="odometer-digit-inner"><span class="odometer-ribbon"><span
-                          class="odometer-ribbon-inner"><span
-                            class="odometer-value">3</span></span></span></span></span>
+                  <span class="odometer-digit"
+                    ><span class="odometer-digit-inner"
+                      ><span class="odometer-ribbon"
+                        ><span
+                          class="odometer-ribbon-inner"
+                        ></span></span></span></span
+                  ><span class="odometer-digit"
+                    ><span class="odometer-digit-inner"
+                      ><span class="odometer-ribbon"
+                        ><span class="odometer-ribbon-inner"
+                          ><span class="odometer-value">4</span></span
+                        ></span
+                      ></span
+                    ></span
+                  ><span class="odometer-digit"
+                    ><span class="odometer-digit-spacer">8</span
+                    ><span class="odometer-digit-inner"
+                      ><span class="odometer-ribbon"
+                        ><span class="odometer-ribbon-inner"
+                          ><span class="odometer-value">3</span></span
+                        ></span
+                      ></span
+                    ></span
+                  >
                 </div>
               </span>
-             
             </div>
             <p>Project Running</p>
           </div>
           <div class="vline"></div>
-          <div class="counter__items odometer-item wow fadeInDown" data-wow-duration="0.4s" style="
+          <div
+            class="counter__items odometer-item wow fadeInDown"
+            data-wow-duration="0.4s"
+            style="
               visibility: visible;
               animation-duration: 0.4s;
               animation-name: fadeInDown;
-            ">
+            "
+          >
             <div class="cont d-flex align-items-center">
-              <span class="odometer odometer-auto-theme" data-odometer-final="64">
+              <span
+                class="odometer odometer-auto-theme"
+                data-odometer-final="64"
+              >
                 <div class="odometer-inside">
-                  <span class="odometer-digit"><span class="odometer-digit-spacer">8</span><span
-                      class="odometer-digit-inner"><span class="odometer-ribbon"><span
-                          class="odometer-ribbon-inner"><span
-                            class="odometer-value">6</span></span></span></span></span><span
-                    class="odometer-digit"><span class="odometer-digit-spacer">8</span><span
-                      class="odometer-digit-inner"><span class="odometer-ribbon"><span
-                          class="odometer-ribbon-inner"></span></span></span></span>
+                  <span class="odometer-digit"
+                    ><span class="odometer-digit-spacer">8</span
+                    ><span class="odometer-digit-inner"
+                      ><span class="odometer-ribbon"
+                        ><span class="odometer-ribbon-inner"
+                          ><span class="odometer-value">6</span></span
+                        ></span
+                      ></span
+                    ></span
+                  ><span class="odometer-digit"
+                    ><span class="odometer-digit-spacer">8</span
+                    ><span class="odometer-digit-inner"
+                      ><span class="odometer-ribbon"
+                        ><span
+                          class="odometer-ribbon-inner"
+                        ></span></span></span
+                  ></span>
                 </div>
               </span>
-              
             </div>
             <p>Our Team Member</p>
           </div>
@@ -224,13 +304,24 @@ function stopSlideshow() {
       </div>
     </section>
   </div>
-  <section class="relative bg-cover bg-center py-7 mt-10"
-  :style="{ backgroundImage: 'url(' + require('../../assets/img/bar.png') + ')', }">
-    <div class="absolute inset-0  "></div>
-    <div class="container mx-auto relative flex justify-center items-center text-center">
+  <section
+    class="relative bg-cover bg-center py-7 mt-10"
+    :style="{
+      backgroundImage: 'url(' + require('../../assets/img/bar.png') + ')',
+    }"
+  >
+    <div class="absolute inset-0"></div>
+    <div
+      class="container mx-auto relative flex justify-center items-center text-center"
+    >
       <div class="max-w-lg">
-        <h2 class="text-white text-3xl md:text-4xl font-bold mb-4">Get started with your free estimate</h2>
-        <a href="#" class="bg-yellow-button text-gray-900 font-medium py-3 px-6 rounded">
+        <h2 class="text-white text-3xl md:text-4xl font-bold mb-4">
+          Get started with your free estimate
+        </h2>
+        <a
+          href="#"
+          class="bg-yellow-button text-gray-900 font-medium py-3 px-6 rounded"
+        >
           Get an Estimate
         </a>
       </div>
@@ -238,14 +329,20 @@ function stopSlideshow() {
   </section>
   <div class="container">
     <div class="work-wrapper1 mt-7">
-      <img decoding="async"
+      <img
+        decoding="async"
         src="https://www.4damstheme.com/clenis/wp-content/plugins/clenis-toolkit/widgets/img/icon/flower.png"
-        alt="How It Works" class="follower-section" />
+        alt="How It Works"
+        class="follower-section"
+      />
       <div class="row justify-content-lg-between justify-content-center">
         <div class="col-lg-7">
           <div class="work-thumb">
-            <img decoding="async" src="../../assets/img/menage.png"
-              alt="How It Works" />
+            <img
+              decoding="async"
+              src="../../assets/img/menage.png"
+              alt="How It Works"
+            />
           </div>
         </div>
         <div class="col-lg-5 col-md-7">
@@ -255,8 +352,15 @@ function stopSlideshow() {
                 style="visibility: visible; animation-name: fadeInDown">
                 <span> Working Process </span>
               </div> -->
-              <h2 class="white mt-xxl-4 mt-2 wow fadeInUp" data-wow-delay="0.5"
-                style="visibility: visible; animation-name: fadeInUp;color:#032b52 ;">
+              <h2
+                class="white mt-xxl-4 mt-2 wow fadeInUp"
+                data-wow-delay="0.5"
+                style="
+                  visibility: visible;
+                  animation-name: fadeInUp;
+                  color: #032b52;
+                "
+              >
                 Nos Service
               </h2>
               <!-- <p class="text-white wow fadeInDown" data-wow-delay="0.6"
@@ -266,78 +370,93 @@ function stopSlideshow() {
               </p> -->
             </div>
             <div class="howit-work-info">
-              <div class="howit-item wow fadeInUp" data-wow-delay="0.7" style="visibility: visible; animation-name: fadeInUp;padding: 35px;
-    padding-left: 0px;">
-                <h3 class="title d-flex align-items-center gap-2">
-                  MENAGE
-                </h3>
+              <div
+                class="howit-item wow fadeInUp"
+                data-wow-delay="0.7"
+                style="
+                  visibility: visible;
+                  animation-name: fadeInUp;
+                  padding: 35px;
+                  padding-left: 0px;
+                "
+              >
+                <h3 class="title d-flex align-items-center gap-2">MENAGE</h3>
                 <p class="pra">
                   The first step involves understanding the client's needs and
                   expectations. This may include a consultation where the client
                   outlines.
-               
                 </p>
                 <p class="pra">
                   The first step involves understanding the client's needs and
                   expectations. This may include a consultation where the client
                   outlines.
-               
                 </p>
-                  <p class="pra">
+                <p class="pra">
                   The first step involves understanding the client's needs and
                   expectations. This may include a consultation where the client
                   outlines.
-               
                 </p>
               </div>
-
             </div>
           </div>
         </div>
-
-
       </div>
-      <img decoding="async"
+      <img
+        decoding="async"
         src="https://www.4damstheme.com/clenis/wp-content/plugins/clenis-toolkit/widgets/img/icon/working-ball.png"
-        alt="How It Works" class="working-bable" />
+        alt="How It Works"
+        class="working-bable"
+      />
     </div>
   </div>
-  <section class="working-process" style="text-align: center;
-  padding: 40px 20px;
-  background-color: #f9f9f9;">
-    <div class="container" style=" max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 15px;">
-      <div class="title-section" style="margin-bottom: 40px;">
-        <h2 style="font-size: 2em;
-  margin-bottom: 10px;">Our Working Process</h2>
-        <p style=" font-size: 1em;
-  color: #666;">Perspiciatis unde omnis iste natus error sit voluptatem accusantium dol oremque laudantium, totam
-          remeaque ipsa.</p>
+  <section
+    class="working-process"
+    style="text-align: center; padding: 40px 20px; background-color: #f9f9f9"
+  >
+    <div
+      class="container"
+      style="max-width: 1200px; margin: 0 auto; padding: 0 15px"
+    >
+      <div class="title-section" style="margin-bottom: 40px">
+        <h2 style="font-size: 2em; margin-bottom: 10px">Our Working Process</h2>
+        <p style="font-size: 1em; color: #666">
+          Perspiciatis unde omnis iste natus error sit voluptatem accusantium
+          dol oremque laudantium, totam remeaque ipsa.
+        </p>
       </div>
-      <div class="process-steps" style="display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;">
+      <div
+        class="process-steps"
+        style="display: flex; flex-wrap: wrap; justify-content: space-between"
+      >
         <div class="step">
           <div class="icon">
             <i class="fa fa-calendar-check-o"></i>
           </div>
           <h3><a href="#">Book Online Form</a></h3>
-          <p>Ahen an unknown printer took a galley type and scrambled nknown printer.</p>
+          <p>
+            Ahen an unknown printer took a galley type and scrambled nknown
+            printer.
+          </p>
         </div>
         <div class="step">
           <div class="icon">
             <i class="fa fa-envelope-o"></i>
           </div>
           <h3><a href="#">Get Confirmation</a></h3>
-          <p>Ahen an unknown printer took a galley type and scrambled nknown printer.</p>
+          <p>
+            Ahen an unknown printer took a galley type and scrambled nknown
+            printer.
+          </p>
         </div>
         <div class="step">
           <div class="icon">
             <i class="fa fa-smile-o"></i>
           </div>
           <h3><a href="#">Let’s Enjoy</a></h3>
-          <p>Ahen an unknown printer took a galley type and scrambled nknown printer.</p>
+          <p>
+            Ahen an unknown printer took a galley type and scrambled nknown
+            printer.
+          </p>
         </div>
       </div>
     </div>
@@ -345,12 +464,13 @@ function stopSlideshow() {
   <ProjectGallerie />
 
   <div class="container">
-
-    <img decoding="async"
+    <img
+      decoding="async"
       src="https://www.4damstheme.com/clenis/wp-content/plugins/clenis-toolkit/widgets/img/icon/flower.png"
-      alt="How It Works" class="follower-section" style="position: relative;
-  left: 30px;
-  top: -27px;" />
+      alt="How It Works"
+      class="follower-section"
+      style="position: relative; left: 30px; top: -27px"
+    />
     <div class="row justify-content-lg-between justify-content-center">
       <div class="col-lg-5 col-md-7">
         <div class="howwork-content">
@@ -359,8 +479,16 @@ function stopSlideshow() {
               style="visibility: visible; animation-name: fadeInDown">
               <span> Working Process </span>
             </div> -->
-            <h2 class="white mt-xxl-4 mt-2 wow fadeInUp" data-wow-delay="0.5"
-              style="visibility: visible; animation-name: fadeInUp;color:#30c7b5 ;margin-bottom: -62px;">
+            <h2
+              class="white mt-xxl-4 mt-2 wow fadeInUp"
+              data-wow-delay="0.5"
+              style="
+                visibility: visible;
+                animation-name: fadeInUp;
+                color: #30c7b5;
+                margin-bottom: -62px;
+              "
+            >
               Buandrie
             </h2>
             <!-- <p class="text-white wow fadeInDown" data-wow-delay="0.6"
@@ -370,9 +498,16 @@ function stopSlideshow() {
               </p> -->
           </div>
           <div class="howit-work-info">
-            <div class="howit-item wow fadeInUp" data-wow-delay="0.7" style="visibility: visible; animation-name: fadeInUp;padding: 35px;
-    padding-left: 0px;">
-
+            <div
+              class="howit-item wow fadeInUp"
+              data-wow-delay="0.7"
+              style="
+                visibility: visible;
+                animation-name: fadeInUp;
+                padding: 35px;
+                padding-left: 0px;
+              "
+            >
               <p class="pra">
                 The first step involves understanding the client's needs and
                 expectations. This may include a consultation where the client
@@ -389,120 +524,174 @@ function stopSlideshow() {
                 outlines.
               </p>
             </div>
-
           </div>
         </div>
       </div>
       <div class="col-lg-7">
         <div class="work-thumb">
-          <img decoding="async" src="../../assets/img/33.png"
-            alt="How It Works" style="width: 90%;
-    border-radius: 60px;" />
+          <img
+            decoding="async"
+            src="../../assets/img/33.png"
+            alt="How It Works"
+            style="width: 90%; border-radius: 60px"
+          />
         </div>
       </div>
-
     </div>
-    <img decoding="async"
+    <img
+      decoding="async"
       src="https://www.4damstheme.com/clenis/wp-content/plugins/clenis-toolkit/widgets/img/icon/working-ball.png"
-      alt="How It Works" class="working-bable" />
-
+      alt="How It Works"
+      class="working-bable"
+    />
   </div>
-  <section class="working-process" style="text-align: center;
-  padding: 40px 20px;
-  background-color: #f9f9f9;">
-    <div class="container" style=" max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 15px;">
-      <div class="title-section" style="margin-bottom: 40px;">
-        <h2 style="font-size: 2em;
-  margin-bottom: 10px;">Our Working Process</h2>
-        <p style=" font-size: 1em;
-  color: #666;">Perspiciatis unde omnis iste natus error sit voluptatem accusantium dol oremque laudantium, totam
-          remeaque ipsa.</p>
+  <section
+    class="working-process"
+    style="text-align: center; padding: 40px 20px; background-color: #f9f9f9"
+  >
+    <div
+      class="container"
+      style="max-width: 1200px; margin: 0 auto; padding: 0 15px"
+    >
+      <div class="title-section" style="margin-bottom: 40px">
+        <h2 style="font-size: 2em; margin-bottom: 10px">Our Working Process</h2>
+        <p style="font-size: 1em; color: #666">
+          Perspiciatis unde omnis iste natus error sit voluptatem accusantium
+          dol oremque laudantium, totam remeaque ipsa.
+        </p>
       </div>
-      <div class="process-steps" style="display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;">
+      <div
+        class="process-steps"
+        style="display: flex; flex-wrap: wrap; justify-content: space-between"
+      >
         <div class="step">
           <div class="icon">
             <i class="fa fa-calendar-check-o"></i>
           </div>
           <h3><a href="#">Book Online Form</a></h3>
-          <p>Ahen an unknown printer took a galley type and scrambled nknown printer.</p>
+          <p>
+            Ahen an unknown printer took a galley type and scrambled nknown
+            printer.
+          </p>
         </div>
         <div class="step">
           <div class="icon">
             <i class="fa fa-envelope-o"></i>
           </div>
           <h3><a href="#">Get Confirmation</a></h3>
-          <p>Ahen an unknown printer took a galley type and scrambled nknown printer.</p>
+          <p>
+            Ahen an unknown printer took a galley type and scrambled nknown
+            printer.
+          </p>
         </div>
         <div class="step">
           <div class="icon">
             <i class="fa fa-smile-o"></i>
           </div>
           <h3><a href="#">Let’s Enjoy</a></h3>
-          <p>Ahen an unknown printer took a galley type and scrambled nknown printer.</p>
+          <p>
+            Ahen an unknown printer took a galley type and scrambled nknown
+            printer.
+          </p>
         </div>
       </div>
     </div>
   </section>
   <section class="testimonials">
     <div class="heading text-center">
-      <h2>What's
+      <h2>
+        What's
         <span>Clients</span>
         Says?
       </h2>
-
     </div>
     <div class="container">
       <div class="row text-center">
         <div class="col-md-12">
-          <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+          <div
+            id="carouselExampleIndicators"
+            class="carousel slide"
+            data-ride="carousel"
+          >
             <!-- Indicators-->
             <ol class="carousel-indicators">
-              <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-              <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-              <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+              <li
+                data-target="#carouselExampleIndicators"
+                data-slide-to="0"
+                class="active"
+              ></li>
+              <li
+                data-target="#carouselExampleIndicators"
+                data-slide-to="1"
+              ></li>
+              <li
+                data-target="#carouselExampleIndicators"
+                data-slide-to="2"
+              ></li>
             </ol>
 
             <div class="carousel-inner">
               <!-- Item-1 -->
               <div class="carousel-item active text-center">
-                <img src="https://i.ibb.co/8x9xK4H/team.jpg" alt="" class="center-block team">
+                <img
+                  src="https://i.ibb.co/8x9xK4H/team.jpg"
+                  alt=""
+                  class="center-block team"
+                />
                 <h3>Alamin Musa</h3>
                 <h4>Front End Developer</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
-                  porttitordapibus dictum.<br>
-                  Fusce faucibus ligula scelerisque, eleifend turpis in</p>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Aliquam porttitordapibus dictum.<br />
+                  Fusce faucibus ligula scelerisque, eleifend turpis in
+                </p>
               </div>
               <!-- Item-2 -->
               <div class="carousel-item text-center">
-                <img src="https://i.ibb.co/8x9xK4H/team.jpg" alt="" class="center-block team">
+                <img
+                  src="https://i.ibb.co/8x9xK4H/team.jpg"
+                  alt=""
+                  class="center-block team"
+                />
                 <h3>Alamin Musa</h3>
                 <h4>Front End Developer</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
-                  porttitordapibus dictum.<br>
-                  Fusce faucibus ligula scelerisque, eleifend turpis in</p>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Aliquam porttitordapibus dictum.<br />
+                  Fusce faucibus ligula scelerisque, eleifend turpis in
+                </p>
               </div>
               <!-- Item-3 -->
               <div class="carousel-item text-center">
-                <img src="https://i.ibb.co/8x9xK4H/team.jpg" alt="" class="center-block team">
+                <img
+                  src="https://i.ibb.co/8x9xK4H/team.jpg"
+                  alt=""
+                  class="center-block team"
+                />
                 <h3>Alamin Musa</h3>
                 <h4>Front End Developer</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
-                  porttitordapibus dictum.<br>
-                  Fusce faucibus ligula scelerisque, eleifend turpis in</p>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Aliquam porttitordapibus dictum.<br />
+                  Fusce faucibus ligula scelerisque, eleifend turpis in
+                </p>
               </div>
-
             </div>
-            <a class="carousel-control-prev control" data-target="#carouselExampleIndicators" role="button"
-              data-slide="prev">
+            <a
+              class="carousel-control-prev control"
+              data-target="#carouselExampleIndicators"
+              role="button"
+              data-slide="prev"
+            >
               <span class="fa fa-angle-left icon" aria-hidden="true"></span>
               <span class="sr-only">Previous</span>
             </a>
-            <a class="carousel-control-next control" data-target="#carouselExampleIndicators" role="button"
-              data-slide="next">
+            <a
+              class="carousel-control-next control"
+              data-target="#carouselExampleIndicators"
+              role="button"
+              data-slide="next"
+            >
               <span class="fa fa-angle-right icon" aria-hidden="true"></span>
               <span class="sr-only">Next</span>
             </a>
@@ -512,88 +701,118 @@ function stopSlideshow() {
     </div>
   </section>
 
-
   <div class="container-fluid">
     <section class="cleaning-quote position-relative">
       <div class="cleaning-thumbing">
-        <img decoding="async"
-          src="../../assets/img/2.png"
-          alt="Contact Us" />
+        <img decoding="async" src="../../assets/img/2.png" alt="Contact Us" />
       </div>
       <div class="container">
         <div class="row g-4">
           <div class="col-lg-5">
             <div class="cleaning-quote-content">
               <div class="cmn-section-title">
-                <div class="cmn--btn cmn-alt2 wow fadeInDown" data-wow-delay="0.4s" style="
+                <div
+                  class="cmn--btn cmn-alt2 wow fadeInDown"
+                  data-wow-delay="0.4s"
+                  style="
                     visibility: visible;
                     animation-delay: 0.4s;
                     animation-name: fadeInDown;
-                  ">
-                  <span > Contact Us </span>
+                  "
+                >
+                  <span> Contact Us </span>
                 </div>
-                <h2 class="white mt-xxl-4 mt-2 mb-0 wow fadeInUp" data-wow-delay="0.6s" style="
+                <h2
+                  class="white mt-xxl-4 mt-2 mb-0 wow fadeInUp"
+                  data-wow-delay="0.6s"
+                  style="
                     visibility: visible;
                     animation-delay: 0.6s;
-                    animation-name: fadeInUp;color:white;
-                  ">
+                    animation-name: fadeInUp;
+                    color: white;
+                  "
+                >
                   Request a free cleaning quote today
                 </h2>
               </div>
               <div class="cleaning-info">
-                <div class="cleaning-info-item wow fadeInDown" data-wow-delay="0.7s" style="
+                <div
+                  class="cleaning-info-item wow fadeInDown"
+                  data-wow-delay="0.7s"
+                  style="
                     visibility: visible;
                     animation-delay: 0.7s;
                     animation-name: fadeInDown;
-                  ">
+                  "
+                >
                   <div class="c-info-icon d-flex align-items-center">
-                    <svg aria-hidden="true" class="e-font-icon-svg e-fas-map-marker-alt" viewBox="0 0 384 512"
-                      xmlns="http://www.w3.org/2000/svg">
+                    <svg
+                      aria-hidden="true"
+                      class="e-font-icon-svg e-fas-map-marker-alt"
+                      viewBox="0 0 384 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
                       <path
-                        d="M172.268 501.67C26.97 291.031 0 269.413 0 192 0 85.961 85.961 0 192 0s192 85.961 192 192c0 77.413-26.97 99.031-172.268 309.67-9.535 13.774-29.93 13.773-39.464 0zM192 272c44.183 0 80-35.817 80-80s-35.817-80-80-80-80 35.817-80 80 35.817 80 80 80z">
-                      </path>
+                        d="M172.268 501.67C26.97 291.031 0 269.413 0 192 0 85.961 85.961 0 192 0s192 85.961 192 192c0 77.413-26.97 99.031-172.268 309.67-9.535 13.774-29.93 13.773-39.464 0zM192 272c44.183 0 80-35.817 80-80s-35.817-80-80-80-80 35.817-80 80 35.817 80 80 80z"
+                      ></path>
                     </svg>
                     <span class="pra"> Telephone </span>
                   </div>
-                  <h3 class="title" style="font-size: 1.5rem;" >
+                  <h3 class="title" style="font-size: 1.5rem">
                     +48 74326 02396
                     <span class="d-block"> +48 64453 96533 </span>
                   </h3>
                 </div>
-                <div class="cleaning-info-item wow fadeInDown" data-wow-delay="0.7s" style="
+                <div
+                  class="cleaning-info-item wow fadeInDown"
+                  data-wow-delay="0.7s"
+                  style="
                     visibility: visible;
                     animation-delay: 0.7s;
                     animation-name: fadeInDown;
-                  ">
+                  "
+                >
                   <div class="c-info-icon d-flex align-items-center">
-                    <svg aria-hidden="true" class="e-font-icon-svg e-fas-map-marker-alt" viewBox="0 0 384 512"
-                      xmlns="http://www.w3.org/2000/svg">
+                    <svg
+                      aria-hidden="true"
+                      class="e-font-icon-svg e-fas-map-marker-alt"
+                      viewBox="0 0 384 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
                       <path
-                        d="M172.268 501.67C26.97 291.031 0 269.413 0 192 0 85.961 85.961 0 192 0s192 85.961 192 192c0 77.413-26.97 99.031-172.268 309.67-9.535 13.774-29.93 13.773-39.464 0zM192 272c44.183 0 80-35.817 80-80s-35.817-80-80-80-80 35.817-80 80 35.817 80 80 80z">
-                      </path>
+                        d="M172.268 501.67C26.97 291.031 0 269.413 0 192 0 85.961 85.961 0 192 0s192 85.961 192 192c0 77.413-26.97 99.031-172.268 309.67-9.535 13.774-29.93 13.773-39.464 0zM192 272c44.183 0 80-35.817 80-80s-35.817-80-80-80-80 35.817-80 80 35.817 80 80 80z"
+                      ></path>
                     </svg>
                     <span class="pra"> Location </span>
                   </div>
-                  <h3 class="title" style="font-size: 1.2rem;">
+                  <h3 class="title" style="font-size: 1.2rem">
                     20 Manchester Square
                     <span class="d-block"> London W1U 360, UK, </span>
                   </h3>
                 </div>
-                <div class="cleaning-info-item wow fadeInDown" data-wow-delay="0.7s" style="
+                <div
+                  class="cleaning-info-item wow fadeInDown"
+                  data-wow-delay="0.7s"
+                  style="
                     visibility: visible;
                     animation-delay: 0.7s;
                     animation-name: fadeInDown;
-                  ">
+                  "
+                >
                   <div class="c-info-icon d-flex align-items-center">
-                    <svg aria-hidden="true" class="e-font-icon-svg e-fas-envelope" viewBox="0 0 512 512"
-                      xmlns="http://www.w3.org/2000/svg">
+                    <svg
+                      aria-hidden="true"
+                      class="e-font-icon-svg e-fas-envelope"
+                      viewBox="0 0 512 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
                       <path
-                        d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z">
-                      </path>
+                        d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z"
+                      ></path>
                     </svg>
                     <span class="pra"> Mail Us </span>
                   </div>
-                  <h3 class="title" style="font-size: 1.2rem;">
+                  <h3 class="title" style="font-size: 1.2rem">
                     helloclenis@gmail.com
                     <span class="d-block"> clenissupport@gmail.com </span>
                   </h3>
@@ -607,30 +826,61 @@ function stopSlideshow() {
                 <p role="status" aria-live="polite" aria-atomic="true"></p>
                 <ul></ul>
               </div>
-              <form action="/clenis/#wpcf7-f9-p72-o1" method="post" class="wpcf7-form init clenis-cf7-form"
-                aria-label="Contact form" novalidate="novalidate" data-status="init">
+              <form
+                action="/clenis/#wpcf7-f9-p72-o1"
+                method="post"
+                class="wpcf7-form init clenis-cf7-form"
+                aria-label="Contact form"
+                novalidate="novalidate"
+                data-status="init"
+              >
                 <div style="display: none">
                   <input type="hidden" name="_wpcf7" value="9" />
                   <input type="hidden" name="_wpcf7_version" value="5.9.3" />
                   <input type="hidden" name="_wpcf7_locale" value="en_US" />
-                  <input type="hidden" name="_wpcf7_unit_tag" value="wpcf7-f9-p72-o1" />
-                  <input type="hidden" name="_wpcf7_container_post" value="72" />
-                  <input type="hidden" name="_wpcf7_posted_data_hash" value="" />
+                  <input
+                    type="hidden"
+                    name="_wpcf7_unit_tag"
+                    value="wpcf7-f9-p72-o1"
+                  />
+                  <input
+                    type="hidden"
+                    name="_wpcf7_container_post"
+                    value="72"
+                  />
+                  <input
+                    type="hidden"
+                    name="_wpcf7_posted_data_hash"
+                    value=""
+                  />
                 </div>
-                <div class="cleaning-form wow fadeInUp" data-wow-delay="0.6s" style="
+                <div
+                  class="cleaning-form wow fadeInUp"
+                  data-wow-delay="0.6s"
+                  style="
                     visibility: visible;
                     animation-delay: 0.6s;
                     animation-name: fadeInUp;
-                  ">
+                  "
+                >
                   <div class="row g-4">
                     <div class="col-lg-6 col-md-6">
                       <div class="clean-form-grp">
                         <p>
                           <label>First Name</label><br />
-                          <span class="wpcf7-form-control-wrap" data-name="text-454"><input size="40"
-                              class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true"
-                              aria-invalid="false" placeholder="First name" value="" type="text"
-                              name="text-454" /></span>
+                          <span
+                            class="wpcf7-form-control-wrap"
+                            data-name="text-454"
+                            ><input
+                              size="40"
+                              class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required"
+                              aria-required="true"
+                              aria-invalid="false"
+                              placeholder="First name"
+                              value=""
+                              type="text"
+                              name="text-454"
+                          /></span>
                         </p>
                       </div>
                     </div>
@@ -638,10 +888,19 @@ function stopSlideshow() {
                       <div class="clean-form-grp">
                         <p>
                           <label>Address</label><br />
-                          <span class="wpcf7-form-control-wrap" data-name="text-454"><input size="40"
-                              class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true"
-                              aria-invalid="false" placeholder="Your Address" value="" type="text"
-                              name="text-454" /></span>
+                          <span
+                            class="wpcf7-form-control-wrap"
+                            data-name="text-454"
+                            ><input
+                              size="40"
+                              class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required"
+                              aria-required="true"
+                              aria-invalid="false"
+                              placeholder="Your Address"
+                              value=""
+                              type="text"
+                              name="text-454"
+                          /></span>
                         </p>
                       </div>
                     </div>
@@ -649,10 +908,19 @@ function stopSlideshow() {
                       <div class="clean-form-grp">
                         <p>
                           <label>Your Email</label><br />
-                          <span class="wpcf7-form-control-wrap" data-name="email-332"><input size="40"
+                          <span
+                            class="wpcf7-form-control-wrap"
+                            data-name="email-332"
+                            ><input
+                              size="40"
                               class="wpcf7-form-control wpcf7-email wpcf7-validates-as-required wpcf7-text wpcf7-validates-as-email"
-                              aria-required="true" aria-invalid="false" placeholder="Your Email" value="" type="email"
-                              name="email-332" /></span>
+                              aria-required="true"
+                              aria-invalid="false"
+                              placeholder="Your Email"
+                              value=""
+                              type="email"
+                              name="email-332"
+                          /></span>
                         </p>
                       </div>
                     </div>
@@ -660,17 +928,42 @@ function stopSlideshow() {
                       <div class="clean-form-grp">
                         <p>
                           <label>Service</label><br />
-                          <span class="wpcf7-form-control-wrap" data-name="text-454">
-                            <select class="wpcf7-form-control wpcf7-select" aria-invalid="false" name="service" style="border-radius: 10px;
+                          <span
+                            class="wpcf7-form-control-wrap"
+                            data-name="text-454"
+                          >
+                            <select
+                              class="wpcf7-form-control wpcf7-select"
+                              aria-invalid="false"
+                              name="service"
+                              style="
+                                border-radius: 10px;
                                 border: 1px solid rgba(255, 255, 255, 0.15);
                                 outline: none;
                                 color: rgba(255, 255, 255, 0.55);
                                 padding: 16px 23px;
                                 background: transparent;
-                                width: 100%;">
-                              <option style="background-color: #30c7b5;" value="">Select a service</option>
-                              <option style="background-color: #30c7b5;" value="Service 1">Service 1</option>
-                              <option style="background-color: #30c7b5;" value="Service 2">Service 2</option>
+                                width: 100%;
+                              "
+                            >
+                              <option
+                                style="background-color: #30c7b5"
+                                value=""
+                              >
+                                Select a service
+                              </option>
+                              <option
+                                style="background-color: #30c7b5"
+                                value="Service 1"
+                              >
+                                Service 1
+                              </option>
+                              <option
+                                style="background-color: #30c7b5"
+                                value="Service 2"
+                              >
+                                Service 2
+                              </option>
                               <!-- Add more options as needed -->
                             </select>
                           </span>
@@ -681,15 +974,28 @@ function stopSlideshow() {
                       <div class="clean-form-grp">
                         <p>
                           <label>Day of Service</label><br />
-                          <span class="wpcf7-form-control-wrap" data-name="text-454"><input size="40"
-                              class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true"
-                              aria-invalid="false" placeholder="Day of Service" value="" type="date" style="border-radius: 10px;
-                              border: 1px solid rgba(255, 255, 255, 0.15);
-                              outline: none;
-                              color: rgba(255, 255, 255, 0.55);
-                              padding: 16px 23px;
-                              background: transparent;
-                              width: 100%;" name="text-454" /></span>
+                          <span
+                            class="wpcf7-form-control-wrap"
+                            data-name="text-454"
+                            ><input
+                              size="40"
+                              class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required"
+                              aria-required="true"
+                              aria-invalid="false"
+                              placeholder="Day of Service"
+                              value=""
+                              type="date"
+                              style="
+                                border-radius: 10px;
+                                border: 1px solid rgba(255, 255, 255, 0.15);
+                                outline: none;
+                                color: rgba(255, 255, 255, 0.55);
+                                padding: 16px 23px;
+                                background: transparent;
+                                width: 100%;
+                              "
+                              name="text-454"
+                          /></span>
                         </p>
                       </div>
                     </div>
@@ -697,21 +1003,38 @@ function stopSlideshow() {
                       <div class="clean-form-grp">
                         <p>
                           <label>Add a Note</label><br />
-                          <span class="wpcf7-form-control-wrap" data-name="textarea-35">
-                            <textarea cols="40" rows="10"
-                              class="wpcf7-form-control wpcf7-textarea wpcf7-validates-as-required" aria-required="true"
-                              aria-invalid="false" placeholder="Add a note" name="textarea-35"></textarea>
+                          <span
+                            class="wpcf7-form-control-wrap"
+                            data-name="textarea-35"
+                          >
+                            <textarea
+                              cols="40"
+                              rows="10"
+                              class="wpcf7-form-control wpcf7-textarea wpcf7-validates-as-required"
+                              aria-required="true"
+                              aria-invalid="false"
+                              placeholder="Add a note"
+                              name="textarea-35"
+                            ></textarea>
                           </span>
                         </p>
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="clean-form-grp">
-                        <p style="margin-bottom: 0px;">
-                          <input class="wpcf7-form-control wpcf7-submit has-spinner cmn--btn cmn-alt2" type="submit"
-                            value="Submit Your Information" style="border: unset;
-                            color: #30c7b5;background: #30c7b5;border-radius: 87px;    font-size: 16px;
-" /><span class="wpcf7-spinner"></span>
+                        <p style="margin-bottom: 0px">
+                          <input
+                            class="wpcf7-form-control wpcf7-submit has-spinner cmn--btn cmn-alt2"
+                            type="submit"
+                            value="Submit Your Information"
+                            style="
+                              border: unset;
+                              color: #30c7b5;
+                              background: #30c7b5;
+                              border-radius: 87px;
+                              font-size: 16px;
+                            "
+                          /><span class="wpcf7-spinner"></span>
                         </p>
                       </div>
                     </div>
@@ -723,26 +1046,39 @@ function stopSlideshow() {
           </div>
         </div>
       </div>
-      <img decoding="async"
+      <img
+        decoding="async"
         src="https://www.4damstheme.com/clenis/wp-content/plugins/clenis-toolkit/widgets/img/icon/working-ball.png"
-        alt="Contact Us" class="cleaning-shape" />
-      <img decoding="async"
+        alt="Contact Us"
+        class="cleaning-shape"
+      />
+      <img
+        decoding="async"
         src="https://www.4damstheme.com/clenis/wp-content/plugins/clenis-toolkit/widgets/img/icon/cirs.png"
-        alt="Contact Us" class="working-cirs" />
+        alt="Contact Us"
+        class="working-cirs"
+      />
     </section>
   </div>
   <footer class="footer__section position-relative">
     <div class="container">
-      <div class="newsletter-section" style="padding-top: 130px;padding-bottom: 65px;text-align: center;">
+      <div
+        class="newsletter-section"
+        style="padding-top: 130px; padding-bottom: 65px; text-align: center"
+      >
         <div id="block-15" class="footer-top-widget widget_block">
-          <h3 class="title subcribe-title wow fadeInDown" data-wow-delay="0.4s" style="
+          <h3
+            class="title subcribe-title wow fadeInDown"
+            data-wow-delay="0.4s"
+            style="
               visibility: visible;
               animation-delay: 0.4s;
               animation-name: fadeInDown;
               font-size: 24px;
               line-height: 120%;
               font-weight: 700;
-            ">
+            "
+          >
             Subscribe to Our Newsletter
           </h3>
           <div class="wp-widget-group__inner-blocks">
@@ -764,36 +1100,70 @@ function stopSlideshow() {
               </script> -->
               <!-- Mailchimp for WordPress v4.9.12 - https://wordpress.org/plugins/mailchimp-for-wp/ -->
             </p>
-            <form id="mc4wp-form-1" class="mc4wp-form mc4wp-form-227" method="post" data-id="227"
-              data-name="subscription">
+            <form
+              id="mc4wp-form-1"
+              class="mc4wp-form mc4wp-form-227"
+              method="post"
+              data-id="227"
+              data-name="subscription"
+            >
               <div class="mc4wp-form-fields">
-                <label class="fz-16 title fw-700 prafont">Enter your email</label>
-                <input type="email" name="EMAIL" required="" style="width: 100%;
-                  max-width: 500px;
-                  border-radius: 10px;
-                  border: 1px solid rgba(0, 0, 0, 0.09);
-                  color: var(--pra);
-                  padding: 13px 16px;
-                  margin-bottom: 10px;" />
-                <input class="cmn--btn" type="submit" value="Explore Our Offers" style="padding: 12px 28px 15px;
-                  color: white;
-                  font-size: 16px;
-                  font-style: normal;
-                  font-weight: 500;
-                  line-height: 28px;
-                  display: inline-block;
-                  position: relative;
-                  background: #30c7b5;
-                  overflow: hidden;
-                  border-radius: 100px;
-                  transition: all 0.5s;
-                  border: unset;
-                  margin-top: 10px;" />
+                <label class="fz-16 title fw-700 prafont"
+                  >Enter your email</label
+                >
+                <input
+                  type="email"
+                  name="EMAIL"
+                  required=""
+                  style="
+                    width: 100%;
+                    max-width: 500px;
+                    border-radius: 10px;
+                    border: 1px solid rgba(0, 0, 0, 0.09);
+                    color: var(--pra);
+                    padding: 13px 16px;
+                    margin-bottom: 10px;
+                  "
+                />
+                <input
+                  class="cmn--btn"
+                  type="submit"
+                  value="Explore Our Offers"
+                  style="
+                    padding: 12px 28px 15px;
+                    color: white;
+                    font-size: 16px;
+                    font-style: normal;
+                    font-weight: 500;
+                    line-height: 28px;
+                    display: inline-block;
+                    position: relative;
+                    background: #30c7b5;
+                    overflow: hidden;
+                    border-radius: 100px;
+                    transition: all 0.5s;
+                    border: unset;
+                    margin-top: 10px;
+                  "
+                />
               </div>
-              <label style="display: none !important">Leave this field empty if you're human:
-                <input type="text" name="_mc4wp_honeypot" value="" tabindex="-1" autocomplete="off" /></label><input
-                type="hidden" name="_mc4wp_timestamp" value="1715706989" /><input type="hidden" name="_mc4wp_form_id"
-                value="227" /><input type="hidden" name="_mc4wp_form_element_id" value="mc4wp-form-1" />
+              <label style="display: none !important"
+                >Leave this field empty if you're human:
+                <input
+                  type="text"
+                  name="_mc4wp_honeypot"
+                  value=""
+                  tabindex="-1"
+                  autocomplete="off" /></label
+              ><input
+                type="hidden"
+                name="_mc4wp_timestamp"
+                value="1715706989"
+              /><input type="hidden" name="_mc4wp_form_id" value="227" /><input
+                type="hidden"
+                name="_mc4wp_form_element_id"
+                value="mc4wp-form-1"
+              />
               <div class="mc4wp-response"></div>
             </form>
             <!-- / Mailchimp for WordPress Plugin -->
@@ -801,273 +1171,457 @@ function stopSlideshow() {
           </div>
         </div>
       </div>
-      <div class="footer__top pb-120" style="border-top: 1px solid rgba(0, 0, 0, 0.09);
-    padding-top: 60px;">
-        <div class="row g-4" style="margin-bottom: 30px;">
-          <div class="col-xl-4 col-lg-3 col-md-5 col-sm-6 wow fadeInUp" data-wow-duration="2.1s" style="
+      <div
+        class="footer__top pb-120"
+        style="border-top: 1px solid rgba(0, 0, 0, 0.09); padding-top: 60px"
+      >
+        <div class="row g-4" style="margin-bottom: 30px">
+          <div
+            class="col-xl-4 col-lg-3 col-md-5 col-sm-6 wow fadeInUp"
+            data-wow-duration="2.1s"
+            style="
               visibility: visible;
               animation-duration: 2.1s;
               animation-name: fadeInUp;
-            ">
-            <div class="footer__item" style="margin-bottom: 24px;
-            display: block;">
-              <a href="https://www.4damstheme.com/clenis/" class="footer-logo" style="margin-bottom: 24px;
-            display: block;">
+            "
+          >
+            <div
+              class="footer__item"
+              style="margin-bottom: 24px; display: block"
+            >
+              <a
+                href="https://www.4damstheme.com/clenis/"
+                class="footer-logo"
+                style="margin-bottom: 24px; display: block"
+              >
                 <img src="../../assets/img/H-Logo.png" alt="Clenis" />
               </a>
-              <div class="footer prag" style="color: #748AA0;
+              <div
+                class="footer prag"
+                style="
+                  color: #748aa0;
                   font-size: 16px;
                   font-style: normal;
                   font-weight: 400;
                   line-height: 28px;
                   margin-bottom: 50px;
                   max-width: 325px;
-                  margin-top: 40px;">
+                  margin-top: 40px;
+                "
+              >
                 With a rich history spanning decades, our club has become a
                 symbol of excellence in the golfing community. offers a
                 challenging yet rewarding game play.
               </div>
-              <ul class="footer-social d-flex align-items-center" style="gap: 24px;">
-                <li style="list-style: none;">
-                  <a href="" style="text-decoration: none;
-                    text-transform: capitalize;
-                    margin: 0;
-                    color: #30c7b5;
-                    transition: all 0.3s;">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <ul
+                class="footer-social d-flex align-items-center"
+                style="gap: 24px"
+              >
+                <li style="list-style: none">
+                  <a
+                    href=""
+                    style="
+                      text-decoration: none;
+                      text-transform: capitalize;
+                      margin: 0;
+                      color: #30c7b5;
+                      transition: all 0.3s;
+                    "
+                  >
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
                       <path
                         d="M9.69771 13.2478C9.62571 13.2478 8.04171 13.2478 7.32171 13.2478C6.93771 13.2478 6.81771 13.1038 6.81771 12.7438C6.81771 11.7838 6.81771 10.7998 6.81771 9.83983C6.81771 9.45583 6.96171 9.33583 7.32171 9.33583H9.69771C9.69771 9.26383 9.69771 7.87183 9.69771 7.22383C9.69771 6.26383 9.86571 5.35183 10.3457 4.51183C10.8497 3.64783 11.5697 3.07183 12.4817 2.73583C13.0817 2.51983 13.6817 2.42383 14.3297 2.42383H16.6817C17.0177 2.42383 17.1617 2.56783 17.1617 2.90383V5.63983C17.1617 5.97583 17.0177 6.11983 16.6817 6.11983C16.0337 6.11983 15.3857 6.11983 14.7377 6.14383C14.0897 6.14383 13.7537 6.45583 13.7537 7.12783C13.7297 7.84783 13.7537 8.54383 13.7537 9.28783H16.5377C16.9217 9.28783 17.0657 9.43183 17.0657 9.81583V12.7198C17.0657 13.1038 16.9457 13.2238 16.5377 13.2238C15.6737 13.2238 13.8257 13.2238 13.7537 13.2238V21.0478C13.7537 21.4558 13.6337 21.5998 13.2017 21.5998C12.1937 21.5998 11.2097 21.5998 10.2017 21.5998C9.84171 21.5998 9.69771 21.4558 9.69771 21.0958C9.69771 18.5758 9.69771 13.3198 9.69771 13.2478Z"
-                        fill="#30c7b5"></path>
+                        fill="#30c7b5"
+                      ></path>
                     </svg>
                   </a>
                 </li>
-                <li style="list-style: none;">
-                  <a href="" style="text-decoration: none;
-                    text-transform: capitalize;
-                    margin: 0;
-                    color: #30c7b5;
-                    transition: all 0.3s;">
-                    <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <li style="list-style: none">
+                  <a
+                    href=""
+                    style="
+                      text-decoration: none;
+                      text-transform: capitalize;
+                      margin: 0;
+                      color: #30c7b5;
+                      transition: all 0.3s;
+                    "
+                  >
+                    <svg
+                      width="25"
+                      height="24"
+                      viewBox="0 0 25 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
                       <path
                         d="M18.8571 0H6.85714C3.49714 0 0.857143 2.64 0.857143 6V18C0.857143 21.36 3.49714 24 6.85714 24H18.8571C22.2171 24 24.8571 21.36 24.8571 18V6C24.8571 2.64 22.2171 0 18.8571 0ZM22.4571 18C22.4571 20.04 20.8971 21.6 18.8571 21.6H6.85714C4.81714 21.6 3.25714 20.04 3.25714 18V6C3.25714 3.96 4.81714 2.4 6.85714 2.4H18.8571C20.8971 2.4 22.4571 3.96 22.4571 6V18Z"
-                        fill="#30c7b5"></path>
+                        fill="#30c7b5"
+                      ></path>
                       <path
                         d="M12.8571 6C9.49714 6 6.85714 8.64 6.85714 12C6.85714 15.36 9.49714 18 12.8571 18C16.2171 18 18.8571 15.36 18.8571 12C18.8571 8.64 16.2171 6 12.8571 6ZM12.8571 15.6C10.8171 15.6 9.25714 14.04 9.25714 12C9.25714 9.96 10.8171 8.4 12.8571 8.4C14.8971 8.4 16.4571 9.96 16.4571 12C16.4571 14.04 14.8971 15.6 12.8571 15.6Z"
-                        fill="#30c7b5"></path>
+                        fill="#30c7b5"
+                      ></path>
                       <path
                         d="M18.8566 7.1998C19.5194 7.1998 20.0566 6.66255 20.0566 5.9998C20.0566 5.33706 19.5194 4.7998 18.8566 4.7998C18.1939 4.7998 17.6566 5.33706 17.6566 5.9998C17.6566 6.66255 18.1939 7.1998 18.8566 7.1998Z"
-                        fill="#30c7b5"></path>
+                        fill="#30c7b5"
+                      ></path>
                     </svg>
                   </a>
                 </li>
-                <li style="list-style: none;">
-                  <a href="" style="text-decoration: none;
-                    text-transform: capitalize;
-                    margin: 0;
-                    color: #30c7b5;
-                    transition: all 0.3s;">
-                    <svg width="23" height="20" viewBox="0 0 23 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <li style="list-style: none">
+                  <a
+                    href=""
+                    style="
+                      text-decoration: none;
+                      text-transform: capitalize;
+                      margin: 0;
+                      color: #30c7b5;
+                      transition: all 0.3s;
+                    "
+                  >
+                    <svg
+                      width="23"
+                      height="20"
+                      viewBox="0 0 23 20"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
                       <path
                         d="M17.9178 0.25H21.2258L13.9988 8.51L22.5008 19.75H15.8438L10.6298 12.933L4.66383 19.75H1.35383L9.08383 10.915L0.927826 0.25H7.75383L12.4668 6.481L17.9178 0.25ZM16.7568 17.77H18.5898L6.75783 2.126H4.79083L16.7568 17.77Z"
-                        fill="#30c7b5"></path>
+                        fill="#30c7b5"
+                      ></path>
                     </svg>
                   </a>
                 </li>
               </ul>
             </div>
           </div>
-          <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 wow fadeInUp" data-wow-duration="2.3s" style="
+          <div
+            class="col-xl-2 col-lg-2 col-md-4 col-sm-6 wow fadeInUp"
+            data-wow-duration="2.3s"
+            style="
               visibility: visible;
               animation-duration: 2.3s;
               animation-name: fadeInUp;
-            ">
+            "
+          >
             <div id="block-16" class="widget-footer widget_block footer__item">
-              <h4 class="footer__title" style="font-weight: 700;
+              <h4
+                class="footer__title"
+                style="
+                  font-weight: 700;
                   text-transform: capitalize;
                   color: #30c7b5;
                   display: inline-block;
-                  margin-bottom: 41px;">Quick links</h4>
+                  margin-bottom: 41px;
+                "
+              >
+                Quick links
+              </h4>
               <div class="wp-widget-group__inner-blocks">
-                <ul style="padding: 0;
-                    margin: 0;
-                    list-style: none;">
+                <ul style="padding: 0; margin: 0; list-style: none">
                   <li>
-                    <a href="https://www.4damstheme.com/clenis/about-clenis/">About Us</a>
+                    <a href="https://www.4damstheme.com/clenis/about-clenis/"
+                      >About Us</a
+                    >
                   </li>
 
                   <li>
-                    <a href="https://www.4damstheme.com/clenis/contact-us/">Contact Us</a>
+                    <a href="https://www.4damstheme.com/clenis/contact-us/"
+                      >Contact Us</a
+                    >
                   </li>
 
                   <li>
-                    <a href="https://www.4damstheme.com/clenis/team-member/">Our Members</a>
+                    <a href="https://www.4damstheme.com/clenis/team-member/"
+                      >Our Members</a
+                    >
                   </li>
 
                   <li>
-                    <a href="https://www.4damstheme.com/clenis/our-services/">Services</a>
+                    <a href="https://www.4damstheme.com/clenis/our-services/"
+                      >Services</a
+                    >
                   </li>
 
                   <li>
-                    <a href="https://www.4damstheme.com/clenis/faqs-page/">FAQ'S</a>
+                    <a href="https://www.4damstheme.com/clenis/faqs-page/"
+                      >FAQ'S</a
+                    >
                   </li>
                 </ul>
               </div>
             </div>
           </div>
-          <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 wow fadeInUp" data-wow-duration="2.3s" style="
+          <div
+            class="col-xl-2 col-lg-2 col-md-4 col-sm-6 wow fadeInUp"
+            data-wow-duration="2.3s"
+            style="
               visibility: visible;
               animation-duration: 2.3s;
               animation-name: fadeInUp;
-            ">
+            "
+          >
             <div id="block-17" class="widget-footer widget_block footer__item">
-              <h4 class="footer__title" style="font-weight: 700;
+              <h4
+                class="footer__title"
+                style="
+                  font-weight: 700;
                   text-transform: capitalize;
                   color: #30c7b5;
                   display: inline-block;
-                  margin-bottom: 41px;">Services</h4>
+                  margin-bottom: 41px;
+                "
+              >
+                Services
+              </h4>
               <div class="wp-widget-group__inner-blocks">
-                <ul style="padding: 0;
-                        margin: 0;
-                        list-style: none;">
+                <ul style="padding: 0; margin: 0; list-style: none">
                   <li>
-                    <a href="https://www.4damstheme.com/clenis/our-project/">Home Cleaning</a>
+                    <a href="https://www.4damstheme.com/clenis/our-project/"
+                      >Home Cleaning</a
+                    >
                   </li>
 
                   <li>
-                    <a href="https://www.4damstheme.com/clenis/our-services/">Office Cleaning</a>
+                    <a href="https://www.4damstheme.com/clenis/our-services/"
+                      >Office Cleaning</a
+                    >
                   </li>
 
                   <li>
-                    <a href="https://www.4damstheme.com/clenis/our-services/">Kitchen Cleaning</a>
+                    <a href="https://www.4damstheme.com/clenis/our-services/"
+                      >Kitchen Cleaning</a
+                    >
                   </li>
 
                   <li>
-                    <a href="https://www.4damstheme.com/clenis/our-project/">Floor Cleaning</a>
+                    <a href="https://www.4damstheme.com/clenis/our-project/"
+                      >Floor Cleaning</a
+                    >
                   </li>
 
                   <li>
-                    <a href="https://www.4damstheme.com/clenis/our-services/">Car Cleaning</a>
+                    <a href="https://www.4damstheme.com/clenis/our-services/"
+                      >Car Cleaning</a
+                    >
                   </li>
                 </ul>
               </div>
             </div>
           </div>
-          <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 wow fadeInUp" data-wow-duration="2.3s" style="
+          <div
+            class="col-xl-2 col-lg-2 col-md-4 col-sm-6 wow fadeInUp"
+            data-wow-duration="2.3s"
+            style="
               visibility: visible;
               animation-duration: 2.3s;
               animation-name: fadeInUp;
-            ">
+            "
+          >
             <div id="block-18" class="widget-footer widget_block footer__item">
-              <h4 class="footer__title" style="font-weight: 700;
+              <h4
+                class="footer__title"
+                style="
+                  font-weight: 700;
                   text-transform: capitalize;
                   color: #30c7b5;
                   display: inline-block;
-                  margin-bottom: 41px;">Company</h4>
+                  margin-bottom: 41px;
+                "
+              >
+                Company
+              </h4>
               <div class="wp-widget-group__inner-blocks">
-                <ul style="padding: 0;
-                      margin: 0;
-                      list-style: none;">
+                <ul style="padding: 0; margin: 0; list-style: none">
                   <li>
-                    <a href="https://www.4damstheme.com/clenis/about-clenis/">Terms &amp; Condition</a>
+                    <a href="https://www.4damstheme.com/clenis/about-clenis/"
+                      >Terms &amp; Condition</a
+                    >
                   </li>
 
                   <li>
-                    <a href="https://www.4damstheme.com/clenis/faqs-page/">Our History</a>
+                    <a href="https://www.4damstheme.com/clenis/faqs-page/"
+                      >Our History</a
+                    >
                   </li>
 
                   <li>
-                    <a href="https://www.4damstheme.com/clenis/about-clenis/">Our Gallery</a>
+                    <a href="https://www.4damstheme.com/clenis/about-clenis/"
+                      >Our Gallery</a
+                    >
                   </li>
 
                   <li>
-                    <a href="https://www.4damstheme.com/clenis/about-clenis/">Privacy Policy</a>
+                    <a href="https://www.4damstheme.com/clenis/about-clenis/"
+                      >Privacy Policy</a
+                    >
                   </li>
 
                   <li>
-                    <a href="https://www.4damstheme.com/clenis/about-clenis/">Testimonial</a>
+                    <a href="https://www.4damstheme.com/clenis/about-clenis/"
+                      >Testimonial</a
+                    >
                   </li>
                 </ul>
               </div>
             </div>
           </div>
-          <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 wow fadeInUp" data-wow-duration="2.3s" style="
+          <div
+            class="col-xl-2 col-lg-2 col-md-4 col-sm-6 wow fadeInUp"
+            data-wow-duration="2.3s"
+            style="
               visibility: visible;
               animation-duration: 2.3s;
               animation-name: fadeInUp;
-            ">
+            "
+          >
             <div id="block-19" class="widget-footer widget_block footer__item">
-              <h4 class="footer__title" style="font-weight: 700;
+              <h4
+                class="footer__title"
+                style="
+                  font-weight: 700;
                   text-transform: capitalize;
                   color: #30c7b5;
                   display: inline-block;
-                  margin-bottom: 41px;">Our Contact</h4>
+                  margin-bottom: 41px;
+                "
+              >
+                Our Contact
+              </h4>
               <div class="wp-widget-group__inner-blocks">
-                <ul style="padding: 0;
-                    margin: 0;
-                    list-style: none;">
-                  <li style="margin-bottom: 24px;">
-                    <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <ul style="padding: 0; margin: 0; list-style: none">
+                  <li style="margin-bottom: 24px">
+                    <svg
+                      width="16"
+                      height="15"
+                      viewBox="0 0 16 15"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
                       <path
                         d="M3.84091 12.25L0.5 14.875V1C0.5 0.58579 0.83579 0.25 1.25 0.25H14.75C15.1642 0.25 15.5 0.58579 15.5 1V11.5C15.5 11.9142 15.1642 12.25 14.75 12.25H3.84091ZM3.32211 10.75H14V1.75H2V11.7888L3.32211 10.75ZM7.25 5.5H8.75V7H7.25V5.5ZM4.25 5.5H5.75V7H4.25V5.5ZM10.25 5.5H11.75V7H10.25V5.5Z"
-                        fill="#30c7b5"></path>
+                        fill="#30c7b5"
+                      ></path>
                     </svg>
-                    <a href="mailto:helloclenis@gmail.com" style="transition: all 0.4s;
-                          font-size: 16px;
-                          font-weight: 400;
-                          color: #748aa0;">
+                    <a
+                      href="mailto:helloclenis@gmail.com"
+                      style="
+                        transition: all 0.4s;
+                        font-size: 16px;
+                        font-weight: 400;
+                        color: #748aa0;
+                      "
+                    >
                       helloclenis@gmail.com
                     </a>
                   </li>
-                  <li style="margin-bottom: 24px;">
-                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <li style="margin-bottom: 24px">
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 14 14"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
                       <path
                         d="M5.02417 6.01158C5.7265 7.2466 6.7534 8.2735 7.98842 8.9758L8.6518 8.04708C8.87238 7.73838 9.2887 7.64297 9.6217 7.82485C10.6768 8.40123 11.8428 8.75148 13.0592 8.84778C13.4492 8.87868 13.75 9.20417 13.75 9.59545V12.9426C13.75 13.3271 13.4591 13.6493 13.0766 13.6886C12.6792 13.7295 12.2783 13.75 11.875 13.75C5.45469 13.75 0.25 8.5453 0.25 2.125C0.25 1.7217 0.270565 1.32078 0.311418 0.92332C0.350725 0.540812 0.672955 0.25 1.05749 0.25H4.40456C4.79583 0.25 5.12135 0.55078 5.15222 0.940817C5.2485 2.15716 5.59877 3.32323 6.17515 4.37833C6.35703 4.7113 6.26162 5.12766 5.95292 5.34818L5.02417 6.01158ZM3.13319 5.5189L4.55815 4.50107C4.1541 3.62885 3.87721 2.70387 3.73545 1.75H1.7568C1.75227 1.87474 1.75 1.99975 1.75 2.125C1.75 7.71685 6.28315 12.25 11.875 12.25C12.0002 12.25 12.1253 12.2478 12.25 12.2432V10.2645C11.2962 10.1228 10.3712 9.84587 9.49892 9.44185L8.4811 10.8668C8.06935 10.7069 7.6717 10.5186 7.29055 10.3046L7.24697 10.2797C5.77728 9.44402 4.55601 8.22272 3.72025 6.75303L3.69545 6.70945C3.48137 6.3283 3.29316 5.93065 3.13319 5.5189Z"
-                        fill="#30c7b5"></path>
+                        fill="#30c7b5"
+                      ></path>
                     </svg>
-                    <span style="color:#748aa0;
-                                      font-size: 16px;
-                                      font-style: normal;
-                                      font-weight: 400;
-                                      line-height: 140%;">
-                      +48 74326 02396 </span>
+                    <span
+                      style="
+                        color: #748aa0;
+                        font-size: 16px;
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: 140%;
+                      "
+                    >
+                      +48 74326 02396
+                    </span>
                   </li>
-                  <li style="margin-bottom: 24px;">
-                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <li style="margin-bottom: 24px">
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 14 14"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
                       <path
                         d="M5.02417 6.01158C5.7265 7.2466 6.7534 8.2735 7.98842 8.9758L8.6518 8.04708C8.87238 7.73838 9.2887 7.64297 9.6217 7.82485C10.6768 8.40123 11.8428 8.75148 13.0592 8.84778C13.4492 8.87868 13.75 9.20417 13.75 9.59545V12.9426C13.75 13.3271 13.4591 13.6493 13.0766 13.6886C12.6792 13.7295 12.2783 13.75 11.875 13.75C5.45469 13.75 0.25 8.5453 0.25 2.125C0.25 1.7217 0.270565 1.32078 0.311418 0.92332C0.350725 0.540812 0.672955 0.25 1.05749 0.25H4.40456C4.79583 0.25 5.12135 0.55078 5.15222 0.940817C5.2485 2.15716 5.59877 3.32323 6.17515 4.37833C6.35703 4.7113 6.26162 5.12766 5.95292 5.34818L5.02417 6.01158ZM3.13319 5.5189L4.55815 4.50107C4.1541 3.62885 3.87721 2.70387 3.73545 1.75H1.7568C1.75227 1.87474 1.75 1.99975 1.75 2.125C1.75 7.71685 6.28315 12.25 11.875 12.25C12.0002 12.25 12.1253 12.2478 12.25 12.2432V10.2645C11.2962 10.1228 10.3712 9.84587 9.49892 9.44185L8.4811 10.8668C8.06935 10.7069 7.6717 10.5186 7.29055 10.3046L7.24697 10.2797C5.77728 9.44402 4.55601 8.22272 3.72025 6.75303L3.69545 6.70945C3.48137 6.3283 3.29316 5.93065 3.13319 5.5189Z"
-                        fill="#30c7b5"></path>
+                        fill="#30c7b5"
+                      ></path>
                     </svg>
-                    <span style="color:#748aa0;
-                                      font-size: 16px;
-                                      font-style: normal;
-                                      font-weight: 400;
-                                      line-height: 140%;"> +48 64453 96533 </span>
+                    <span
+                      style="
+                        color: #748aa0;
+                        font-size: 16px;
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: 140%;
+                      "
+                    >
+                      +48 64453 96533
+                    </span>
                   </li>
-                  <li style="margin-bottom: 24px;">
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <li style="margin-bottom: 24px">
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 16 16"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
                       <path
                         d="M5.75 0.75V2.25H10.25V0.75H11.75V2.25H14.75C15.1642 2.25 15.5 2.58579 15.5 3V15C15.5 15.4142 15.1642 15.75 14.75 15.75H1.25C0.83579 15.75 0.5 15.4142 0.5 15V3C0.5 2.58579 0.83579 2.25 1.25 2.25H4.25V0.75H5.75ZM14 8.25H2V14.25H14V8.25ZM4.25 3.75H2V6.75H14V3.75H11.75V5.25H10.25V3.75H5.75V5.25H4.25V3.75Z"
-                        fill="#30c7b5"></path>
+                        fill="#30c7b5"
+                      ></path>
                     </svg>
-                    <span style="color:#748aa0;
-                                      font-size: 16px;
-                                      font-style: normal;
-                                      font-weight: 400;
-                                      line-height: 140%;"> Mon - Fri 12:00 - 18:00 </span>
+                    <span
+                      style="
+                        color: #748aa0;
+                        font-size: 16px;
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: 140%;
+                      "
+                    >
+                      Mon - Fri 12:00 - 18:00
+                    </span>
                   </li>
-                  <li style="display: flex;
-    align-items: center;
-    gap: 9px;">
-                    <svg width="14" height="17" viewBox="0 0 14 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <li style="display: flex; align-items: center; gap: 9px">
+                    <svg
+                      width="14"
+                      height="17"
+                      viewBox="0 0 14 17"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
                       <path
                         d="M7 14.6746L10.7123 10.9623C12.7625 8.91208 12.7625 5.58794 10.7123 3.53769C8.66208 1.48744 5.33794 1.48744 3.28769 3.53769C1.23744 5.58794 1.23744 8.91208 3.28769 10.9623L7 14.6746ZM7 16.7959L2.22703 12.023C-0.40901 9.3869 -0.40901 5.11307 2.22703 2.47703C4.86307 -0.15901 9.1369 -0.15901 11.773 2.47703C14.409 5.11307 14.409 9.3869 11.773 12.023L7 16.7959ZM7 8.75C7.82845 8.75 8.5 8.07845 8.5 7.25C8.5 6.42157 7.82845 5.75 7 5.75C6.17155 5.75 5.5 6.42157 5.5 7.25C5.5 8.07845 6.17155 8.75 7 8.75ZM7 10.25C5.34314 10.25 4 8.90683 4 7.25C4 5.59314 5.34314 4.25 7 4.25C8.65683 4.25 10 5.59314 10 7.25C10 8.90683 8.65683 10.25 7 10.25Z"
-                        fill="#30c7b5"></path>
+                        fill="#30c7b5"
+                      ></path>
                     </svg>
-                    <span style="color:#748aa0;
-                                      font-size: 16px;
-                                      font-style: normal;
-                                      font-weight: 400;
-                                      line-height: 140%;"> Hilton, TY56/90 NY, USA </span>
+                    <span
+                      style="
+                        color: #748aa0;
+                        font-size: 16px;
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: 140%;
+                      "
+                    >
+                      Hilton, TY56/90 NY, USA
+                    </span>
                   </li>
                 </ul>
               </div>
@@ -1076,26 +1630,40 @@ function stopSlideshow() {
         </div>
       </div>
     </div>
-    <div class="footer__bottom" style="background: #30c7b5;">
-      <p style="padding: 25px 5px;
-    color: #748aa0;
-    text-align: center;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 30px;
-    text-transform: capitalize;
-    margin: 0;">© Clenis All Rights Reserved Developed By 4damsthemes</p>
+    <div class="footer__bottom" style="background: #30c7b5">
+      <p
+        style="
+          padding: 25px 5px;
+          color: #748aa0;
+          text-align: center;
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 30px;
+          text-transform: capitalize;
+          margin: 0;
+        "
+      >
+        © Clenis All Rights Reserved Developed By 4damsthemes
+      </p>
     </div>
-    <img src="https://www.4damstheme.com/clenis/wp-content/themes/clenis/assets/images/footer/footer-spra.png"
-      alt="Footer backgound image" class="footer-spara" style="position: absolute;
-    right: 60px;
-    bottom: 220px;" />
-    <img src="https://www.4damstheme.com/clenis/wp-content/themes/clenis/assets/images/icon/working-ball.png"
-      alt="Footer backgound image" class="footer-working" style="position: absolute;
-    bottom: 420px;
-    left: 60px;
-    animation: updown 2s linear infinite;" />
+    <img
+      src="https://www.4damstheme.com/clenis/wp-content/themes/clenis/assets/images/footer/footer-spra.png"
+      alt="Footer backgound image"
+      class="footer-spara"
+      style="position: absolute; right: 60px; bottom: 220px"
+    />
+    <img
+      src="https://www.4damstheme.com/clenis/wp-content/themes/clenis/assets/images/icon/working-ball.png"
+      alt="Footer backgound image"
+      class="footer-working"
+      style="
+        position: absolute;
+        bottom: 420px;
+        left: 60px;
+        animation: updown 2s linear infinite;
+      "
+    />
   </footer>
   <!-- <app-footer /> -->
 </template>
@@ -1719,7 +2287,7 @@ function stopSlideshow() {
   left: 20px;
 }
 
-.options .option.active .label .info>div {
+.options .option.active .label .info > div {
   left: 0px;
   opacity: 1;
 }
@@ -1730,17 +2298,19 @@ function stopSlideshow() {
 }
 
 .bg-yellow-button {
-  background-color: #30c7b5;;
+  background-color: #30c7b5;
   /* Yellow color */
   color: #333;
   /* Dark text color */
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
   /* Smooth transition */
 }
 
 /* Hover effect for button */
 .bg-yellow-button:hover {
-  background-color: #FFF;
+  background-color: #fff;
   /* White background color */
   color: #30c7b5;
   /* Yellow text color */
@@ -1758,7 +2328,7 @@ function stopSlideshow() {
   left: 10px;
 }
 
-.options .option:not(.active) .label .info>div {
+.options .option:not(.active) .label .info > div {
   left: 20px;
   opacity: 0;
 }
@@ -1859,7 +2429,7 @@ function stopSlideshow() {
     left: 10px;
   }
 
-  .options .option.active .label .info>div {
+  .options .option.active .label .info > div {
     left: 0px;
     opacity: 1;
   }
@@ -1869,7 +2439,7 @@ function stopSlideshow() {
     left: 10px;
   }
 
-  .options .option:not(.active) .label .info>div {
+  .options .option:not(.active) .label .info > div {
     left: 20px;
     opacity: 0;
   }
@@ -2016,7 +2586,6 @@ function stopSlideshow() {
 }
 
 @media (min-width: 992px) {
-
   .custom-project-slidewrap .swiper-slide-duplicate-active,
   .custom-project-slidewrap .swiper-slide.swiper-slide-active {
     width: 638px !important;
@@ -2628,8 +3197,6 @@ function stopSlideshow() {
   top: -151px;
 }
 
-
-
 .testimonail-items {
   border-radius: 10px;
   padding: 35px 35px 0;
@@ -2999,7 +3566,6 @@ function stopSlideshow() {
 }
 
 @media (max-width: 1199px) {
-
   .working-customwrap .waroow-rotate1,
   .working-customwrap .waroow-rotate2 {
     display: none;
@@ -3110,14 +3676,14 @@ function stopSlideshow() {
 }
 
 .testimonials {
-  background: url("https://www.4damstheme.com/clenis/wp-content/plugins/clenis-toolkit/widgets/img/testimonail/testi-bg.png") center center no-repeat;
+  background: url("https://www.4damstheme.com/clenis/wp-content/plugins/clenis-toolkit/widgets/img/testimonail/testi-bg.png")
+    center center no-repeat;
   background-size: cover;
   background-attachment: fixed;
   padding: 32px 0 59px;
   color: #ffffff;
   position: relative;
   margin-bottom: 90px;
-
 }
 
 .testimonials:before {
@@ -3207,18 +3773,22 @@ function stopSlideshow() {
 
 :root {
   --clip-size: 1.5rem;
-  --clip-bottom-right: polygon(0 0,
-      100% 0,
-      100% calc(100% - var(--clip-size)),
-      calc(100% - var(--clip-size)) 100%,
-      0% 100%,
-      0 0);
-  --clip-bottom-left: polygon(0 0,
-      100% 0,
-      100% 100%,
-      var(--clip-size) 100%,
-      0 calc(100% - var(--clip-size)),
-      0 0);
+  --clip-bottom-right: polygon(
+    0 0,
+    100% 0,
+    100% calc(100% - var(--clip-size)),
+    calc(100% - var(--clip-size)) 100%,
+    0% 100%,
+    0 0
+  );
+  --clip-bottom-left: polygon(
+    0 0,
+    100% 0,
+    100% 100%,
+    var(--clip-size) 100%,
+    0 calc(100% - var(--clip-size)),
+    0 0
+  );
   --nav-x: 0;
   --width-nav: 20ch;
 }
@@ -3246,7 +3816,9 @@ function stopSlideshow() {
 }
 
 :where(h1, .title) {
-  font-family: Josefin Sans, sans-serif;
+  font-family:
+    Josefin Sans,
+    sans-serif;
   font-style: normal;
   text-transform: uppercase;
 }
@@ -3315,11 +3887,14 @@ function stopSlideshow() {
 
   transition: background-size 0.25s;
 
-  background: var(--bg) repeating-linear-gradient(-45deg,
+  background: var(--bg)
+    repeating-linear-gradient(
+      -45deg,
       transparent 0,
       transparent 1rem,
       var(--bg-stripe) 0,
-      var(--bg-stripe) 2rem);
+      var(--bg-stripe) 2rem
+    );
   background-size: var(--border) var(--border);
   background-position: center;
   background-repeat: no-repeat;
@@ -3331,7 +3906,6 @@ function stopSlideshow() {
   }
 
   & span {
-
     background: var(--bg);
 
     &.subtitle {
@@ -3372,16 +3946,16 @@ function stopSlideshow() {
 }
 .cmn--btn {
   padding: 12px 28px 15px;
-    color: var(--white);
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 28px;
-    display: inline-block;
-    position: relative;
-    background: #30c7b5;;
-    overflow: hidden;
-    border-radius: 100px;
-    transition: all 0.5s;
+  color: var(--white);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 28px;
+  display: inline-block;
+  position: relative;
+  background: #30c7b5;
+  overflow: hidden;
+  border-radius: 100px;
+  transition: all 0.5s;
 }
 </style>
