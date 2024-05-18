@@ -326,18 +326,8 @@ export default {
       class="container mx-auto relative flex justify-center items-center text-center"
     >
       <div class="max-w-lg">
-<<<<<<< HEAD
         <h2 class="text-white text-3xl md:text-4xl font-bold mb-4">Get started with your free estimate</h2>
         <a href="/pages/contact" class="bg-yellow-button text-gray-900 font-medium py-3 px-6 rounded">
-=======
-        <h2 class="text-white text-3xl md:text-4xl font-bold mb-4">
-          Get started with your free estimate
-        </h2>
-        <a
-          href="#"
-          class="bg-yellow-button text-gray-900 font-medium py-3 px-6 rounded"
-        >
->>>>>>> 485840ed91537c35e10522c93c58a74f1d300a21
           Get an Estimate
         </a>
       </div>
@@ -386,13 +376,11 @@ export default {
               </p> -->
             </div>
             <div class="howit-work-info">
-<<<<<<< HEAD
               <div class="howit-item wow fadeInUp" data-wow-delay="0.7" style="visibility: visible; animation-name: fadeInUp;padding: 50px;
     padding-left: 0px;">
                 <h3 class="title d-flex align-items-center gap-2">
                   MENAGE
                 </h3>
-=======
               <div
                 class="howit-item wow fadeInUp"
                 data-wow-delay="0.7"
@@ -404,7 +392,6 @@ export default {
                 "
               >
                 <h3 class="title d-flex align-items-center gap-2">MENAGE</h3>
->>>>>>> 485840ed91537c35e10522c93c58a74f1d300a21
                 <p class="pra">
                   The first step involves understanding the client's needs and
                   expectations. This may include a consultation where the client

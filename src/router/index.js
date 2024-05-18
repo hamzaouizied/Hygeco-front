@@ -17,11 +17,8 @@ import LandingPage from "../views/pages/LandingPage.vue";
 import PricingHygeco from "../views/pages/pricingHygeco.vue";
 import Contact from "../views/pages/contact.vue";
 import Menage from "../views/pages/ServiceMenage.vue";
-<<<<<<< HEAD
 import Reservation from "../views/pages/reservation.vue";
-=======
 import LandingPage2 from "../views/pages/LandingPage2.vue";
->>>>>>> 485840ed91537c35e10522c93c58a74f1d300a21
 
 
 
