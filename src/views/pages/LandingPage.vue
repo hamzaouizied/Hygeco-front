@@ -1039,27 +1039,11 @@ export default {
                     </div>
                     <div class="col-lg-6">
                       <div class="clean-form-grp">
-<<<<<<< HEAD
                         <p style="margin-bottom: 0px;">
                           <input class="wpcf7-form-control wpcf7-submit has-spinner cmn--btn cmn-alt2" type="submit"
                             value="Submit Your Information" style="border: unset;
                             color: #fff;;background: #344767;;border-radius: 87px;    font-size: 16px;
 " /><span class="wpcf7-spinner"></span>
-=======
-                        <p style="margin-bottom: 0px">
-                          <input
-                            class="wpcf7-form-control wpcf7-submit has-spinner cmn--btn cmn-alt2"
-                            type="submit"
-                            value="Submit Your Information"
-                            style="
-                              border: unset;
-                              color: #30c7b5;
-                              background: #30c7b5;
-                              border-radius: 87px;
-                              font-size: 16px;
-                            "
-                          /><span class="wpcf7-spinner"></span>
->>>>>>> 485840ed91537c35e10522c93c58a74f1d300a21
                         </p>
                       </div>
                     </div>
@@ -1133,7 +1117,6 @@ export default {
               data-name="subscription"
             >
               <div class="mc4wp-form-fields">
-<<<<<<< HEAD
                 <label class="fz-16 title fw-700 prafont" style="padding-right: 10px;">Enter your email</label>
                 <input type="email" name="EMAIL" required="" style="width: 100%;
                   max-width: 500px;
@@ -1156,7 +1139,6 @@ export default {
                   transition: all 0.5s;
                   border: unset;
                   margin-top: 10px;" />
-=======
                 <label class="fz-16 title fw-700 prafont"
                   >Enter your email</label
                 >
@@ -1195,7 +1177,6 @@ export default {
                     margin-top: 10px;
                   "
                 />
->>>>>>> 485840ed91537c35e10522c93c58a74f1d300a21
               </div>
               <label style="display: none !important"
                 >Leave this field empty if you're human:
