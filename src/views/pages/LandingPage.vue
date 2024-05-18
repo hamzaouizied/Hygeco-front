@@ -95,7 +95,6 @@ export default {
         ? `url(${existingSlides[currentIndexHead].imageUrl})`
         : '',
 
-<<<<<<< HEAD
   <div class="page-header position-relative" :style="{
     backgroundImage: existingSlides[currentIndexHead]
       ? `url(${existingSlides[currentIndexHead].imageUrl})`
@@ -104,12 +103,6 @@ export default {
     backgroundSize: 'cover',
     padding: '100px',
   }">
-=======
-      backgroundSize: 'cover',
-      // padding: '60px',
-    }"
-  >
->>>>>>> 485840ed91537c35e10522c93c58a74f1d300a21
     <div class="container pb-10 pb-lg-9 pt-7 postion-relative z-index-2">
       <div class="row">
         <div class="col-md-6 mt-4">
