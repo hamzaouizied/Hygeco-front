@@ -7,23 +7,22 @@ import Navbar from "@/examples/PageLayout/NavbarHygeco.vue";
 // import AccordionItem from "./components/AccordionItem.vue";
 import setNavPills from "@/assets/js/nav-pills.js";
 import ProjectGallerie from "./components/ProjectGallerie.vue";
+import TeamCard from "./components/TeamCard.vue";
+
 
 // import ComplexBackgroundCard from "@/views/ecommerce/components/ComplexBackgroundCard.vue";
 
 const store = useStore();
 const existingSlides = [
   {
-    imageUrl: require("../../assets/img/hygeco.jpg"),
+    imageUrl: require("../../assets/img/header1.png"),
     text: "Let the green clean begin. Linen's bright, cleaning's right, Hygeco's here day or night!",
   },
   {
-    imageUrl: require("../../assets/img/hygecoo.jpg"),
-    text: "Another text for the second slide.",
+    imageUrl: require("../../assets/img/header2.png"),
+    text: "Let the green clean begin. Linen's bright, cleaning's right, Hygeco's here day or night!",
   },
-  {
-    imageUrl: require("../../assets/img/laundry-machine.jpg"),
-    text: "Text for the third slide.",
-  },
+  
 ];
 
 // const slides = [...existingSlides, ...testimonialSlides];
@@ -85,7 +84,7 @@ function stopSlideshow() {
       : '',
 
     backgroundSize: 'cover',
-    padding: '100px',
+    // padding: '60px',
   }">
     <div class="container pb-10 pb-lg-9 pt-7 postion-relative z-index-2">
       <div class="row">
@@ -105,106 +104,8 @@ function stopSlideshow() {
       </div>
     </div>
   </div>
-  <div class="container">
-    <section class="choose-section1 overflow-hidden pb-90 pt-120 position-relative mt-5">
-      <div class="choose-wrapper pb-90 mt-5">
-        <div class="container">
-          <div class="row g-0 justify-content-between">
-            <div class="col-xxl-4 col-xl-5 col-lg-5 col-md-8 order-1 order-lg-0">
-              <div class="choose-left-cont">
-                <div class="thumb1">
-                  <img decoding="async"
-                    src="https://www.4damstheme.com/clenis/wp-content/uploads/2024/04/choose-thumb.png"
-                    alt="Success Project " />
-                </div>
-                <div class="prograss-box">
-                  <div class="icons d-flex align-items-center justify-content-center">
-                    <svg width="87" height="91" viewBox="0 0 87 91" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path fill-rule="evenodd" clip-rule="evenodd"
-                        d="M82.1357 59.7059C85.0651 59.7059 87.1191 62.5877 85.8233 65.2149C78.445 80.1742 63.0406 90.4652 45.2326 90.4652C20.2513 90.4652 0 70.2139 0 45.2326C0 20.2513 20.2513 0 45.2326 0C63.38 0 79.0313 10.6869 86.2364 26.1106C87.4589 28.7277 85.4107 31.5427 82.5221 31.5427C80.7738 31.5427 79.2229 30.4657 78.4502 28.8974C72.4161 16.6502 59.8084 8.22388 45.2326 8.22388C24.7934 8.22388 8.22409 24.7931 8.22409 45.2324C8.22409 65.6716 24.7934 82.2408 45.2326 82.2408C59.5292 82.2408 71.9324 74.1342 78.0962 62.2669C78.8877 60.7431 80.4186 59.7059 82.1357 59.7059Z"
-                        fill="#30c7b5"></path>
-                    </svg>
-                    <span class="texts"> 85% </span>
-                  </div>
-                  <div class="content">
-                    <h3 class="title">Success Project</h3>
-                    <p>We completed 85% success project in business.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-xxl-7 col-xl-7 col-lg-7">
-              <div class="choose-content-right">
-                <div class="cmn-section-title apointment-content">
-                  <div class="cmn--btn cmn-alt2 wow fadeInUp" data-wow-delay="1.5"
-                    style="visibility: visible; animation-name: fadeInUp">
-                    <span> Why Choose Us </span>
-                  </div>
-                  <h2 class="title mt-xxl-4 mt-2 mb-0 wow fadeInDown" data-wow-delay="1.5"
-                    style="visibility: visible; animation-name: fadeInDown">
-                    This Service Focus on Clean &amp; Maintaining Homes
-                  </h2>
-                </div>
-                <div class="adjust-content">
-                  <div class="thumb-ad">
-                    <img decoding="async"
-                      src="https://www.4damstheme.com/clenis/wp-content/uploads/2024/04/choose-thumb1.png"
-                      alt="This Service Focus on Clean &amp; Maintaining Homes" />
-                  </div>
-                  <div class="adjust-content-info">
-                    <p>
-                      We believe in the power of attention to detail. Our
-                      cleaners are meticulous in their work, leaving no nook or
-                      cranny untouched. We take pride in our ability to.
-                    </p>
+  <TeamCard />
 
-                    <div class="adjust-item adjust-first-item wow fadeInDown" data-wow-delay="1.6"
-                      style="visibility: visible; animation-name: fadeInDown">
-                      <div class="icon">
-                        <img decoding="async" src="https://www.4damstheme.com/clenis/wp-content/uploads/2024/04/ad1.png"
-                          alt="Highly Rated Cleaning" />
-                      </div>
-                      <div class="conts">
-                        <h3 class="title">Highly Rated Cleaning</h3>
-                        <p>
-                          This service focuses on cleaning and maintaining
-                          homes. It typically includes tasks.
-                        </p>
-                      </div>
-                    </div>
-                    <div class="adjust-item adjust-first-item wow fadeInDown" data-wow-delay="1.6"
-                      style="visibility: visible; animation-name: fadeInDown">
-                      <div class="icon">
-                        <img decoding="async" src="https://www.4damstheme.com/clenis/wp-content/uploads/2024/04/ad2.png"
-                          alt="House &amp; Toilet Cleaning" />
-                      </div>
-                      <div class="conts">
-                        <h3 class="title">House &amp; Toilet Cleaning</h3>
-                        <p>
-                          With Shine Bright Cleaning Services, you can trust us
-                          to make your space shine like .
-                        </p>
-                      </div>
-                    </div>
-                    <a href="https://www.4damstheme.com/clenis/about-clenis/" target="_self"
-                      class="cmn--btn btn-custom-space">
-                      <span>More About Us</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <img decoding="async"
-          src="https://www.4damstheme.com/clenis/wp-content/plugins/clenis-toolkit/widgets/img/service/choos-tablet.png"
-          alt="This Service Focus on Clean &amp; Maintaining Homes" class="ripple" />
-        <img decoding="async"
-          src="https://www.4damstheme.com/clenis/wp-content/plugins/clenis-toolkit/widgets/img/service/ps.png"
-          alt="This Service Focus on Clean &amp; Maintaining Homes" class="ripple-ps" />
-      </div>
-    </section>
-  </div>
   <div class="container">
     <section class="counter-section pt-120 mt-7">
       <div class="container">
@@ -217,24 +118,24 @@ function stopSlideshow() {
             <div class="cont d-flex align-items-center">
               <span class="odometer odometer-auto-theme" data-odometer-final="38">
                 <div class="odometer-inside">
-                  <span class="odometer-digit"><span class="odometer-digit-spacer">8</span><span
+                  <span class="odometer-digit"><span
                       class="odometer-digit-inner"><span class="odometer-ribbon"><span
                           class="odometer-ribbon-inner"><span
                             class="odometer-value">3</span></span></span></span></span><span
-                    class="odometer-digit"><span class="odometer-digit-spacer">8</span><span
+                    class="odometer-digit"><span
                       class="odometer-digit-inner"><span class="odometer-ribbon"><span
                           class="odometer-ribbon-inner"><span
                             class="odometer-value">8</span></span></span></span></span>
                 </div>
               </span>
-              <span class="plus__icon">
+              <!-- <span class="plus__icon">
                 <svg aria-hidden="true" class="e-font-icon-svg e-fas-plus" viewBox="0 0 448 512"
                   xmlns="http://www.w3.org/2000/svg">
                   <path
                     d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z">
                   </path>
                 </svg>
-              </span>
+              </span> -->
             </div>
             <p>Years Experience</p>
           </div>
@@ -247,24 +148,27 @@ function stopSlideshow() {
             <div class="cont d-flex align-items-center">
               <span class="odometer odometer-auto-theme" data-odometer-final="99">
                 <div class="odometer-inside">
-                  <span class="odometer-digit"><span class="odometer-digit-spacer">8</span><span
+                  <span class="odometer-digit"><span
+                      class="odometer-digit-inner"><span class="odometer-ribbon"><span
+                          class="odometer-ribbon-inner"></span></span></span></span><span
+                    class="odometer-digit"><span
                       class="odometer-digit-inner"><span class="odometer-ribbon"><span
                           class="odometer-ribbon-inner"><span
-                            class="odometer-value">9</span></span></span></span></span><span
-                    class="odometer-digit"><span class="odometer-digit-spacer">8</span><span
-                      class="odometer-digit-inner"><span class="odometer-ribbon"><span
-                          class="odometer-ribbon-inner"><span
+                            class="odometer-value">9</span>
+                            <span
+                            class="odometer-value">9</span>
+                          <span
                             class="odometer-value">9</span></span></span></span></span>
                 </div>
               </span>
-              <span class="plus__icon">
+              <!-- <span class="plus__icon">
                 <svg aria-hidden="true" class="e-font-icon-svg e-fas-percent" viewBox="0 0 448 512"
                   xmlns="http://www.w3.org/2000/svg">
                   <path
                     d="M112 224c61.9 0 112-50.1 112-112S173.9 0 112 0 0 50.1 0 112s50.1 112 112 112zm0-160c26.5 0 48 21.5 48 48s-21.5 48-48 48-48-21.5-48-48 21.5-48 48-48zm224 224c-61.9 0-112 50.1-112 112s50.1 112 112 112 112-50.1 112-112-50.1-112-112-112zm0 160c-26.5 0-48-21.5-48-48s21.5-48 48-48 48 21.5 48 48-21.5 48-48 48zM392.3.2l31.6-.1c19.4-.1 30.9 21.8 19.7 37.8L77.4 501.6a23.95 23.95 0 0 1-19.6 10.2l-33.4.1c-19.5 0-30.9-21.9-19.7-37.8l368-463.7C377.2 4 384.5.2 392.3.2z">
                   </path>
                 </svg>
-              </span>
+              </span> -->
             </div>
             <p>Successful Rate</p>
           </div>
@@ -277,11 +181,10 @@ function stopSlideshow() {
             <div class="cont d-flex align-items-center">
               <span class="odometer odometer-auto-theme" data-odometer-final="643">
                 <div class="odometer-inside">
-                  <span class="odometer-digit"><span class="odometer-digit-spacer">8</span><span
+                  <span class="odometer-digit"><span
                       class="odometer-digit-inner"><span class="odometer-ribbon"><span
-                          class="odometer-ribbon-inner"><span
-                            class="odometer-value">6</span></span></span></span></span><span
-                    class="odometer-digit"><span class="odometer-digit-spacer">8</span><span
+                          class="odometer-ribbon-inner"></span></span></span></span><span
+                    class="odometer-digit"><span
                       class="odometer-digit-inner"><span class="odometer-ribbon"><span
                           class="odometer-ribbon-inner"><span
                             class="odometer-value">4</span></span></span></span></span><span
@@ -291,14 +194,7 @@ function stopSlideshow() {
                             class="odometer-value">3</span></span></span></span></span>
                 </div>
               </span>
-              <span class="plus__icon">
-                <svg aria-hidden="true" class="e-font-icon-svg e-fas-plus" viewBox="0 0 448 512"
-                  xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z">
-                  </path>
-                </svg>
-              </span>
+             
             </div>
             <p>Project Running</p>
           </div>
@@ -317,18 +213,10 @@ function stopSlideshow() {
                             class="odometer-value">6</span></span></span></span></span><span
                     class="odometer-digit"><span class="odometer-digit-spacer">8</span><span
                       class="odometer-digit-inner"><span class="odometer-ribbon"><span
-                          class="odometer-ribbon-inner"><span
-                            class="odometer-value">4</span></span></span></span></span>
+                          class="odometer-ribbon-inner"></span></span></span></span>
                 </div>
               </span>
-              <span class="plus__icon">
-                <svg aria-hidden="true" class="e-font-icon-svg e-fas-plus" viewBox="0 0 448 512"
-                  xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z">
-                  </path>
-                </svg>
-              </span>
+              
             </div>
             <p>Our Team Member</p>
           </div>
@@ -337,7 +225,7 @@ function stopSlideshow() {
     </section>
   </div>
   <section class="relative bg-cover bg-center py-7 mt-10"
-    :style="{ backgroundImage: 'url(https://radiustheme.com/demo/wordpress/themes/clenix/wp-content/uploads/2019/11/section-bg15.jpg)' }">
+  :style="{ backgroundImage: 'url(' + require('../../assets/img/bar.png') + ')', }">
     <div class="absolute inset-0  "></div>
     <div class="container mx-auto relative flex justify-center items-center text-center">
       <div class="max-w-lg">
@@ -356,7 +244,7 @@ function stopSlideshow() {
       <div class="row justify-content-lg-between justify-content-center">
         <div class="col-lg-7">
           <div class="work-thumb">
-            <img decoding="async" src="https://www.4damstheme.com/clenis/wp-content/uploads/2024/04/work.png"
+            <img decoding="async" src="../../assets/img/menage.png"
               alt="How It Works" />
           </div>
         </div>
@@ -387,6 +275,19 @@ function stopSlideshow() {
                   The first step involves understanding the client's needs and
                   expectations. This may include a consultation where the client
                   outlines.
+               
+                </p>
+                <p class="pra">
+                  The first step involves understanding the client's needs and
+                  expectations. This may include a consultation where the client
+                  outlines.
+               
+                </p>
+                  <p class="pra">
+                  The first step involves understanding the client's needs and
+                  expectations. This may include a consultation where the client
+                  outlines.
+               
                 </p>
               </div>
 
@@ -477,6 +378,16 @@ function stopSlideshow() {
                 expectations. This may include a consultation where the client
                 outlines.
               </p>
+              <p class="pra">
+                The first step involves understanding the client's needs and
+                expectations. This may include a consultation where the client
+                outlines.
+              </p>
+              <p class="pra">
+                The first step involves understanding the client's needs and
+                expectations. This may include a consultation where the client
+                outlines.
+              </p>
             </div>
 
           </div>
@@ -484,7 +395,7 @@ function stopSlideshow() {
       </div>
       <div class="col-lg-7">
         <div class="work-thumb">
-          <img decoding="async" src="https://www.4damstheme.com/clenis/wp-content/uploads/2024/04/work.png"
+          <img decoding="async" src="../../assets/img/33.png"
             alt="How It Works" style="width: 90%;
     border-radius: 60px;" />
         </div>
@@ -606,7 +517,7 @@ function stopSlideshow() {
     <section class="cleaning-quote position-relative">
       <div class="cleaning-thumbing">
         <img decoding="async"
-          src="https://www.4damstheme.com/clenis/wp-content/uploads/2024/04/cleaning-thumb-1024x399.png"
+          src="../../assets/img/2.png"
           alt="Contact Us" />
       </div>
       <div class="container">
@@ -644,7 +555,7 @@ function stopSlideshow() {
                     </svg>
                     <span class="pra"> Telephone </span>
                   </div>
-                  <h3 class="title">
+                  <h3 class="title" style="font-size: 1.5rem;" >
                     +48 74326 02396
                     <span class="d-block"> +48 64453 96533 </span>
                   </h3>
@@ -663,7 +574,7 @@ function stopSlideshow() {
                     </svg>
                     <span class="pra"> Location </span>
                   </div>
-                  <h3 class="title">
+                  <h3 class="title" style="font-size: 1.2rem;">
                     20 Manchester Square
                     <span class="d-block"> London W1U 360, UK, </span>
                   </h3>
@@ -682,7 +593,7 @@ function stopSlideshow() {
                     </svg>
                     <span class="pra"> Mail Us </span>
                   </div>
-                  <h3 class="title">
+                  <h3 class="title" style="font-size: 1.2rem;">
                     helloclenis@gmail.com
                     <span class="d-block"> clenissupport@gmail.com </span>
                   </h3>
@@ -1098,7 +1009,7 @@ function stopSlideshow() {
                     <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path
                         d="M3.84091 12.25L0.5 14.875V1C0.5 0.58579 0.83579 0.25 1.25 0.25H14.75C15.1642 0.25 15.5 0.58579 15.5 1V11.5C15.5 11.9142 15.1642 12.25 14.75 12.25H3.84091ZM3.32211 10.75H14V1.75H2V11.7888L3.32211 10.75ZM7.25 5.5H8.75V7H7.25V5.5ZM4.25 5.5H5.75V7H4.25V5.5ZM10.25 5.5H11.75V7H10.25V5.5Z"
-                        fill="#2295FF"></path>
+                        fill="#30c7b5"></path>
                     </svg>
                     <a href="mailto:helloclenis@gmail.com" style="transition: all 0.4s;
                           font-size: 16px;
@@ -1111,7 +1022,7 @@ function stopSlideshow() {
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path
                         d="M5.02417 6.01158C5.7265 7.2466 6.7534 8.2735 7.98842 8.9758L8.6518 8.04708C8.87238 7.73838 9.2887 7.64297 9.6217 7.82485C10.6768 8.40123 11.8428 8.75148 13.0592 8.84778C13.4492 8.87868 13.75 9.20417 13.75 9.59545V12.9426C13.75 13.3271 13.4591 13.6493 13.0766 13.6886C12.6792 13.7295 12.2783 13.75 11.875 13.75C5.45469 13.75 0.25 8.5453 0.25 2.125C0.25 1.7217 0.270565 1.32078 0.311418 0.92332C0.350725 0.540812 0.672955 0.25 1.05749 0.25H4.40456C4.79583 0.25 5.12135 0.55078 5.15222 0.940817C5.2485 2.15716 5.59877 3.32323 6.17515 4.37833C6.35703 4.7113 6.26162 5.12766 5.95292 5.34818L5.02417 6.01158ZM3.13319 5.5189L4.55815 4.50107C4.1541 3.62885 3.87721 2.70387 3.73545 1.75H1.7568C1.75227 1.87474 1.75 1.99975 1.75 2.125C1.75 7.71685 6.28315 12.25 11.875 12.25C12.0002 12.25 12.1253 12.2478 12.25 12.2432V10.2645C11.2962 10.1228 10.3712 9.84587 9.49892 9.44185L8.4811 10.8668C8.06935 10.7069 7.6717 10.5186 7.29055 10.3046L7.24697 10.2797C5.77728 9.44402 4.55601 8.22272 3.72025 6.75303L3.69545 6.70945C3.48137 6.3283 3.29316 5.93065 3.13319 5.5189Z"
-                        fill="#2295FF"></path>
+                        fill="#30c7b5"></path>
                     </svg>
                     <span style="color:#748aa0;
                                       font-size: 16px;
@@ -1124,7 +1035,7 @@ function stopSlideshow() {
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path
                         d="M5.02417 6.01158C5.7265 7.2466 6.7534 8.2735 7.98842 8.9758L8.6518 8.04708C8.87238 7.73838 9.2887 7.64297 9.6217 7.82485C10.6768 8.40123 11.8428 8.75148 13.0592 8.84778C13.4492 8.87868 13.75 9.20417 13.75 9.59545V12.9426C13.75 13.3271 13.4591 13.6493 13.0766 13.6886C12.6792 13.7295 12.2783 13.75 11.875 13.75C5.45469 13.75 0.25 8.5453 0.25 2.125C0.25 1.7217 0.270565 1.32078 0.311418 0.92332C0.350725 0.540812 0.672955 0.25 1.05749 0.25H4.40456C4.79583 0.25 5.12135 0.55078 5.15222 0.940817C5.2485 2.15716 5.59877 3.32323 6.17515 4.37833C6.35703 4.7113 6.26162 5.12766 5.95292 5.34818L5.02417 6.01158ZM3.13319 5.5189L4.55815 4.50107C4.1541 3.62885 3.87721 2.70387 3.73545 1.75H1.7568C1.75227 1.87474 1.75 1.99975 1.75 2.125C1.75 7.71685 6.28315 12.25 11.875 12.25C12.0002 12.25 12.1253 12.2478 12.25 12.2432V10.2645C11.2962 10.1228 10.3712 9.84587 9.49892 9.44185L8.4811 10.8668C8.06935 10.7069 7.6717 10.5186 7.29055 10.3046L7.24697 10.2797C5.77728 9.44402 4.55601 8.22272 3.72025 6.75303L3.69545 6.70945C3.48137 6.3283 3.29316 5.93065 3.13319 5.5189Z"
-                        fill="#2295FF"></path>
+                        fill="#30c7b5"></path>
                     </svg>
                     <span style="color:#748aa0;
                                       font-size: 16px;
@@ -1136,7 +1047,7 @@ function stopSlideshow() {
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path
                         d="M5.75 0.75V2.25H10.25V0.75H11.75V2.25H14.75C15.1642 2.25 15.5 2.58579 15.5 3V15C15.5 15.4142 15.1642 15.75 14.75 15.75H1.25C0.83579 15.75 0.5 15.4142 0.5 15V3C0.5 2.58579 0.83579 2.25 1.25 2.25H4.25V0.75H5.75ZM14 8.25H2V14.25H14V8.25ZM4.25 3.75H2V6.75H14V3.75H11.75V5.25H10.25V3.75H5.75V5.25H4.25V3.75Z"
-                        fill="#2295FF"></path>
+                        fill="#30c7b5"></path>
                     </svg>
                     <span style="color:#748aa0;
                                       font-size: 16px;
@@ -1150,7 +1061,7 @@ function stopSlideshow() {
                     <svg width="14" height="17" viewBox="0 0 14 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path
                         d="M7 14.6746L10.7123 10.9623C12.7625 8.91208 12.7625 5.58794 10.7123 3.53769C8.66208 1.48744 5.33794 1.48744 3.28769 3.53769C1.23744 5.58794 1.23744 8.91208 3.28769 10.9623L7 14.6746ZM7 16.7959L2.22703 12.023C-0.40901 9.3869 -0.40901 5.11307 2.22703 2.47703C4.86307 -0.15901 9.1369 -0.15901 11.773 2.47703C14.409 5.11307 14.409 9.3869 11.773 12.023L7 16.7959ZM7 8.75C7.82845 8.75 8.5 8.07845 8.5 7.25C8.5 6.42157 7.82845 5.75 7 5.75C6.17155 5.75 5.5 6.42157 5.5 7.25C5.5 8.07845 6.17155 8.75 7 8.75ZM7 10.25C5.34314 10.25 4 8.90683 4 7.25C4 5.59314 5.34314 4.25 7 4.25C8.65683 4.25 10 5.59314 10 7.25C10 8.90683 8.65683 10.25 7 10.25Z"
-                        fill="#2295FF"></path>
+                        fill="#30c7b5"></path>
                     </svg>
                     <span style="color:#748aa0;
                                       font-size: 16px;
@@ -1819,7 +1730,7 @@ function stopSlideshow() {
 }
 
 .bg-yellow-button {
-  background-color: #FFEA00;
+  background-color: #30c7b5;;
   /* Yellow color */
   color: #333;
   /* Dark text color */
@@ -1831,7 +1742,7 @@ function stopSlideshow() {
 .bg-yellow-button:hover {
   background-color: #FFF;
   /* White background color */
-  color: #FFEA00;
+  color: #30c7b5;
   /* Yellow text color */
 }
 
@@ -3468,7 +3379,7 @@ function stopSlideshow() {
     line-height: 28px;
     display: inline-block;
     position: relative;
-    background: yellow;
+    background: #30c7b5;;
     overflow: hidden;
     border-radius: 100px;
     transition: all 0.5s;

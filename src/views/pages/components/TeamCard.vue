@@ -167,9 +167,9 @@
     height: 6.25rem;
     z-index: 0;
     transition: 0.3s ease-in-out;
-    background: #f2709c;
-    background: -webkit-linear-gradient(to left, #ff9472, #f2709c);
-    background: linear-gradient(to left, #ff9472, #f2709c);
+    background: #30c7b5;
+    background: -webkit-linear-gradient(to left, #30c7b5, #30c7b5);
+    background: linear-gradient(to left, #30c7b5, #30c7b5);
     top: -0.375rem;
     left: -0.375rem;
   }
@@ -186,8 +186,8 @@
   }
   
   .card img {
-    filter: grayscale(100%);
-    transition: 0.5s ease;
+    /* filter: grayscale(100%); */
+    transition: transform 0.3s ease; 
   }
   
   .card-content {
@@ -210,8 +210,7 @@
   }
   
   .card:hover img {
-    filter: grayscale(0%);
-  }
+    transform: scale(1.1);  }
   
   .card:hover::before {
     transform: scale(1.03);

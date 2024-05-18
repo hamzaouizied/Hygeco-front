@@ -51,7 +51,7 @@ onBeforeUnmount(() => {
 
 
     <div class="page-header position-relative" :style="{
-    backgroundImage: 'url(' + require('../../assets/img/hygeco.jpg') + ')',
+    backgroundImage: 'url(' + require('../../assets/img/header1.png') + ')',
     backgroundSize: 'cover',
     padding: '100px',
   }">
@@ -93,7 +93,7 @@ onBeforeUnmount(() => {
         
     </div>
     <section class="relative bg-cover bg-center py-7 mt-3"
-    :style="{ backgroundImage: 'url(https://radiustheme.com/demo/wordpress/themes/clenix/wp-content/uploads/2019/11/section-bg15.jpg)' }">
+    :style="{ backgroundImage: 'url(' + require('../../assets/img/bar.png') + ')',}">
     <div class="absolute inset-0  "></div>
     <div class="container mx-auto relative flex justify-center items-center text-center">
       <div class="max-w-lg">
@@ -112,7 +112,7 @@ onBeforeUnmount(() => {
       <div class="row justify-content-lg-between justify-content-center">
         <div class="col-lg-7">
           <div class="work-thumb">
-            <img decoding="async" src="https://www.4damstheme.com/clenis/wp-content/uploads/2024/04/work.png"
+            <img decoding="async" src="../../assets/img/menage.png"
               alt="How It Works" />
           </div>
         </div>
@@ -428,7 +428,7 @@ padding-left: 0px;">
   </div>
   <div class="col-lg-7">
     <div class="work-thumb">
-      <img decoding="async" src="https://www.4damstheme.com/clenis/wp-content/uploads/2024/04/work.png"
+      <img decoding="async" src="../../assets/img/33.png"
         alt="How It Works" style="width: 90%;
 border-radius: 60px;" />
     </div>
@@ -535,7 +535,7 @@ justify-content: space-between;">
                   expectations. This may include a consultation where the client
                   outlines.
                 </p>
-                <button class="yellow-btn">Learn More</button>
+                <button class="yellow-btn" style="color:white ;background-color:#344767 ;" >Learn More</button>
               </div>
 
             </div>
@@ -717,7 +717,7 @@ justify-content: space-between;">
                   </li>
 
                   <li>
-                    <a href="https://www.4damstheme.com/clenis/contact-us/">Contact Us</a>
+                    <a href="">Contact Us</a>
                   </li>
 
                   <li>
@@ -830,7 +830,7 @@ justify-content: space-between;">
                     <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path
                         d="M3.84091 12.25L0.5 14.875V1C0.5 0.58579 0.83579 0.25 1.25 0.25H14.75C15.1642 0.25 15.5 0.58579 15.5 1V11.5C15.5 11.9142 15.1642 12.25 14.75 12.25H3.84091ZM3.32211 10.75H14V1.75H2V11.7888L3.32211 10.75ZM7.25 5.5H8.75V7H7.25V5.5ZM4.25 5.5H5.75V7H4.25V5.5ZM10.25 5.5H11.75V7H10.25V5.5Z"
-                        fill="#2295FF"></path>
+                        fill="#30c7b5"></path>
                     </svg>
                     <a href="mailto:helloclenis@gmail.com" style="transition: all 0.4s;
                           font-size: 16px;
@@ -843,7 +843,7 @@ justify-content: space-between;">
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path
                         d="M5.02417 6.01158C5.7265 7.2466 6.7534 8.2735 7.98842 8.9758L8.6518 8.04708C8.87238 7.73838 9.2887 7.64297 9.6217 7.82485C10.6768 8.40123 11.8428 8.75148 13.0592 8.84778C13.4492 8.87868 13.75 9.20417 13.75 9.59545V12.9426C13.75 13.3271 13.4591 13.6493 13.0766 13.6886C12.6792 13.7295 12.2783 13.75 11.875 13.75C5.45469 13.75 0.25 8.5453 0.25 2.125C0.25 1.7217 0.270565 1.32078 0.311418 0.92332C0.350725 0.540812 0.672955 0.25 1.05749 0.25H4.40456C4.79583 0.25 5.12135 0.55078 5.15222 0.940817C5.2485 2.15716 5.59877 3.32323 6.17515 4.37833C6.35703 4.7113 6.26162 5.12766 5.95292 5.34818L5.02417 6.01158ZM3.13319 5.5189L4.55815 4.50107C4.1541 3.62885 3.87721 2.70387 3.73545 1.75H1.7568C1.75227 1.87474 1.75 1.99975 1.75 2.125C1.75 7.71685 6.28315 12.25 11.875 12.25C12.0002 12.25 12.1253 12.2478 12.25 12.2432V10.2645C11.2962 10.1228 10.3712 9.84587 9.49892 9.44185L8.4811 10.8668C8.06935 10.7069 7.6717 10.5186 7.29055 10.3046L7.24697 10.2797C5.77728 9.44402 4.55601 8.22272 3.72025 6.75303L3.69545 6.70945C3.48137 6.3283 3.29316 5.93065 3.13319 5.5189Z"
-                        fill="#2295FF"></path>
+                        fill="#30c7b5"></path>
                     </svg>
                     <span style="color:#748aa0;
                                       font-size: 16px;
@@ -856,7 +856,7 @@ justify-content: space-between;">
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path
                         d="M5.02417 6.01158C5.7265 7.2466 6.7534 8.2735 7.98842 8.9758L8.6518 8.04708C8.87238 7.73838 9.2887 7.64297 9.6217 7.82485C10.6768 8.40123 11.8428 8.75148 13.0592 8.84778C13.4492 8.87868 13.75 9.20417 13.75 9.59545V12.9426C13.75 13.3271 13.4591 13.6493 13.0766 13.6886C12.6792 13.7295 12.2783 13.75 11.875 13.75C5.45469 13.75 0.25 8.5453 0.25 2.125C0.25 1.7217 0.270565 1.32078 0.311418 0.92332C0.350725 0.540812 0.672955 0.25 1.05749 0.25H4.40456C4.79583 0.25 5.12135 0.55078 5.15222 0.940817C5.2485 2.15716 5.59877 3.32323 6.17515 4.37833C6.35703 4.7113 6.26162 5.12766 5.95292 5.34818L5.02417 6.01158ZM3.13319 5.5189L4.55815 4.50107C4.1541 3.62885 3.87721 2.70387 3.73545 1.75H1.7568C1.75227 1.87474 1.75 1.99975 1.75 2.125C1.75 7.71685 6.28315 12.25 11.875 12.25C12.0002 12.25 12.1253 12.2478 12.25 12.2432V10.2645C11.2962 10.1228 10.3712 9.84587 9.49892 9.44185L8.4811 10.8668C8.06935 10.7069 7.6717 10.5186 7.29055 10.3046L7.24697 10.2797C5.77728 9.44402 4.55601 8.22272 3.72025 6.75303L3.69545 6.70945C3.48137 6.3283 3.29316 5.93065 3.13319 5.5189Z"
-                        fill="#2295FF"></path>
+                        fill="#30c7b5"></path>
                     </svg>
                     <span style="color:#748aa0;
                                       font-size: 16px;
@@ -868,7 +868,7 @@ justify-content: space-between;">
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path
                         d="M5.75 0.75V2.25H10.25V0.75H11.75V2.25H14.75C15.1642 2.25 15.5 2.58579 15.5 3V15C15.5 15.4142 15.1642 15.75 14.75 15.75H1.25C0.83579 15.75 0.5 15.4142 0.5 15V3C0.5 2.58579 0.83579 2.25 1.25 2.25H4.25V0.75H5.75ZM14 8.25H2V14.25H14V8.25ZM4.25 3.75H2V6.75H14V3.75H11.75V5.25H10.25V3.75H5.75V5.25H4.25V3.75Z"
-                        fill="#2295FF"></path>
+                        fill="#30c7b5"></path>
                     </svg>
                     <span style="color:#748aa0;
                                       font-size: 16px;
@@ -882,7 +882,7 @@ justify-content: space-between;">
                     <svg width="14" height="17" viewBox="0 0 14 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path
                         d="M7 14.6746L10.7123 10.9623C12.7625 8.91208 12.7625 5.58794 10.7123 3.53769C8.66208 1.48744 5.33794 1.48744 3.28769 3.53769C1.23744 5.58794 1.23744 8.91208 3.28769 10.9623L7 14.6746ZM7 16.7959L2.22703 12.023C-0.40901 9.3869 -0.40901 5.11307 2.22703 2.47703C4.86307 -0.15901 9.1369 -0.15901 11.773 2.47703C14.409 5.11307 14.409 9.3869 11.773 12.023L7 16.7959ZM7 8.75C7.82845 8.75 8.5 8.07845 8.5 7.25C8.5 6.42157 7.82845 5.75 7 5.75C6.17155 5.75 5.5 6.42157 5.5 7.25C5.5 8.07845 6.17155 8.75 7 8.75ZM7 10.25C5.34314 10.25 4 8.90683 4 7.25C4 5.59314 5.34314 4.25 7 4.25C8.65683 4.25 10 5.59314 10 7.25C10 8.90683 8.65683 10.25 7 10.25Z"
-                        fill="#2295FF"></path>
+                        fill="#30c7b5"></path>
                     </svg>
                     <span style="color:#748aa0;
                                       font-size: 16px;
@@ -1169,8 +1169,8 @@ justify-content: space-between;">
 }
 /* button */
 .yellow-btn {
-  background-color: #FFD700; /* Yellow color */
-  color: #032b52; /* Text color */
+  background-color: #30c7b5; /* Yellow color */
+  color: white; /* Text color */
   border: none;
   padding: 10px 20px;
   border-radius: 5px;
@@ -1181,10 +1181,10 @@ justify-content: space-between;">
 }
 
 .yellow-btn:hover {
-  background-color: #FFC107; /* Slightly darker yellow for hover effect */
+  background-color: #30c7b5; /* Slightly darker yellow for hover effect */
 }
 .bg-yellow-button {
-  background-color: #FFEA00;
+  background-color: #30c7b5;
   /* Yellow color */
   color: #333;
   /* Dark text color */
