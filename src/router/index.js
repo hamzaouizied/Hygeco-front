@@ -17,6 +17,8 @@ import LandingPage from "../views/pages/LandingPage.vue";
 import PricingHygeco from "../views/pages/pricingHygeco.vue";
 import Contact from "../views/pages/contact.vue";
 import Menage from "../views/pages/ServiceMenage.vue";
+import Reservation from "../views/pages/reservation.vue";
+
 
 
 
@@ -143,6 +145,11 @@ const routes = [
     path: "/pages/contact",
     name: "contact",
     component: Contact
+  },
+  {
+    path: "/pages/reservation",
+    name: "reservation",
+    component: Reservation
   },
   {
     path: "/pages/service-menage",

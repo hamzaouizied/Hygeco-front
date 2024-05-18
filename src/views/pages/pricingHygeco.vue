@@ -41,6 +41,7 @@ onBeforeUnmount(() => {
       backgroundImage:
         'url(' + require('../../assets/img/header1.png') + ')',
       backgroundSize: 'cover',
+      padding: '100px',
     }"
   >
     <div class="container pb-10 pb-lg-9 pt-7 postion-relative z-index-2">
@@ -52,7 +53,11 @@ onBeforeUnmount(() => {
           </p>
         </div>
       </div>
-      <div class="row">
+      
+    </div>
+  </div>
+    <div class="container ">
+      <div class="row p-5">
         <div class="mx-auto text-center col-lg-4 col-md-6 col-7">
           <div class="mt-5 nav-wrapper position-relative z-index-2">
             <ul
@@ -89,10 +94,6 @@ onBeforeUnmount(() => {
           </div>
         </div>
       </div>
-    </div>
-  </div>
-  <div class="mt-n8">
-    <div class="container">
       <div class="tab-content tab-space">
         <div id="monthly" class="tab-pane active">
           <div class="row">
@@ -103,7 +104,7 @@ onBeforeUnmount(() => {
                 :specifications="[
                   { label: 'Regular cleaning', includes: true },
                   { label: 'Deep Cleaning', includes: true },
-                  { label: 'Post Construction Cleaning', includes: false },
+                  { label: 'Construction Cleaning', includes: false },
                   { label: 'Windows Cleanig', includes: false },
                   { label: 'Deep Cleaning', includes: false },
                   { label: 'Regular cleaning', includes: false },
@@ -122,7 +123,7 @@ onBeforeUnmount(() => {
                 :specifications="[
                   { label: 'Regular cleaning', includes: true },
                   { label: 'Deep Cleaning', includes: true },
-                  { label: 'Post Construction Cleaning', includes: false },
+                  { label: 'Construction Cleaning', includes: false },
                   { label: 'Windows Cleanig', includes: false },
                   { label: 'Deep Cleaning', includes: false },
                   { label: 'Regular cleaning', includes: false },
@@ -141,7 +142,7 @@ onBeforeUnmount(() => {
                 :specifications="[
                  { label: 'Regular cleaning', includes: true },
                   { label: 'Deep Cleaning', includes: true },
-                  { label: 'Post Construction Cleaning', includes: false },
+                  { label: 'Construction Cleaning', includes: false },
                   { label: 'Windows Cleanig', includes: false },
                   { label: 'Deep Cleaning', includes: false },
                   { label: 'Regular cleaning', includes: false },
@@ -164,7 +165,7 @@ onBeforeUnmount(() => {
                 :specifications="[
                  { label: 'Regular cleaning', includes: true },
                   { label: 'Deep Cleaning', includes: true },
-                  { label: 'Post Construction Cleaning', includes: false },
+                  { label: 'Construction Cleaning', includes: false },
                   { label: 'Windows Cleanig', includes: false },
                   { label: 'Deep Cleaning', includes: false },
                   { label: 'Regular cleaning', includes: false },
@@ -183,7 +184,7 @@ onBeforeUnmount(() => {
                 :specifications="[
                   { label: 'Regular cleaning', includes: true },
                   { label: 'Deep Cleaning', includes: true },
-                  { label: 'Post Construction Cleaning', includes: false },
+                  { label: 'Construction Cleaning', includes: false },
                   { label: 'Windows Cleanig', includes: false },
                   { label: 'Deep Cleaning', includes: false },
                   { label: 'Regular cleaning', includes: false },
@@ -202,7 +203,7 @@ onBeforeUnmount(() => {
                 :specifications="[
                   { label: 'Regular cleaning', includes: true },
                   { label: 'Deep Cleaning', includes: true },
-                  { label: 'Post Construction Cleaning', includes: false },
+                  { label: 'Construction Cleaning', includes: false },
                   { label: 'Windows Cleanig', includes: false },
                   { label: 'Deep Cleaning', includes: false },
                   { label: 'Regular cleaning', includes: false },
@@ -218,7 +219,7 @@ onBeforeUnmount(() => {
         </div>
       </div>
     </div>
-  </div>
+  
   <div class="container my-6">
     <div class="row">
       <div class="mx-auto text-center col-8">

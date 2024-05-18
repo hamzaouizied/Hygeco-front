@@ -4,32 +4,42 @@
       <h2 style="color: #30c7b5;;">Hygeco</h2>
       <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Animi, praesentium veritatis voluptatibus ut consequuntur quas consequatur omnis id rem obcaecati.</p>
       <span class="bg-watermark">work</span>
+
       <div class="cards">
+        <a href="/pages/service-menage" style="text-decoration: none; color: inherit;">
+
         <div class="card">
           <img src="https://radiustheme.com/demo/wordpress/themes/clenix/wp-content/uploads/2019/10/bedroom-620x672.jpg" alt="Franklin Carlson">
-          <div class="card-content">
-            <h3>Buandrie</h3>
+          <div class="card-content" >
+            <h3 >Buandrie</h3>
             <p>Self Service</p>
             
            
           </div>
         </div>
+    </a>
+
         <div class="card">
           <img src="https://radiustheme.com/demo/wordpress/themes/clenix/wp-content/uploads/2019/07/window-620x672.jpg" alt="Antonia Moore">
-          <div class="card-content">
-            
+          <div class="card-content" >
+            <a href="/pages/service-menage" style="text-decoration: none; color: inherit;">
+
             <h3>Menage</h3>
             <p>Full package</p>
+        </a>
           </div>
         </div>
+        
+        <a href="/pages/service-menage" style="text-decoration: none; color: inherit;">
         <div class="card">
           <img src="https://radiustheme.com/demo/wordpress/themes/clenix/wp-content/uploads/2019/07/house5-620x672.jpg" alt="Travis Lynch">
-          <div class="card-content">
-            <h3>Buandrie</h3>
+          <div class="card-content" >
+            <h3>Menage commercial</h3>
             <p>Full Package</p>
           
           </div>
         </div>
+       </a>
         
       </div>
     </section>

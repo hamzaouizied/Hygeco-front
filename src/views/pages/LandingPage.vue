@@ -84,7 +84,7 @@ function stopSlideshow() {
       : '',
 
     backgroundSize: 'cover',
-    // padding: '60px',
+    padding: '100px',
   }">
     <div class="container pb-10 pb-lg-9 pt-7 postion-relative z-index-2">
       <div class="row">
@@ -230,7 +230,7 @@ function stopSlideshow() {
     <div class="container mx-auto relative flex justify-center items-center text-center">
       <div class="max-w-lg">
         <h2 class="text-white text-3xl md:text-4xl font-bold mb-4">Get started with your free estimate</h2>
-        <a href="#" class="bg-yellow-button text-gray-900 font-medium py-3 px-6 rounded">
+        <a href="/pages/contact" class="bg-yellow-button text-gray-900 font-medium py-3 px-6 rounded">
           Get an Estimate
         </a>
       </div>
@@ -266,7 +266,7 @@ function stopSlideshow() {
               </p> -->
             </div>
             <div class="howit-work-info">
-              <div class="howit-item wow fadeInUp" data-wow-delay="0.7" style="visibility: visible; animation-name: fadeInUp;padding: 35px;
+              <div class="howit-item wow fadeInUp" data-wow-delay="0.7" style="visibility: visible; animation-name: fadeInUp;padding: 50px;
     padding-left: 0px;">
                 <h3 class="title d-flex align-items-center gap-2">
                   MENAGE
@@ -524,14 +524,8 @@ function stopSlideshow() {
         <div class="row g-4">
           <div class="col-lg-5">
             <div class="cleaning-quote-content">
-              <div class="cmn-section-title">
-                <div class="cmn--btn cmn-alt2 wow fadeInDown" data-wow-delay="0.4s" style="
-                    visibility: visible;
-                    animation-delay: 0.4s;
-                    animation-name: fadeInDown;
-                  ">
-                  <span > Contact Us </span>
-                </div>
+              <div class="cmn-section-title" style="margin-top: 4.5rem;" >
+                
                 <h2 class="white mt-xxl-4 mt-2 mb-0 wow fadeInUp" data-wow-delay="0.6s" style="
                     visibility: visible;
                     animation-delay: 0.6s;
@@ -539,6 +533,13 @@ function stopSlideshow() {
                   ">
                   Request a free cleaning quote today
                 </h2>
+                <div class="cmn--btn cmn-alt2 wow fadeInDown" data-wow-delay="0.4s" style="
+                    visibility: visible;
+                    animation-delay: 0.4s;
+                    animation-name: fadeInDown;
+                  ">
+                  <span > Contact Us </span>
+                </div>
               </div>
               <div class="cleaning-info">
                 <div class="cleaning-info-item wow fadeInDown" data-wow-delay="0.7s" style="
@@ -677,7 +678,7 @@ function stopSlideshow() {
                         </p>
                       </div>
                     </div>
-                    <div class="col-lg-6 col-md-6">
+                    <!-- <div class="col-lg-6 col-md-6">
                       <div class="clean-form-grp">
                         <p>
                           <label>Day of Service</label><br />
@@ -692,7 +693,7 @@ function stopSlideshow() {
                               width: 100%;" name="text-454" /></span>
                         </p>
                       </div>
-                    </div>
+                    </div> -->
                     <div class="col-lg-12">
                       <div class="clean-form-grp">
                         <p>
@@ -710,7 +711,7 @@ function stopSlideshow() {
                         <p style="margin-bottom: 0px;">
                           <input class="wpcf7-form-control wpcf7-submit has-spinner cmn--btn cmn-alt2" type="submit"
                             value="Submit Your Information" style="border: unset;
-                            color: #30c7b5;background: #30c7b5;border-radius: 87px;    font-size: 16px;
+                            color: #fff;;background: #344767;;border-radius: 87px;    font-size: 16px;
 " /><span class="wpcf7-spinner"></span>
                         </p>
                       </div>
@@ -767,7 +768,7 @@ function stopSlideshow() {
             <form id="mc4wp-form-1" class="mc4wp-form mc4wp-form-227" method="post" data-id="227"
               data-name="subscription">
               <div class="mc4wp-form-fields">
-                <label class="fz-16 title fw-700 prafont">Enter your email</label>
+                <label class="fz-16 title fw-700 prafont" style="padding-right: 10px;">Enter your email</label>
                 <input type="email" name="EMAIL" required="" style="width: 100%;
                   max-width: 500px;
                   border-radius: 10px;
@@ -2822,7 +2823,7 @@ function stopSlideshow() {
 }
 
 .cleaning-quote-content .cleaning-info {
-  margin-top: 200px;
+  margin-top: 110px;
 }
 
 @media (max-width: 1199px) {
