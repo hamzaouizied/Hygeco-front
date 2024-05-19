@@ -1,5 +1,5 @@
 <script>
-import { ref } from 'vue';
+// import { ref } from 'vue';
 import { useStore } from 'vuex';
 import Navbar from "@/examples/PageLayout/NavbarHygeco.vue";
 // import PricingCard from "./components/PricingCard.vue";
@@ -96,7 +96,7 @@ export default {
         : '',
 
       backgroundSize: 'cover',
-      // padding: '60px',
+      padding: '100px',
     }"
   >
     <div class="container pb-10 pb-lg-9 pt-7 postion-relative z-index-2">
@@ -319,7 +319,7 @@ export default {
           Get started with your free estimate
         </h2>
         <a
-          href="#"
+          href="/pages/contact"
           class="bg-yellow-button text-gray-900 font-medium py-3 px-6 rounded"
         >
           Get an Estimate
@@ -376,7 +376,7 @@ export default {
                 style="
                   visibility: visible;
                   animation-name: fadeInUp;
-                  padding: 35px;
+                  padding: 50px;
                   padding-left: 0px;
                 "
               >
@@ -710,18 +710,8 @@ export default {
         <div class="row g-4">
           <div class="col-lg-5">
             <div class="cleaning-quote-content">
-              <div class="cmn-section-title">
-                <div
-                  class="cmn--btn cmn-alt2 wow fadeInDown"
-                  data-wow-delay="0.4s"
-                  style="
-                    visibility: visible;
-                    animation-delay: 0.4s;
-                    animation-name: fadeInDown;
-                  "
-                >
-                  <span> Contact Us </span>
-                </div>
+              <div class="cmn-section-title" style="margin-top: 4.5rem;">
+                
                 <h2
                   class="white mt-xxl-4 mt-2 mb-0 wow fadeInUp"
                   data-wow-delay="0.6s"
@@ -734,6 +724,17 @@ export default {
                 >
                   Request a free cleaning quote today
                 </h2>
+                <div
+                  class="cmn--btn cmn-alt2 wow fadeInDown"
+                  data-wow-delay="0.4s"
+                  style="
+                    visibility: visible;
+                    animation-delay: 0.4s;
+                    animation-name: fadeInDown;
+                  "
+                >
+                  <span> Contact Us </span>
+                </div>
               </div>
               <div class="cleaning-info">
                 <div
@@ -759,8 +760,7 @@ export default {
                     <span class="pra"> Telephone </span>
                   </div>
                   <h3 class="title" style="font-size: 1.5rem">
-                    +48 74326 02396
-                    <span class="d-block"> +48 64453 96533 </span>
+                    +1 514-939-2020
                   </h3>
                 </div>
                 <div
@@ -786,8 +786,8 @@ export default {
                     <span class="pra"> Location </span>
                   </div>
                   <h3 class="title" style="font-size: 1.2rem">
-                    20 Manchester Square
-                    <span class="d-block"> London W1U 360, UK, </span>
+                    Montréal,Canada
+                    <span class="d-block">4260 Notre Dame,Ouest</span>
                   </h3>
                 </div>
                 <div
@@ -813,8 +813,7 @@ export default {
                     <span class="pra"> Mail Us </span>
                   </div>
                   <h3 class="title" style="font-size: 1.2rem">
-                    helloclenis@gmail.com
-                    <span class="d-block"> clenissupport@gmail.com </span>
+                    info@heygeco.ca                    
                   </h3>
                 </div>
               </div>
@@ -970,7 +969,7 @@ export default {
                         </p>
                       </div>
                     </div>
-                    <div class="col-lg-6 col-md-6">
+                    <!-- <div class="col-lg-6 col-md-6">
                       <div class="clean-form-grp">
                         <p>
                           <label>Day of Service</label><br />
@@ -998,7 +997,7 @@ export default {
                           /></span>
                         </p>
                       </div>
-                    </div>
+                    </div> -->
                     <div class="col-lg-12">
                       <div class="clean-form-grp">
                         <p>
@@ -1029,8 +1028,8 @@ export default {
                             value="Submit Your Information"
                             style="
                               border: unset;
-                              color: #30c7b5;
-                              background: #30c7b5;
+                              color: white;
+                              background: #344767;
                               border-radius: 87px;
                               font-size: 16px;
                             "
@@ -1109,7 +1108,7 @@ export default {
             >
               <div class="mc4wp-form-fields">
                 <label class="fz-16 title fw-700 prafont"
-                  >Enter your email</label
+                 style="padding-right: 10px;" >Enter your email</label
                 >
                 <input
                   type="email"
@@ -1339,11 +1338,6 @@ export default {
                     >
                   </li>
 
-                  <li>
-                    <a href="https://www.4damstheme.com/clenis/team-member/"
-                      >Our Members</a
-                    >
-                  </li>
 
                   <li>
                     <a href="https://www.4damstheme.com/clenis/our-services/"
@@ -1351,11 +1345,7 @@ export default {
                     >
                   </li>
 
-                  <li>
-                    <a href="https://www.4damstheme.com/clenis/faqs-page/"
-                      >FAQ'S</a
-                    >
-                  </li>
+                  
                 </ul>
               </div>
             </div>
@@ -1386,33 +1376,23 @@ export default {
                 <ul style="padding: 0; margin: 0; list-style: none">
                   <li>
                     <a href="https://www.4damstheme.com/clenis/our-project/"
-                      >Home Cleaning</a
+                      >Menage</a
                     >
                   </li>
 
                   <li>
                     <a href="https://www.4damstheme.com/clenis/our-services/"
-                      >Office Cleaning</a
+                      >Buandrie</a
                     >
                   </li>
 
                   <li>
                     <a href="https://www.4damstheme.com/clenis/our-services/"
-                      >Kitchen Cleaning</a
+                      >Menage commercial</a
                     >
                   </li>
 
-                  <li>
-                    <a href="https://www.4damstheme.com/clenis/our-project/"
-                      >Floor Cleaning</a
-                    >
-                  </li>
-
-                  <li>
-                    <a href="https://www.4damstheme.com/clenis/our-services/"
-                      >Car Cleaning</a
-                    >
-                  </li>
+                  
                 </ul>
               </div>
             </div>
@@ -1437,27 +1417,23 @@ export default {
                   margin-bottom: 41px;
                 "
               >
-                Company
+                Policy
               </h4>
               <div class="wp-widget-group__inner-blocks">
                 <ul style="padding: 0; margin: 0; list-style: none">
                   <li>
                     <a href="https://www.4damstheme.com/clenis/about-clenis/"
-                      >Terms &amp; Condition</a
+                      >Ban plans</a
                     >
                   </li>
 
                   <li>
                     <a href="https://www.4damstheme.com/clenis/faqs-page/"
-                      >Our History</a
+                      >Reservtion</a
                     >
                   </li>
 
-                  <li>
-                    <a href="https://www.4damstheme.com/clenis/about-clenis/"
-                      >Our Gallery</a
-                    >
-                  </li>
+                  
 
                   <li>
                     <a href="https://www.4damstheme.com/clenis/about-clenis/"
@@ -1512,7 +1488,7 @@ export default {
                       ></path>
                     </svg>
                     <a
-                      href="mailto:helloclenis@gmail.com"
+                      href="mailto:info@hygeco.ca"
                       style="
                         transition: all 0.4s;
                         font-size: 16px;
@@ -1520,7 +1496,7 @@ export default {
                         color: #748aa0;
                       "
                     >
-                      helloclenis@gmail.com
+                    info@hygeco.ca
                     </a>
                   </li>
                   <li style="margin-bottom: 24px">
@@ -1545,34 +1521,10 @@ export default {
                         line-height: 140%;
                       "
                     >
-                      +48 74326 02396
+                    +1 514-939-2020
                     </span>
                   </li>
-                  <li style="margin-bottom: 24px">
-                    <svg
-                      width="14"
-                      height="14"
-                      viewBox="0 0 14 14"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M5.02417 6.01158C5.7265 7.2466 6.7534 8.2735 7.98842 8.9758L8.6518 8.04708C8.87238 7.73838 9.2887 7.64297 9.6217 7.82485C10.6768 8.40123 11.8428 8.75148 13.0592 8.84778C13.4492 8.87868 13.75 9.20417 13.75 9.59545V12.9426C13.75 13.3271 13.4591 13.6493 13.0766 13.6886C12.6792 13.7295 12.2783 13.75 11.875 13.75C5.45469 13.75 0.25 8.5453 0.25 2.125C0.25 1.7217 0.270565 1.32078 0.311418 0.92332C0.350725 0.540812 0.672955 0.25 1.05749 0.25H4.40456C4.79583 0.25 5.12135 0.55078 5.15222 0.940817C5.2485 2.15716 5.59877 3.32323 6.17515 4.37833C6.35703 4.7113 6.26162 5.12766 5.95292 5.34818L5.02417 6.01158ZM3.13319 5.5189L4.55815 4.50107C4.1541 3.62885 3.87721 2.70387 3.73545 1.75H1.7568C1.75227 1.87474 1.75 1.99975 1.75 2.125C1.75 7.71685 6.28315 12.25 11.875 12.25C12.0002 12.25 12.1253 12.2478 12.25 12.2432V10.2645C11.2962 10.1228 10.3712 9.84587 9.49892 9.44185L8.4811 10.8668C8.06935 10.7069 7.6717 10.5186 7.29055 10.3046L7.24697 10.2797C5.77728 9.44402 4.55601 8.22272 3.72025 6.75303L3.69545 6.70945C3.48137 6.3283 3.29316 5.93065 3.13319 5.5189Z"
-                        fill="#30c7b5"
-                      ></path>
-                    </svg>
-                    <span
-                      style="
-                        color: #748aa0;
-                        font-size: 16px;
-                        font-style: normal;
-                        font-weight: 400;
-                        line-height: 140%;
-                      "
-                    >
-                      +48 64453 96533
-                    </span>
-                  </li>
+                 
                   <li style="margin-bottom: 24px">
                     <svg
                       width="16"
@@ -1620,7 +1572,7 @@ export default {
                         line-height: 140%;
                       "
                     >
-                      Hilton, TY56/90 NY, USA
+                    4260 Notre Dame,Ouest
                     </span>
                   </li>
                 </ul>
@@ -1644,7 +1596,7 @@ export default {
           margin: 0;
         "
       >
-        © Clenis All Rights Reserved Developed By 4damsthemes
+      © Hygeco All Rights Reserved Developed By GcsHolding
       </p>
     </div>
     <img
@@ -3389,7 +3341,7 @@ export default {
 }
 
 .cleaning-quote-content .cleaning-info {
-  margin-top: 200px;
+  margin-top: 110px;
 }
 
 @media (max-width: 1199px) {
