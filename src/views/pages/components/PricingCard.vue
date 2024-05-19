@@ -32,7 +32,7 @@ defineProps({
 <template>
   <div class="card">
     <div class="pt-4 pb-3 text-center card-header">
-      <span class="text-uppercase font-weight-bold text-dark">{{ badge }}</span>
+      <span class="text-uppercase " style="font-size: 1.5rem;color: #30c7b5;">{{ badge }}</span>
       <h1 class="mt-2 font-weight-bold">
         <small>{{ price.currency }}</small
         >{{ price.value }}
@@ -42,7 +42,7 @@ defineProps({
       <div
         v-for="({ label, includes }, index) of specifications"
         :key="index"
-        class="p-2 d-flex justify-content-lg-start justify-content-center"
+        class="p-2 d-flex justify-content-lg-start "
       >
         <div
           class="text-center shadow icon icon-shape icon-xs rounded-circle"

@@ -35,12 +35,12 @@ const emit = defineEmits(["nextStep"]);
       </div>
       <div class="row">
         <div class="col-12 col-sm-6">
-          <label>Company</label>
+          <label>Phone</label>
           <argon-input
             id="company"
             class="multisteps-form__input"
             type="text"
-            placeholder="eg. Creative Tim"
+            placeholder="+1 514-***-****"
           />
         </div>
         <div class="col-12 col-sm-6 mt-3 mt-sm-0">
@@ -53,7 +53,7 @@ const emit = defineEmits(["nextStep"]);
           />
         </div>
       </div>
-      <div class="row">
+      <!-- <div class="row">
         <div class="col-12 col-sm-6">
           <label>Password</label>
           <argon-input
@@ -72,7 +72,7 @@ const emit = defineEmits(["nextStep"]);
             placeholder="******"
           />
         </div>
-      </div>
+      </div> -->
       <div class="button-row d-flex mt-2">
         <argon-button
           type="button"

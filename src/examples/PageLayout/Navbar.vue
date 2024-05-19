@@ -1422,8 +1422,9 @@ defineProps({
               class="mb-0 btn btn-sm me-1"
               :class="btnBackground ? btnBackground : 'bg-white text-dark'"
               onclick="smoothToPricing('pricing-soft-ui')"
-              >Buy Now</a
+              >Buy now</a
             >
+          
           </li>
         </ul>
       </div>
