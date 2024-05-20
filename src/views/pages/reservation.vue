@@ -699,9 +699,9 @@ export default {
                     ng-class="{hidden: !ctrl.bookingForm.paragraphs[ctrl.code].show}" data-type="paragraph"
                     data-code="agreement_information" data-id="131"
                     ng-bind-html="ctrl.bookingForm.paragraphs[ctrl.code].text | trustAsHtml">By clicking the Book Now
-                    button you are agreeing to our <a href="https://spruseclean.com/terms-and-conditions/"
+                    button you are agreeing to our <a href="#"
                       rel="noopener noreferrer" target="_blank"><u>Terms of Service</u></a> and <a
-                      href="https://spruseclean.com/privacy-policy/" rel="noopener noreferrer"
+                      href="#" rel="noopener noreferrer"
                       target="_blank"><u>Privacy Policy</u></a><u>.</u></span>
                 </tui-paragraph>
               </p>
