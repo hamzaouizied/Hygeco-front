@@ -52,7 +52,7 @@ defineProps({
             <router-link :to="{ name: 'Landing Page' }" class="nav-link">Accueil</router-link>
           </li>
           <li class="mx-2 nav-item">
-            <router-link :to="{ name: 'Landing Page' }" class="nav-link">À propos</router-link>
+            <router-link :to="{ name: 'about' }" class="nav-link">À propos</router-link>
           </li>
           <li class="mx-2 nav-item">
             <router-link :to="{ name: 'menage' }" class="nav-link">Service</router-link>
@@ -73,8 +73,8 @@ defineProps({
               Reservation
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown"  >
-              <router-link class="dropdown-item" :to="{ name: 'Landing Page' }">Menage</router-link>
-              <router-link class="dropdown-item" :to="{ name: 'Landing Page' }">Buandrie</router-link>
+              <router-link class="dropdown-item" :to="{ name: 'reservation' }">Menage</router-link>
+              <router-link class="dropdown-item" :to="{ name: 'reservation' }">Buandrie</router-link>
             </div>
           </li>
           <li class="mx-2 nav-item">
