@@ -516,7 +516,7 @@ justify-content: space-between;">
               </div>
               <h2 class="white mt-xxl-4 mt-2 wow fadeInUp" data-wow-delay="0.5"
                 style="visibility: visible; animation-name: fadeInUp;color:#032b52 ;">
-                Nos Service
+                Nos Service Commercial
               </h2>
               <!-- <p class="text-white wow fadeInDown" data-wow-delay="0.6"
                 style="visibility: visible; animation-name: fadeInDown">
@@ -528,15 +528,16 @@ justify-content: space-between;">
               <div class="howit-item wow fadeInUp" data-wow-delay="0.7" style="visibility: visible; animation-name: fadeInUp;padding: 35px;
     padding-left: 0px;">
                 <h3 class="title d-flex align-items-center gap-2">
-                  MENAGE
+                  MENAGE COMMECIAL
                 </h3>
                 <p class="pra">
-                  The first step involves understanding the client's needs and
-                  expectations. This may include a consultation where the client
-                  outlines.
+                  Vous cherchez des partenaires de confiance pour nettoyer votre espace de travail à une fréquence régulière ? Demandez une soumission gratuite. Il vous suffit de remplir ce formulaire, et nos experts se déplaceront chez vous pour discuter de vos besoins.
                 </p>
-                <button class="yellow-btn" style="color:white ;background-color:#344767 ;" >Learn More</button>
-              </div>
+                <router-link :to="{ name: 'menage commercial' }">
+  <button class="yellow-btn" style="color:white; background-color:#344767;">
+    Reserver
+  </button>
+</router-link>              </div>
 
             </div>
           </div>

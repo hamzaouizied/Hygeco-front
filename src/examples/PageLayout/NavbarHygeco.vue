@@ -78,7 +78,7 @@ defineProps({
             </div>
           </li>
           <li class="mx-2 nav-item">
-            <router-link :to="{ name: 'Landing Page' }" class="nav-link">Menage commercial</router-link>
+            <router-link :to="{ name: 'menage commercial' }" class="nav-link">Menage commercial</router-link>
           </li>
           <li class="mx-2 nav-item">
             <router-link :to="{ name: 'contact' }" class="nav-link">Contactez-Nous</router-link>
