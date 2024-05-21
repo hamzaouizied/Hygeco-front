@@ -20,6 +20,7 @@ import Menage from "../views/pages/ServiceMenage.vue";
 import Reservation from "../views/pages/reservation.vue";
 import LandingPage2 from "../views/pages/LandingPage2.vue";
 import About from "../views/pages/about.vue";
+import MenageCommercial from "../views/pages/menageCommercial.vue";
 
 
 
@@ -173,6 +174,11 @@ const routes = [
     path: "/pages/pricing-Hygeco",
     name: "Pricing Hygeco",
     component: PricingHygeco
+  },
+  {
+    path: "/pages/menage-commercial",
+    name: "menage commercial",
+    component: MenageCommercial
   },
   {
     path: "/pages/LandingPage",

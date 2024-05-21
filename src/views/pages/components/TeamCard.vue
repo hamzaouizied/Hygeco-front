@@ -30,7 +30,7 @@
           </div>
         </div>
         
-        <a href="/pages/service-menage" style="text-decoration: none; color: inherit;">
+        <a href="/pages/menage-commercial" style="text-decoration: none; color: inherit;">
         <div class="card">
           <img src="https://radiustheme.com/demo/wordpress/themes/clenix/wp-content/uploads/2019/07/house5-620x672.jpg" alt="Travis Lynch">
           <div class="card-content" >
