@@ -1,6 +1,7 @@
 <script>
 import { onBeforeMount, onBeforeUnmount } from "vue";
 import { useStore } from "vuex";
+import axios from 'axios';
 import ArgonInput from "@/components/ArgonInput.vue";
 import ArgonSwitch from "@/components/ArgonSwitch.vue";
 import ArgonButton from "@/components/ArgonButton.vue";
@@ -28,20 +29,44 @@ export default {
       toggleDefaultLayout();
       body.classList.add("bg-gray-100");
     });
+
+    const login = async () => {
+      const formData = {
+        email: this.email,
+        password: this.password,
+      };
+
+      this.isSubmitting = true;
+
+      try {
+        const response = await axios.post('http://your-laravel-app/api/login', formData);
+        const token = response.data.token;
+
+        // Store the token in localStorage or Vuex store
+        localStorage.setItem('token', token);
+
+        // Redirect or perform other actions upon successful login
+        // e.g., this.$router.push({ name: 'Dashboard' });
+      } catch (error) {
+        this.validationErrors = error.response.data.errors || {};
+      } finally {
+        this.isSubmitting = false;
+      }
+    };
+
+    return {
+      login,
+    };
   },
   data() {
     return {
-        name:'',
-        email:'',
-        password:'',
-        confirmPassword:'',
-        validationErrors:{},
-        isSubmitting:false,
+      email: '',
+      password: '',
+      validationErrors: {},
+      isSubmitting: false,
     };
   },
-  
 };
-
 </script>
 <template>
   <main class="mt-0 main-content">
