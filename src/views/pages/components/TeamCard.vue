@@ -2,7 +2,9 @@
     <section>
       <span>our Services</span>
       <h2 style="color: #30c7b5;;">Hygeco</h2>
-      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Animi, praesentium veritatis voluptatibus ut consequuntur quas consequatur omnis id rem obcaecati.</p>
+      <p> Pour le ménage, ou la lessive, nous avons tout ce qu'il vous faut pour
+simplifier votre quotidien!
+</p>
       <span class="bg-watermark">work</span>
 
       <div class="cards">
@@ -10,34 +12,40 @@
 
         <div class="card">
           <img src="https://radiustheme.com/demo/wordpress/themes/clenix/wp-content/uploads/2019/10/bedroom-620x672.jpg" alt="Franklin Carlson">
-          <div class="card-content" >
+          <!-- <div class="card-content" >
             <h3 >Buandrie</h3>
             <p>Self Service</p>
             
            
-          </div>
+          </div> -->
+          <h3 style="color: #30c7b5;" >Buandrie</h3>
+            <p>Self Service</p>
         </div>
     </a>
 
         <div class="card">
           <img src="https://radiustheme.com/demo/wordpress/themes/clenix/wp-content/uploads/2019/07/window-620x672.jpg" alt="Antonia Moore">
-          <div class="card-content" >
+          <!-- <div class="card-content" >
             <a href="/pages/service-menage" style="text-decoration: none; color: inherit;">
 
             <h3>Menage</h3>
             <p>Full package</p>
         </a>
-          </div>
+          </div> -->
+          <h3 style="color: #30c7b5;">Menage</h3>
+            <p>Full package</p>
         </div>
         
         <a href="/pages/menage-commercial" style="text-decoration: none; color: inherit;">
         <div class="card">
           <img src="https://radiustheme.com/demo/wordpress/themes/clenix/wp-content/uploads/2019/07/house5-620x672.jpg" alt="Travis Lynch">
-          <div class="card-content" >
-            <h3>Menage commercial</h3>
+          <!-- <div class="card-content" >
+            <h3>Service commercial</h3>
             <p>Full Package</p>
           
-          </div>
+          </div> -->
+          <h3 style="color: #30c7b5;">Service commercial</h3>
+            <p>Full Package</p>
         </div>
        </a>
         
@@ -191,12 +199,13 @@
     width: 100%;
     height: 100%;
     background: #232526;
-    background: -webkit-linear-gradient(to bottom, hsl(210deg 2.99% 26.27% / 20%), hsl(0deg 0% 3.14% / 90%));
-    background: linear-gradient(to bottom, hsl(210deg 2.99% 26.27% / 20%), hsl(0deg 0% 3.14% / 90%));
+    background: -webkit-linear-gradient(to bottom, hsla(0, 3%, 26%, 0.2), hsla(0, 0%, 3%, 0.156));
+    background: linear-gradient(to bottom, hsla(345, 3%, 26%, 0.2), hsl(0deg 0% 3.14% / 10%));
   }
   
   .card img {
     /* filter: grayscale(100%); */
+
     transition: transform 0.3s ease; 
   }
   

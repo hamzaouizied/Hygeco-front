@@ -21,6 +21,8 @@ import Reservation from "../views/pages/reservation.vue";
 import LandingPage2 from "../views/pages/LandingPage2.vue";
 import About from "../views/pages/about.vue";
 import MenageCommercial from "../views/pages/menageCommercial.vue";
+import ReservationBuandrie from "../views/pages/reservationBuandrie.vue";
+
 
 
 
@@ -159,6 +161,11 @@ const routes = [
     path: "/pages/reservation",
     name: "reservation",
     component: Reservation
+  },
+  {
+    path: "/pages/reservation-buandrie",
+    name: "reservation buandrie",
+    component: ReservationBuandrie
   },
   {
     path: "/pages/service-menage",
