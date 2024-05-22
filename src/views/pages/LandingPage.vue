@@ -28,11 +28,11 @@ export default {
       existingSlides: [
         {
           imageUrl: require("../../assets/img/header1.png"),
-          text: "Let the green clean begin. Linen's bright, cleaning's right, Hygeco's here day or night!",
+          text: "D'un linge frais à un ménage parfait, Hygeco prend le relais!",
         },
         {
           imageUrl: require("../../assets/img/header2.png"),
-          text: "Let the green clean begin. Linen's bright, cleaning's right, Hygeco's here day or night!",
+          text: "D'un linge frais à un ménage parfait, Hygeco prend le relais!",
         },
       ],
       intervalId: null,
@@ -121,189 +121,9 @@ export default {
     </div>
   </div>
   <TeamCard />
+  <ProjectGallerie />
 
-  <div class="container">
-    <section class="counter-section pt-120 mt-7">
-      <div class="container">
-        <div class="counter-wrapper">
-          <div
-            class="counter__items odometer-item wow fadeInDown"
-            data-wow-duration="0.4s"
-            style="
-              visibility: visible;
-              animation-duration: 0.4s;
-              animation-name: fadeInDown;
-            "
-          >
-            <div class="cont d-flex align-items-center">
-              <span
-                class="odometer odometer-auto-theme"
-                data-odometer-final="38"
-              >
-                <div class="odometer-inside">
-                  <span class="odometer-digit"
-                    ><span class="odometer-digit-inner"
-                      ><span class="odometer-ribbon"
-                        ><span class="odometer-ribbon-inner"
-                          ><span class="odometer-value">3</span></span
-                        ></span
-                      ></span
-                    ></span
-                  ><span class="odometer-digit"
-                    ><span class="odometer-digit-inner"
-                      ><span class="odometer-ribbon"
-                        ><span class="odometer-ribbon-inner"
-                          ><span class="odometer-value">8</span></span
-                        ></span
-                      ></span
-                    ></span
-                  >
-                </div>
-              </span>
-              <!-- <span class="plus__icon">
-                <svg aria-hidden="true" class="e-font-icon-svg e-fas-plus" viewBox="0 0 448 512"
-                  xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z">
-                  </path>
-                </svg>
-              </span> -->
-            </div>
-            <p>Years Experience</p>
-          </div>
-          <div class="vline"></div>
-          <div
-            class="counter__items odometer-item wow fadeInDown"
-            data-wow-duration="0.4s"
-            style="
-              visibility: visible;
-              animation-duration: 0.4s;
-              animation-name: fadeInDown;
-            "
-          >
-            <div class="cont d-flex align-items-center">
-              <span
-                class="odometer odometer-auto-theme"
-                data-odometer-final="99"
-              >
-                <div class="odometer-inside">
-                  <span class="odometer-digit"
-                    ><span class="odometer-digit-inner"
-                      ><span class="odometer-ribbon"
-                        ><span
-                          class="odometer-ribbon-inner"
-                        ></span></span></span></span
-                  ><span class="odometer-digit"
-                    ><span class="odometer-digit-inner"
-                      ><span class="odometer-ribbon"
-                        ><span class="odometer-ribbon-inner"
-                          ><span class="odometer-value">9</span>
-                          <span class="odometer-value">9</span>
-                          <span class="odometer-value">9</span></span
-                        ></span
-                      ></span
-                    ></span
-                  >
-                </div>
-              </span>
-              <!-- <span class="plus__icon">
-                <svg aria-hidden="true" class="e-font-icon-svg e-fas-percent" viewBox="0 0 448 512"
-                  xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M112 224c61.9 0 112-50.1 112-112S173.9 0 112 0 0 50.1 0 112s50.1 112 112 112zm0-160c26.5 0 48 21.5 48 48s-21.5 48-48 48-48-21.5-48-48 21.5-48 48-48zm224 224c-61.9 0-112 50.1-112 112s50.1 112 112 112 112-50.1 112-112-50.1-112-112-112zm0 160c-26.5 0-48-21.5-48-48s21.5-48 48-48 48 21.5 48 48-21.5 48-48 48zM392.3.2l31.6-.1c19.4-.1 30.9 21.8 19.7 37.8L77.4 501.6a23.95 23.95 0 0 1-19.6 10.2l-33.4.1c-19.5 0-30.9-21.9-19.7-37.8l368-463.7C377.2 4 384.5.2 392.3.2z">
-                  </path>
-                </svg>
-              </span> -->
-            </div>
-            <p>Successful Rate</p>
-          </div>
-          <div class="vline"></div>
-          <div
-            class="counter__items odometer-item wow fadeInDown"
-            data-wow-duration="0.4s"
-            style="
-              visibility: visible;
-              animation-duration: 0.4s;
-              animation-name: fadeInDown;
-            "
-          >
-            <div class="cont d-flex align-items-center">
-              <span
-                class="odometer odometer-auto-theme"
-                data-odometer-final="643"
-              >
-                <div class="odometer-inside">
-                  <span class="odometer-digit"
-                    ><span class="odometer-digit-inner"
-                      ><span class="odometer-ribbon"
-                        ><span
-                          class="odometer-ribbon-inner"
-                        ></span></span></span></span
-                  ><span class="odometer-digit"
-                    ><span class="odometer-digit-inner"
-                      ><span class="odometer-ribbon"
-                        ><span class="odometer-ribbon-inner"
-                          ><span class="odometer-value">4</span></span
-                        ></span
-                      ></span
-                    ></span
-                  ><span class="odometer-digit"
-                    ><span class="odometer-digit-spacer">8</span
-                    ><span class="odometer-digit-inner"
-                      ><span class="odometer-ribbon"
-                        ><span class="odometer-ribbon-inner"
-                          ><span class="odometer-value">3</span></span
-                        ></span
-                      ></span
-                    ></span
-                  >
-                </div>
-              </span>
-            </div>
-            <p>Project Running</p>
-          </div>
-          <div class="vline"></div>
-          <div
-            class="counter__items odometer-item wow fadeInDown"
-            data-wow-duration="0.4s"
-            style="
-              visibility: visible;
-              animation-duration: 0.4s;
-              animation-name: fadeInDown;
-            "
-          >
-            <div class="cont d-flex align-items-center">
-              <span
-                class="odometer odometer-auto-theme"
-                data-odometer-final="64"
-              >
-                <div class="odometer-inside">
-                  <span class="odometer-digit"
-                    ><span class="odometer-digit-spacer">8</span
-                    ><span class="odometer-digit-inner"
-                      ><span class="odometer-ribbon"
-                        ><span class="odometer-ribbon-inner"
-                          ><span class="odometer-value">6</span></span
-                        ></span
-                      ></span
-                    ></span
-                  ><span class="odometer-digit"
-                    ><span class="odometer-digit-spacer">8</span
-                    ><span class="odometer-digit-inner"
-                      ><span class="odometer-ribbon"
-                        ><span
-                          class="odometer-ribbon-inner"
-                        ></span></span></span
-                  ></span>
-                </div>
-              </span>
-            </div>
-            <p>Our Team Member</p>
-          </div>
-        </div>
-      </div>
-    </section>
-  </div>
+  
   <section
     class="relative bg-cover bg-center py-7 mt-10"
     :style="{
@@ -377,27 +197,34 @@ export default {
                   visibility: visible;
                   animation-name: fadeInUp;
                   padding: 50px;
-                  padding-left: 0px;
+                  padding-left: 20px;
                 "
               >
-                <h3 class="title d-flex align-items-center gap-2">MENAGE</h3>
+                <h3 class="title d-flex align-items-center gap-2" style="font-size: 1.3rem;" >Service de Ménage Résidentiel : C'est l'heure du ménage, sans que vous ayez à lever le petit
+doigt !</h3>
                 <p class="pra">
-                  The first step involves understanding the client's needs and
-                  expectations. This may include a consultation where the client
-                  outlines.
+                  Entrez dans un foyer impeccable grâce à notre service de ménage résidentiel sur mesure.
                 </p>
                 <p class="pra">
-                  The first step involves understanding the client's needs and
-                  expectations. This may include a consultation where the client
-                  outlines.
+                  équipes expérimentées s'adaptent à vos besoins spécifiques pour vous offrir un environnement
+propre et confortable.
                 </p>
                 <p class="pra">
-                  The first step involves understanding the client's needs and
-                  expectations. This may include a consultation where the client
-                  outlines.
+                  Que ce soit pour un nettoyage régulier, ménage de printemps, postconstruction ou déménagement, nous sommes là pour vous.
                 </p>
               </div>
             </div>
+            <div
+                  class="cmn--btn cmn-alt2 wow fadeInDown"
+                  data-wow-delay="0.4s"
+                  style="
+                    visibility: visible;
+                    animation-delay: 0.4s;
+                    animation-name: fadeInDown;
+                  "
+                >
+                  <span> Nos service </span>
+                </div>
           </div>
         </div>
       </div>
@@ -418,11 +245,11 @@ export default {
       style="max-width: 1200px; margin: 0 auto; padding: 0 15px"
     >
       <div class="title-section" style="margin-bottom: 40px">
-        <h2 style="font-size: 2em; margin-bottom: 10px">Our Working Process</h2>
-        <p style="font-size: 1em; color: #666">
+        <h2 style="font-size: 2em; margin-bottom: 10px">Comment ça fonctionne ?</h2>
+        <!-- <p style="font-size: 1em; color: #666">
           Perspiciatis unde omnis iste natus error sit voluptatem accusantium
           dol oremque laudantium, totam remeaque ipsa.
-        </p>
+        </p> -->
       </div>
       <div
         class="process-steps"
@@ -432,36 +259,133 @@ export default {
           <div class="icon">
             <i class="fa fa-calendar-check-o"></i>
           </div>
-          <h3><a href="#">Book Online Form</a></h3>
+          <h3><a href="#">Prenez votre rendez-vous</a></h3>
           <p>
-            Ahen an unknown printer took a galley type and scrambled nknown
-            printer.
+            Choisissez le forfait de ménage et la fréquence qui vous conviennent à la date souhaitée. 
           </p>
         </div>
         <div class="step">
           <div class="icon">
             <i class="fa fa-envelope-o"></i>
           </div>
-          <h3><a href="#">Get Confirmation</a></h3>
+          <h3><a href="#">Recevez votre confirmation</a></h3>
           <p>
-            Ahen an unknown printer took a galley type and scrambled nknown
-            printer.
+            Nous vous enverrons un
+courriel instantané avec votre confirmation. 
           </p>
         </div>
         <div class="step">
           <div class="icon">
             <i class="fa fa-smile-o"></i>
           </div>
-          <h3><a href="#">Let’s Enjoy</a></h3>
+          <h3><a href="#">Détendez-vous !</a></h3>
           <p>
-            Ahen an unknown printer took a galley type and scrambled nknown
-            printer.
+            Relaxez ou profitez de votre temps pour faire des
+activités qui vous plaisent pendant que notre équipe transforme votre maison en un espace
+impeccable.
           </p>
         </div>
       </div>
     </div>
   </section>
-  <ProjectGallerie />
+  <div class="container">
+    <section class="counter-section pt-120 mt-7">
+      <div class="container">
+        <div class="counter-wrapper">
+          <div
+            class="counter__items odometer-item wow fadeInDown"
+            data-wow-duration="0.4s"
+            style="
+              visibility: visible;
+              animation-duration: 0.4s;
+              animation-name: fadeInDown;
+            "
+          >
+            <div class="cont d-flex align-items-center">
+              <span
+                class="odometer odometer-auto-theme"
+                data-odometer-final="99"
+              >
+                <div class="odometer-inside">
+                  <span class="odometer-digit"
+                    ><span class="odometer-digit-inner"
+                      ><span class="odometer-ribbon"
+                        ><span
+                          class="odometer-ribbon-inner"
+                        ></span></span></span></span
+                  ><span class="odometer-digit"
+                    ><span class="odometer-digit-inner"
+                      ><span class="odometer-ribbon"
+                        ><span class="odometer-ribbon-inner"
+                          ><span class="odometer-value">9</span>
+                          <span class="odometer-value">9</span>
+                          <span class="odometer-value">9</span></span
+                        ></span
+                      ></span
+                    ></span
+                  >
+                </div>
+              </span>
+              
+            </div>
+            <p>maison éclatante</p>
+          </div>
+          <div class="vline"></div>
+          <div class="text-center">
+            <h3>découvrez notre expertise en action chez
+Hygeco ! </h3>
+          </div>
+          <div class="vline"></div>
+          <div
+            class="counter__items odometer-item wow fadeInDown"
+            data-wow-duration="0.4s"
+            style="
+              visibility: visible;
+              animation-duration: 0.4s;
+              animation-name: fadeInDown;
+            "
+          >
+            <div class="cont d-flex align-items-center">
+              <span
+                class="odometer odometer-auto-theme"
+                data-odometer-final="99"
+              >
+                <div class="odometer-inside">
+                  <span class="odometer-digit"
+                    ><span class="odometer-digit-inner"
+                      ><span class="odometer-ribbon"
+                        ><span
+                          class="odometer-ribbon-inner"
+                        ></span></span></span></span
+                  ><span class="odometer-digit"
+                    ><span class="odometer-digit-inner"
+                      ><span class="odometer-ribbon"
+                        ><span class="odometer-ribbon-inner"
+                          ><span class="odometer-value">9</span>
+                          <span class="odometer-value">9</span>
+                          <span class="odometer-value">9</span></span
+                        ></span
+                      ></span
+                    ></span
+                  >
+                </div>
+              </span>
+              <!-- <span class="plus__icon">
+                <svg aria-hidden="true" class="e-font-icon-svg e-fas-percent" viewBox="0 0 448 512"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M112 224c61.9 0 112-50.1 112-112S173.9 0 112 0 0 50.1 0 112s50.1 112 112 112zm0-160c26.5 0 48 21.5 48 48s-21.5 48-48 48-48-21.5-48-48 21.5-48 48-48zm224 224c-61.9 0-112 50.1-112 112s50.1 112 112 112 112-50.1 112-112-50.1-112-112-112zm0 160c-26.5 0-48-21.5-48-48s21.5-48 48-48 48 21.5 48 48-21.5 48-48 48zM392.3.2l31.6-.1c19.4-.1 30.9 21.8 19.7 37.8L77.4 501.6a23.95 23.95 0 0 1-19.6 10.2l-33.4.1c-19.5 0-30.9-21.9-19.7-37.8l368-463.7C377.2 4 384.5.2 392.3.2z">
+                  </path>
+                </svg>
+              </span> -->
+            </div>
+            <p>clients satisfaits</p>
+          </div>
+       
+        </div>
+      </div>
+    </section>
+  </div>
 
   <div class="container">
     <img
@@ -491,12 +415,14 @@ export default {
             >
               Buandrie
             </h2>
-            <!-- <p class="text-white wow fadeInDown" data-wow-delay="0.6"
-                style="visibility: visible; animation-name: fadeInDown">
+ 
+            <!-- <p class=" wow fadeInDown" data-wow-delay="0.6"
+                style="visibility: visible; animation-name: fadeInDown;color: #30c7b5;">
                 We love help you get your clothes fresh and clean so we here for
                 you 24/7 for any question, concern or suggestion.
               </p> -->
           </div>
+          <h3 class="title d-flex align-items-center gap-2" style="font-size: 1.3rem;margin-top: 4.5rem;" >Service de Buanderie: ça sent le linge frais et prêt à porter !</h3>
           <div class="howit-work-info">
             <div
               class="howit-item wow fadeInUp"
@@ -505,26 +431,32 @@ export default {
                 visibility: visible;
                 animation-name: fadeInUp;
                 padding: 35px;
-                padding-left: 0px;
+                padding-left: 17px;
               "
             >
               <p class="pra">
-                The first step involves understanding the client's needs and
-                expectations. This may include a consultation where the client
-                outlines.
+                * Dites adieu aux corvées de lessive avec notre service de buanderie pratique !
               </p>
               <p class="pra">
-                The first step involves understanding the client's needs and
-                expectations. This may include a consultation where the client
-                outlines.
+                Que vous
+préfériez une collecte et livraison à domicile ou que vous déposiez vos vêtements dans l'un de
+nos points de service,nous nous assurons que vos vêtements sont traités avec le plus grand
+soin et vous sont rendus frais et impeccables.
               </p>
-              <p class="pra">
-                The first step involves understanding the client's needs and
-                expectations. This may include a consultation where the client
-                outlines.
-              </p>
+             
             </div>
           </div>
+          <div
+                  class="cmn--btn cmn-alt2 wow fadeInDown"
+                  data-wow-delay="0.4s"
+                  style="
+                    visibility: visible;
+                    animation-delay: 0.4s;
+                    animation-name: fadeInDown;
+                  "
+                >
+                  <span> Nos service </span>
+                </div>
         </div>
       </div>
       <div class="col-lg-7">
@@ -554,11 +486,8 @@ export default {
       style="max-width: 1200px; margin: 0 auto; padding: 0 15px"
     >
       <div class="title-section" style="margin-bottom: 40px">
-        <h2 style="font-size: 2em; margin-bottom: 10px">Our Working Process</h2>
-        <p style="font-size: 1em; color: #666">
-          Perspiciatis unde omnis iste natus error sit voluptatem accusantium
-          dol oremque laudantium, totam remeaque ipsa.
-        </p>
+        <h2 style="font-size: 2em; margin-bottom: 10px">Comment ça fonctionne ?</h2>
+       
       </div>
       <div
         class="process-steps"
@@ -568,30 +497,33 @@ export default {
           <div class="icon">
             <i class="fa fa-calendar-check-o"></i>
           </div>
-          <h3><a href="#">Book Online Form</a></h3>
+          <h3><a href="#"> Planifiez votre collecte</a></h3>
           <p>
-            Ahen an unknown printer took a galley type and scrambled nknown
-            printer.
+            Choisissez la date et l'heure qui vous
+conviennent pour la collecte de votre linge via notre application ou notre site web. Vous
+y êtes presque !
+
           </p>
         </div>
         <div class="step">
           <div class="icon">
             <i class="fa fa-envelope-o"></i>
           </div>
-          <h3><a href="#">Get Confirmation</a></h3>
+          <h3><a href="#"> Recevez votre confirmation</a></h3>
           <p>
-            Ahen an unknown printer took a galley type and scrambled nknown
-            printer.
+            Nous vous enverrons
+           une notification pour confirmer votre rendez-vous. 
           </p>
         </div>
         <div class="step">
           <div class="icon">
             <i class="fa fa-smile-o"></i>
           </div>
-          <h3><a href="#">Let’s Enjoy</a></h3>
+          <h3><a href="#"> Détendez-vous !</a></h3>
           <p>
-            Ahen an unknown printer took a galley type and scrambled nknown
-            printer.
+            Profitez de votre temps pendant que notre
+équipe s'occupe du nettoyage de votre linge. 
+
           </p>
         </div>
       </div>
@@ -722,9 +654,9 @@ export default {
                     color: white;
                   "
                 >
-                  Request a free cleaning quote today
+                Vous avez des questions ? Nous sommes là pour vous!
                 </h2>
-                <div
+                <!-- <div
                   class="cmn--btn cmn-alt2 wow fadeInDown"
                   data-wow-delay="0.4s"
                   style="
@@ -734,7 +666,7 @@ export default {
                   "
                 >
                   <span> Contact Us </span>
-                </div>
+                </div> -->
               </div>
               <div class="cleaning-info">
                 <div
@@ -786,7 +718,7 @@ export default {
                     <span class="pra"> Location </span>
                   </div>
                   <h3 class="title" style="font-size: 1.2rem">
-                    Montréal,Canada
+                    Montréal, H4C 1R6 QC
                     <span class="d-block">4260 Notre Dame,Ouest</span>
                   </h3>
                 </div>
@@ -866,7 +798,7 @@ export default {
                     <div class="col-lg-6 col-md-6">
                       <div class="clean-form-grp">
                         <p>
-                          <label>First Name</label><br />
+                          <label>Nom</label><br />
                           <span
                             class="wpcf7-form-control-wrap"
                             data-name="text-454"
@@ -875,7 +807,7 @@ export default {
                               class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required"
                               aria-required="true"
                               aria-invalid="false"
-                              placeholder="First name"
+                              placeholder="Nom"
                               value=""
                               type="text"
                               name="text-454"
@@ -886,7 +818,7 @@ export default {
                     <div class="col-lg-6 col-md-6">
                       <div class="clean-form-grp">
                         <p>
-                          <label>Address</label><br />
+                          <label>Prénom</label><br />
                           <span
                             class="wpcf7-form-control-wrap"
                             data-name="text-454"
@@ -895,7 +827,7 @@ export default {
                               class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required"
                               aria-required="true"
                               aria-invalid="false"
-                              placeholder="Your Address"
+                              placeholder="Prénom"
                               value=""
                               type="text"
                               name="text-454"
@@ -906,7 +838,7 @@ export default {
                     <div class="col-lg-6 col-md-6">
                       <div class="clean-form-grp">
                         <p>
-                          <label>Your Email</label><br />
+                          <label>Adresse courriel</label><br />
                           <span
                             class="wpcf7-form-control-wrap"
                             data-name="email-332"
@@ -915,7 +847,27 @@ export default {
                               class="wpcf7-form-control wpcf7-email wpcf7-validates-as-required wpcf7-text wpcf7-validates-as-email"
                               aria-required="true"
                               aria-invalid="false"
-                              placeholder="Your Email"
+                              placeholder="Adresse courriel"
+                              value=""
+                              type="email"
+                              name="email-332"
+                          /></span>
+                        </p>
+                      </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                      <div class="clean-form-grp">
+                        <p>
+                          <label>Cellulaire</label><br />
+                          <span
+                            class="wpcf7-form-control-wrap"
+                            data-name="email-332"
+                            ><input
+                              size="40"
+                              class="wpcf7-form-control wpcf7-email wpcf7-validates-as-required wpcf7-text wpcf7-validates-as-email"
+                              aria-required="true"
+                              aria-invalid="false"
+                              placeholder="Cellulaire"
                               value=""
                               type="email"
                               name="email-332"
@@ -1001,7 +953,7 @@ export default {
                     <div class="col-lg-12">
                       <div class="clean-form-grp">
                         <p>
-                          <label>Add a Note</label><br />
+                          <label>Nous sommes à votre écoute...</label><br />
                           <span
                             class="wpcf7-form-control-wrap"
                             data-name="textarea-35"
@@ -1012,7 +964,7 @@ export default {
                               class="wpcf7-form-control wpcf7-textarea wpcf7-validates-as-required"
                               aria-required="true"
                               aria-invalid="false"
-                              placeholder="Add a note"
+                              placeholder="Nous sommes à votre écoute..."
                               name="textarea-35"
                             ></textarea>
                           </span>
@@ -1025,7 +977,7 @@ export default {
                           <input
                             class="wpcf7-form-control wpcf7-submit has-spinner cmn--btn cmn-alt2"
                             type="submit"
-                            value="Submit Your Information"
+                            value="Soumettre"
                             style="
                               border: unset;
                               color: white;
@@ -1078,7 +1030,7 @@ export default {
               font-weight: 700;
             "
           >
-            Subscribe to Our Newsletter
+          Abonnez-vous à notre infolettre et ne ratez aucun de nos bons plans exclusifs !
           </h3>
           <div class="wp-widget-group__inner-blocks">
             <p>

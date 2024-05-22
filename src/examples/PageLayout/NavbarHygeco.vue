@@ -55,10 +55,10 @@ defineProps({
             <router-link :to="{ name: 'about' }" class="nav-link">À propos</router-link>
           </li>
           <li class="mx-2 nav-item">
-            <router-link :to="{ name: 'menage' }" class="nav-link">Service</router-link>
+            <router-link :to="{ name: 'menage' }" class="nav-link">Services Résidentiels</router-link>
           </li>
           <li class="mx-2 nav-item">
-            <router-link :to="{ name: 'Pricing Hygeco' }" class="nav-link">Bon plans</router-link>
+            <router-link :to="{ name: 'Pricing Hygeco' }" class="nav-link">Bon Plans</router-link>
           </li>
           <li class="nav-item dropdown mx-2">
             <a
@@ -74,11 +74,11 @@ defineProps({
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown"  >
               <router-link class="dropdown-item" :to="{ name: 'reservation' }">Menage</router-link>
-              <router-link class="dropdown-item" :to="{ name: 'reservation' }">Buandrie</router-link>
+              <router-link class="dropdown-item" :to="{ name: 'reservation buandrie' }">Buandrie</router-link>
             </div>
           </li>
           <li class="mx-2 nav-item">
-            <router-link :to="{ name: 'menage commercial' }" class="nav-link">Menage commercial</router-link>
+            <router-link :to="{ name: 'menage commercial' }" class="nav-link"> Services Commerciaux</router-link>
           </li>
           <li class="mx-2 nav-item">
             <router-link :to="{ name: 'contact' }" class="nav-link">Contactez-Nous</router-link>

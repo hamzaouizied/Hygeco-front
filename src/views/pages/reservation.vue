@@ -102,7 +102,7 @@ export default {
   </div>
   <div class="container p-5">
     <div class="row">
-      <div class="col-sm-8  form-section shadow-border booking-panel" >
+      <div class="col-sm-8  form-section shadow-border booking-panel">
         <div class="text-center">
           <h2 style="font-weight: 200;
     font-size: 40px;font-family: proxima, arial;
@@ -132,7 +132,7 @@ export default {
               class="form-control input-lg booking-service-type ng-pristine ng-untouched ng-valid"
               ng-class="{error: ctrl.booking.errors.serviceType}" ng-model="ctrl.booking.serviceType"
               ng-change="ctrl.onBookingServiceTypeChanged()"
-              ng-options="serviceType.name for serviceType in ctrl.serviceTypes track by serviceType.id"><!-- ngIf: !ctrl.serviceTypes.length -->
+              ng-options="serviceType.name for serviceType in ctrl.serviceTypes track by serviceType.id">
               <option label="Regular" value="1" selected="selected">Regular</option>
               <option label="Deep Clean" value="2">Deep Clean</option>
               <option label="Move-Out/Move In" value="3">Move-Out/Move In</option>
@@ -699,10 +699,9 @@ export default {
                     ng-class="{hidden: !ctrl.bookingForm.paragraphs[ctrl.code].show}" data-type="paragraph"
                     data-code="agreement_information" data-id="131"
                     ng-bind-html="ctrl.bookingForm.paragraphs[ctrl.code].text | trustAsHtml">By clicking the Book Now
-                    button you are agreeing to our <a href="#"
-                      rel="noopener noreferrer" target="_blank"><u>Terms of Service</u></a> and <a
-                      href="#" rel="noopener noreferrer"
-                      target="_blank"><u>Privacy Policy</u></a><u>.</u></span>
+                    button you are agreeing to our <a href="#" rel="noopener noreferrer" target="_blank"><u>Terms of
+                        Service</u></a> and <a href="#" rel="noopener noreferrer" target="_blank"><u>Privacy
+                        Policy</u></a><u>.</u></span>
                 </tui-paragraph>
               </p>
             </div>
@@ -751,105 +750,117 @@ export default {
 
       </div>
 
-      <div class="col-sm-4 hidden-xs can-be-hidden right-sidebar ng-scope" ng-class="{hidden: ctrl.bookingForm.settings.form.hide_sidebar}" ng-if="ctrl.bookingForm">
-    <div class="form-section shadow-border text-center editable can-be-hidden content-panel ng-binding" ng-class="{hidden: !ctrl.contentArea.show}" ng-bind-html="ctrl.trustedHtmlContent" data-code="content_area" data-id="120" data-type="content_area">
-        <div class="form_section text-center" id="content_panel">
+      <div class="col-sm-4 hidden-xs can-be-hidden right-sidebar ng-scope"
+        ng-class="{hidden: ctrl.bookingForm.settings.form.hide_sidebar}" ng-if="ctrl.bookingForm">
+        <div class="form-section shadow-border text-center editable can-be-hidden content-panel ng-binding"
+          ng-class="{hidden: !ctrl.contentArea.show}" ng-bind-html="ctrl.trustedHtmlContent" data-code="content_area"
+          data-id="120" data-type="content_area">
+          <div class="form_section text-center" id="content_panel">
             <div class="row">
-                <div class="col-12 col-md-6 col-lg-12">
-                     <div class="icon-sidebar">
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M9.69771 13.2478C9.62571 13.2478 8.04171 13.2478 7.32171 13.2478C6.93771 13.2478 6.81771 13.1038 6.81771 12.7438C6.81771 11.7838 6.81771 10.7998 6.81771 9.83983C6.81771 9.45583 6.96171 9.33583 7.32171 9.33583H9.69771C9.69771 9.26383 9.69771 7.87183 9.69771 7.22383C9.69771 6.26383 9.86571 5.35183 10.3457 4.51183C10.8497 3.64783 11.5697 3.07183 12.4817 2.73583C13.0817 2.51983 13.6817 2.42383 14.3297 2.42383H16.6817C17.0177 2.42383 17.1617 2.56783 17.1617 2.90383V5.63983C17.1617 5.97583 17.0177 6.11983 16.6817 6.11983C16.0337 6.11983 15.3857 6.11983 14.7377 6.14383C14.0897 6.14383 13.7537 6.45583 13.7537 7.12783C13.7297 7.84783 13.7537 8.54383 13.7537 9.28783H16.5377C16.9217 9.28783 17.0657 9.43183 17.0657 9.81583V12.7198C17.0657 13.1038 16.9457 13.2238 16.5377 13.2238C15.6737 13.2238 13.8257 13.2238 13.7537 13.2238V21.0478C13.7537 21.4558 13.6337 21.5998 13.2017 21.5998C12.1937 21.5998 11.2097 21.5998 10.2017 21.5998C9.84171 21.5998 9.69771 21.4558 9.69771 21.0958C9.69771 18.5758 9.69771 13.3198 9.69771 13.2478Z"
-                        fill="#30c7b5"></path>
-                    </svg>                    </div>
-                    <h4>SAVES YOU TIME</h4>
-                    <p>Our service helps you live smarter, giving you time to focus on what's most important.</p>
+              <div class="col-12 col-md-6 col-lg-12">
+                <div class="icon-sidebar">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M9.69771 13.2478C9.62571 13.2478 8.04171 13.2478 7.32171 13.2478C6.93771 13.2478 6.81771 13.1038 6.81771 12.7438C6.81771 11.7838 6.81771 10.7998 6.81771 9.83983C6.81771 9.45583 6.96171 9.33583 7.32171 9.33583H9.69771C9.69771 9.26383 9.69771 7.87183 9.69771 7.22383C9.69771 6.26383 9.86571 5.35183 10.3457 4.51183C10.8497 3.64783 11.5697 3.07183 12.4817 2.73583C13.0817 2.51983 13.6817 2.42383 14.3297 2.42383H16.6817C17.0177 2.42383 17.1617 2.56783 17.1617 2.90383V5.63983C17.1617 5.97583 17.0177 6.11983 16.6817 6.11983C16.0337 6.11983 15.3857 6.11983 14.7377 6.14383C14.0897 6.14383 13.7537 6.45583 13.7537 7.12783C13.7297 7.84783 13.7537 8.54383 13.7537 9.28783H16.5377C16.9217 9.28783 17.0657 9.43183 17.0657 9.81583V12.7198C17.0657 13.1038 16.9457 13.2238 16.5377 13.2238C15.6737 13.2238 13.8257 13.2238 13.7537 13.2238V21.0478C13.7537 21.4558 13.6337 21.5998 13.2017 21.5998C12.1937 21.5998 11.2097 21.5998 10.2017 21.5998C9.84171 21.5998 9.69771 21.4558 9.69771 21.0958C9.69771 18.5758 9.69771 13.3198 9.69771 13.2478Z"
+                      fill="#30c7b5"></path>
+                  </svg>
                 </div>
-                <div class="col-12 col-md-6 col-lg-12">
-                    <div class="icon-sidebar">
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M9.69771 13.2478C9.62571 13.2478 8.04171 13.2478 7.32171 13.2478C6.93771 13.2478 6.81771 13.1038 6.81771 12.7438C6.81771 11.7838 6.81771 10.7998 6.81771 9.83983C6.81771 9.45583 6.96171 9.33583 7.32171 9.33583H9.69771C9.69771 9.26383 9.69771 7.87183 9.69771 7.22383C9.69771 6.26383 9.86571 5.35183 10.3457 4.51183C10.8497 3.64783 11.5697 3.07183 12.4817 2.73583C13.0817 2.51983 13.6817 2.42383 14.3297 2.42383H16.6817C17.0177 2.42383 17.1617 2.56783 17.1617 2.90383V5.63983C17.1617 5.97583 17.0177 6.11983 16.6817 6.11983C16.0337 6.11983 15.3857 6.11983 14.7377 6.14383C14.0897 6.14383 13.7537 6.45583 13.7537 7.12783C13.7297 7.84783 13.7537 8.54383 13.7537 9.28783H16.5377C16.9217 9.28783 17.0657 9.43183 17.0657 9.81583V12.7198C17.0657 13.1038 16.9457 13.2238 16.5377 13.2238C15.6737 13.2238 13.8257 13.2238 13.7537 13.2238V21.0478C13.7537 21.4558 13.6337 21.5998 13.2017 21.5998C12.1937 21.5998 11.2097 21.5998 10.2017 21.5998C9.84171 21.5998 9.69771 21.4558 9.69771 21.0958C9.69771 18.5758 9.69771 13.3198 9.69771 13.2478Z"
-                        fill="#30c7b5"></path>
-                    </svg>                    </div>
-                    <h4>SAFETY FIRST</h4>
-                    <p>We rigorously vet all of our Cleaners, who undergo identity checks as well as in-person interviews.</p>
+                <h4>SAVES YOU TIME</h4>
+                <p>Our service helps you live smarter, giving you time to focus on what's most important.</p>
+              </div>
+              <div class="col-12 col-md-6 col-lg-12">
+                <div class="icon-sidebar">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M9.69771 13.2478C9.62571 13.2478 8.04171 13.2478 7.32171 13.2478C6.93771 13.2478 6.81771 13.1038 6.81771 12.7438C6.81771 11.7838 6.81771 10.7998 6.81771 9.83983C6.81771 9.45583 6.96171 9.33583 7.32171 9.33583H9.69771C9.69771 9.26383 9.69771 7.87183 9.69771 7.22383C9.69771 6.26383 9.86571 5.35183 10.3457 4.51183C10.8497 3.64783 11.5697 3.07183 12.4817 2.73583C13.0817 2.51983 13.6817 2.42383 14.3297 2.42383H16.6817C17.0177 2.42383 17.1617 2.56783 17.1617 2.90383V5.63983C17.1617 5.97583 17.0177 6.11983 16.6817 6.11983C16.0337 6.11983 15.3857 6.11983 14.7377 6.14383C14.0897 6.14383 13.7537 6.45583 13.7537 7.12783C13.7297 7.84783 13.7537 8.54383 13.7537 9.28783H16.5377C16.9217 9.28783 17.0657 9.43183 17.0657 9.81583V12.7198C17.0657 13.1038 16.9457 13.2238 16.5377 13.2238C15.6737 13.2238 13.8257 13.2238 13.7537 13.2238V21.0478C13.7537 21.4558 13.6337 21.5998 13.2017 21.5998C12.1937 21.5998 11.2097 21.5998 10.2017 21.5998C9.84171 21.5998 9.69771 21.4558 9.69771 21.0958C9.69771 18.5758 9.69771 13.3198 9.69771 13.2478Z"
+                      fill="#30c7b5"></path>
+                  </svg>
                 </div>
-                <div class="col-12 col-md-6 col-lg-12">
-                    <div class="icon-sidebar">
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M9.69771 13.2478C9.62571 13.2478 8.04171 13.2478 7.32171 13.2478C6.93771 13.2478 6.81771 13.1038 6.81771 12.7438C6.81771 11.7838 6.81771 10.7998 6.81771 9.83983C6.81771 9.45583 6.96171 9.33583 7.32171 9.33583H9.69771C9.69771 9.26383 9.69771 7.87183 9.69771 7.22383C9.69771 6.26383 9.86571 5.35183 10.3457 4.51183C10.8497 3.64783 11.5697 3.07183 12.4817 2.73583C13.0817 2.51983 13.6817 2.42383 14.3297 2.42383H16.6817C17.0177 2.42383 17.1617 2.56783 17.1617 2.90383V5.63983C17.1617 5.97583 17.0177 6.11983 16.6817 6.11983C16.0337 6.11983 15.3857 6.11983 14.7377 6.14383C14.0897 6.14383 13.7537 6.45583 13.7537 7.12783C13.7297 7.84783 13.7537 8.54383 13.7537 9.28783H16.5377C16.9217 9.28783 17.0657 9.43183 17.0657 9.81583V12.7198C17.0657 13.1038 16.9457 13.2238 16.5377 13.2238C15.6737 13.2238 13.8257 13.2238 13.7537 13.2238V21.0478C13.7537 21.4558 13.6337 21.5998 13.2017 21.5998C12.1937 21.5998 11.2097 21.5998 10.2017 21.5998C9.84171 21.5998 9.69771 21.4558 9.69771 21.0958C9.69771 18.5758 9.69771 13.3198 9.69771 13.2478Z"
-                        fill="#30c7b5"></path>
-                    </svg>                    </div>
-                    <h4>ONLY THE BEST QUALITY</h4>
-                    <p>Our skilled professionals go above and beyond on every job. Cleaners are rated and reviewed after each task.</p>
+                <h4>SAFETY FIRST</h4>
+                <p>We rigorously vet all of our Cleaners, who undergo identity checks as well as in-person interviews.
+                </p>
+              </div>
+              <div class="col-12 col-md-6 col-lg-12">
+                <div class="icon-sidebar">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M9.69771 13.2478C9.62571 13.2478 8.04171 13.2478 7.32171 13.2478C6.93771 13.2478 6.81771 13.1038 6.81771 12.7438C6.81771 11.7838 6.81771 10.7998 6.81771 9.83983C6.81771 9.45583 6.96171 9.33583 7.32171 9.33583H9.69771C9.69771 9.26383 9.69771 7.87183 9.69771 7.22383C9.69771 6.26383 9.86571 5.35183 10.3457 4.51183C10.8497 3.64783 11.5697 3.07183 12.4817 2.73583C13.0817 2.51983 13.6817 2.42383 14.3297 2.42383H16.6817C17.0177 2.42383 17.1617 2.56783 17.1617 2.90383V5.63983C17.1617 5.97583 17.0177 6.11983 16.6817 6.11983C16.0337 6.11983 15.3857 6.11983 14.7377 6.14383C14.0897 6.14383 13.7537 6.45583 13.7537 7.12783C13.7297 7.84783 13.7537 8.54383 13.7537 9.28783H16.5377C16.9217 9.28783 17.0657 9.43183 17.0657 9.81583V12.7198C17.0657 13.1038 16.9457 13.2238 16.5377 13.2238C15.6737 13.2238 13.8257 13.2238 13.7537 13.2238V21.0478C13.7537 21.4558 13.6337 21.5998 13.2017 21.5998C12.1937 21.5998 11.2097 21.5998 10.2017 21.5998C9.84171 21.5998 9.69771 21.4558 9.69771 21.0958C9.69771 18.5758 9.69771 13.3198 9.69771 13.2478Z"
+                      fill="#30c7b5"></path>
+                  </svg>
                 </div>
-                <div class="col-12 col-md-6 col-lg-12">
-                    <div class="icon-sidebar">
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M9.69771 13.2478C9.62571 13.2478 8.04171 13.2478 7.32171 13.2478C6.93771 13.2478 6.81771 13.1038 6.81771 12.7438C6.81771 11.7838 6.81771 10.7998 6.81771 9.83983C6.81771 9.45583 6.96171 9.33583 7.32171 9.33583H9.69771C9.69771 9.26383 9.69771 7.87183 9.69771 7.22383C9.69771 6.26383 9.86571 5.35183 10.3457 4.51183C10.8497 3.64783 11.5697 3.07183 12.4817 2.73583C13.0817 2.51983 13.6817 2.42383 14.3297 2.42383H16.6817C17.0177 2.42383 17.1617 2.56783 17.1617 2.90383V5.63983C17.1617 5.97583 17.0177 6.11983 16.6817 6.11983C16.0337 6.11983 15.3857 6.11983 14.7377 6.14383C14.0897 6.14383 13.7537 6.45583 13.7537 7.12783C13.7297 7.84783 13.7537 8.54383 13.7537 9.28783H16.5377C16.9217 9.28783 17.0657 9.43183 17.0657 9.81583V12.7198C17.0657 13.1038 16.9457 13.2238 16.5377 13.2238C15.6737 13.2238 13.8257 13.2238 13.7537 13.2238V21.0478C13.7537 21.4558 13.6337 21.5998 13.2017 21.5998C12.1937 21.5998 11.2097 21.5998 10.2017 21.5998C9.84171 21.5998 9.69771 21.4558 9.69771 21.0958C9.69771 18.5758 9.69771 13.3198 9.69771 13.2478Z"
-                        fill="#30c7b5"></path>
-                    </svg>                    </div>
-                    <h4>EASY TO GET HELP</h4>
-                    <p>Select your ZIP code, number of bedrooms and bathrooms, date and relax while we take care of your home.</p>
+                <h4>ONLY THE BEST QUALITY</h4>
+                <p>Our skilled professionals go above and beyond on every job. Cleaners are rated and reviewed after
+                  each task.</p>
+              </div>
+              <div class="col-12 col-md-6 col-lg-12">
+                <div class="icon-sidebar">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M9.69771 13.2478C9.62571 13.2478 8.04171 13.2478 7.32171 13.2478C6.93771 13.2478 6.81771 13.1038 6.81771 12.7438C6.81771 11.7838 6.81771 10.7998 6.81771 9.83983C6.81771 9.45583 6.96171 9.33583 7.32171 9.33583H9.69771C9.69771 9.26383 9.69771 7.87183 9.69771 7.22383C9.69771 6.26383 9.86571 5.35183 10.3457 4.51183C10.8497 3.64783 11.5697 3.07183 12.4817 2.73583C13.0817 2.51983 13.6817 2.42383 14.3297 2.42383H16.6817C17.0177 2.42383 17.1617 2.56783 17.1617 2.90383V5.63983C17.1617 5.97583 17.0177 6.11983 16.6817 6.11983C16.0337 6.11983 15.3857 6.11983 14.7377 6.14383C14.0897 6.14383 13.7537 6.45583 13.7537 7.12783C13.7297 7.84783 13.7537 8.54383 13.7537 9.28783H16.5377C16.9217 9.28783 17.0657 9.43183 17.0657 9.81583V12.7198C17.0657 13.1038 16.9457 13.2238 16.5377 13.2238C15.6737 13.2238 13.8257 13.2238 13.7537 13.2238V21.0478C13.7537 21.4558 13.6337 21.5998 13.2017 21.5998C12.1937 21.5998 11.2097 21.5998 10.2017 21.5998C9.84171 21.5998 9.69771 21.4558 9.69771 21.0958C9.69771 18.5758 9.69771 13.3198 9.69771 13.2478Z"
+                      fill="#30c7b5"></path>
+                  </svg>
                 </div>
-                <div class="col-12 col-md-6 col-lg-12">
-                    <div class="icon-sidebar">
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M9.69771 13.2478C9.62571 13.2478 8.04171 13.2478 7.32171 13.2478C6.93771 13.2478 6.81771 13.1038 6.81771 12.7438C6.81771 11.7838 6.81771 10.7998 6.81771 9.83983C6.81771 9.45583 6.96171 9.33583 7.32171 9.33583H9.69771C9.69771 9.26383 9.69771 7.87183 9.69771 7.22383C9.69771 6.26383 9.86571 5.35183 10.3457 4.51183C10.8497 3.64783 11.5697 3.07183 12.4817 2.73583C13.0817 2.51983 13.6817 2.42383 14.3297 2.42383H16.6817C17.0177 2.42383 17.1617 2.56783 17.1617 2.90383V5.63983C17.1617 5.97583 17.0177 6.11983 16.6817 6.11983C16.0337 6.11983 15.3857 6.11983 14.7377 6.14383C14.0897 6.14383 13.7537 6.45583 13.7537 7.12783C13.7297 7.84783 13.7537 8.54383 13.7537 9.28783H16.5377C16.9217 9.28783 17.0657 9.43183 17.0657 9.81583V12.7198C17.0657 13.1038 16.9457 13.2238 16.5377 13.2238C15.6737 13.2238 13.8257 13.2238 13.7537 13.2238V21.0478C13.7537 21.4558 13.6337 21.5998 13.2017 21.5998C12.1937 21.5998 11.2097 21.5998 10.2017 21.5998C9.84171 21.5998 9.69771 21.4558 9.69771 21.0958C9.69771 18.5758 9.69771 13.3198 9.69771 13.2478Z"
-                        fill="#30c7b5"></path>
-                    </svg>                    </div>
-                    <h4>SEAMLESS COMMUNICATION</h4>
-                    <p>Give us a call or send us an email. We're happy to talk anytime.</p>
+                <h4>EASY TO GET HELP</h4>
+                <p>Select your ZIP code, number of bedrooms and bathrooms, date and relax while we take care of your
+                  home.</p>
+              </div>
+              <div class="col-12 col-md-6 col-lg-12">
+                <div class="icon-sidebar">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M9.69771 13.2478C9.62571 13.2478 8.04171 13.2478 7.32171 13.2478C6.93771 13.2478 6.81771 13.1038 6.81771 12.7438C6.81771 11.7838 6.81771 10.7998 6.81771 9.83983C6.81771 9.45583 6.96171 9.33583 7.32171 9.33583H9.69771C9.69771 9.26383 9.69771 7.87183 9.69771 7.22383C9.69771 6.26383 9.86571 5.35183 10.3457 4.51183C10.8497 3.64783 11.5697 3.07183 12.4817 2.73583C13.0817 2.51983 13.6817 2.42383 14.3297 2.42383H16.6817C17.0177 2.42383 17.1617 2.56783 17.1617 2.90383V5.63983C17.1617 5.97583 17.0177 6.11983 16.6817 6.11983C16.0337 6.11983 15.3857 6.11983 14.7377 6.14383C14.0897 6.14383 13.7537 6.45583 13.7537 7.12783C13.7297 7.84783 13.7537 8.54383 13.7537 9.28783H16.5377C16.9217 9.28783 17.0657 9.43183 17.0657 9.81583V12.7198C17.0657 13.1038 16.9457 13.2238 16.5377 13.2238C15.6737 13.2238 13.8257 13.2238 13.7537 13.2238V21.0478C13.7537 21.4558 13.6337 21.5998 13.2017 21.5998C12.1937 21.5998 11.2097 21.5998 10.2017 21.5998C9.84171 21.5998 9.69771 21.4558 9.69771 21.0958C9.69771 18.5758 9.69771 13.3198 9.69771 13.2478Z"
+                      fill="#30c7b5"></path>
+                  </svg>
                 </div>
-                <div class="col-12 col-md-6 col-lg-12">
-                    <div class="icon-sidebar">
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M9.69771 13.2478C9.62571 13.2478 8.04171 13.2478 7.32171 13.2478C6.93771 13.2478 6.81771 13.1038 6.81771 12.7438C6.81771 11.7838 6.81771 10.7998 6.81771 9.83983C6.81771 9.45583 6.96171 9.33583 7.32171 9.33583H9.69771C9.69771 9.26383 9.69771 7.87183 9.69771 7.22383C9.69771 6.26383 9.86571 5.35183 10.3457 4.51183C10.8497 3.64783 11.5697 3.07183 12.4817 2.73583C13.0817 2.51983 13.6817 2.42383 14.3297 2.42383H16.6817C17.0177 2.42383 17.1617 2.56783 17.1617 2.90383V5.63983C17.1617 5.97583 17.0177 6.11983 16.6817 6.11983C16.0337 6.11983 15.3857 6.11983 14.7377 6.14383C14.0897 6.14383 13.7537 6.45583 13.7537 7.12783C13.7297 7.84783 13.7537 8.54383 13.7537 9.28783H16.5377C16.9217 9.28783 17.0657 9.43183 17.0657 9.81583V12.7198C17.0657 13.1038 16.9457 13.2238 16.5377 13.2238C15.6737 13.2238 13.8257 13.2238 13.7537 13.2238V21.0478C13.7537 21.4558 13.6337 21.5998 13.2017 21.5998C12.1937 21.5998 11.2097 21.5998 10.2017 21.5998C9.84171 21.5998 9.69771 21.4558 9.69771 21.0958C9.69771 18.5758 9.69771 13.3198 9.69771 13.2478Z"
-                        fill="#30c7b5"></path>
-                    </svg>                    </div>
-                    <h4>CASH FREE PAYMENT</h4>
-                    <p>Pay securely online.</p>
+                <h4>SEAMLESS COMMUNICATION</h4>
+                <p>Give us a call or send us an email. We're happy to talk anytime.</p>
+              </div>
+              <div class="col-12 col-md-6 col-lg-12">
+                <div class="icon-sidebar">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M9.69771 13.2478C9.62571 13.2478 8.04171 13.2478 7.32171 13.2478C6.93771 13.2478 6.81771 13.1038 6.81771 12.7438C6.81771 11.7838 6.81771 10.7998 6.81771 9.83983C6.81771 9.45583 6.96171 9.33583 7.32171 9.33583H9.69771C9.69771 9.26383 9.69771 7.87183 9.69771 7.22383C9.69771 6.26383 9.86571 5.35183 10.3457 4.51183C10.8497 3.64783 11.5697 3.07183 12.4817 2.73583C13.0817 2.51983 13.6817 2.42383 14.3297 2.42383H16.6817C17.0177 2.42383 17.1617 2.56783 17.1617 2.90383V5.63983C17.1617 5.97583 17.0177 6.11983 16.6817 6.11983C16.0337 6.11983 15.3857 6.11983 14.7377 6.14383C14.0897 6.14383 13.7537 6.45583 13.7537 7.12783C13.7297 7.84783 13.7537 8.54383 13.7537 9.28783H16.5377C16.9217 9.28783 17.0657 9.43183 17.0657 9.81583V12.7198C17.0657 13.1038 16.9457 13.2238 16.5377 13.2238C15.6737 13.2238 13.8257 13.2238 13.7537 13.2238V21.0478C13.7537 21.4558 13.6337 21.5998 13.2017 21.5998C12.1937 21.5998 11.2097 21.5998 10.2017 21.5998C9.84171 21.5998 9.69771 21.4558 9.69771 21.0958C9.69771 18.5758 9.69771 13.3198 9.69771 13.2478Z"
+                      fill="#30c7b5"></path>
+                  </svg>
                 </div>
+                <h4>CASH FREE PAYMENT</h4>
+                <p>Pay securely online.</p>
+              </div>
             </div>
+          </div>
         </div>
-    </div>
-    <div class="booking-summary-container">
-    
+        <div class="booking-summary-container">
 
-    <div class="booking-summary">
-      <div class="text-center">
-        <h2 style="font-size: 1.25rem;">BOOKING SUMMARY</h2>
-      </div>
-  <div class="room-info">
-    <span class="bedroom">1 Bedroom</span>
-    <span class="bathroom"> 1 Bathroom</span>
-    <span class="kitchen"> 1 Kitchen</span>
-  </div>
-  <div class="service-info">
-    <span class="service-date">Choose service date...</span>
-    <span class="service-type">One Time</span>
-  </div>
-  <div class="prices">
-    <span class="sub-total">SUB-TOTAL: $95.00</span>
-    <span class="sales-tax">SALES TAX: $0.00</span>
-    <!-- <span class="total">TOTAL: $115.00</span> -->
-  </div>
-  <!-- <div class="taxes">
+
+          <div class="booking-summary">
+            <div class="text-center">
+              <h2 style="font-size: 1.25rem;">BOOKING SUMMARY</h2>
+            </div>
+            <div class="room-info">
+              <span class="bedroom">1 Bedroom</span>
+              <span class="bathroom"> 1 Bathroom</span>
+              <span class="kitchen"> 1 Kitchen</span>
+            </div>
+            <div class="service-info">
+              <span class="service-date">Choose service date...</span>
+              <span class="service-type">One Time</span>
+            </div>
+            <div class="prices">
+              <span class="sub-total">SUB-TOTAL: $95.00</span>
+              <span class="sales-tax">SALES TAX: $0.00</span>
+              <!-- <span class="total">TOTAL: $115.00</span> -->
+            </div>
+            <!-- <div class="taxes">
     <span class="tax-amount">$15.39</span>
     <span class="tax-label">(Sales Tax)</span>
   </div> -->
-  <div class="final-total">
-    <span class="final-total-label">FINAL TOTAL:</span>
-    <span class="final-total-amount">$130.39</span>
-  </div>
-</div>
-</div>
-</div>
+            <div class="final-total">
+              <span class="final-total-label">FINAL TOTAL:</span>
+              <span class="final-total-amount">$130.39</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <footer class="footer__section position-relative">
@@ -1229,44 +1240,48 @@ export default {
   </footer>
 
 </template>
-  <style scoped>
-  .extra-option .extra-icon{
-    margin-right: 5px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    height: 75px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    width: 100%;
-  }
-  .extra-option {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #000;
-    cursor: pointer;
-    font-size: 14px;
-    border-radius: 4px;
-  }
-  .extra-option .extra-icon img{
-    max-width: 105px;
-    max-height: 105px;
-    position: relative;
-    top: 50%;
-    
-    transform: translateY(-50%);
-   
-  }
-  .fieldset {
-    display: block;
-    margin-inline-start: 2px;
-    margin-inline-end: 2px;
-    padding-block-start: 0.35em;
-    padding-inline-start: 0.75em;
-    padding-inline-end: 0.75em;
-    padding-block-end: 0.625em;
-    min-inline-size: min-content;
-    
+<style scoped>
+.extra-option .extra-icon {
+  margin-right: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  height: 75px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 100%;
 }
+
+.extra-option {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #000;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 4px;
+}
+
+.extra-option .extra-icon img {
+  max-width: 105px;
+  max-height: 105px;
+  position: relative;
+  top: 50%;
+
+  transform: translateY(-50%);
+
+}
+
+.fieldset {
+  display: block;
+  margin-inline-start: 2px;
+  margin-inline-end: 2px;
+  padding-block-start: 0.35em;
+  padding-inline-start: 0.75em;
+  padding-inline-end: 0.75em;
+  padding-block-end: 0.625em;
+  min-inline-size: min-content;
+
+}
+
 .date-time-container {
   display: flex;
   align-items: center;
@@ -1274,25 +1289,29 @@ export default {
 
 .date-time-container .col-sm-6 {
   flex: 1;
-  margin-right: 10px; /* Add some space between the elements */
+  margin-right: 10px;
+  /* Add some space between the elements */
 }
 
 .date-time-container .col-sm-6:last-child {
-  margin-right: 0; /* Remove margin from the last item */
+  margin-right: 0;
+  /* Remove margin from the last item */
 }
-.frequency-option{
+
+.frequency-option {
   padding: 15px 6px;
-    border: 1px solid #ccc;
-    text-align: center;
-    border-radius: 4px;
-    margin: 0 12px 7px 0;
-    color: #000;
-    font-weight: 200;
-    font-size: 12px;
-    cursor: pointer;
-    line-height: 15px;
-    width: 20%;
+  border: 1px solid #ccc;
+  text-align: center;
+  border-radius: 4px;
+  margin: 0 12px 7px 0;
+  color: #000;
+  font-weight: 200;
+  font-size: 12px;
+  cursor: pointer;
+  line-height: 15px;
+  width: 20%;
 }
+
 .booking-summary-container {
   position: sticky;
   top: 0;
@@ -1304,7 +1323,7 @@ export default {
   padding: 20px;
   font-family: Arial, sans-serif;
   background-color: #fff;
-  
+
 }
 
 .room-info,
@@ -1321,7 +1340,8 @@ export default {
 .taxes span,
 .final-total span {
   display: flex;
-  flex-direction: column;  margin-right: 10px;
+  flex-direction: column;
+  margin-right: 10px;
 }
 
 .final-total {
@@ -1332,5 +1352,4 @@ export default {
 .final-total-amount {
   color: #f00;
 }
-
 </style>
