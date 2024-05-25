@@ -27,6 +27,7 @@
     "@fullcalendar/vue": "6.1.11",
     "@fullcalendar/vue3": "6.1.11",
     "@popperjs/core": "2.11.8",
+    "axios": "^1.7.2",
     "bootstrap": "5.3.3",
     "chart.js": "4.4.1",
     "choices.js": "10.2.0",
