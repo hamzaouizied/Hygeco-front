@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Landing from "../views/dashboards/Landing.vue";
 import Default from "../views/dashboards/Default.vue";
+import AdminDashboard from "../views/dashboards/dashboardAdmin.vue";
+
 import Automotive from "../views/dashboards/Automotive.vue";
 import SmartHome from "../views/dashboards/SmartHome.vue";
 import VRDefault from "../views/dashboards/vr/VRDefault.vue";
@@ -36,6 +38,14 @@ import Notifications from "../views/pages/Notifications.vue";
 import Kanban from "../views/applications/Kanban.vue";
 import Wizard from "../views/applications/wizard/Wizard.vue";
 import DataTables from "../views/applications/DataTables.vue";
+import DataTablesHygeco from "../views/applications/DataTabelsHygeco.vue";
+import ClientHygeco from "../views/applications/ClientsHygeco.vue";
+import CommercialHygeco from "../views/applications/CommercialHygeco.vue";
+import ReservationsHygeco from "../views/applications/ReservationList.vue";
+
+
+
+
 import Calendar from "../views/applications/Calendar.vue";
 import Analytics from "../views/applications/analytics/Analytics.vue";
 import EcommerceOverview from "../views/ecommerce/overview/Overview.vue";
@@ -86,6 +96,11 @@ const routes = [
     path: "/dashboards/dashboard-default",
     name: "Default",
     component: Default
+  },
+  {
+    path: "/dashboards/dashboard-admin",
+    name: "Dashboard admin",
+    component: AdminDashboard
   },
   {
     path: "/dashboards/landing",
@@ -231,6 +246,26 @@ const routes = [
     path: "/applications/data-tables",
     name: "Data Tables",
     component: DataTables
+  },
+  {
+    path: "/applications/data-Hygeco",
+    name: "Data Hygeco",
+    component: DataTablesHygeco
+  },
+  {
+    path: "/applications/client-Hygeco",
+    name: "Clients Hygeco",
+    component: ClientHygeco
+  },
+  {
+    path: "/applications/commercial-Hygeco",
+    name: "Commercial Hygeco",
+    component: CommercialHygeco
+  },
+  {
+    path: "/applications/Reservation-Hygeco",
+    name: "Reservation Hygeco",
+    component: ReservationsHygeco
   },
   {
     path: "/applications/calendar",

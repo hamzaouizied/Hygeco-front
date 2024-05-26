@@ -21,7 +21,7 @@ const isRTL = computed(() => store.state.isRTL);
               href="https://www.creative-tim.com"
               class="font-weight-bold"
               target="_blank"
-              >Creative Tim</a
+              >GcsHolding</a
             >
             for a better web.
           </div>
@@ -32,15 +32,15 @@ const isRTL = computed(() => store.state.isRTL);
           >
             <li class="nav-item">
               <a
-                href="https://www.creative-tim.com"
+                href="https://hygeco.ca/"
                 class="nav-link text-muted"
                 target="_blank"
-                >Creative Tim</a
+                >Hygeco</a
               >
             </li>
             <li class="nav-item">
               <a
-                href="https://www.creative-tim.com/presentation"
+                href="https://www.hygeco.ca/learn-more/"
                 class="nav-link text-muted"
                 target="_blank"
                 >About Us</a
@@ -48,7 +48,7 @@ const isRTL = computed(() => store.state.isRTL);
             </li>
             <li class="nav-item">
               <a
-                href="https://www.creative-tim.com/blog"
+                href="https://www.hygeco.ca/learn-more/"
                 class="nav-link text-muted"
                 target="_blank"
                 >Blog</a
@@ -56,7 +56,7 @@ const isRTL = computed(() => store.state.isRTL);
             </li>
             <li class="nav-item">
               <a
-                href="https://www.creative-tim.com/license"
+                href="https://www.hygeco.ca/contact-us/"
                 class="nav-link pe-0 text-muted"
                 target="_blank"
                 >License</a
