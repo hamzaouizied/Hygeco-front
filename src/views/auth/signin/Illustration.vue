@@ -1,39 +1,91 @@
-<script setup>
-import { onBeforeMount, onBeforeUnmount } from "vue";
+<script>
+import { onBeforeMount, onBeforeUnmount, reactive } from "vue";
 import { useStore } from "vuex";
-
-import Navbar from "@/examples/PageLayout/Navbar.vue";
 import ArgonInput from "@/components/ArgonInput.vue";
 import ArgonSwitch from "@/components/ArgonSwitch.vue";
 import ArgonButton from "@/components/ArgonButton.vue";
-const body = document.getElementsByTagName("body")[0];
+import axios from 'axios';
 
-const store = useStore();
-const toggleDefaultLayout = () => store.commit("toggleDefaultLayout");
+export default {
+  components: {
+    ArgonInput,
+    ArgonSwitch,
+    ArgonButton
+  },
+  setup() {
+    const store = useStore();
+    const body = document.getElementsByTagName("body")[0];
+    const toggleDefaultLayout = () => store.commit("toggleDefaultLayout");
 
-onBeforeMount(() => {
-  store.state.hideConfigButton = true;
-  toggleDefaultLayout();
-  body.classList.remove("bg-gray-100");
-});
-onBeforeUnmount(() => {
-  store.state.hideConfigButton = false;
-  toggleDefaultLayout();
-  body.classList.add("bg-gray-100");
-});
+    onBeforeMount(() => {
+      store.state.hideConfigButton = true;
+      toggleDefaultLayout();
+      body.classList.remove("bg-gray-100");
+    });
+
+    onBeforeUnmount(() => {
+      store.state.hideConfigButton = false;
+      toggleDefaultLayout();
+      body.classList.add("bg-gray-100");
+    });
+
+    const state = reactive({
+      email: '',
+      password: '',
+      validationErrors: {},
+      isSubmitting: false,
+    });
+
+    const login = async () => {
+      const formData = {
+        email: state.email,
+        password: state.password,
+      };
+      state.isSubmitting = true;
+      try {
+        console.log('Sending login request:', formData); // Log the form data
+        const response = await axios.post('https://hygeco-back.test/api/auth/login', formData, {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        });
+        if (response && response.data) {
+          const token = response.data.token;
+          localStorage.setItem('token', token);
+          console.log("Login successful");
+          // Redirect or perform other actions upon successful login
+          // e.g., this.$router.push({ name: 'Dashboard' });
+        } else {
+          console.error("Unexpected response structure:", response);
+        }
+      } catch (error) {
+        if (error.response && error.response.status === 401) {
+          console.log("Unauthorized: Invalid email or password");
+          state.validationErrors = { general: "Invalid email or password" };
+        } else if (error.response && error.response.data && error.response.data.errors) {
+          console.log("Login failed", error.response.data.errors);
+          state.validationErrors = error.response.data.errors;
+        } else if (error.message) {
+          console.error("Login error:", error.message);
+          state.validationErrors = { general: error.message };
+        } else {
+          console.error("Login error:", error);
+          state.validationErrors = { general: "An unknown error occurred" };
+        }
+      } finally {
+        state.isSubmitting = false;
+      }
+    };
+
+    return {
+      state,
+      login,
+    };
+  },
+};
 </script>
+
 <template>
-  <div class="container top-0 position-sticky z-index-sticky">
-    <div class="row">
-      <div class="col-12">
-        <navbar
-          is-blur="blur  border-radius-lg my-3 py-2 start-0 end-0 mx-4 shadow"
-          btn-background="bg-gradient-success"
-          :dark-mode="true"
-        />
-      </div>
-    </div>
-  </div>
   <main class="mt-0 main-content">
     <section>
       <div class="page-header min-vh-100">
@@ -48,10 +100,11 @@ onBeforeUnmount(() => {
                   <p class="mb-0">Enter your email and password to sign in</p>
                 </div>
                 <div class="card-body">
-                  <form role="form">
+                  <form @submit.prevent="login">
                     <div class="mb-3">
                       <argon-input
                         id="email"
+                        v-model="state.email"
                         type="email"
                         placeholder="Email"
                         name="email"
@@ -61,6 +114,7 @@ onBeforeUnmount(() => {
                     <div class="mb-3">
                       <argon-input
                         id="password"
+                        v-model="state.password"
                         type="password"
                         placeholder="Password"
                         name="password"
@@ -81,6 +135,9 @@ onBeforeUnmount(() => {
                       >
                     </div>
                   </form>
+                  <div v-if="state.validationErrors.general" class="alert alert-danger mt-3">
+                    {{ state.validationErrors.general }}
+                  </div>
                 </div>
                 <div class="px-1 pt-0 text-center card-footer px-lg-2">
                   <p class="mx-auto mb-4 text-sm">
