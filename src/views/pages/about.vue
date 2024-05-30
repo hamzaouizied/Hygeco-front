@@ -8,6 +8,7 @@ import AccordionItem from "./components/AccordionItem.vue";
 import setNavPills from "@/assets/js/nav-pills.js";
 import ProjectGallerie from "./components/ProjectGallerie.vue";
 import Valeur from "./components/Nosvaleur.vue";
+import SwiperCards from "./components/slide.vue";
 
 // import TeamCard from "./components/TeamCard.vue";
 
@@ -18,6 +19,7 @@ export default {
     Navbar,
     ProjectGallerie,
     Valeur,
+    SwiperCards,
     // TeamCard
     // PricingCard,
     // AppFooter,
@@ -211,9 +213,14 @@ export default {
         alt="This Service Focus on Clean &amp; Maintaining Homes" class="ripple-ps" />
     </div>
   </section>
+  <div class="container">
+    <div class="text-center">
+      <h2>Nos Valeur</h2>
+    </div>
+    <SwiperCards />
+  </div>
 
-  <Valeur />
-  <div class="container p-5">
+  <div class="container ">
     <div class="row g-lg-4 g-4  align-items-center mb-60">
       <div class="col-xl-4 col-lg-4 col-md-5 col-sm-5">
         <div class="thumb-about2">
@@ -253,14 +260,19 @@ export default {
                 alt="Cleaning Today for Making Your Future Excellent">
             </div>
             <span class="icon">
-              <i class="bi bi-play"></i>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M9.69771 13.2478C9.62571 13.2478 8.04171 13.2478 7.32171 13.2478C6.93771 13.2478 6.81771 13.1038 6.81771 12.7438C6.81771 11.7838 6.81771 10.7998 6.81771 9.83983C6.81771 9.45583 6.96171 9.33583 7.32171 9.33583H9.69771C9.69771 9.26383 9.69771 7.87183 9.69771 7.22383C9.69771 6.26383 9.86571 5.35183 10.3457 4.51183C10.8497 3.64783 11.5697 3.07183 12.4817 2.73583C13.0817 2.51983 13.6817 2.42383 14.3297 2.42383H16.6817C17.0177 2.42383 17.1617 2.56783 17.1617 2.90383V5.63983C17.1617 5.97583 17.0177 6.11983 16.6817 6.11983C16.0337 6.11983 15.3857 6.11983 14.7377 6.14383C14.0897 6.14383 13.7537 6.45583 13.7537 7.12783C13.7297 7.84783 13.7537 8.54383 13.7537 9.28783H16.5377C16.9217 9.28783 17.0657 9.43183 17.0657 9.81583V12.7198C17.0657 13.1038 16.9457 13.2238 16.5377 13.2238C15.6737 13.2238 13.8257 13.2238 13.7537 13.2238V21.0478C13.7537 21.4558 13.6337 21.5998 13.2017 21.5998C12.1937 21.5998 11.2097 21.5998 10.2017 21.5998C9.84171 21.5998 9.69771 21.4558 9.69771 21.0958C9.69771 18.5758 9.69771 13.3198 9.69771 13.2478Z"
+                  fill="#30c7b5"></path>
+              </svg>
             </span>
           </a>
         </div>
       </div>
       <div class="row g-4 justify-content-center position-relative">
+        <Valeur />
 
-        <div class="col-lg-4 col-md-6">
+        <!-- <div class="col-lg-4 col-md-6">
           <div class="bn-category-item">
             <div class="bn-cate-head">
 
@@ -314,7 +326,7 @@ export default {
             </p>
 
           </div>
-        </div>
+        </div> -->
 
       </div>
     </div>
@@ -386,9 +398,9 @@ export default {
   <section class="testimonials">
     <div class="heading text-center">
       <h2>
-        What's
-        <span>Clients</span>
-        Says?
+        Ce que
+        <span>disent</span>
+        les clients ?
       </h2>
     </div>
     <div class="container">
@@ -456,10 +468,10 @@ export default {
 
     <div class="mt-8 row">
       <div class="mx-auto text-center col-md-6">
-        <h2>Frequently Asked Questions</h2>
+        <h2>Questions Fréquemment Posées</h2>
         <p>
-          A lot of people don&#39;t appreciate the moment until it’s passed.
-          I&#39;m not trying my hardest, and I&#39;m not trying to do
+          Beaucoup de gens n'apprécient pas l'instant présent jusqu'à ce qu'il soit passé. Je ne fais pas de mon mieux
+          et je n'essaie pas de faire
         </p>
       </div>
     </div>
@@ -586,8 +598,7 @@ export default {
             <form id="mc4wp-form-1" class="mc4wp-form mc4wp-form-227" method="post" data-id="227"
               data-name="subscription">
               <div class="mc4wp-form-fields">
-                <label class="fz-16 title fw-700 prafont" style="padding-right: 10px;">Enter your
-                  email</label>
+                <label class="fz-16 title fw-700 prafont" style="padding-right: 10px;">Entre Ton Email</label>
                 <input type="email" name="EMAIL" required="" style="
                     width: 100%;
                     max-width: 500px;
@@ -597,7 +608,7 @@ export default {
                     padding: 13px 16px;
                     margin-bottom: 10px;
                   " />
-                <input class="cmn--btn" type="submit" value="Explore Our Offers" style="
+                <input class="cmn--btn" type="submit" value="Decouvrir Nos Offers" style="
                     padding: 12px 28px 15px;
                     color: white;
                     font-size: 16px;
@@ -647,9 +658,8 @@ export default {
                   max-width: 325px;
                   margin-top: 40px;
                 ">
-                With a rich history spanning decades, our club has become a
-                symbol of excellence in the golfing community. offers a
-                challenging yet rewarding game play.
+                Avec une histoire riche s'étendant sur des décennies, notre club est devenu un symbole d'excellence dans
+                la communauté du golf. Il propose un gameplay stimulant mais gratifiant.
               </div>
               <ul class="footer-social d-flex align-items-center" style="gap: 24px">
                 <li style="list-style: none">
@@ -719,16 +729,16 @@ export default {
                   display: inline-block;
                   margin-bottom: 41px;
                 ">
-                Quick links
+                Liens rapides
               </h4>
               <div class="wp-widget-group__inner-blocks">
                 <ul style="padding: 0; margin: 0; list-style: none">
                   <li>
-                    <a href="https://www.4damstheme.com/clenis/about-clenis/">About Us</a>
+                    <a href="https://www.4damstheme.com/clenis/about-clenis/">A propos</a>
                   </li>
 
                   <li>
-                    <a href="https://www.4damstheme.com/clenis/contact-us/">Contact Us</a>
+                    <a href="https://www.4damstheme.com/clenis/contact-us/">Contact Nous</a>
                   </li>
 
 
@@ -763,7 +773,7 @@ export default {
                   </li>
 
                   <li>
-                    <a href="https://www.4damstheme.com/clenis/our-services/">Buandrie</a>
+                    <a href="https://www.4damstheme.com/clenis/our-services/">buanderie</a>
                   </li>
 
                   <li>
@@ -788,7 +798,7 @@ export default {
                   display: inline-block;
                   margin-bottom: 41px;
                 ">
-                Policy
+                Politique
               </h4>
               <div class="wp-widget-group__inner-blocks">
                 <ul style="padding: 0; margin: 0; list-style: none">
@@ -826,7 +836,7 @@ export default {
                   display: inline-block;
                   margin-bottom: 41px;
                 ">
-                Our Contact
+                Nos coordonnées
               </h4>
               <div class="wp-widget-group__inner-blocks">
                 <ul style="padding: 0; margin: 0; list-style: none">
@@ -1027,8 +1037,10 @@ export default {
   margin-bottom: 12px;
   font-family: "DM Sans", sans-serif;
 }
+
 .bn-category-item .bn-cate-head .cont {
-  text-align: center; /* Center text within the container */
+  text-align: center;
+  /* Center text within the container */
 }
 
 #contactForm {
@@ -3279,7 +3291,8 @@ export default {
       font-weight: 800;
       letter-spacing: 2px;
       line-height: 1.2;
-      font-weight: 700;font-size: 20px;
+      font-weight: 700;
+      font-size: 20px;
     }
   }
 
@@ -3317,5 +3330,14 @@ export default {
   overflow: hidden;
   border-radius: 100px;
   transition: all 0.5s;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .thumb-about2 {
+    margin-top: 59rem;
+
+
+  }
 }
 </style>

@@ -49,16 +49,16 @@ defineProps({
       <div id="navigation" class="pt-3 pb-2 collapse navbar-collapse w-100 py-lg-0">
         <ul class="mx-auto navbar-nav navbar-nav-hover">
           <li class="mx-2 nav-item">
-            <router-link :to="{ name: 'Landing Page' }" class="nav-link">Accueil</router-link>
+            <router-link :to="{ name: 'Landing Page' }" class="nav-link"  active-class="active" :style="{ color: activeNavItemColor }">Accueil</router-link>
           </li>
           <li class="mx-2 nav-item">
-            <router-link :to="{ name: 'about' }" class="nav-link">À propos</router-link>
+            <router-link :to="{ name: 'about' }" class="nav-link"  active-class="active" :style="{ color: activeNavItemColor }">À propos</router-link>
           </li>
           <li class="mx-2 nav-item">
-            <router-link :to="{ name: 'menage' }" class="nav-link">Services Résidentiels</router-link>
+            <router-link :to="{ name: 'menage' }" class="nav-link" active-class="active"  :style="{ color: activeNavItemColor }">Services Résidentiels</router-link>
           </li>
           <li class="mx-2 nav-item">
-            <router-link :to="{ name: 'Pricing Hygeco' }" class="nav-link">Bon Plans</router-link>
+            <router-link :to="{ name: 'Pricing Hygeco' }" class="nav-link"  active-class="active" :style="{ color: activeNavItemColor }">Bon Plans</router-link>
           </li>
           <li class="nav-item dropdown mx-2">
             <a
@@ -73,19 +73,19 @@ defineProps({
               Reservation
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown"  >
-              <router-link class="dropdown-item" :to="{ name: 'reservation' }">Menage</router-link>
-              <router-link class="dropdown-item" :to="{ name: 'reservation buandrie' }">Buandrie</router-link>
+              <router-link class="dropdown-item" :to="{ name: 'reservation' }"  active-class="active" :style="{ color: activeNavItemColor }">Menage</router-link>
+              <router-link class="dropdown-item" :to="{ name: 'reservation buandrie' }"  active-class="active" :style="{ color: activeNavItemColor }">Buandrie</router-link>
             </div>
           </li>
           <li class="mx-2 nav-item">
-            <router-link :to="{ name: 'menage commercial' }" class="nav-link"> Services Commerciaux</router-link>
+            <router-link :to="{ name: 'menage commercial' }" class="nav-link"  active-class="active"  :style="{ color: activeNavItemColor }"> Services Commerciaux</router-link>
           </li>
           <li class="mx-2 nav-item">
-            <router-link :to="{ name: 'contact' }" class="nav-link">Contactez-Nous</router-link>
+            <router-link :to="{ name: 'contact' }" class="nav-link"  active-class="active"  :style="{ color: activeNavItemColor }">Contactez-Nous</router-link>
           </li>
         </ul>
         <router-link
-          :to="{ name: 'Signin Basic' }"
+          :to="{ name: 'Signin Illustration' }"
           class="mb-0 btn btn-sm me-1"
           :class="btnBackground ? btnBackground : 'bg-white text-dark'"
         >
@@ -105,5 +105,9 @@ defineProps({
     width: 70%;
     height: 50%;
   }
+}
+.active {
+  
+  border-bottom: 2px solid aquamarine; /* add your border color here */
 }
 </style>

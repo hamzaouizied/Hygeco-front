@@ -2,10 +2,12 @@
 // import { ref } from 'vue';
 import { useStore } from 'vuex';
 import Navbar from "@/examples/PageLayout/NavbarHygeco.vue";
+import Calendar from "@/examples/Calendar.vue";
+
 // import PricingCard from "./components/PricingCard.vue";
 // import AppFooter from "@/examples/PageLayout/Footer.vue";
 // import AccordionItem from "./components/AccordionItem.vue";
-import setNavPills from "@/assets/js/nav-pills.js";
+// import setNavPills from "@/assets/js/nav-pills.js";
 // import ProjectGallerie from "./components/ProjectGallerie.vue";
 // import TeamCard from "./components/TeamCard.vue";
 
@@ -14,6 +16,7 @@ import setNavPills from "@/assets/js/nav-pills.js";
 export default {
   components: {
     Navbar,
+    Calendar,
     // ProjectGallerie,
     // TeamCard
     // PricingCard,
@@ -23,49 +26,135 @@ export default {
   },
   data() {
     return {
-      store: useStore(),
-      currentIndexHead: 0,
-      existingSlides: [
+      pricingParameters: [
         {
-          imageUrl: require("../../assets/img/header1.png"),
-          text: "Let the green clean begin. Linen's bright, cleaning's right, Hygeco's here day or night!",
+          name: 'Bedrooms',
+          options: [
+            { label: '1 Bedroom', price: 50 },
+            { label: '2 Bedrooms', price: 75 },
+            { label: '3 Bedrooms', price: 100 },
+            { label: '4 Bedrooms', price: 125 },
+            { label: '5 Bedrooms', price: 150 },
+            { label: '6 Bedrooms', price: 175 },
+          ],
         },
         {
-          imageUrl: require("../../assets/img/header2.png"),
-          text: "Let the green clean begin. Linen's bright, cleaning's right, Hygeco's here day or night!",
+          name: 'Bathrooms',
+          options: [
+            { label: '1 Bathroom', price: 30 },
+            { label: '2 Bathrooms', price: 60 },
+            { label: '3 Bathrooms', price: 90 },
+            { label: '4 Bathrooms', price: 120 },
+            { label: '5 Bathrooms', price: 150 },
+            { label: '6 Bathrooms', price: 180 },
+          ],
+        },
+        {
+          name: 'Kitchens',
+          options: [
+            { label: '1 Kitchen', price: 40 },
+            { label: '2 Kitchens', price: 80 },
+            { label: '3 Kitchens', price: 120 },
+          ],
+        },
+        {
+          name: 'Etats',
+          options: [
+            { label: 'Slightly Dirty', price: 40 },
+            { label: 'Pretty Dirty', price: 80 },
+            { label: 'Very Dirty', price: 120 },
+          ],
+        },
+        {
+          name: 'service',
+          options: [
+            { label: 'Regular', price: 40 },
+            { label: 'Deep Clean', price: 80 },
+            { label: 'Move-Out/Move In', price: 120 },
+          ],
         },
       ],
-      intervalId: null,
+      extraServices: [
+        { name: 'Four intérieur', price: 20 },
+        { name: 'Murs', price: 30 },
+        { name: 'Vitres intérieures', price: 20 },
+        { name: 'Réfrigérateur intérieur', price: 30 },
+        { name: 'Armoire intérieure', price: 20 },
+        { name: 'Organisation', price: 30 },
+        { name: 'Lave-vaisselle intérieur', price: 20 },
+        { name: 'Garage intérieur', price: 30 },
+        { name: 'Micro-ondes', price: 20 },
+        { name: 'Lessive', price: 30 },
+        { name: 'Stores', price: 20 },
+        { name: 'Laveuse intérieure', price: 30 },
+        // Ajouter plus de services supplémentaires si nécessaire
+      ],
+
+
+
+
+
+
+
+      selectedOptions: {
+        Bedrooms: null,
+        Bathrooms: null,
+        Kitchens: null,
+        Etats: null,
+        service: null,
+      },
+      selectedFrequency: 'Hebdomadaire',
+      subTotal: 0,
+      salesTax: 0,
+      finalTotal: 0,
     };
   },
-  mounted() {
-    this.store.state.showSidenav = false;
-    this.store.state.showNavbar = false;
-    this.store.state.showFooter = false;
-    setNavPills();
-    this.startSlideshow();
-  },
-  beforeUnmount() {
-    this.stopSlideshow();
-    this.store.state.showSidenav = false;
-    this.store.state.showNavbar = false;
-    this.store.state.showFooter = true;
-    if (this.store.state.isPinned === false) {
-      const sidenav_show = document.querySelector(".g-sidenav-show");
-      sidenav_show.classList.remove("g-sidenav-hidden");
-      sidenav_show.classList.add("g-sidenav-pinned");
-      this.store.state.isPinned = true;
+  computed: {
+    store() {
+      return useStore();
     }
   },
   methods: {
-    startSlideshow() {
-      this.intervalId = setInterval(() => {
-        this.currentIndexHead =
-          (this.currentIndexHead + 1) % this.existingSlides.length;
-      }, 5000); // Change image every 5 seconds (adjust as needed)
+    selectFrequency(frequency) {
+      this.selectedFrequency = frequency;
     },
-    stopSlideshow() {
-      clearInterval(this.intervalId);
+    selectExtraService(extraService) {
+      // Toggle the selected state of the clicked extra service
+      extraService.selected = !extraService.selected;
+      // Update the total
+      this.updateTotal();
+    },
+    updateTotal() {
+      this.subTotal = Object.values(this.selectedOptions).reduce((total, option) => {
+        return total + (option ? option.price : 0);
+      }, 0);
+      this.subTotal += this.extraServices.reduce((total, service) => {
+        return total + (service.selected ? service.price : 0);
+      }, 0);
+      this.salesTax = this.subTotal * 0.1; // Assuming a 10% sales tax rate
+      this.finalTotal = this.subTotal + this.salesTax;
+    },
+
+  },
+  mounted() {
+    if (this.store) {
+      this.store.state.showSidenav = false;
+      this.store.state.showNavbar = false;
+      this.store.state.showFooter = false;
+    }
+    this.updateTotal();
+  },
+  beforeUnmount() {
+    if (this.store) {
+      this.store.state.showSidenav = false;
+      this.store.state.showNavbar = false;
+      this.store.state.showFooter = true;
+      if (this.store.state.isPinned === false) {
+        const sidenav_show = document.querySelector(".g-sidenav-show");
+        sidenav_show.classList.remove("g-sidenav-hidden");
+        sidenav_show.classList.add("g-sidenav-pinned");
+        this.store.state.isPinned = true;
+      }
     }
   }
 };
@@ -102,418 +191,145 @@ export default {
   </div>
   <div class="container p-5">
     <div class="row">
-      <div class="col-sm-8  form-section shadow-border booking-panel">
+      <div class="col-sm-8  form-section shadow-border booking-panel card ">
         <div class="text-center">
           <h2 style="font-weight: 200;
     font-size: 40px;font-family: proxima, arial;
     color: #373e4a;margin-top: 17px;line-height: 1.1;">
             <span class="editable can-be-hidden ng-binding" data-type="paragraph"
-              data-code="complete_your_booking">Complete your booking.</span>
+              data-code="complete_your_booking">Complétez votre réservation.</span>
 
           </h2>
           <h3 style="font-weight: 100;
     font-size: 19px;font-family: proxima, arial;
     color: #373e4a; line-height: 1.1;">
             <span class="editable can-be-hidden ng-binding" data-type="paragraph" data-code="few_details"
-              data-id="122">Great! Few details and we can complete your booking.</span>
+              data-id="122">Super ! Quelques détails et nous pouvons finaliser votre réservation.</span>
 
           </h3>
         </div>
 
-        <div class="form-group">
+        <div class="form-group p-5">
           <div class="text-start">
             <h3 style="font-weight: 100;
     font-size: 19px;font-family: proxima, arial;
-    color: #373e4a; line-height: 1.1;">CHOOSE YOUR SERVICE</h3>
+    color: #373e4a; line-height: 1.1;">CHOISISSEZ LE TYPE DE SERVICE</h3>
           </div>
-          <div class="col-sm-12 can-be-hidden" ng-class="{hidden: !ctrl.bookingForm.system_fields.service_type.show}"
-            data-id="254" data-code="service_type" data-type="service_type">
+          <div class="col-sm-12 can-be-hidden" data-id="254" data-code="service_type" data-type="service_type">
+
             <select autocomplete="off"
               class="form-control input-lg booking-service-type ng-pristine ng-untouched ng-valid"
-              ng-class="{error: ctrl.booking.errors.serviceType}" ng-model="ctrl.booking.serviceType"
-              ng-change="ctrl.onBookingServiceTypeChanged()"
-              ng-options="serviceType.name for serviceType in ctrl.serviceTypes track by serviceType.id">
-              <option label="Regular" value="1" selected="selected">Regular</option>
-              <option label="Deep Clean" value="2">Deep Clean</option>
-              <option label="Move-Out/Move In" value="3">Move-Out/Move In</option>
+              v-model="selectedOptions.service" @change="updateTotal">
+              <option v-for="option in pricingParameters[4].options" :key="option.label" :value="option"> {{
+                option.label }} </option>
             </select>
           </div>
         </div>
-        <fieldset data-type="service_block" service-block-type="dropdown" class="ng-scope">
-          <tui-booking-service-dropdown booking="ctrl.booking" booking-form="ctrl.bookingForm"
-            ng-if="ctrl.bookingForm.settings.form.service_block_type == 'dropdown' || !ctrl.bookingForm.settings.form.service_block_type"
-            class="ng-scope ng-isolate-scope">
-            <div class="pricing-parameters-container ng-scope"
-              ng-if="ctrl.booking.bookingServices[0].service.pricing_parameters" style="">
-              <div class="row form-group ng-scope"
-                ng-repeat="pricingParameterPair in [ctrl.booking.bookingServices[0].service] | _:'concat':ctrl.booking.bookingServices[0].service.pricing_parameters | pairs as filtered_result">
-                <div class="col-sm-6 xs-vertical-space ng-scope" ng-if="pricingParameterPair[1]">
-                  <select autocomplete="off"
-                    class="form-control input-lg booking-service ng-pristine ng-untouched ng-valid ng-scope"
-                    ng-if="pricingParameterPair[0].pricing_parameters"
-                    ng-model="ctrl.booking.bookingServices[0].service" ng-change="ctrl.onServiceChanged()"
-                    ng-options="service.name for service in ctrl.availableServices track by service.id">
-                    <option label="1 Bedroom" value="112" selected="selected">1 Bedroom</option>
-                    <option label="2 Bedroom" value="113">2 Bedroom</option>
-                    <option label="3 Bedrooms" value="114">3 Bedrooms</option>
-                    <option label="4 Bedrooms" value="97">4 Bedrooms</option>
-                    <option label="5 Bedrooms" value="98">5 Bedrooms</option>
-                    <option label="6 Bedrooms" value="99">6 Bedrooms</option>
-                  </select>
-                </div>
-                <div class="col-sm-6 ng-scope" ng-if="pricingParameterPair[1]">
-                  <select autocomplete="off" class="form-control input-lg booking-pricing-parameter pricing-parameter-2"
-                    ng-model="ctrl.booking.bookingServices[0].pricingParameters[pricingParameterPair[1].id]"
-                    ng-if="pricingParameterPair[1].type == 'ranged'"
-                    ng-options="range.quantity as range.label for range in pricingParameterPair[1].ranges">
-                    <option label="1 Bathroom" value="number:1" selected="selected">1 Bathroom</option>
-                    <option label="2 Bathrooms" value="number:2">2 Bathrooms</option>
-                    <option label="3 Bathrooms" value="number:3">3 Bathrooms</option>
-                    <option label="4 Bathrooms" value="number:4">4 Bathrooms</option>
-                    <option label="5 Bathrooms" value="number:5">5 Bathrooms</option>
-                    <option label="6 Bathrooms" value="number:6">6 Bathrooms</option>
-                  </select>
-                </div>
+        <fieldset>
+          <div class="pricing-parameters-container ng-scope">
+            <div class="row form-group ng-scope">
+              <div class="text-start">
+                <h3 style="font-weight: 100;
+    font-size: 19px;font-family: proxima, arial;
+    color: #373e4a; line-height: 1.1;">PARLEZ-NOUS DE VOTRE DOMICILE</h3>
               </div>
-              <div class="row form-group ng-scope"
-                ng-repeat="pricingParameterPair in [ctrl.booking.bookingServices[0].service] | _:'concat':ctrl.booking.bookingServices[0].service.pricing_parameters | pairs as filtered_result">
-                <div class="col-sm-6 xs-vertical-space ng-scope" ng-if="pricingParameterPair[1]">
-                  <select autocomplete="off"
-                    class="form-control input-lg booking-pricing-parameter pricing-parameter-11"
-                    ng-if="!pricingParameterPair[0].pricing_parameters && pricingParameterPair[0].type == 'ranged'"
-                    ng-model="ctrl.booking.bookingServices[0].pricingParameters[pricingParameterPair[0].id]"
-                    ng-options="range.quantity as range.label for range in pricingParameterPair[0].ranges">
-                    <option label="1 Kitchen" value="number:1" selected="selected">1 Kitchen</option>
-                    <option label="2 Kitchens" value="number:2">2 Kitchens</option>
-                    <option label="3 Kitchens" value="number:3">3 Kitchens</option>
-                  </select>
-                </div>
-                <div class="col-sm-6 ng-scope" ng-if="pricingParameterPair[1]">
-                  <select autocomplete="off"
-                    class="form-control input-lg booking-pricing-parameter pricing-parameter-21"
-                    ng-model="ctrl.booking.bookingServices[0].pricingParameters[pricingParameterPair[1].id]"
-                    ng-if="pricingParameterPair[1].type == 'ranged'"
-                    ng-options="range.quantity as range.label for range in pricingParameterPair[1].ranges">
-                    <option label="Slightly Dirty" value="number:0" selected="selected">Slightly Dirty</option>
-                    <option label="Pretty Dirty" value="number:2">Pretty Dirty</option>
-                    <option label="Very Dirty" value="number:3">Very Dirty</option>
-                  </select>
-                </div>
-              </div>
+              <div class="col-sm-6 xs-vertical-space ng-scope"> <select autocomplete="off" class="form-control input-lg"
+                  v-model="selectedOptions.Bedrooms" @change="updateTotal">
+                  <option v-for="option in pricingParameters[0].options" :key="option.label" :value="option"> {{
+                    option.label }} </option>
+                </select> </div>
+              <div class="col-sm-6 xs-vertical-space ng-scope"> <select autocomplete="off" class="form-control input-lg"
+                  v-model="selectedOptions.Bathrooms" @change="updateTotal">
+                  <option v-for="option in pricingParameters[1].options" :key="option.label" :value="option"> {{
+                    option.label }} </option>
+                </select> </div>
             </div>
-          </tui-booking-service-dropdown>
+            <div class="row form-group ng-scope">
+              <div class="col-sm-6 xs-vertical-space ng-scope"> <select autocomplete="off" class="form-control input-lg"
+                  v-model="selectedOptions.Kitchens" @change="updateTotal">
+                  <option v-for="option in pricingParameters[2].options" :key="option.label" :value="option"> {{
+                    option.label }} </option>
+                </select> </div>
+              <div class="col-sm-6 xs-vertical-space ng-scope"> <select autocomplete="off" class="form-control input-lg"
+                  v-model="selectedOptions.Etats" @change="updateTotal">
+                  <option v-for="option in pricingParameters[3].options" :key="option.label" :value="option"> {{
+                    option.label }} </option>
+                </select> </div>
+            </div>
+          </div>
         </fieldset>
-        <fieldset
-          ng-if="!ctrl.bookingForm.settings.form.service_block_type || ctrl.bookingForm.settings.form.service_block_type == 'dropdown'"
-          class="ng-scope">
-
+        <fieldset>
+          <div class="text-start">
+            <h3 style="font-weight: 100;
+    font-size: 19px;font-family: proxima, arial;
+    color: #373e4a; line-height: 1.1;">AJOUTEZ DES OPTIONS SUPPLÉMENTAIRES</h3>
+          </div>
           <div class="row">
-            <tui-booking-service-extra booking-service="ctrl.booking.bookingServices[0]" extra="extra"
-              ng-repeat="extra in ctrl.booking.bookingServices[0].service.extras track by extra.id"
-              class="col-sm-3 col-xs-4 ng-scope ng-isolate-scope extra" style="">
-              <div id="extra-92" class="extra-option"
-                ng-class="{'extra-quantity-based-option': ctrl.extra.quantity_based, selected: ctrl.bookingService.extras[ctrl.extra.id].checked}"
-                ng-click="ctrl.onExtraClick()" click-outside="ctrl.onOutsideExtraClick()" outside-if-not="extra-92">
-                <div class="extra-icon inside-the-oven"
-                  ng-class="{selected: ctrl.bookingService.extras[ctrl.extra.id].checked, 'fa fa-check default-extra-icon': !ctrl.extra.icon &amp;&amp; !ctrl.extra.image}"
-                  ng-show="!ctrl.showQuantityInput" uib-tooltip="" tooltip-placement="auto bottom"
-                  tooltip-enable="!ctrl.isMobileDevice">
+            <tui-booking-service-extra v-for="(extraService, index) in extraServices" :key="index"
+              class="col-sm-3 col-xs-4" @click="selectExtraService(extraService)">
+              <div :id="'extra-' + extraService.id"
+                :class="{ 'extra-option': true, 'selected': extraService.selected }">
+                <div :class="'extra-icon ' + extraService.iconClass"
+                  :style="{ backgroundColor: extraService.selected ? 'green' : 'transparent' }">
                   <img
-                    ng-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACMAAAApCAYAAAC/QpA/AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYxIDY0LjE0MDk0OSwgMjAxMC8xMi8wNy0xMDo1NzowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNS4xIFdpbmRvd3MiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6N0Q0RDNGOEZDRTdBMTFFNDk5NDBCRTNBMUUxRDg4NDQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6N0Q0RDNGOTBDRTdBMTFFNDk5NDBCRTNBMUUxRDg4NDQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo3RDREM0Y4RENFN0ExMUU0OTk0MEJFM0ExRTFEODg0NCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo3RDREM0Y4RUNFN0ExMUU0OTk0MEJFM0ExRTFEODg0NCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Pjp/ERcAAAFvSURBVHja7JeBbYMwEEVNxAAeoWwAEzSMkAk6QpIN0gnSEcgEFRPEnaBMAIzgDci5+q5ONIgYQXAln3RyfDnZz3fnk4m6rhO+SNw0jaTxk3S7EoMi3SVJomMGokmrJ4Ok2Nsw5DEmLWkGoMlCp3PyR1a+bVY2sLcmTPh9Ir1ifESs/5ltciK9mpHZzrAdGLxGIH4kquvaVLCiP3JyTEFqJRtJXd8/R3T7a0gAM46kBaSxb2kebYRHEvfmJgrvpK+kXw8UNPev6HQKp/1dg2wVbB+IZGmjMgYjHGpl0J82u2c7ji1ka2aNa83rTpqasZGRKza9P2myt0k8s8/w28T7jBfi9dXmIlFcLiEfS6OaAvOCLirnPDnBmlubDfWZoTTt5wZh0d671ky6cF/xv4ADTIAJMAEmwPgGoxfcU7vClAvClK7vmQLj28wgF3rLFFNeegWDWuxB7m0Bh4+40PT+PYzygENZmN3KQAoM4ibAAI0igQ3XUaV0AAAAAElFTkSuQmCC"
-                    ng-if="ctrl.extra.image || ctrl.extra.icon" class="ng-scope"
                     src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACMAAAApCAYAAAC/QpA/AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYxIDY0LjE0MDk0OSwgMjAxMC8xMi8wNy0xMDo1NzowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNS4xIFdpbmRvd3MiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6N0Q0RDNGOEZDRTdBMTFFNDk5NDBCRTNBMUUxRDg4NDQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6N0Q0RDNGOTBDRTdBMTFFNDk5NDBCRTNBMUUxRDg4NDQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo3RDREM0Y4RENFN0ExMUU0OTk0MEJFM0ExRTFEODg0NCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo3RDREM0Y4RUNFN0ExMUU0OTk0MEJFM0ExRTFEODg0NCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Pjp/ERcAAAFvSURBVHja7JeBbYMwEEVNxAAeoWwAEzSMkAk6QpIN0gnSEcgEFRPEnaBMAIzgDci5+q5ONIgYQXAln3RyfDnZz3fnk4m6rhO+SNw0jaTxk3S7EoMi3SVJomMGokmrJ4Ok2Nsw5DEmLWkGoMlCp3PyR1a+bVY2sLcmTPh9Ir1ifESs/5ltciK9mpHZzrAdGLxGIH4kquvaVLCiP3JyTEFqJRtJXd8/R3T7a0gAM46kBaSxb2kebYRHEvfmJgrvpK+kXw8UNPev6HQKp/1dg2wVbB+IZGmjMgYjHGpl0J82u2c7ji1ka2aNa83rTpqasZGRKza9P2myt0k8s8/w28T7jBfi9dXmIlFcLiEfS6OaAvOCLirnPDnBmlubDfWZoTTt5wZh0d671ky6cF/xv4ADTIAJMAEmwPgGoxfcU7vClAvClK7vmQLj28wgF3rLFFNeegWDWuxB7m0Bh4+40PT+PYzygENZmN3KQAoM4ibAAI0igQ3XUaV0AAAAAElFTkSuQmCC">
                 </div>
-
-                <div class="extra-text ng-binding">
-                  Inside Oven
-                </div>
+                <div class="extra-text">{{ extraService.name }}</div>
               </div>
-            </tui-booking-service-extra><!-- end ngRepeat: extra in ctrl.booking.bookingServices[0].service.extras track by extra.id --><tui-booking-service-extra
-              booking-service="ctrl.booking.bookingServices[0]" extra="extra"
-              ng-repeat="extra in ctrl.booking.bookingServices[0].service.extras track by extra.id"
-              class="col-sm-3 col-xs-4 ng-scope ng-isolate-scope extra">
-              <div id="extra-93" class="extra-option"
-                ng-class="{'extra-quantity-based-option': ctrl.extra.quantity_based, selected: ctrl.bookingService.extras[ctrl.extra.id].checked}"
-                ng-click="ctrl.onExtraClick()" click-outside="ctrl.onOutsideExtraClick()" outside-if-not="extra-93">
-                <div class="extra-icon walls"
-                  ng-class="{selected: ctrl.bookingService.extras[ctrl.extra.id].checked, 'fa fa-check default-extra-icon': !ctrl.extra.icon &amp;&amp; !ctrl.extra.image}"
-                  ng-show="!ctrl.showQuantityInput" uib-tooltip="" tooltip-placement="auto bottom"
-                  tooltip-enable="!ctrl.isMobileDevice">
-                  <img
-                    ng-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACoAAAAqCAYAAADFw8lbAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYxIDY0LjE0MDk0OSwgMjAxMC8xMi8wNy0xMDo1NzowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNS4xIFdpbmRvd3MiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MzQzOTNCOUJDRTdBMTFFNDhGNERDQzBENDQzMzIwNUQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MzQzOTNCOUNDRTdBMTFFNDhGNERDQzBENDQzMzIwNUQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDozNDM5M0I5OUNFN0ExMUU0OEY0RENDMEQ0NDMzMjA1RCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDozNDM5M0I5QUNFN0ExMUU0OEY0RENDMEQ0NDMzMjA1RCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PuJXU30AAABzSURBVHja7NYxDoAgEERRMN7/iHsVbCzUaEE2EEzeNCQUyy+Yza8R0co99Tyf99mk5m7lJwEKdPXslzZ+tbQMan83aEs+OGWN+aNAgdqjk/Zi79y3PUrzlAkozaN5NA8oUPbEnvxRoEDZE3sCCnTpHAIMACiiFQsQTynCAAAAAElFTkSuQmCC"
-                    ng-if="ctrl.extra.image || ctrl.extra.icon" class="ng-scope"
-                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACoAAAAqCAYAAADFw8lbAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYxIDY0LjE0MDk0OSwgMjAxMC8xMi8wNy0xMDo1NzowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNS4xIFdpbmRvd3MiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MzQzOTNCOUJDRTdBMTFFNDhGNERDQzBENDQzMzIwNUQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MzQzOTNCOUNDRTdBMTFFNDhGNERDQzBENDQzMzIwNUQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDozNDM5M0I5OUNFN0ExMUU0OEY0RENDMEQ0NDMzMjA1RCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDozNDM5M0I5QUNFN0ExMUU0OEY0RENDMEQ0NDMzMjA1RCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PuJXU30AAABzSURBVHja7NYxDoAgEERRMN7/iHsVbCzUaEE2EEzeNCQUyy+Yza8R0co99Tyf99mk5m7lJwEKdPXslzZ+tbQMan83aEs+OGWN+aNAgdqjk/Zi79y3PUrzlAkozaN5NA8oUPbEnvxRoEDZE3sCCnTpHAIMACiiFQsQTynCAAAAAElFTkSuQmCC">
-                </div>
+            </tui-booking-service-extra>
 
-                <div class="extra-text ng-binding">
-                  Walls
-                </div>
-              </div>
-            </tui-booking-service-extra><!-- end ngRepeat: extra in ctrl.booking.bookingServices[0].service.extras track by extra.id --><tui-booking-service-extra
-              booking-service="ctrl.booking.bookingServices[0]" extra="extra"
-              ng-repeat="extra in ctrl.booking.bookingServices[0].service.extras track by extra.id"
-              class="col-sm-3 col-xs-4 ng-scope ng-isolate-scope extra">
-              <div id="extra-94" class="extra-option"
-                ng-class="{'extra-quantity-based-option': ctrl.extra.quantity_based, selected: ctrl.bookingService.extras[ctrl.extra.id].checked}"
-                ng-click="ctrl.onExtraClick()" click-outside="ctrl.onOutsideExtraClick()" outside-if-not="extra-94">
-                <div class="extra-icon inside-windows"
-                  ng-class="{selected: ctrl.bookingService.extras[ctrl.extra.id].checked, 'fa fa-check default-extra-icon': !ctrl.extra.icon &amp;&amp; !ctrl.extra.image}"
-                  ng-show="!ctrl.showQuantityInput" uib-tooltip="" tooltip-placement="auto bottom"
-                  tooltip-enable="!ctrl.isMobileDevice">
-                  <img
-                    ng-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB8AAAArCAYAAACARVOCAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYxIDY0LjE0MDk0OSwgMjAxMC8xMi8wNy0xMDo1NzowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNS4xIFdpbmRvd3MiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NDNCOEJCNEJDRTdBMTFFNDhDMjI4RDExNzFEMzcwRkMiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NDNCOEJCNENDRTdBMTFFNDhDMjI4RDExNzFEMzcwRkMiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo0M0I4QkI0OUNFN0ExMUU0OEMyMjhEMTE3MUQzNzBGQyIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo0M0I4QkI0QUNFN0ExMUU0OEMyMjhEMTE3MUQzNzBGQyIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PsCHKcEAAAHzSURBVHja7JRRRENhFMfv1sSIMSIiStHLYkpP0VOplxKlRA+J0ZTSQ0+JHmKkyFKKNFIkeogUiXpKWaKRRhYRI9K0l6as/+E/btdWt5qWfIef++3b/c7/nPOde2yRSEQzabWgnU8ncHE/AUIgCk7BKrgx49DyiXgR8IAeUA5i4JrI+g4UgxJQCKp57hisgwCIf1U8HwyAcfAKdsAG2GemmUwq0kaawD0YA8tmxeWQnwFMMvpEmuCMZU8XyAiTkGsYBkf6F6wGh4tgiyWrBEt0bgfdYBc8gWcQJBcgCSSLNdBAfw/MugycgUMwTZ13mcudbVKkA4T5fwGYAH3AoZk3yXQGLPDaxOoZ3C3okqeVkZ4zuhqdsHT2FUvnoJNtlq+RVyLmY8A++hAr5dWJ3zruScmr2AdSrRbJ/AWLQUapMfsV0Mnf0tVTbJqoLrt+MA+8urMae8FDUiWeBaO63pE+8EvmebrDUv4TnbA0WwWzjJoseYjJuMEe94bAAT9LsTljw9lZJhezbQW9LNN37BI000ec5Q9+1O1Ort2832xYgL2UGlppxY3dmk0Lp9u0ajk0JZ4TkyEjc9nCKfb4G5p8Jv9k2S0m8PJdr8n3VcMpcSWuxqsar2q8KnElrsTVeP2Z2XTrWKYx+C/vPJV5MhfibwIMABEbiTTP6ncbAAAAAElFTkSuQmCC"
-                    ng-if="ctrl.extra.image || ctrl.extra.icon" class="ng-scope"
-                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB8AAAArCAYAAACARVOCAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYxIDY0LjE0MDk0OSwgMjAxMC8xMi8wNy0xMDo1NzowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNS4xIFdpbmRvd3MiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NDNCOEJCNEJDRTdBMTFFNDhDMjI4RDExNzFEMzcwRkMiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NDNCOEJCNENDRTdBMTFFNDhDMjI4RDExNzFEMzcwRkMiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo0M0I4QkI0OUNFN0ExMUU0OEMyMjhEMTE3MUQzNzBGQyIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo0M0I4QkI0QUNFN0ExMUU0OEMyMjhEMTE3MUQzNzBGQyIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PsCHKcEAAAHzSURBVHja7JRRRENhFMfv1sSIMSIiStHLYkpP0VOplxKlRA+J0ZTSQ0+JHmKkyFKKNFIkeogUiXpKWaKRRhYRI9K0l6as/+E/btdWt5qWfIef++3b/c7/nPOde2yRSEQzabWgnU8ncHE/AUIgCk7BKrgx49DyiXgR8IAeUA5i4JrI+g4UgxJQCKp57hisgwCIf1U8HwyAcfAKdsAG2GemmUwq0kaawD0YA8tmxeWQnwFMMvpEmuCMZU8XyAiTkGsYBkf6F6wGh4tgiyWrBEt0bgfdYBc8gWcQJBcgCSSLNdBAfw/MugycgUMwTZ13mcudbVKkA4T5fwGYAH3AoZk3yXQGLPDaxOoZ3C3okqeVkZ4zuhqdsHT2FUvnoJNtlq+RVyLmY8A++hAr5dWJ3zruScmr2AdSrRbJ/AWLQUapMfsV0Mnf0tVTbJqoLrt+MA+8urMae8FDUiWeBaO63pE+8EvmebrDUv4TnbA0WwWzjJoseYjJuMEe94bAAT9LsTljw9lZJhezbQW9LNN37BI000ec5Q9+1O1Ort2832xYgL2UGlppxY3dmk0Lp9u0ajk0JZ4TkyEjc9nCKfb4G5p8Jv9k2S0m8PJdr8n3VcMpcSWuxqsar2q8KnElrsTVeP2Z2XTrWKYx+C/vPJV5MhfibwIMABEbiTTP6ncbAAAAAElFTkSuQmCC">
-                </div>
 
-                <div class="extra-text ng-binding">
-                  Inside Windows
-                </div>
-              </div>
-            </tui-booking-service-extra><tui-booking-service-extra booking-service="ctrl.booking.bookingServices[0]"
-              extra="extra" ng-repeat="extra in ctrl.booking.bookingServices[0].service.extras track by extra.id"
-              class="col-sm-3 col-xs-4 ng-scope ng-isolate-scope extra">
-              <div id="extra-95" class="extra-option"
-                ng-class="{'extra-quantity-based-option': ctrl.extra.quantity_based, selected: ctrl.bookingService.extras[ctrl.extra.id].checked}"
-                ng-click="ctrl.onExtraClick()" click-outside="ctrl.onOutsideExtraClick()" outside-if-not="extra-95">
-                <div class="extra-icon inside-the-fridge"
-                  ng-class="{selected: ctrl.bookingService.extras[ctrl.extra.id].checked, 'fa fa-check default-extra-icon': !ctrl.extra.icon &amp;&amp; !ctrl.extra.image}"
-                  ng-show="!ctrl.showQuantityInput" uib-tooltip="" tooltip-placement="auto bottom"
-                  tooltip-enable="!ctrl.isMobileDevice">
-                  <img
-                    ng-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB8AAAAqCAYAAABLGYAnAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYxIDY0LjE0MDk0OSwgMjAxMC8xMi8wNy0xMDo1NzowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNS4xIFdpbmRvd3MiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OERCRTZFNTdDRTdBMTFFNEFDNENEMEU3NzA3OUUwNjciIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OERCRTZFNThDRTdBMTFFNEFDNENEMEU3NzA3OUUwNjciPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4REJFNkU1NUNFN0ExMUU0QUM0Q0QwRTc3MDc5RTA2NyIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4REJFNkU1NkNFN0ExMUU0QUM0Q0QwRTc3MDc5RTA2NyIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Pod+/bMAAAC/SURBVHja7NjhCcIwEAXgS3CArpANXCET2RXcIJnIFZwgGcFsEN9p/FMQBGkO8R08SP/04xqag7jeu9RaFxFZkROi672qIRlJIYTmSimKXZCjzKsrEv3oeCYsw1u189vOn/rtFngjWGvxYlhb3I2Y4KadE59Sh81z/5vOnQ6WV2HAfPUyDIsf6hxne+evxuOVOHEOFuLEiRMnTvwTvBnZj2uRbIRnxZM8r6ZmlnrJ62UcFhE5T9iCNpyo7l2AAQCRQSxIGZuVZQAAAABJRU5ErkJggg=="
-                    ng-if="ctrl.extra.image || ctrl.extra.icon" class="ng-scope"
-                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB8AAAAqCAYAAABLGYAnAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYxIDY0LjE0MDk0OSwgMjAxMC8xMi8wNy0xMDo1NzowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNS4xIFdpbmRvd3MiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OERCRTZFNTdDRTdBMTFFNEFDNENEMEU3NzA3OUUwNjciIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OERCRTZFNThDRTdBMTFFNEFDNENEMEU3NzA3OUUwNjciPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4REJFNkU1NUNFN0ExMUU0QUM0Q0QwRTc3MDc5RTA2NyIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4REJFNkU1NkNFN0ExMUU0QUM0Q0QwRTc3MDc5RTA2NyIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Pod+/bMAAAC/SURBVHja7NjhCcIwEAXgS3CArpANXCET2RXcIJnIFZwgGcFsEN9p/FMQBGkO8R08SP/04xqag7jeu9RaFxFZkROi672qIRlJIYTmSimKXZCjzKsrEv3oeCYsw1u189vOn/rtFngjWGvxYlhb3I2Y4KadE59Sh81z/5vOnQ6WV2HAfPUyDIsf6hxne+evxuOVOHEOFuLEiRMnTvwTvBnZj2uRbIRnxZM8r6ZmlnrJ62UcFhE5T9iCNpyo7l2AAQCRQSxIGZuVZQAAAABJRU5ErkJggg==">
-                </div>
 
-                <div class="extra-text ng-binding">
-                  Inside the Fridge
-                </div>
-              </div>
-            </tui-booking-service-extra><tui-booking-service-extra booking-service="ctrl.booking.bookingServices[0]"
-              extra="extra" ng-repeat="extra in ctrl.booking.bookingServices[0].service.extras track by extra.id"
-              class="col-sm-3 col-xs-4 ng-scope ng-isolate-scope extra">
-              <div id="extra-96" class="extra-option"
-                ng-class="{'extra-quantity-based-option': ctrl.extra.quantity_based, selected: ctrl.bookingService.extras[ctrl.extra.id].checked}"
-                ng-click="ctrl.onExtraClick()" click-outside="ctrl.onOutsideExtraClick()" outside-if-not="extra-96">
-                <div class="extra-icon inside-cabinets"
-                  ng-class="{selected: ctrl.bookingService.extras[ctrl.extra.id].checked, 'fa fa-check default-extra-icon': !ctrl.extra.icon &amp;&amp; !ctrl.extra.image}"
-                  ng-show="!ctrl.showQuantityInput" uib-tooltip="" tooltip-placement="auto bottom"
-                  tooltip-enable="!ctrl.isMobileDevice">
-                  <img
-                    ng-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAAqCAMAAADRRmi8AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYxIDY0LjE0MDk0OSwgMjAxMC8xMi8wNy0xMDo1NzowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNS4xIFdpbmRvd3MiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6RTFGNEJBN0ZEMzEyMTFFNEI1QkU5RkJBRjRBMkQ5MUIiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6RTFGNEJBODBEMzEyMTFFNEI1QkU5RkJBRjRBMkQ5MUIiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpFMUY0QkE3REQzMTIxMUU0QjVCRTlGQkFGNEEyRDkxQiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpFMUY0QkE3RUQzMTIxMUU0QjVCRTlGQkFGNEEyRDkxQiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PmtudEUAAAAGUExURd7e3v///32j7RAAAAA0SURBVHjaYmBkwA0Y8UmNahzVOKpxVOOoxlGNI0ojIxjANSK4NNM4Gh1U0EgmIFsjQIABAJ4wAQHZlUPNAAAAAElFTkSuQmCC"
-                    ng-if="ctrl.extra.image || ctrl.extra.icon" class="ng-scope"
-                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAAqCAMAAADRRmi8AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYxIDY0LjE0MDk0OSwgMjAxMC8xMi8wNy0xMDo1NzowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNS4xIFdpbmRvd3MiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6RTFGNEJBN0ZEMzEyMTFFNEI1QkU5RkJBRjRBMkQ5MUIiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6RTFGNEJBODBEMzEyMTFFNEI1QkU5RkJBRjRBMkQ5MUIiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpFMUY0QkE3REQzMTIxMUU0QjVCRTlGQkFGNEEyRDkxQiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpFMUY0QkE3RUQzMTIxMUU0QjVCRTlGQkFGNEEyRDkxQiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PmtudEUAAAAGUExURd7e3v///32j7RAAAAA0SURBVHjaYmBkwA0Y8UmNahzVOKpxVOOoxlGNI0ojIxjANSK4NNM4Gh1U0EgmIFsjQIABAJ4wAQHZlUPNAAAAAElFTkSuQmCC">
-                </div>
-
-                <div class="extra-text ng-binding">
-                  Inside Cabinets
-                </div>
-              </div>
-            </tui-booking-service-extra><!-- end ngRepeat: extra in ctrl.booking.bookingServices[0].service.extras track by extra.id --><tui-booking-service-extra
-              booking-service="ctrl.booking.bookingServices[0]" extra="extra"
-              ng-repeat="extra in ctrl.booking.bookingServices[0].service.extras track by extra.id"
-              class="col-sm-3 col-xs-4 ng-scope ng-isolate-scope extra">
-              <div id="extra-88" class="extra-option"
-                ng-class="{'extra-quantity-based-option': ctrl.extra.quantity_based, selected: ctrl.bookingService.extras[ctrl.extra.id].checked}"
-                ng-click="ctrl.onExtraClick()" click-outside="ctrl.onOutsideExtraClick()" outside-if-not="extra-88">
-                <div class="extra-icon"
-                  ng-class="{selected: ctrl.bookingService.extras[ctrl.extra.id].checked, 'fa fa-check default-extra-icon': !ctrl.extra.icon &amp;&amp; !ctrl.extra.image}"
-                  ng-show="!ctrl.showQuantityInput" uib-tooltip="" tooltip-placement="auto bottom"
-                  tooltip-enable="!ctrl.isMobileDevice">
-                  <!-- ngIf: ctrl.extra.image || ctrl.extra.icon --><img
-                    ng-src="https://launch27.s3.us-west-2.amazonaws.com/live_10891/extras/88/7ac32951580c89d346f8e976d757aedff5e8d145.png"
-                    ng-if="ctrl.extra.image || ctrl.extra.icon" class="ng-scope"
-                    src="https://launch27.s3.us-west-2.amazonaws.com/live_10891/extras/88/7ac32951580c89d346f8e976d757aedff5e8d145.png">
-                </div>
-
-                <div class="extra-text ng-binding">
-                  Organization
-                </div>
-              </div>
-            </tui-booking-service-extra><!-- end ngRepeat: extra in ctrl.booking.bookingServices[0].service.extras track by extra.id --><tui-booking-service-extra
-              booking-service="ctrl.booking.bookingServices[0]" extra="extra"
-              ng-repeat="extra in ctrl.booking.bookingServices[0].service.extras track by extra.id"
-              class="col-sm-3 col-xs-4 ng-scope ng-isolate-scope extra">
-              <div id="extra-89" class="extra-option"
-                ng-class="{'extra-quantity-based-option': ctrl.extra.quantity_based, selected: ctrl.bookingService.extras[ctrl.extra.id].checked}"
-                ng-click="ctrl.onExtraClick()" click-outside="ctrl.onOutsideExtraClick()" outside-if-not="extra-89">
-                <div class="extra-icon"
-                  ng-class="{selected: ctrl.bookingService.extras[ctrl.extra.id].checked, 'fa fa-check default-extra-icon': !ctrl.extra.icon &amp;&amp; !ctrl.extra.image}"
-                  ng-show="!ctrl.showQuantityInput" uib-tooltip="" tooltip-placement="auto bottom"
-                  tooltip-enable="!ctrl.isMobileDevice">
-                  <!-- ngIf: ctrl.extra.image || ctrl.extra.icon --><img
-                    ng-src="https://launch27.s3.us-west-2.amazonaws.com/live_10891/extras/89/8b94c4f6559cc22536e2bcac20e7f9bf537f3725.png"
-                    ng-if="ctrl.extra.image || ctrl.extra.icon" class="ng-scope"
-                    src="https://launch27.s3.us-west-2.amazonaws.com/live_10891/extras/89/8b94c4f6559cc22536e2bcac20e7f9bf537f3725.png"><!-- end ngIf: ctrl.extra.image || ctrl.extra.icon -->
-                </div>
-
-                <div class="extra-text ng-binding">
-                  Inside Dishwasher
-                </div>
-              </div>
-            </tui-booking-service-extra><!-- end ngRepeat: extra in ctrl.booking.bookingServices[0].service.extras track by extra.id --><tui-booking-service-extra
-              booking-service="ctrl.booking.bookingServices[0]" extra="extra"
-              ng-repeat="extra in ctrl.booking.bookingServices[0].service.extras track by extra.id"
-              class="col-sm-3 col-xs-4 ng-scope ng-isolate-scope extra">
-              <div id="extra-91" class="extra-option"
-                ng-class="{'extra-quantity-based-option': ctrl.extra.quantity_based, selected: ctrl.bookingService.extras[ctrl.extra.id].checked}"
-                ng-click="ctrl.onExtraClick()" click-outside="ctrl.onOutsideExtraClick()" outside-if-not="extra-91">
-                <div class="extra-icon"
-                  ng-class="{selected: ctrl.bookingService.extras[ctrl.extra.id].checked, 'fa fa-check default-extra-icon': !ctrl.extra.icon &amp;&amp; !ctrl.extra.image}"
-                  ng-show="!ctrl.showQuantityInput" uib-tooltip="" tooltip-placement="auto bottom"
-                  tooltip-enable="!ctrl.isMobileDevice">
-                  <!-- ngIf: ctrl.extra.image || ctrl.extra.icon --><img
-                    ng-src="https://launch27.s3.us-west-2.amazonaws.com/live_10891/extras/91/4010ac71119815eb9ad3c8d6107ccf473b57fc97.png"
-                    ng-if="ctrl.extra.image || ctrl.extra.icon" class="ng-scope"
-                    src="https://launch27.s3.us-west-2.amazonaws.com/live_10891/extras/91/4010ac71119815eb9ad3c8d6107ccf473b57fc97.png"><!-- end ngIf: ctrl.extra.image || ctrl.extra.icon -->
-                </div>
-
-                <div class="extra-text ng-binding">
-                  Inside Garage
-                </div>
-              </div>
-            </tui-booking-service-extra><!-- end ngRepeat: extra in ctrl.booking.bookingServices[0].service.extras track by extra.id --><tui-booking-service-extra
-              booking-service="ctrl.booking.bookingServices[0]" extra="extra"
-              ng-repeat="extra in ctrl.booking.bookingServices[0].service.extras track by extra.id"
-              class="col-sm-3 col-xs-4 ng-scope ng-isolate-scope extra">
-              <div id="extra-90" class="extra-option"
-                ng-class="{'extra-quantity-based-option': ctrl.extra.quantity_based, selected: ctrl.bookingService.extras[ctrl.extra.id].checked}"
-                ng-click="ctrl.onExtraClick()" click-outside="ctrl.onOutsideExtraClick()" outside-if-not="extra-90">
-                <div class="extra-icon"
-                  ng-class="{selected: ctrl.bookingService.extras[ctrl.extra.id].checked, 'fa fa-check default-extra-icon': !ctrl.extra.icon &amp;&amp; !ctrl.extra.image}"
-                  ng-show="!ctrl.showQuantityInput" uib-tooltip="" tooltip-placement="auto bottom"
-                  tooltip-enable="!ctrl.isMobileDevice">
-                  <!-- ngIf: ctrl.extra.image || ctrl.extra.icon --><img
-                    ng-src="https://launch27.s3.us-west-2.amazonaws.com/live_10891/extras/90/1e0f2757ea854d27fc5e7c3e89e9a26370082658.png"
-                    ng-if="ctrl.extra.image || ctrl.extra.icon" class="ng-scope"
-                    src="https://launch27.s3.us-west-2.amazonaws.com/live_10891/extras/90/1e0f2757ea854d27fc5e7c3e89e9a26370082658.png"><!-- end ngIf: ctrl.extra.image || ctrl.extra.icon -->
-                </div>
-
-                <div class="extra-text ng-binding">
-                  Microwave
-                </div>
-              </div>
-            </tui-booking-service-extra><!-- end ngRepeat: extra in ctrl.booking.bookingServices[0].service.extras track by extra.id --><tui-booking-service-extra
-              booking-service="ctrl.booking.bookingServices[0]" extra="extra"
-              ng-repeat="extra in ctrl.booking.bookingServices[0].service.extras track by extra.id"
-              class="col-sm-3 col-xs-4 ng-scope ng-isolate-scope extra">
-              <div id="extra-8" class="extra-option"
-                ng-class="{'extra-quantity-based-option': ctrl.extra.quantity_based, selected: ctrl.bookingService.extras[ctrl.extra.id].checked}"
-                ng-click="ctrl.onExtraClick()" click-outside="ctrl.onOutsideExtraClick()" outside-if-not="extra-8">
-                <div class="extra-icon load-of-laundry"
-                  ng-class="{selected: ctrl.bookingService.extras[ctrl.extra.id].checked, 'fa fa-check default-extra-icon': !ctrl.extra.icon &amp;&amp; !ctrl.extra.image}"
-                  ng-show="!ctrl.showQuantityInput" uib-tooltip="" tooltip-placement="auto bottom"
-                  tooltip-enable="!ctrl.isMobileDevice">
-                  <!-- ngIf: ctrl.extra.image || ctrl.extra.icon --><img
-                    ng-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAArCAYAAAAQVipNAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYxIDY0LjE0MDk0OSwgMjAxMC8xMi8wNy0xMDo1NzowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNS4xIFdpbmRvd3MiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6QzhERjdCN0JDRTc5MTFFNEI0RjRGM0FFQTU1M0NGQTMiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6QzhERjdCN0NDRTc5MTFFNEI0RjRGM0FFQTU1M0NGQTMiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpDOERGN0I3OUNFNzkxMUU0QjRGNEYzQUVBNTUzQ0ZBMyIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpDOERGN0I3QUNFNzkxMUU0QjRGNEYzQUVBNTUzQ0ZBMyIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PlJAmTIAAAPJSURBVHjazJgPRF1RHMerl8fj8YjHI0Y0zViaZmw20cSI8WYZ0TSjWTaxbJaNmGYZy1g2S7OUYpZlI2KMWYo0nmVpjEuMZxERj7ja7/A5HNe99917S70f33e8++d3vud3fv/uKd/d3S0rJakoKzEpOUKV6seyLDXUCu4KTh8CjyXBkOCPtlBGsCC4JUgdMJkU86r5M5Vc7BCkBd2C14dgoS7BG8VDEzrCOBtCyQnBGZ/7i4IVl+tNgjrBb8E3rs1pHppQLMKqJiHlJYpMveOa2pqngveCZ4I+x47EKva492Hv3xO0CW4yPiiFsI8bo72fhJSpCx73Ch7B0S/4KPjO2O+ahyLKIAgjE4IcwdDt5vRBCFUJGkAd/2uM/FXt8d4Pxg3BOsiBEd9M7RA1QTvh2eAzoZ4ozxatQjhppJK0z7s5wn7Cj9AnSGhZ5aWcgY0I25s2rKzRAgbQ60rouOAzeUIlya2AE8aYJOcWOSziCzDTQqvgquCiF6GTWKWYJNnWS6wybtzbYWK1sCnBtoeOLe5PYYhfboS2A1iiCzNXMflXfKnM8J0WVq+y8iOc2PbRux0l7JVVPmBeRaBXMO2xCPVsFuKvsGRbgAUHTowpkpkiMyw4KhhjAnWvkdyixgTXJ3humPcWgrQ2FQEddhynVcXwDltVjcX+CZaZcJn/78hVOzzfRyEeL1bIgxDqwOQjRmZuxwmvOBxab1en4CfP6aw+gp6OvRBK4Ad5fEY3U5MBzJ/EIjqke9EzgN5IhLJszSB+obbhZcik+NeIpEH0ZaMSaiVcdXp/6LJFfjLlKKAT6GuNSqiJIrmJM2ZDWmfM8X8TfU1RCMUwr2UkvKqQhNx6agu9sbCEko4smohQVDd9snIyLKEt9jtjFMiwkvG4ZnsV7mI+ZPFFa/Y/YaTB5VqN4QahCS3SdNV5OGkx6XH8r6WyL0YlNM3YyfgkYHuipcXsdURuOPSGJjRL03WbyFC16RpjENkxHLsaPTm/L+RihGwKoy4DcfLIKY+QdmboC5xsxHk/iT57L8V1jqOSZsEoylcg1ecgVsA/VIU/Jpjn+VHeHzK+4wN/dbjJfaKjgwR5nUgp9m1WQyuiMvMMevalQVMmvszkSvma4AUNmZs0cn+N5wd53w50ghZC+ljpc0K6B1/Jk+hSjo/HedqOpVBHehGO387TAWYJbVVWzuFPFs3YTADH9yRkRyC2Ah7v48mIrX1Il4TmQzp81e3Ierk6OLcsK0MPnCYTFw6QTIJyomplvbaQcsqz7H3hgK2j5nvL/Pn/AgwAIYzwFPEiAsEAAAAASUVORK5CYII="
-                    ng-if="ctrl.extra.image || ctrl.extra.icon" class="ng-scope"
-                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAArCAYAAAAQVipNAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYxIDY0LjE0MDk0OSwgMjAxMC8xMi8wNy0xMDo1NzowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNS4xIFdpbmRvd3MiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6QzhERjdCN0JDRTc5MTFFNEI0RjRGM0FFQTU1M0NGQTMiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6QzhERjdCN0NDRTc5MTFFNEI0RjRGM0FFQTU1M0NGQTMiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpDOERGN0I3OUNFNzkxMUU0QjRGNEYzQUVBNTUzQ0ZBMyIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpDOERGN0I3QUNFNzkxMUU0QjRGNEYzQUVBNTUzQ0ZBMyIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PlJAmTIAAAPJSURBVHjazJgPRF1RHMerl8fj8YjHI0Y0zViaZmw20cSI8WYZ0TSjWTaxbJaNmGYZy1g2S7OUYpZlI2KMWYo0nmVpjEuMZxERj7ja7/A5HNe99917S70f33e8++d3vud3fv/uKd/d3S0rJakoKzEpOUKV6seyLDXUCu4KTh8CjyXBkOCPtlBGsCC4JUgdMJkU86r5M5Vc7BCkBd2C14dgoS7BG8VDEzrCOBtCyQnBGZ/7i4IVl+tNgjrBb8E3rs1pHppQLMKqJiHlJYpMveOa2pqngveCZ4I+x47EKva492Hv3xO0CW4yPiiFsI8bo72fhJSpCx73Ch7B0S/4KPjO2O+ahyLKIAgjE4IcwdDt5vRBCFUJGkAd/2uM/FXt8d4Pxg3BOsiBEd9M7RA1QTvh2eAzoZ4ozxatQjhppJK0z7s5wn7Cj9AnSGhZ5aWcgY0I25s2rKzRAgbQ60rouOAzeUIlya2AE8aYJOcWOSziCzDTQqvgquCiF6GTWKWYJNnWS6wybtzbYWK1sCnBtoeOLe5PYYhfboS2A1iiCzNXMflXfKnM8J0WVq+y8iOc2PbRux0l7JVVPmBeRaBXMO2xCPVsFuKvsGRbgAUHTowpkpkiMyw4KhhjAnWvkdyixgTXJ3humPcWgrQ2FQEddhynVcXwDltVjcX+CZaZcJn/78hVOzzfRyEeL1bIgxDqwOQjRmZuxwmvOBxab1en4CfP6aw+gp6OvRBK4Ad5fEY3U5MBzJ/EIjqke9EzgN5IhLJszSB+obbhZcik+NeIpEH0ZaMSaiVcdXp/6LJFfjLlKKAT6GuNSqiJIrmJM2ZDWmfM8X8TfU1RCMUwr2UkvKqQhNx6agu9sbCEko4smohQVDd9snIyLKEt9jtjFMiwkvG4ZnsV7mI+ZPFFa/Y/YaTB5VqN4QahCS3SdNV5OGkx6XH8r6WyL0YlNM3YyfgkYHuipcXsdURuOPSGJjRL03WbyFC16RpjENkxHLsaPTm/L+RihGwKoy4DcfLIKY+QdmboC5xsxHk/iT57L8V1jqOSZsEoylcg1ecgVsA/VIU/Jpjn+VHeHzK+4wN/dbjJfaKjgwR5nUgp9m1WQyuiMvMMevalQVMmvszkSvma4AUNmZs0cn+N5wd53w50ghZC+ljpc0K6B1/Jk+hSjo/HedqOpVBHehGO387TAWYJbVVWzuFPFs3YTADH9yRkRyC2Ah7v48mIrX1Il4TmQzp81e3Ierk6OLcsK0MPnCYTFw6QTIJyomplvbaQcsqz7H3hgK2j5nvL/Pn/AgwAIYzwFPEiAsEAAAAASUVORK5CYII="><!-- end ngIf: ctrl.extra.image || ctrl.extra.icon -->
-                </div>
-
-                <div class="extra-text ng-binding">
-                  Laundry
-                </div>
-              </div>
-            </tui-booking-service-extra><!-- end ngRepeat: extra in ctrl.booking.bookingServices[0].service.extras track by extra.id --><tui-booking-service-extra
-              booking-service="ctrl.booking.bookingServices[0]" extra="extra"
-              ng-repeat="extra in ctrl.booking.bookingServices[0].service.extras track by extra.id"
-              class="col-sm-3 col-xs-4 ng-scope ng-isolate-scope extra">
-              <div id="extra-16" class="extra-option"
-                ng-class="{'extra-quantity-based-option': ctrl.extra.quantity_based, selected: ctrl.bookingService.extras[ctrl.extra.id].checked}"
-                ng-click="ctrl.onExtraClick()" click-outside="ctrl.onOutsideExtraClick()" outside-if-not="extra-16">
-                <div class="extra-icon"
-                  ng-class="{selected: ctrl.bookingService.extras[ctrl.extra.id].checked, 'fa fa-check default-extra-icon': !ctrl.extra.icon &amp;&amp; !ctrl.extra.image}"
-                  ng-show="!ctrl.showQuantityInput" uib-tooltip="" tooltip-placement="auto bottom"
-                  tooltip-enable="!ctrl.isMobileDevice">
-                  <!-- ngIf: ctrl.extra.image || ctrl.extra.icon --><img
-                    ng-src="https://launch27.s3.us-west-2.amazonaws.com/live_10891/extras/16/c9a367dc36e7bc7a23c030457722acdae8507b56.png"
-                    ng-if="ctrl.extra.image || ctrl.extra.icon" class="ng-scope"
-                    src="https://launch27.s3.us-west-2.amazonaws.com/live_10891/extras/16/c9a367dc36e7bc7a23c030457722acdae8507b56.png"><!-- end ngIf: ctrl.extra.image || ctrl.extra.icon -->
-                </div>
-
-                <div class="extra-text ng-binding">
-                  Blinds
-                </div>
-              </div>
-            </tui-booking-service-extra><!-- end ngRepeat: extra in ctrl.booking.bookingServices[0].service.extras track by extra.id --><tui-booking-service-extra
-              booking-service="ctrl.booking.bookingServices[0]" extra="extra"
-              ng-repeat="extra in ctrl.booking.bookingServices[0].service.extras track by extra.id"
-              class="col-sm-3 col-xs-4 ng-scope ng-isolate-scope extra">
-              <div id="extra-48" class="extra-option"
-                ng-class="{'extra-quantity-based-option': ctrl.extra.quantity_based, selected: ctrl.bookingService.extras[ctrl.extra.id].checked}"
-                ng-click="ctrl.onExtraClick()" click-outside="ctrl.onOutsideExtraClick()" outside-if-not="extra-48">
-                <div class="extra-icon"
-                  ng-class="{selected: ctrl.bookingService.extras[ctrl.extra.id].checked, 'fa fa-check default-extra-icon': !ctrl.extra.icon &amp;&amp; !ctrl.extra.image}"
-                  ng-show="!ctrl.showQuantityInput" uib-tooltip="" tooltip-placement="auto bottom"
-                  tooltip-enable="!ctrl.isMobileDevice">
-                  <!-- ngIf: ctrl.extra.image || ctrl.extra.icon --><img
-                    ng-src="https://launch27.s3.us-west-2.amazonaws.com/live_10891/extras/48/fc6f534756fdbd652be16b0d121537197046ee9b.png"
-                    ng-if="ctrl.extra.image || ctrl.extra.icon" class="ng-scope"
-                    src="https://launch27.s3.us-west-2.amazonaws.com/live_10891/extras/48/fc6f534756fdbd652be16b0d121537197046ee9b.png"><!-- end ngIf: ctrl.extra.image || ctrl.extra.icon -->
-                </div>
-
-                <div class="extra-text ng-binding">
-                  Inside Washer/Dryer
-                </div>
-              </div>
-            </tui-booking-service-extra><!-- end ngRepeat: extra in ctrl.booking.bookingServices[0].service.extras track by extra.id -->
           </div>
         </fieldset>
+        <div class="text-start p-5">
+          <h2 style="font-weight: 100;
+    font-size: 19px;
+    font-family: proxima, arial;
+    color: rgb(55, 62, 74);
+    line-height: 1.1;">
+            <span class="editable can-be-hidden ng-binding" data-type="paragraph"
+              data-code="complete_your_booking">QUAND SOUHAITEZ-VOUS QUE NOUS VENIONS ?</span>
 
-        <div class="form-group">
-          <div class="date-time-container">
-            <div class="col-sm-6" data-id="181" data-code="service_date" data-type="system">
-              <input class="form-control input-lg service-date" placeholder="Click to Choose a Date" type="text"
-                tui-date="{dateFormat: ctrl.dateFormat,
-                        minDate: ctrl.minDate,
-                        showOtherMonths: true,
-                        selectOtherMonths: true}" tui-date-format="yy-mm-dd"
-                tui-disable-unavailable-dates="{locationId: ctrl.booking.location_id, duration: ctrl.booking.summary.duration}"
-                ng-change="ctrl.onSpotDateChanged()" ng-class="{error: ctrl.booking.errors.spot.date}"
-                ng-model="ctrl.date" readonly="true" id="dp1716206383488">
-            </div>
-            <div class="col-sm-6">
-              <div tabindex="0" ng-class="{'error-container': ctrl.booking.errors.spot.hours}">
-                <div class="btn-group bootstrap-select form-control input-lg spot">
-                  <select tui-selectpicker="{size: 10}" class="form-control input-lg spot" title="--:--"
-                    ng-model="ctrl.booking.spot.id"
-                    ng-options="spot.id as (spot | spotTime) group by (spot | spotDate) for spot in ctrl.spots track by spot.id">
-                    <option class="bs-title-option" value="">--:--</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-          </div>
+          </h2>
+
+          <p>Choisissez la date et la plage horaire* qui vous convient. Si vous avez besoin d'un rendez-vous de dernière
+            minute, appelez-nous au (206) 294-9654. *Veuillez noter : Votre plage horaire d'arrivée est la période
+            pendant laquelle les nettoyeurs peuvent arriver.</p>
+
+
         </div>
-        <div class="container">
+        <calendar id="calendar-table" />
+        <div class="container p-5">
           <div class="row">
             <div class="col-lg-12">
               <div class="panel panel-default">
                 <div class="panel-heading">
-                  <h3 class="panel-title">HOW OFTEN</h3>
+                  <h3 class="panel-title" style="font-weight: 100;
+    font-size: 19px;
+    font-family: proxima, arial;
+    color: rgb(55, 62, 74);
+    line-height: 1.1;">À QUELLE FRÉQUENCE</h3>
                 </div>
                 <div class="panel-body">
-                  <p>It's all about matching you with the perfect clean for your home. Scheduling is flexible. Cancel or
-                    reschedule anytime. Discounts are applied based on selection.</p>
+                  <p>Il s'agit de vous trouver le nettoyage parfait pour votre domicile. La planification est flexible.
+                    Annulez ou reportez à tout moment. Les remises sont appliquées en fonction de la sélection.</p>
                   <div class="form-group">
                     <div class="row">
-                      <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 frequency-option selected"
-                        ng-click="ctrl.frequency = frequency">
-                        One Time
+                      <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 frequency-option"
+                        :class="{ selected: selectedFrequency === 'Hebdomadaire' }"
+                        @click="selectFrequency('Hebdomadaire')">
+                        Hebdomadaire
                       </div>
                       <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 frequency-option"
-                        ng-click="ctrl.frequency = frequency">
-                        Weekly
+                        :class="{ selected: selectedFrequency === 'Bimensuel' }" @click="selectFrequency('Bimensuel')">
+                        Bimensuel
                       </div>
                       <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 frequency-option"
-                        ng-click="ctrl.frequency = frequency">
-                        Biweekly
+                        :class="{ selected: selectedFrequency === 'Mensuel' }" @click="selectFrequency('Mensuel')">
+                        Mensuel
                       </div>
-                      <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 frequency-option"
-                        ng-click="ctrl.frequency = frequency">
-                        Monthly
-                      </div>
+
                     </div>
                   </div>
                 </div>
@@ -526,10 +342,14 @@ export default {
             <div class="col-lg-12">
               <div class="panel panel-default">
                 <div class="panel-heading">
-                  <h3 class="panel-title">WHO YOU ARE</h3>
+                  <h3 class="panel-title" style="font-weight: 100;
+    font-size: 19px;
+    font-family: proxima, arial;
+    color: rgb(55, 62, 74);
+    line-height: 1.1;">QUI ÊTES-VOUS</h3>
                 </div>
                 <div class="panel-body">
-                  <p>This information will be used to contact you about your service.</p>
+                  <p>Ces informations seront utilisées pour vous contacter concernant votre service.</p>
                   <form class="form-horizontal">
                     <div class="row">
                       <div class="col-sm-6">
@@ -571,45 +391,40 @@ export default {
             <div class="col-lg-12">
               <div class="panel panel-default">
                 <div class="panel-heading">
-                  <h3 class="panel-title">ADDRESS</h3>
+                  <h3 class="panel-title" style="font-weight: 100;
+    font-size: 19px;
+    font-family: proxima, arial;
+    color: rgb(55, 62, 74);
+    line-height: 1.1;">ADRESSE</h3>
                 </div>
                 <div class="panel-body">
-                  <p>Where would you like us to clean?</p>
+                  <p>Où aimeriez-vous que nous nettoyions ?</p>
                   <form class="form-horizontal">
                     <div class="row">
                       <div class="col-sm-6">
                         <div class="form-group">
                           <input class="form-control input-lg" name="booking[address_wo_suite]" maxlength="255"
-                            placeholder="Address*" ng-model="ctrl.booking.address_wo_suite"
-                            ng-change="ctrl.changeLocation()" ng-model-options="{ updateOn: 'blur' }"
-                            ng-class="{error: ctrl.booking.errors.address_wo_suite}" type="text">
+                            placeholder="Adresse*" type="text">
                         </div>
                       </div>
                       <div class="col-sm-6">
                         <div class="form-group">
                           <input class="form-control input-lg" name="booking[apt_suite]" maxlength="255"
-                            placeholder="Apt/Suite #" ng-model="ctrl.booking.apt_suite"
-                            ng-change="ctrl.changeLocation()" ng-model-options="{ updateOn: 'blur' }"
-                            ng-class="{error: ctrl.booking.errors.apt_suite}" type="text">
+                            placeholder="Apt/Suite #" type="text">
                         </div>
                       </div>
                     </div>
                     <div class="row">
                       <div class="col-sm-4">
                         <div class="form-group">
-                          <input class="form-control input-lg" name="booking[city]" maxlength="100" placeholder="City*"
-                            ng-model="ctrl.booking.city" ng-change="ctrl.changeLocation()"
-                            ng-model-options="{ updateOn: 'blur' }" ng-class="{error: ctrl.booking.errors.city}"
+                          <input class="form-control input-lg" name="booking[city]" maxlength="100" placeholder="Ville*"
                             type="text">
                         </div>
                       </div>
                       <div class="col-sm-4">
                         <div class="form-group">
-                          <select class="form-control input-lg" name="booking[state]" ng-model="ctrl.booking.state"
-                            ng-change="ctrl.changeLocation()"
-                            ng-options="state for state in ctrl.settings.country.states | _:'keys'"
-                            ng-class="{error: ctrl.booking.errors.state}">
-                            <option value="" selected="selected">State*</option>
+                          <select class="form-control input-lg">
+                            <option value="" selected="selected">État*</option>
                             <option value="1">AK</option>
                             <option value="2">AL</option>
                             <option value="3">AR</option>
@@ -621,9 +436,7 @@ export default {
                       <div class="col-sm-4">
                         <div class="form-group">
                           <input class="form-control input-lg" name="booking[zip]" maxlength="10"
-                            placeholder="Zip Code*" ng-model="ctrl.booking.zip" ng-change="ctrl.changeLocation()"
-                            ng-model-options="{ updateOn: 'blur' }" ng-class="{error: ctrl.booking.errors.zip}"
-                            type="text">
+                            placeholder="Code Postal*" type="text">
                         </div>
                       </div>
                     </div>
@@ -639,10 +452,14 @@ export default {
             <div class="col-lg-12">
               <div class="panel panel-default">
                 <div class="panel-heading">
-                  <h3 class="panel-title">DISCOUNT CODE</h3>
+                  <h3 class="panel-title" style="font-weight: 100;
+    font-size: 19px;
+    font-family: proxima, arial;
+    color: rgb(55, 62, 74);
+    line-height: 1.1;">CODE DE RÉDUCTION</h3>
                 </div>
                 <div class="panel-body">
-                  <p>If you have a discount code, enter it here</p>
+                  <p>Si vous avez un code de réduction, saisissez-le ici.</p>
                   <form class="form-horizontal">
                     <div class="row">
                       <div class="col-sm-6">
@@ -672,7 +489,11 @@ export default {
             <div class="col-lg-12">
               <div class="panel panel-default">
                 <div class="panel-heading">
-                  <h3 class="panel-title">Comments &amp; Special Instructions</h3>
+                  <h3 class="panel-title" style="font-weight: 100;
+    font-size: 19px;
+    font-family: proxima, arial;
+    color: rgb(55, 62, 74);
+    line-height: 1.1;">Commentaires et instructions spéciales</h3>
                 </div>
                 <div class="panel-body">
                   <form class="form-horizontal">
@@ -680,7 +501,7 @@ export default {
                       <div class="col-sm-12">
                         <textarea autocomplete="off" class="form-control input-lg non-resizable"
                           ng-model="ctrl.booking.customer_notes" maxlength="255"
-                          placeholder="Special Instructions: Is there anything we should know? Example: the gate code is 1234 or look out for the dog."
+                          placeholder="Instructions spéciales : Y a-t-il quelque chose que nous devrions savoir ? Par exemple : le code de la porte est 1234 ou faites attention au chien."
                           rows="4"></textarea>
                       </div>
                     </div>
@@ -694,14 +515,11 @@ export default {
           <div class="row">
             <div class="col-sm-12">
               <p style="padding: 15px;">
-                <tui-paragraph code="agreement_information" booking-form="ctrl.bookingForm" class="ng-isolate-scope">
-                  <span class="editable can-be-hidden ng-binding"
-                    ng-class="{hidden: !ctrl.bookingForm.paragraphs[ctrl.code].show}" data-type="paragraph"
-                    data-code="agreement_information" data-id="131"
-                    ng-bind-html="ctrl.bookingForm.paragraphs[ctrl.code].text | trustAsHtml">By clicking the Book Now
-                    button you are agreeing to our <a href="#" rel="noopener noreferrer" target="_blank"><u>Terms of
-                        Service</u></a> and <a href="#" rel="noopener noreferrer" target="_blank"><u>Privacy
-                        Policy</u></a><u>.</u></span>
+                <tui-paragraph>
+                  <span>En cliquant sur le bouton Réserver maintenant, <a href="#" rel="noopener noreferrer"
+                      target="_blank"><u>Tvous acceptez nos Conditions générales d'utilisation</u></a> <a href="#"
+                      rel="noopener noreferrer" target="_blank"><u>et notre Politique de
+                        confidentialité.</u></a><u>.</u></span>
                 </tui-paragraph>
               </p>
             </div>
@@ -716,7 +534,8 @@ export default {
                     <input style="margin-right: 5px;" type="checkbox"
                       ng-model="ctrl.booking.customValues[customField.id].value"
                       class="ng-pristine ng-untouched ng-valid">
-                    <p style="margin: 0;">I agree to the Terms of Service and Privacy Policy.</p>
+                    <p style="margin: 0;">Je suis d'accord avec les Conditions générales d'utilisation et la Politique
+                      de confidentialité.</p>
                   </label>
                 </div>
               </div>
@@ -750,11 +569,8 @@ export default {
 
       </div>
 
-      <div class="col-sm-4 hidden-xs can-be-hidden right-sidebar ng-scope"
-        ng-class="{hidden: ctrl.bookingForm.settings.form.hide_sidebar}" ng-if="ctrl.bookingForm">
-        <div class="form-section shadow-border text-center editable can-be-hidden content-panel ng-binding"
-          ng-class="{hidden: !ctrl.contentArea.show}" ng-bind-html="ctrl.trustedHtmlContent" data-code="content_area"
-          data-id="120" data-type="content_area">
+      <div class="col-sm-3  card " style="margin-left: 20px;">
+        <div class="form-section shadow-border text-center editable can-be-hidden content-panel ng-binding">
           <div class="form_section text-center" id="content_panel">
             <div class="row">
               <div class="col-12 col-md-6 col-lg-12">
@@ -765,8 +581,9 @@ export default {
                       fill="#30c7b5"></path>
                   </svg>
                 </div>
-                <h4>SAVES YOU TIME</h4>
-                <p>Our service helps you live smarter, giving you time to focus on what's most important.</p>
+                <h4>VOUS FAIT GAGNER DU TEMPS</h4>
+                <p>Notre service vous aide à vivre plus intelligemment, vous donnant du temps pour vous concentrer sur
+                  ce qui est le plus important.</p>
               </div>
               <div class="col-12 col-md-6 col-lg-12">
                 <div class="icon-sidebar">
@@ -776,8 +593,9 @@ export default {
                       fill="#30c7b5"></path>
                   </svg>
                 </div>
-                <h4>SAFETY FIRST</h4>
-                <p>We rigorously vet all of our Cleaners, who undergo identity checks as well as in-person interviews.
+                <h4>SÉCURITÉ AVANT TOUT</h4>
+                <p>Nous examinons rigoureusement tous nos nettoyeurs, qui font l'objet de vérifications d'identité ainsi
+                  que d'entretiens en personne.
                 </p>
               </div>
               <div class="col-12 col-md-6 col-lg-12">
@@ -788,9 +606,9 @@ export default {
                       fill="#30c7b5"></path>
                   </svg>
                 </div>
-                <h4>ONLY THE BEST QUALITY</h4>
-                <p>Our skilled professionals go above and beyond on every job. Cleaners are rated and reviewed after
-                  each task.</p>
+                <h4>QUALITÉ SEULEMENT LA MEILLEURE</h4>
+                <p>Nos professionnels qualifiés vont au-delà de chaque tâche. Les nettoyeurs sont évalués et revus après
+                  chaque mission.</p>
               </div>
               <div class="col-12 col-md-6 col-lg-12">
                 <div class="icon-sidebar">
@@ -800,9 +618,9 @@ export default {
                       fill="#30c7b5"></path>
                   </svg>
                 </div>
-                <h4>EASY TO GET HELP</h4>
-                <p>Select your ZIP code, number of bedrooms and bathrooms, date and relax while we take care of your
-                  home.</p>
+                <h4>FACILE À OBTENIR DE L'AIDE</h4>
+                <p>Sélectionnez votre code postal, le nombre de chambres et de salles de bains, la date et détendez-vous
+                  pendant que nous nous occupons de votre maison.</p>
               </div>
               <div class="col-12 col-md-6 col-lg-12">
                 <div class="icon-sidebar">
@@ -812,8 +630,8 @@ export default {
                       fill="#30c7b5"></path>
                   </svg>
                 </div>
-                <h4>SEAMLESS COMMUNICATION</h4>
-                <p>Give us a call or send us an email. We're happy to talk anytime.</p>
+                <h4>COMMUNICATION FLUIDE</h4>
+                <p>Appelez-nous ou envoyez-nous un e-mail. Nous sommes heureux de parler à tout moment.</p>
               </div>
               <div class="col-12 col-md-6 col-lg-12">
                 <div class="icon-sidebar">
@@ -823,40 +641,44 @@ export default {
                       fill="#30c7b5"></path>
                   </svg>
                 </div>
-                <h4>CASH FREE PAYMENT</h4>
-                <p>Pay securely online.</p>
+                <h4>PAIEMENT SANS NUMÉRAIRE</h4>
+                <p>Payez en toute sécurité en ligne</p>
               </div>
             </div>
           </div>
         </div>
         <div class="booking-summary-container">
-
-
           <div class="booking-summary">
             <div class="text-center">
-              <h2 style="font-size: 1.25rem;">BOOKING SUMMARY</h2>
+              <h2 style="font-size: 1.25rem;">RÉCAPITULATIF DE LA RÉSERVATION</h2>
             </div>
             <div class="room-info">
-              <span class="bedroom">1 Bedroom</span>
-              <span class="bathroom"> 1 Bathroom</span>
-              <span class="kitchen"> 1 Kitchen</span>
+              <span class="bedroom">{{ selectedOptions['Bedrooms'] ? `${selectedOptions['Bedrooms'].label}
+                ($${selectedOptions['Bedrooms'].price})` : '' }}</span>
+              <span class="bathroom">{{ selectedOptions['Bathrooms'] ? `${selectedOptions['Bathrooms'].label}
+                ($${selectedOptions['Bathrooms'].price})` : '' }}</span>
+              <span class="kitchen">{{ selectedOptions['Kitchens'] ? `${selectedOptions['Kitchens'].label}
+                ($${selectedOptions['Kitchens'].price})` : '' }}</span>
+              <span class="Etats">{{ selectedOptions['Etats'] ? `${selectedOptions['Etats'].label}
+                ($${selectedOptions['Etats'].price})` : '' }}</span>
+              <span class="service">{{ selectedOptions['service'] ? `${selectedOptions['service'].label}
+                ($${selectedOptions['service'].price})` : '' }}</span>
+              <template v-for="(extraService, index) in extraServices">
+                <span v-if="extraService.selected" :key="index">{{ extraService.name }} (${{ extraService.price
+                  }})</span>
+              </template>
             </div>
             <div class="service-info">
-              <span class="service-date">Choose service date...</span>
-              <span class="service-type">One Time</span>
+              <span class="service-date">Choisissez la date du service...</span>
+              <span class="service-type">{{ selectedFrequency }}</span>
             </div>
             <div class="prices">
-              <span class="sub-total">SUB-TOTAL: $95.00</span>
-              <span class="sales-tax">SALES TAX: $0.00</span>
-              <!-- <span class="total">TOTAL: $115.00</span> -->
+              <span class="sub-total">SOUS-TOTAL : ${{ subTotal }}</span>
+              <span class="sales-tax">TAXE DE VENTE : ${{ salesTax }}</span>
             </div>
-            <!-- <div class="taxes">
-    <span class="tax-amount">$15.39</span>
-    <span class="tax-label">(Sales Tax)</span>
-  </div> -->
             <div class="final-total">
-              <span class="final-total-label">FINAL TOTAL:</span>
-              <span class="final-total-amount">$130.39</span>
+              <span class="final-total-label">TOTAL FINAL :</span>
+              <span class="final-total-amount">${{ finalTotal }}</span>
             </div>
           </div>
         </div>
@@ -875,7 +697,7 @@ export default {
               line-height: 120%;
               font-weight: 700;
             ">
-            Subscribe to Our Newsletter
+            Abonnez-vous à notre infolettre et ne ratez aucun de nos bons plans exclusifs !
           </h3>
           <div class="wp-widget-group__inner-blocks">
             <p>
@@ -899,7 +721,7 @@ export default {
             <form id="mc4wp-form-1" class="mc4wp-form mc4wp-form-227" method="post" data-id="227"
               data-name="subscription">
               <div class="mc4wp-form-fields">
-                <label class="fz-16 title fw-700 prafont" style="padding-right: 10px;">Enter your email</label>
+                <label class="fz-16 title fw-700 prafont" style="padding-right: 10px;">Entre Ton Email</label>
                 <input type="email" name="EMAIL" required="" style="
                     width: 100%;
                     max-width: 500px;
@@ -909,7 +731,7 @@ export default {
                     padding: 13px 16px;
                     margin-bottom: 10px;
                   " />
-                <input class="cmn--btn" type="submit" value="Explore Our Offers" style="
+                <input class="cmn--btn" type="submit" value="Decouvrir Nos Offers" style="
                     padding: 12px 28px 15px;
                     color: white;
                     font-size: 16px;
@@ -959,9 +781,8 @@ export default {
                   max-width: 325px;
                   margin-top: 40px;
                 ">
-                With a rich history spanning decades, our club has become a
-                symbol of excellence in the golfing community. offers a
-                challenging yet rewarding game play.
+                Avec une histoire riche s'étendant sur des décennies, notre club est devenu un symbole d'excellence dans
+                la communauté du golf. Il propose un gameplay stimulant mais gratifiant.
               </div>
               <ul class="footer-social d-flex align-items-center" style="gap: 24px">
                 <li style="list-style: none">
@@ -1031,16 +852,16 @@ export default {
                   display: inline-block;
                   margin-bottom: 41px;
                 ">
-                Quick links
+                Liens rapides
               </h4>
               <div class="wp-widget-group__inner-blocks">
                 <ul style="padding: 0; margin: 0; list-style: none">
                   <li>
-                    <a href="https://www.4damstheme.com/clenis/about-clenis/">About Us</a>
+                    <a href="https://www.4damstheme.com/clenis/about-clenis/">A propos</a>
                   </li>
 
                   <li>
-                    <a href="https://www.4damstheme.com/clenis/contact-us/">Contact Us</a>
+                    <a href="https://www.4damstheme.com/clenis/contact-us/">Contact Nous</a>
                   </li>
 
 
@@ -1075,7 +896,7 @@ export default {
                   </li>
 
                   <li>
-                    <a href="https://www.4damstheme.com/clenis/our-services/">Buandrie</a>
+                    <a href="https://www.4damstheme.com/clenis/our-services/">buanderie</a>
                   </li>
 
                   <li>
@@ -1100,7 +921,7 @@ export default {
                   display: inline-block;
                   margin-bottom: 41px;
                 ">
-                Policy
+                Politique
               </h4>
               <div class="wp-widget-group__inner-blocks">
                 <ul style="padding: 0; margin: 0; list-style: none">
@@ -1138,7 +959,7 @@ export default {
                   display: inline-block;
                   margin-bottom: 41px;
                 ">
-                Our Contact
+                Nos coordonnées
               </h4>
               <div class="wp-widget-group__inner-blocks">
                 <ul style="padding: 0; margin: 0; list-style: none">
@@ -1241,6 +1062,19 @@ export default {
 
 </template>
 <style scoped>
+.card {
+  border: 1px solid #ccc;
+  /* Define the border color */
+  border-radius: 10px;
+  /* Adjust border radius for rounded corners */
+  padding: 20px;
+  /* Add padding to create space between content and border */
+  background-color: #fff;
+  /* Define the background color */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* Add a shadow for depth */
+}
+
 .extra-option .extra-icon {
   margin-right: 5px;
   border: 1px solid #ccc;
@@ -1312,6 +1146,10 @@ export default {
   width: 20%;
 }
 
+.frequency-option.selected {
+  background-color: #d9edf7;
+}
+
 .booking-summary-container {
   position: sticky;
   top: 0;
@@ -1351,5 +1189,11 @@ export default {
 
 .final-total-amount {
   color: #f00;
+}
+
+@media (max-width: 767.98px) {
+  .cc {
+    margin-left: 0px;
+  }
 }
 </style>

@@ -1,214 +1,251 @@
 <template>
+  <div class="container">
+    <div class="card__container">
+      <article v-for="(landscape, index) in landscapes" :key="index" class="card__article">
+        <img :src="landscape.image" :alt="landscape.description" class="card__img">
 
-    <section class="experience">
-      <div class="content">
-        <h1>Nos valeurs</h1>
-        <ul>
-          <li v-for="(experience, index) in experiences" :key="index">
-            <div class="experience-content hidden">
-              <h2>{{ experience.company }}</h2>
-              <!-- <div class="experience-time">{{ experience.time }}</div> -->
-              <p>{{ experience.description }}</p>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </section>
-  </template>
-  
-  <script>
-  export default {
-    name: 'Valeur',
-    data() {
-      return {
-        experiences: [
-          {
-            company: 'Écoresponsabilité',
-            description: 'Nous utilisons des pratiques respectueuses de l environnement à chaque étape de nos services, des produits écologiques, des sacs de linges réutilisables aux véhicules électriques ',
-          },
-          {
-            company: 'Fiabilité',
-            description: 'Notre équipe professionnelle prendra soin de votre linge et de vos équipements à la maison. Nous nous engageons à prendre soin de vos affaires et à offrir un service fiable et de qualité à chaque visite.',
-          },
-          {
-            company: 'Flexibilité ',
-            description: ' Nous comprenons que chaque client a des besoins uniques. C est pourquoi nous nous adaptons à vos préférences et à votre emploi du temps pour vous offrir un service personnalisé.',
-          },
-          {
-            company: 'Excellence ',
-            description: 'Nous nous efforçons constamment d atteindre l excellence dans tout ce que nous faisons, que ce soit dans la qualité de nos services ou dans notre engagement envers la satisfaction client',
-          },
-          {
-            company: 'Épanouissement',
-            description: ' Nous visons l épanouissement de nos clients en leur offrant un environnement propre et sain, tout en leur permettant de profiter pleinement de la vie pendant que nous prenons soin de leurs besoins de nettoyage et de gestion du linge.',
-          },
-        ],
-      };
-    },
-    mounted() {
-      window.addEventListener('scroll', this.handleScroll);
-    },
-    beforeUnmount() {
-      window.removeEventListener('scroll', this.handleScroll);
-    },
-    methods: {
-      handleScroll() {
-        const bottomOfWindow = window.scrollY + window.innerHeight;
-  
-        // Experience Section
-        const experienceElements = document.querySelectorAll('.experience .content .hidden');
-        experienceElements.forEach(element => {
-          const bottomOfObject = element.offsetTop + element.offsetHeight;
-          if (bottomOfWindow > bottomOfObject) {
-            element.style.opacity = '1';
-            element.style.marginLeft = '0';
-          }
-        });
-      },
-    },
-  };
-  </script>
-  
-  <style lang="scss" scoped>
-  @import url('https://fonts.googleapis.com/css?family=PT+Sans');
-  
-  $main-font: 'PT Sans', sans-serif;
-  
-  $text-color: #444;
-  $title-color: #344767;
-  $bg-color: #F0F8FF;
-  $secondary-bg-color: #f9f9f9;
-  
-  $progressbar-bg: #F0F8FF;
-  $progressbar-color: #34495e;
-  
-  *,
-  *:before,
-  *:after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  html,
-  body {
-    width: 100%;
-    height: 100%;
-  }
-  
-  body {
-    color: $text-color;
-    // background: $bg-color;
-    font-size: 16px;
-    font-family: $main-font;
-  }
-  
-  a {
-    color: inherit;
-    text-decoration: none;
-  }
-  
-  section {
-    position: relative;
-    width: 100%;
-  }
-  
-  .experience {
-    // background: $secondary-bg-color;
-    padding: 50px 0;
-    overflow-x: hidden;
-  }
-  
-  .content {
-    text-align: center;
-  }
-  
-  h1 {
-    font-size: 2em;
-    color: #344767;
-  }
-  
-  ul {
-    padding: 50px 0;
-    list-style-type: none;
-  }
-  
-  li {
-    background: $bg-color;
-    position: relative;
-    margin-left: 297px;
-    width: 5px;
-    padding-bottom: 40px;
-  }
-  
-  li:last-child {
-    padding-bottom: 7px;
-  }
-  
-  li:before {
-    content: '';
-    background: $secondary-bg-color;
-    position: absolute;
-    left: 50%;
-    top: 0;
-    transform: translateX(-50%);
-    width: 20px;
-    height: 20px;
-    border: 4px solid $bg-color;
-  }
-  
-  .hidden {
-    opacity: 0;
-    margin-left: 10vw;
-  }
-  
-  .experience-content {
-    background: $bg-color;
-    position: relative;
-    top: 7px;
-    left: 48px;
-    width: calc(68vw - 100px);
-    padding: 20px;
-    text-align: center;
-    border-radius: 0 5px 5px 5px;
-  }
-  @media (max-width: 767px) {
-  .experience-content{
+        <div class="card__data">
+          <span class="card__description">{{ landscape.description }}</span>
+          <h2 class="card__title">{{ landscape.title }}</h2>
+        </div>
+      </article>
+    </div>
+  </div>
+</template>
 
-    width: calc(100vw - 100px);
+<script>
+export default {
+  data() {
+    return {
+      landscapes: [
+       
+        {
+          image: "https://radiustheme.com/demo/wordpress/themes/clenix/wp-content/uploads/2019/07/about1.jpg",
+          description: "Nous utilisons des sacs réutilisables pour la collecte linges,réduisant ainsi notre consommation de plastique et favorisant la durabilité. ",
+          title: "Sacs réutilisables Hygeco"
+        },
+        {
+          image: "https://radiustheme.com/demo/wordpress/themes/clenix/wp-content/uploads/2019/07/about1.jpg",
+          description: "Nous utilisons exclusivement des produits de nettoyage certifiés écologiques, qui sont sûrs pour l'environnement et la santé de nos clients.  ",
+          title: "Produits de nettoyage certifiés écologiques"
+        },
+        {
+          image: "https://radiustheme.com/demo/wordpress/themes/clenix/wp-content/uploads/2019/07/about1.jpg",
+          description: "Nos véhicules de transport sont électriques,contribuant ainsi à la réduction des émissions de carbone et à la préservation de l'air que nous respirons.",
+          title: "Véhicules de transport électriques "
+        },
+        
+        
+      ]
+    };
+  }
+};
+</script>
+
+<style scoped>
+/*=============== GOOGLE FONTS ===============*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap");
+
+/*=============== VARIABLES CSS ===============*/
+:root {
+  /*========== Colors ==========*/
+  /*Color mode HSL(hue, saturation, lightness)*/
+  --first-color: hsl(82, 60%, 28%);
+  --title-color: hsl(0, 0%, 15%);
+  --text-color: hsl(0, 0%, 35%);
+  --body-color: hsl(0, 0%, 95%);
+  --container-color: hsl(0, 0%, 100%);
+
+  /*========== Font and typography ==========*/
+  /*.5rem = 8px | 1rem = 16px ...*/
+  --body-font: "Poppins", sans-serif;
+  --h2-font-size: 1.25rem;
+  --small-font-size: .813rem;
+}
+
+/*========== Responsive typography ==========*/
+@media screen and (min-width: 1120px) {
+  :root {
+    --h2-font-size: 1.5rem;
+    --small-font-size: .875rem;
   }
 }
-@media (max-width: 767px) {
-  li{
 
-    margin-left: 20px;
+/*=============== BASE ===============*/
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: var(--body-font);
+  background-color: var(--body-color);
+  color: var(--text-color);
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/*=============== CARD ===============*/
+.container {
+  display: grid;
+  place-items: center;
+  /* margin-inline: 1.5rem; */
+  padding-block: 5rem;
+  margin-bottom: 8rem;
+}
+
+.card__container {
+  display: grid;
+  row-gap: 3.5rem;
+}
+
+.card__article {
+  position: relative;
+  overflow: hidden;
+}
+
+.card__img {
+  width: 328px;
+  border-radius: 1.5rem;
+}
+
+.card__data {
+  width: 280px;
+  background-color: aquamarine;
+  padding: 1.5rem 2rem;
+  box-shadow: 0 8px 24px hsla(0, 0%, 0%, .15);
+  border-radius: 1rem;
+  position: absolute;
+  bottom: -9rem;
+  left: 0;
+  right: 0;
+  margin-inline: auto;
+  opacity: 0;
+  transition: opacity 1s 1s;
+}
+
+.card__description {
+  display: block;
+  font-size: var(--small-font-size);
+  margin-bottom: .25rem;
+}
+
+.card__title {
+  font-size: var(--h2-font-size);
+  font-weight: 800;
+  color: var(--title-color);
+  margin-bottom: .75rem;
+}
+
+.card__button {
+  text-decoration: none;
+  font-size: var(--small-font-size);
+  font-weight: 500;
+  color: var(--first-color);
+}
+
+.card__button:hover {
+  text-decoration: underline;
+}
+
+/* Naming animations in hover */
+.card__article:hover .card__data {
+  animation: show-data 1s forwards;
+  opacity: 1;
+  transition: opacity .3s;
+}
+
+.card__article:hover {
+  animation: remove-overflow 2s forwards;
+}
+
+.card__article:not(:hover) {
+  animation: show-overflow 2s forwards;
+}
+
+.card__article:not(:hover) .card__data {
+  animation: remove-data 1s forwards;
+}
+
+/* Card animation */
+@keyframes show-data {
+  50% {
+    transform: translateY(-10rem);
+  }
+  100% {
+    transform: translateY(-7rem);
   }
 }
-  .experience-content h2 {
-    font-size: 1.5em;
-    color: $title-color;
-    padding-bottom: 10px;
+
+@keyframes remove-overflow {
+  to {
+    overflow: initial;
   }
-  
-  .experience-time {
-    color: #777;
-    font-size: 1.1em;
-    padding-bottom: 10px;
+}
+
+@keyframes remove-data {
+  0% {
+    transform: translateY(-7rem);
   }
-  
-  .experience-content p {
-    color: #1a1a1a;
-    font-size: 0.95em;
+  50% {
+    transform: translateY(-10rem);
   }
-  
-  .experience-content:before {
-    content: '';
-    background: $bg-color;
-    position: absolute;
-    top: 0;
-    left: -35px;
-    width: 35px;
-    height: 5px;
+  100% {
+    transform: translateY(.5rem);
   }
-  </style>
-  
+}
+
+@keyframes show-overflow {
+  0% {
+    overflow: initial;
+    pointer-events: none;
+  }
+  50% {
+    overflow: hidden;
+  }
+}
+
+/*=============== BREAKPOINTS ===============*/
+/* For small devices */
+@media screen and (max-width: 340px) {
+  .container {
+    margin-inline: 1rem;
+  }
+
+  .card__data {
+    width: 250px;
+    padding: 1rem;
+  }
+}
+
+/* For medium devices */
+@media screen and (min-width: 768px) {
+  .card__container {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 1.5rem;
+  }
+}
+
+/* For large devices */
+@media screen and (min-width: 1120px) {
+  .container {
+    height: 50vh;
+  }
+
+  .card__container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .card__img {
+    width: 348px;
+  }
+  .card__data {
+    width: 316px;
+    padding-inline: 2.5rem;
+  }
+}
+</style>

@@ -1,12 +1,14 @@
 <script setup>
-import { onMounted, onBeforeUnmount} from "vue";
+import { onMounted, onBeforeUnmount } from "vue";
 import { useStore } from "vuex";
 import Navbar from "@/examples/PageLayout/NavbarHygeco.vue";
 // import PricingCard from "./components/PricingCard.vue";
 // import AppFooter from "@/examples/PageLayout/Footer.vue";
-import AccordionItem from "./components/AccordionItem.vue";
+// import AccordionItem from "./components/AccordionItem.vue";
 import setNavPills from "@/assets/js/nav-pills.js";
-import ProjectGallerie from "./components/ProjectGallerie.vue";
+// import ProjectGallerie from "./components/ProjectGallerie.vue";
+import ArgonAlert from "@/components/ArgonAlert.vue";
+
 
 
 
@@ -48,487 +50,721 @@ onBeforeUnmount(() => {
 
   <navbar is-blur="blur border-radius-lg my-3 py-2 start-0 end-0 mx-4 shadow" btn-background="bg-gradient-success"
     :dark-mode="true" style="position: absolute;" />
+  <main class="main">
 
-
-  <div class="page-header position-relative" :style="{
-    backgroundImage: 'url(' + require('../../assets/img/header1.png') + ')',
-    backgroundSize: 'cover',
-    padding: '100px',
-  }">
-
-    <div class="container pb-10 pb-lg-9 pt-7 postion-relative z-index-2">
-      <div class="row">
-        <div class="mx-auto text-center col-md-6 mt-4">
-          <h3 class="text-white">Nous Service </h3>
-          <p class="text-white">
-            Hygeco is a Montreal-based company that offers a range of professional cleaning and laundry
-            services
-          </p>
-        </div>
+    <!-- Hero Section -->
+    <section id="hero" class="hero section">
+      <div class="hero-bg">
+        <img src="../../assets/img/hero-bg-light.webp" alt="">
       </div>
-
-    </div>
-  </div>
-  <div class="container p-5">
-
-    <div class="row">
-      <div class="col-md-6">
-        <img src="https://radiustheme.com/demo/wordpress/themes/clenix/wp-content/uploads/2019/12/about14.jpg"
-          alt="House cleaning" class="img-fluid">
-      </div>
-      <div class="col-md-6">
-        <h1 class="text-center">Making Your House As Good As New</h1>
-        <p class="lead text-center">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-        <ul>
-          <li>Experienced Team</li>
-          <li>Keep the same cleaner for every visit</li>
-          <li>One-off, weekly or fortnightly visits</li>
-          <li>All in all service</li>
-        </ul>
-        <div class="text-center">
-          <button type="button" class="yellow-btn">Book a Service</button>
-        </div>
-      </div>
-
-    </div>
-
-  </div>
-  <section class="relative bg-cover bg-center py-7 mt-3"
-    :style="{ backgroundImage: 'url(' + require('../../assets/img/bar.png') + ')', }">
-    <div class="absolute inset-0  "></div>
-    <div class="container mx-auto relative flex justify-center items-center text-center">
-      <div class="max-w-lg">
-        <h2 class="text-white text-3xl md:text-4xl font-bold mb-4">Get started with your free estimate</h2>
-        <a href="#" class="bg-yellow-button text-gray-900 font-medium py-3 px-6 rounded">
-          Get an Estimate
-        </a>
-      </div>
-    </div>
-  </section>
-  <div class="container">
-    <div class="work-wrapper1 mt-7">
-      <img decoding="async"
-        src="https://www.4damstheme.com/clenis/wp-content/plugins/clenis-toolkit/widgets/img/icon/flower.png"
-        alt="How It Works" class="follower-section" />
-      <div class="row justify-content-lg-between justify-content-center">
-        <div class="col-lg-7">
-          <div class="work-thumb">
-            <img decoding="async" src="../../assets/img/menage.png" alt="How It Works" />
+      <div class="container text-center">
+        <div class="d-flex flex-column justify-content-center align-items-center">
+          <h1 data-aos="fade-up" class="">Bienvenu Chez <span>HYGECO</span></h1>
+          <p data-aos="fade-up" data-aos-delay="100" class="">Profitez de nos services à la fréquence qui vous convient
+            et obtenez un
+            10% de rabais sur toutes vos prestations<br></p>
+          <div class="d-flex" data-aos="fade-up" data-aos-delay="200">
+            <a href="#about" class="btn-get-started">Reserver Maintenant</a>
+            <a href="https://www.youtube.com/watch?v=-mBhxutgUlM"
+              class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Watch
+                Video</span></a>
           </div>
+          <img src="../../assets/img/hero-services-img.webp" class="img-fluid hero-img" alt="" data-aos="zoom-out"
+            data-aos-delay="300">
         </div>
-        <div class="col-lg-5 col-md-7">
-          <div class="howwork-content">
-            <div class="cmn-section-title" style="margin-bottom: -60px;">
-              <div class="cmn--btn cmn-alt1 wow fadeInDown" data-wow-delay="0.4"
-                style="visibility: visible; animation-name: fadeInDown;">
-                <!-- <span> Working Process </span> -->
+      </div>
+
+    </section><!-- /Hero Section -->
+
+
+
+    <!-- About Section -->
+    <section id="about" class="about section">
+
+      <div class="container">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-6 content" data-aos="fade-up" data-aos-delay="100">
+            <p class="who-we-are">Nos Service</p>
+            <h3>Ménage Régulier</h3>
+            <p class="fst-italic">
+              Notre service de nettoyage régulier est conçu pour vous offrir un entretien constant et fiable de
+              votre espace résidentiel, vous permettant ainsi de profiter pleinement de votre temps libre. Que
+              vous soyez un propriétaire occupé ou souhaitiez simplement maintenir un environnement propre
+              et organisé sans les tracas du ménage, notre service de nettoyage régulier est là pour dépasser
+              vos attentes
+            </p>
+
+            <a href="#" class="read-more"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
+          </div>
+
+          <div class="col-lg-6 about-images" data-aos="fade-up" data-aos-delay="200">
+            <div class="row gy-4">
+              <div class="col-lg-6">
+                <img src="../../assets/img/about-company-1.jpg" class="img-fluid" alt="">
               </div>
-              <h2 class="white mt-xxl-4 mt-2 wow fadeInUp" data-wow-delay="0.5"
-                style="visibility: visible; animation-name: fadeInUp;color:#032b52 ;">
-                Nos Service
-              </h2>
-              <!-- <p class="text-white wow fadeInDown" data-wow-delay="0.6"
-                style="visibility: visible; animation-name: fadeInDown">
-                We love help you get your clothes fresh and clean so we here for
-                you 24/7 for any question, concern or suggestion.
-              </p> -->
-            </div>
-            <div class="howit-work-info">
-              <div class="howit-item wow fadeInUp" data-wow-delay="0.7" style="visibility: visible; animation-name: fadeInUp;padding: 35px;
-    padding-left: 0px;padding: 62px;">
-                <h3 class="title d-flex align-items-center gap-2">
-                  MENAGE
-                </h3>
-                <p class="pra">
-                  The first step involves understanding the client's needs and
-                  expectations. This may include a consultation where the client
-                  outlines.
-                </p>
-                <div class="row">
-                  <div class="mx-auto col-md-10">
-                    <div id="accordionRental" class="accordion">
-                      <accordion-item accordion-id="headingOne" collapse-id="collapseOne">
-                        <template #question>Menage Regulier</template>
-                        <template #answer>
-                          We’re not always in the position that we want to be at. We’re
-                          constantly growing. We’re constantly making mistakes. We’re
-                          constantly trying to express ourselves and actualize our dreams.
-                          If you have the opportunity to play this game of life you need to
-                          appreciate every moment. A lot of people don’t appreciate the
-                          moment until it’s passed.
-                        </template>
-                      </accordion-item>
-                      <accordion-item accordion-id="headingTwo" collapse-id="collapseTwo">
-                        <template #question>Menage En Profondeur</template>
-                        <template #answer>
-                          It really matters and then like it really doesn’t matter. What
-                          matters is the people who are sparked by it. And the people who
-                          are like offended by it, it doesn’t matter. Because it&#39;s
-                          motivating the doers. Because I’m here to follow my dreams and and
-                          inspire other people to follow their dreams, too.
-                          <br />We’re not always in the position that we want to be at.
-                          We’re constantly growing. We’re constantly making mistakes. We’re
-                          constantly trying to express ourselves and actualize our dreams.
-                          If you have the opportunity to play this game of life you need to
-                          appreciate every moment. A lot of people don’t appreciate the
-                          moment until it’s passed.
-                        </template>
-                      </accordion-item>
-
-                      <accordion-item accordion-id="headingThree" collapse-id="collapseThree">
-                        <template #question>Menage de Printemps</template>
-                        <template #answer>
-                          The time is now for it to be okay to be great. People in this
-                          world shun people for being great. For being a bright color. For
-                          standing out. But the time is now to be okay to be the greatest
-                          you. Would you believe in what you believe in, if you were the
-                          only one who believed it? If everything I did failed - which it
-                          doesn&#39;t, it actually succeeds - just the fact that I&#39;m
-                          willing to fail is an inspiration. People are so scared to lose
-                          that they don&#39;t even try. Like, one thing people can&#39;t say
-                          is that I&#39;m not trying, and I&#39;m not trying my hardest, and
-                          I&#39;m not trying to do the best way I know how.
-                        </template>
-                      </accordion-item>
-
-                      <accordion-item accordion-id="headingFour" collapse-id="collapseFour">
-                        <template #question>Menage Apres Construction</template>
-                        <template #answer>
-                          I always felt like I could do anything. That’s the main thing
-                          people are controlled by! Thoughts- their perception of
-                          themselves! They&#39;re slowed down by their perception of
-                          themselves. If you&#39;re taught you can’t do anything, you won’t
-                          do anything. I was taught I could do everything.
-                          <br />
-                          <br />If everything I did failed - which it doesn&#39;t, it
-                          actually succeeds - just the fact that I&#39;m willing to fail is
-                          an inspiration. People are so scared to lose that they don&#39;t
-                          even even try. Like, one thing people can&#39;t say is that
-                          I&#39;m not trying, and I&#39;m not trying my hardest, and I&#39;m
-                          not trying trying to do the best way I know how.
-                        </template>
-                      </accordion-item>
-
-                      <accordion-item accordion-id="headingFifth" collapse-id="collapseFifth">
-                        <template #question>Nettoyage Des Vitres</template>
-                        <template #answer>
-                          There’s nothing I really wanted to do in life that I wasn’t able
-                          to get good at. That’s my skill. I’m not really specifically
-                          talented at anything except for the ability to learn. That’s what
-                          I do. That’s what I’m here for. Don’t be afraid to be wrong
-                          because you can’t learn anything from a compliment. I always felt
-                          like I could do anything. That’s the main thing people are
-                          controlled by! Thoughts- their perception of themselves!
-                          They&#39;re slowed down by their perception of themselves. If
-                          you&#39;re taught you can’t do anything, you won’t do anything. I
-                          was taught I could do everything.
-                        </template>
-                      </accordion-item>
-                    </div>
+              <div class="col-lg-6">
+                <div class="row gy-4">
+                  <div class="col-lg-12">
+                    <img src="../../assets/img/about-company-2.jpg" class="img-fluid" alt="">
+                  </div>
+                  <div class="col-lg-12">
+                    <img src="../../assets/img/about-company-3.jpg" class="img-fluid" alt="">
                   </div>
                 </div>
               </div>
-
             </div>
+
           </div>
+
         </div>
 
+      </div>
+    </section><!-- /About Section -->
 
-      </div>
-      <img decoding="async"
-        src="https://www.4damstheme.com/clenis/wp-content/plugins/clenis-toolkit/widgets/img/icon/working-ball.png"
-        alt="How It Works" class="working-bable" />
-    </div>
-  </div>
-  <section class="working-process" style="text-align: center;
-  padding: 40px 20px;
-  background-color: #f9f9f9;">
-    <div class="container" style=" max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 15px;">
-      <div class="title-section" style="margin-bottom: 40px;">
-        <h2 style="font-size: 2em;
-  margin-bottom: 10px;">Our Working Process</h2>
-        <p style=" font-size: 1em;
-  color: #666;">Perspiciatis unde omnis iste natus error sit voluptatem accusantium dol oremque laudantium, totam
-          remeaque ipsa.</p>
-      </div>
-      <div class="process-steps" style="display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;">
-        <div class="step">
-          <div class="icon">
-            <i class="fa fa-calendar-check-o"></i>
-          </div>
-          <h3><a href="#">Book Online Form</a></h3>
-          <p>Ahen an unknown printer took a galley type and scrambled nknown printer.</p>
-        </div>
-        <div class="step">
-          <div class="icon">
-            <i class="fa fa-envelope-o"></i>
-          </div>
-          <h3><a href="#">Get Confirmation</a></h3>
-          <p>Ahen an unknown printer took a galley type and scrambled nknown printer.</p>
-        </div>
-        <div class="step">
-          <div class="icon">
-            <i class="fa fa-smile-o"></i>
-          </div>
-          <h3><a href="#">Let’s Enjoy</a></h3>
-          <p>Ahen an unknown printer took a galley type and scrambled nknown printer.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-  <ProjectGallerie />
-  <div class="container">
 
-    <img decoding="async"
-      src="https://www.4damstheme.com/clenis/wp-content/plugins/clenis-toolkit/widgets/img/icon/flower.png"
-      alt="How It Works" class="follower-section" style="position: relative;
-left: 30px;
-top: 5px;" />
-    <div class="row justify-content-lg-between justify-content-center">
-      <div class="col-lg-5 col-md-7">
-        <div class="howwork-content">
-          <div class="cmn-section-title">
-            <div class="cmn--btn cmn-alt1 wow fadeInDown" data-wow-delay="0.4"
-              style="visibility: visible; animation-name: fadeInDown">
-              <!-- <span> Working Process </span> -->
+
+    <!-- Features Section -->
+    <section id="features" class="features section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2 class="">Détails</h2>
+      </div><!-- End Section Title -->
+
+      <div class="container">
+        <div class="row justify-content-between">
+
+          <div class="col-lg-5 d-flex align-items-center">
+
+            <ul class="nav nav-tabs" data-aos="fade-up" data-aos-delay="100">
+              <li class="nav-item">
+                <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#features-tab-1" style="margin-bottom: 0px;">
+                  <i class="bi bi-binoculars"></i>
+                  <div>
+                    <h4 class="d-none d-lg-block">Dépoussiérage</h4>
+                    <p>
+                      Essuyer et dépoussiérer toutes les surfaces, y compris les étagères, les
+                      comptoirs et les meubles
+                    </p>
+                  </div>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" data-bs-target="#features-tab-2" style="margin-bottom: 0px;">
+                  <i class="bi bi-box-seam"></i>
+                  <div>
+                    <h4 class="d-none d-lg-block">Aspiration</h4>
+                    <p>
+                      Passer l'aspirateur sur tous les tapis et moquettes pour enlever la saleté et les
+                      débris
+                    </p>
+                  </div>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" data-bs-target="#features-tab-3" style="margin-bottom: 0px;">
+                  <i class="bi bi-brightness-high"></i>
+                  <div>
+                    <h4 class="d-none d-lg-block">Nettoyage des sols</h4>
+                    <p>
+                      Passer la serpillière sur les sols durs pour qu'ils soient propres et
+                      brillants
+                    </p>
+                  </div>
+                </a>
+              </li>
+            </ul><!-- End Tab Nav -->
+
+          </div>
+
+          <div class="col-lg-6">
+
+            <div class="tab-content" data-aos="fade-up" data-aos-delay="200">
+
+              <div class="tab-pane fade active show" id="features-tab-1">
+                <img src="../../assets/img/tabs-1.jpg" alt="" class="img-fluid">
+              </div><!-- End Tab Content Item -->
+
+              <div class="tab-pane fade" id="features-tab-2">
+                <img src="../../assets/img/tabs-2.jpg" alt="" class="img-fluid">
+              </div><!-- End Tab Content Item -->
+
+              <div class="tab-pane fade" id="features-tab-3">
+                <img src="../../assets/img/tabs-3.jpg" alt="" class="img-fluid">
+              </div><!-- End Tab Content Item -->
             </div>
-            <h2 class="white mt-xxl-4 mt-2 wow fadeInUp" data-wow-delay="0.5"
-              style="visibility: visible; animation-name: fadeInUp;color:#30c7b5 ;margin-bottom: -62px;">
-              Buandrie
-            </h2>
-            <!-- <p class="text-white wow fadeInDown" data-wow-delay="0.6"
-            style="visibility: visible; animation-name: fadeInDown">
-            We love help you get your clothes fresh and clean so we here for
-            you 24/7 for any question, concern or suggestion.
-          </p> -->
-          </div>
-          <div class="howit-work-info">
-            <div class="howit-item wow fadeInUp" data-wow-delay="0.7" style="visibility: visible; animation-name: fadeInUp;padding: 35px;
-padding-left: 0px;">
 
-              <p class="pra">
-                The first step involves understanding the client's needs and
-                expectations. This may include a consultation where the client
-                outlines.
+          </div>
+
+        </div>
+
+      </div>
+
+    </section><!-- /Features Section -->
+
+    <!-- Features Details Section -->
+    <section id="features-details" class="features-details section">
+
+      <div class="container">
+
+        <div class="row gy-4 justify-content-between features-item">
+
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+            <img src="../../assets/img/features-1.jpg" class="img-fluid" alt="">
+          </div>
+
+          <div class="col-lg-5 d-flex align-items-center" data-aos="fade-up" data-aos-delay="200">
+            <div class="content">
+              <h3>Ménage En Profondeur</h3>
+              <p>
+                Notre service de nettoyage en profondeur est méticuleusement conçu pour offrir un nettoyage
+                complet et exhaustif de votre espace. Pourquoi passer vos fins de semaine à vous occuper des
+                tâches ménagères lorsque vous pourriez les consacrer à des activités en famille ou entre amis ?
               </p>
-              <div class="row">
-                <div class="mx-auto col-md-10">
-                  <div id="accordionRental" class="accordion">
-                    <accordion-item accordion-id="headingOne" collapse-id="collapseOne">
-                      <template #question>Lavage</template>
-                      <template #answer>
-                        We’re not always in the position that we want to be at. We’re
-                        constantly growing. We’re constantly making mistakes. We’re
-                        constantly trying to express ourselves and actualize our dreams.
-                        If you have the opportunity to play this game of life you need to
-                        appreciate every moment. A lot of people don’t appreciate the
-                        moment until it’s passed.
-                      </template>
-                    </accordion-item>
-                    <accordion-item accordion-id="headingTwo" collapse-id="collapseTwo">
-                      <template #question>Pilage</template>
-                      <template #answer>
-                        It really matters and then like it really doesn’t matter. What
-                        matters is the people who are sparked by it. And the people who
-                        are like offended by it, it doesn’t matter. Because it&#39;s
-                        motivating the doers. Because I’m here to follow my dreams and and
-                        inspire other people to follow their dreams, too.
-                        <br />We’re not always in the position that we want to be at.
-                        We’re constantly growing. We’re constantly making mistakes. We’re
-                        constantly trying to express ourselves and actualize our dreams.
-                        If you have the opportunity to play this game of life you need to
-                        appreciate every moment. A lot of people don’t appreciate the
-                        moment until it’s passed.
-                      </template>
-                    </accordion-item>
+              <a href="#" class="btn more-btn">Voir Plus</a>
+            </div>
+          </div>
 
-                    <accordion-item accordion-id="headingThree" collapse-id="collapseThree">
-                      <template #question>Ramassage</template>
-                      <template #answer>
-                        The time is now for it to be okay to be great. People in this
-                        world shun people for being great. For being a bright color. For
-                        standing out. But the time is now to be okay to be the greatest
-                        you. Would you believe in what you believe in, if you were the
-                        only one who believed it? If everything I did failed - which it
-                        doesn&#39;t, it actually succeeds - just the fact that I&#39;m
-                        willing to fail is an inspiration. People are so scared to lose
-                        that they don&#39;t even try. Like, one thing people can&#39;t say
-                        is that I&#39;m not trying, and I&#39;m not trying my hardest, and
-                        I&#39;m not trying to do the best way I know how.
-                      </template>
-                    </accordion-item>
+        </div><!-- Features Item -->
 
-                    <accordion-item accordion-id="headingFour" collapse-id="collapseFour">
-                      <template #question>Livraison</template>
-                      <template #answer>
-                        I always felt like I could do anything. That’s the main thing
-                        people are controlled by! Thoughts- their perception of
-                        themselves! They&#39;re slowed down by their perception of
-                        themselves. If you&#39;re taught you can’t do anything, you won’t
-                        do anything. I was taught I could do everything.
-                        <br />
-                        <br />If everything I did failed - which it doesn&#39;t, it
-                        actually succeeds - just the fact that I&#39;m willing to fail is
-                        an inspiration. People are so scared to lose that they don&#39;t
-                        even even try. Like, one thing people can&#39;t say is that
-                        I&#39;m not trying, and I&#39;m not trying my hardest, and I&#39;m
-                        not trying trying to do the best way I know how.
-                      </template>
-                    </accordion-item>
 
-                    <accordion-item accordion-id="headingFifth" collapse-id="collapseFifth">
-                      <template #question>Self Service</template>
-                      <template #answer>
-                        There’s nothing I really wanted to do in life that I wasn’t able
-                        to get good at. That’s my skill. I’m not really specifically
-                        talented at anything except for the ability to learn. That’s what
-                        I do. That’s what I’m here for. Don’t be afraid to be wrong
-                        because you can’t learn anything from a compliment. I always felt
-                        like I could do anything. That’s the main thing people are
-                        controlled by! Thoughts- their perception of themselves!
-                        They&#39;re slowed down by their perception of themselves. If
-                        you&#39;re taught you can’t do anything, you won’t do anything. I
-                        was taught I could do everything.
-                      </template>
-                    </accordion-item>
-                  </div>
+
+      </div>
+
+    </section><!-- /Features Details Section -->
+
+
+    <!-- Services Section -->
+    <section id="services" class="services section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Détails</h2>
+      </div><!-- End Section Title -->
+
+      <div class="container">
+
+        <div class="row g-5">
+
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-item item-cyan position-relative">
+              <i class="bi bi-activity icon"></i>
+              <div>
+                <h3>Dépoussiérage détaillé</h3>
+                <p>Essuyer et dépoussiérer toutes les surfaces, y compris les zones
+                  difficiles d'accès</p>
+                <a href="#" class="read-more stretched-link">Voir Plus <i class="bi bi-arrow-right"></i></a>
+              </div>
+            </div>
+          </div><!-- End Service Item -->
+
+
+
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
+            <div class="service-item item-teal position-relative">
+              <i class="bi bi-easel icon"></i>
+              <div>
+                <h3>Nettoyage des appareils électroménagers</h3>
+                <p>Nettoyer en profondeur et désinfecter les
+                  appareils de cuisine.</p>
+                <a href="#" class="read-more stretched-link">Voir Plus <i class="bi bi-arrow-right"></i></a>
+              </div>
+            </div>
+          </div><!-- End Service Item -->
+
+
+
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="500">
+            <div class="service-item item-indigo position-relative">
+              <i class="bi bi-calendar4-week icon"></i>
+              <div>
+                <h3>Nettoyage des sols</h3>
+                <p>Frotter les sols durs.</p>
+                <a href="#" class="read-more stretched-link">Voir Plus <i class="bi bi-arrow-right"></i></a>
+              </div>
+            </div>
+          </div><!-- End Service Item -->
+
+
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="500">
+            <div class="service-item item-indigo position-relative">
+              <i class="bi bi-calendar4-week icon"></i>
+              <div>
+                <h3>Désinfection des salles de bains</h3>
+                <p>Nettoyer et désinfecter les installations sanitaires, les
+                  carreaux et les surfaces de la salle de bains.</p>
+                <a href="#" class="read-more stretched-link">Voir Plus <i class="bi bi-arrow-right"></i></a>
+              </div>
+            </div>
+          </div><!-- End Service Item -->
+
+
+
+        </div>
+
+      </div>
+
+    </section><!-- /Services Section -->
+    <!-- Features Details Section -->
+    <section id="features-details" class="features-details section">
+
+      <div class="container">
+
+
+
+        <div class="row gy-4 justify-content-between features-item">
+
+          <div class="col-lg-5 d-flex align-items-center order-2 order-lg-1" data-aos="fade-up" data-aos-delay="100">
+
+            <div class="content">
+              <h3>Nettoyage De Meubles En Tissu Et De Tapis</h3>
+              <p>
+                Quand avez-vous pour la dernière fois pris le temps de nettoyer vos meubles et tapis ? Craignezvous
+                d'abîmer votre canape que vous avez payé cher ? Avec Hygeco, vous pouvez compter sur
+                notre équipe professionnelle pour prendre soin de vos meubles en tissu délicats et de vos tapis
+                nécessitant un soin particulier
+              </p>
+
+              <p></p>
+              <a href="#" class="btn more-btn">Voir Plus</a>
+            </div>
+
+          </div>
+
+          <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-up" data-aos-delay="200">
+            <img src="../../assets/img/features-2.jpg" class="img-fluid" alt="">
+          </div>
+
+        </div><!-- Features Item -->
+
+      </div>
+
+    </section><!-- /Features Details Section -->
+
+
+    <!-- Services Section -->
+    <section id="services" class="services section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Détails</h2>
+      </div><!-- End Section Title -->
+
+      <div class="container">
+
+        <div class="row g-5">
+
+
+
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-item item-orange position-relative">
+              <i class="bi bi-broadcast icon"></i>
+              <div>
+                <h3>Nettoyage complet</h3>
+                <p>Nous offrons un service de nettoyage complet et exhaustif pour vos
+                  meubles en tissu et vos tapis, en éliminant la saleté, les taches et les allergènes.</p>
+                <a href="#" class="read-more stretched-link">Voir Plus <i class="bi bi-arrow-right"></i></a>
+              </div>
+            </div>
+          </div><!-- End Service Item -->
+
+
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
+            <div class="service-item item-red position-relative">
+              <i class="bi bi-bounding-box-circles icon"></i>
+              <div>
+                <h3>Attention aux détails</h3>
+                <p>Nous prêtons une attention particulière à chaque pièce, en veillant
+                  à ce que tous les matériaux soient nettoyés avec soin et désinfectés</p>
+                <a href="#" class="read-more stretched-link">Voir Plus <i class="bi bi-arrow-right"></i></a>
+              </div>
+            </div>
+          </div><!-- End Service Item -->
+
+
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="600">
+            <div class="service-item item-pink position-relative">
+              <i class="bi bi-chat-square-text icon"></i>
+              <div>
+                <h3>Propreté durable</h3>
+                <p>Grâce à notre service, vos meubles et tapis resteront propres et frais
+                  plus longtemps, améliorant ainsi la qualité de l'air intérieur et l'apparence de votre maison</p>
+                <a href="#" class="read-more stretched-link">Voir Plus <i class="bi bi-arrow-right"></i></a>
+              </div>
+            </div>
+          </div><!-- End Service Item -->
+
+
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="600">
+            <div class="service-item item-pink position-relative">
+              <i class="bi bi-chat-square-text icon"></i>
+              <div>
+                <h3>Délai rapide</h3>
+                <p>Nous comprenons l'importance de la rapidité. Notre équipe efficace assure
+                  un nettoyage rapide, pour que vous puissiez profiter de votre espace de vie sans
+                  interruption.</p>
+                <a href="#" class="read-more stretched-link">Voir Plus <i class="bi bi-arrow-right"></i></a>
+              </div>
+            </div>
+          </div><!-- End Service Item -->
+
+        </div>
+
+      </div>
+
+    </section><!-- /Services Section -->
+
+    <!-- More Features Section -->
+    <section id="more-features" class="more-features section">
+
+      <div class="container">
+
+        <div class="row justify-content-around gy-4">
+
+          <div class="col-lg-6 d-flex flex-column justify-content-center order-2 order-lg-1" data-aos="fade-up"
+            data-aos-delay="100">
+            <h3>Ménage Déménagement/Emménagement </h3>
+            <p>Notre service de nettoyage lors d'un déménagement est votre partenaire de confiance pour
+              garantir une transition en douceur lors de votre emménagement dans une nouvelle maison ou de
+              votre préparation à quitter votre ancien logement. Avec un déménagement, la liste des tâches ne
+              finit jamais. Laissez-nous :</p>
+
+            <div class="row">
+
+              <div class="col-lg-6 icon-box d-flex">
+                <i class="bi bi-easel flex-shrink-0"></i>
+                <div>
+                  <h4>Nettoyage complet</h4>
+                  <p>Nous offrons un service de nettoyage complet et exhaustif
+                    pour la propriété que vous quittez et celle dans laquelle vous emménagez. </p>
                 </div>
+              </div><!-- End Icon Box -->
+
+              <div class="col-lg-6 icon-box d-flex">
+                <i class="bi bi-patch-check flex-shrink-0"></i>
+                <div>
+                  <h4>Attention aux détails </h4>
+                  <p>Nous faisons attention à chaque recoin, en veillant à ce que
+                    toutes les surfaces, les installations et les appareils soient nettoyés et désinfectés.</p>
+                </div>
+              </div><!-- End Icon Box -->
+
+              <div class="col-lg-6 icon-box d-flex">
+                <i class="bi bi-brightness-high flex-shrink-0"></i>
+                <div>
+                  <h4>Déménagement sans stress</h4>
+                  <p>Avec notre service, vous pouvez vous concentrer sur
+                    la logistique de votre déménagement pendant que nous nous occupons du
+                    nettoyage.</p>
+                </div>
+              </div><!-- End Icon Box -->
+
+              <div class="col-lg-6 icon-box d-flex">
+                <i class="bi bi-brightness-high flex-shrink-0"></i>
+                <div>
+                  <h4>Délai rapide</h4>
+                  <p> Notre équipe efficace assure un délai rapide, pour que vous
+                    puissiez vous installer dans votre nouveau logement ou remettre l'ancien en toute
+                    confiance</p>
+                </div>
+              </div><!-- End Icon Box -->
+
+            </div>
+
+          </div>
+
+          <div class="features-image col-lg-5 order-1 order-lg-2" data-aos="fade-up" data-aos-delay="200">
+            <img src="../../assets/img/features-3.jpg" alt="">
+          </div>
+
+        </div>
+
+      </div>
+
+    </section><!-- /More Features Section -->
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Nettoyage Des Vitres</h2>
+        <p>Nous savons que nettoyer des vitres peut parfois être une tâche difficile, surtout lorsqu'on ne sait
+          pas par où commencer ni quel matériel utiliser. Notre service de nettoyage des vitres est là pour
+          vous simplifier la vie</p>
+      </div><!-- End Section Title -->
+
+      <div class="container">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="100">
+            <div class="pricing-item">
+              <h3>Nettoyage professionnel </h3>
+              <p class="description">Nous nous occupons du nettoyage professionnel de vos vitres,
+                à la fois à l'intérieur et à l'extérieur*, en éliminant les traces, la saleté et les empreintes
+                pour une transparence maximale.</p>
+
+            </div>
+          </div><!-- End Pricing Item -->
+
+          <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="200">
+            <div class="pricing-item featured">
+              <h3>Attention aux détails</h3>
+              <p class="description">Chaque fenêtre, cadre et surface vitrée est soigneusement nettoyé
+                pour un résultat impeccable.</p>
+
+            </div>
+          </div><!-- End Pricing Item -->
+
+          <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="300">
+            <div class="pricing-item featured">
+              <h3>Utilisation de produits écologiques</h3>
+              <p class="description">Nous utilisons des produits écologiques et des
+                méthodes respectueuses de l'environnement pour nettoyer vos vitres, assurant une
+                atmosphère plus saine</p>
+
+
+            </div>
+          </div><!-- End Pricing Item -->
+
+        </div>
+
+      </div>
+
+    </section><!-- /Pricing Section -->
+    <argon-alert class="font-weight-light" color="danger" dismissible style="margin-top: -2rem;">
+      ce service exclut le nettoyage des fenêtres situées à une hauteur
+      inaccessible sans équipement spécialisé.
+
+    </argon-alert>
+
+    <section id="features" class="features section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2 class="">Nettoyage Après Construction</h2>
+        <p>Hésitez-vous à rénover votre cuisine ou votre espace extérieur pour éviter le ménage à faire
+          après ? Notre service de nettoyage après construction est conçu pour garantir que votre espace
+          nouvellement rénové ou construit soit impeccable et prêt à être utilisé </p>
+      </div><!-- End Section Title -->
+
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col-lg-6">
+
+            <div class="tab-content" data-aos="fade-up" data-aos-delay="200">
+
+              <div class="tab-pane fade active show" id="features-tab-11">
+                <img src="../../assets/img/tabs-1.jpg" alt="" class="img-fluid">
+              </div><!-- End Tab Content Item -->
+
+              <div class="tab-pane fade" id="features-tab-22">
+                <img src="../../assets/img/tabs-2.jpg" alt="" class="img-fluid">
+              </div><!-- End Tab Content Item -->
+
+              <div class="tab-pane fade" id="features-tab-33">
+                <img src="../../assets/img/tabs-3.jpg" alt="" class="img-fluid">
+              </div><!-- End Tab Content Item -->
+              <div class="tab-pane fade" id="features-tab-44">
+                <img src="../../assets/img/tabs-3.jpg" alt="" class="img-fluid">
+              </div><!-- End Tab Content Item -->
+            </div>
+
+          </div>
+
+          <div class="col-lg-5 d-flex align-items-center">
+
+            <ul class="nav nav-tabs" data-aos="fade-up" data-aos-delay="100">
+              <li class="nav-item">
+                <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#features-tab-11" style="margin-bottom: 0px;">
+                  <i class="bi bi-binoculars"></i>
+                  <div>
+                    <h4 class="d-none d-lg-block">Elimination minutieuse de la poussière et des débris </h4>
+                    <p>
+                      Nous éliminons méticuleusement
+                      toute la poussière et les débris liés à la construction.
+                    </p>
+                  </div>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" data-bs-target="#features-tab-22" style="margin-bottom: 0px;">
+                  <i class="bi bi-box-seam"></i>
+                  <div>
+                    <h4 class="d-none d-lg-block">Détail des surfaces</h4>
+                    <p>
+                      Nous portons une attention particulière aux surfaces, y compris les
+                      murs, les plafonds et les sols.
+                    </p>
+                  </div>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" data-bs-target="#features-tab-33" style="margin-bottom: 0px;">
+                  <i class="bi bi-brightness-high"></i>
+                  <div>
+                    <h4 class="d-none d-lg-block">Nettoyage intérieur et extérieur</h4>
+                    <p>
+                      Des espaces intérieurs aux zones extérieures, nous
+                      nettoyons tout.
+                    </p>
+                  </div>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" data-bs-target="#features-tab-44" style="margin-bottom: 0px;">
+                  <i class="bi bi-brightness-high"></i>
+                  <div>
+                    <h4 class="d-none d-lg-block">Nettoyage et polissage des sols</h4>
+                    <p>
+                      Notre équipe est équipée pour nettoyer et faire briller les
+                      sols durs, les laissant à leur meilleur aspect.
+                    </p>
+                  </div>
+                </a>
+              </li>
+            </ul><!-- End Tab Nav -->
+
+          </div>
+
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- Clients Section -->
+    <section id="clients" class="clients section">
+
+      <div class="container" data-aos="fade-up">
+
+        <div class="row gy-4">
+
+          <div class="col-xl-2 col-md-3 col-6 client-logo">
+            <img src="../../assets/img/clients/client-1.png" class="img-fluid" alt="">
+          </div><!-- End Client Item -->
+
+          <div class="col-xl-2 col-md-3 col-6 client-logo">
+            <img src="../../assets/img/clients/client-2.png" class="img-fluid" alt="">
+          </div><!-- End Client Item -->
+
+          <div class="col-xl-2 col-md-3 col-6 client-logo">
+            <img src="../../assets/img/clients/client-3.png" class="img-fluid" alt="">
+          </div><!-- End Client Item -->
+
+          <div class="col-xl-2 col-md-3 col-6 client-logo">
+            <img src="../../assets/img/clients/client-4.png" class="img-fluid" alt="">
+          </div><!-- End Client Item -->
+
+          <div class="col-xl-2 col-md-3 col-6 client-logo">
+            <img src="../../assets/img/clients/client-5.png" class="img-fluid" alt="">
+          </div><!-- End Client Item -->
+
+          <div class="col-xl-2 col-md-3 col-6 client-logo">
+            <img src="../../assets/img/clients/client-6.png" class="img-fluid" alt="">
+          </div><!-- End Client Item -->
+
+        </div>
+
+      </div>
+
+    </section><!-- /Clients Section -->
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Contact</h2>
+      </div><!-- End Section Title -->
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-6">
+            <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up"
+              data-aos-delay="200">
+              <i class="bi bi-geo-alt"></i>
+              <h3>Adresse</h3>
+              <p>4260 Notre-Dame Ouest, Montréal, H4C 1R6 QC</p>
+            </div>
+          </div><!-- End Info Item -->
+
+          <div class="col-lg-3 col-md-6">
+            <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up"
+              data-aos-delay="300">
+              <i class="bi bi-telephone"></i>
+              <h3>Telephone</h3>
+              <p>+1 514-939-2020</p>
+            </div>
+          </div><!-- End Info Item -->
+
+          <div class="col-lg-3 col-md-6">
+            <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up"
+              data-aos-delay="400">
+              <i class="bi bi-envelope"></i>
+              <h3>Email</h3>
+              <p>info@hygeco.ca</p>
+            </div>
+          </div><!-- End Info Item -->
+
+        </div>
+
+        <div class="row gy-4 mt-1">
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d48389.78314118045!2d-74.006138!3d40.710059!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a22a3bda30d%3A0xb89d1fe6bc499443!2sDowntown%20Conference%20Center!5e0!3m2!1sen!2sus!4v1676961268712!5m2!1sen!2sus"
+              frameborder="0" style="border:0; width: 100%; height: 400px;" allowfullscreen="" loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div><!-- End Google Maps -->
+
+          <div class="col-lg-6">
+            <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up"
+              data-aos-delay="400">
+              <div class="row gy-4">
+
+                <div class="col-md-6">
+                  <input type="text" name="name" class="form-control" placeholder="Nom" required="">
+                </div>
+
+                <div class="col-md-6 ">
+                  <input type="email" class="form-control" name="email" placeholder="Email" required="">
+                </div>
+
+                <div class="col-md-12">
+                  <input type="text" class="form-control" name="subject" placeholder="Sujet" required="">
+                </div>
+
+                <div class="col-md-12">
+                  <textarea class="form-control" name="message" rows="6" placeholder="Message" required=""></textarea>
+                </div>
+
+                <div class="col-md-12 text-center">
+                  <div class="loading">Loading</div>
+                  <div class="error-message"></div>
+                  <div class="sent-message">Your message has been sent. Thank you!</div>
+
+                  <button type="submit">Envoyer Un Message</button>
+                </div>
+
               </div>
-            </div>
+            </form>
+          </div><!-- End Contact Form -->
 
-          </div>
         </div>
-      </div>
-      <div class="col-lg-7">
-        <div class="work-thumb">
-          <img decoding="async" src="../../assets/img/33.png" alt="How It Works" style="width: 90%;
-border-radius: 60px;" />
-        </div>
-      </div>
-
-    </div>
-    <img decoding="async"
-      src="https://www.4damstheme.com/clenis/wp-content/plugins/clenis-toolkit/widgets/img/icon/working-ball.png"
-      alt="How It Works" class="working-bable" />
-
-
-  </div>
-  <section class="working-process" style="text-align: center;
-padding: 40px 20px;
-background-color: #f9f9f9;">
-    <div class="container" style=" max-width: 1200px;
-margin: 0 auto;
-padding: 0 15px;">
-      <div class="title-section" style="margin-bottom: 40px;">
-        <h2 style="font-size: 2em;
-margin-bottom: 10px;">Our Working Process</h2>
-        <p style=" font-size: 1em;
-color: #666;">Perspiciatis unde omnis iste natus error sit voluptatem accusantium dol oremque laudantium, totam
-          remeaque ipsa.</p>
-      </div>
-      <div class="process-steps" style="display: flex;
-flex-wrap: wrap;
-justify-content: space-between;">
-        <div class="step">
-          <div class="icon">
-            <i class="fa fa-calendar-check-o"></i>
-          </div>
-          <h3><a href="#">Book Online Form</a></h3>
-          <p>Ahen an unknown printer took a galley type and scrambled nknown printer.</p>
-        </div>
-        <div class="step">
-          <div class="icon">
-            <i class="fa fa-envelope-o"></i>
-          </div>
-          <h3><a href="#">Get Confirmation</a></h3>
-          <p>Ahen an unknown printer took a galley type and scrambled nknown printer.</p>
-        </div>
-        <div class="step">
-          <div class="icon">
-            <i class="fa fa-smile-o"></i>
-          </div>
-          <h3><a href="#">Let’s Enjoy</a></h3>
-          <p>Ahen an unknown printer took a galley type and scrambled nknown printer.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- <div class="container-fluid">
-        <div class="text-center" >
-                <h2 style="font-size: 2em;
-            margin-bottom: 10px;">Our Recent Project</h2>
-                <p style=" font-size: 1em;
-            color: #666;">Perspiciatis unde omnis iste natus error sit voluptatem accusantium dol oremque laudantium, totam
-                remeaque ipsa.</p>
-            </div>
-        <div class="row">
-            <div class="col-12">
-                <card-slider />   
-            </div>
-        </div>
-    </div> -->
-  <div class="container">
-    <div class="work-wrapper2 mt-7">
-      <img decoding="async"
-        src="https://www.4damstheme.com/clenis/wp-content/plugins/clenis-toolkit/widgets/img/icon/flower.png"
-        alt="How It Works" class="follower-section" />
-      <div class="row justify-content-lg-between justify-content-center">
-        <div class="col-lg-7">
-          <div class="work-thumb">
-            <img decoding="async" src="https://www.4damstheme.com/clenis/wp-content/uploads/2024/04/ask-wman.png"
-              alt="How It Works" style="margin-top: -123px;width: 67%;margin-bottom: 68px;" />
-          </div>
-        </div>
-        <div class="col-lg-5 col-md-7">
-          <div class="howwork-content">
-            <div class="cmn-section-title" style="margin-bottom: -34px;margin-top: -66px;">
-              <div class="cmn--btn cmn-alt1 wow fadeInDown" data-wow-delay="0.4"
-                style="visibility: visible; animation-name: fadeInDown">
-                <!-- <span> Working Process </span> -->
-              </div>
-              <h2 class="white mt-xxl-4 mt-2 wow fadeInUp" data-wow-delay="0.5"
-                style="visibility: visible; animation-name: fadeInUp;color:#032b52 ;">
-                Nos Service Commercial
-              </h2>
-              <!-- <p class="text-white wow fadeInDown" data-wow-delay="0.6"
-                style="visibility: visible; animation-name: fadeInDown">
-                We love help you get your clothes fresh and clean so we here for
-                you 24/7 for any question, concern or suggestion.
-              </p> -->
-            </div>
-            <div class="howit-work-info">
-              <div class="howit-item wow fadeInUp" data-wow-delay="0.7" style="visibility: visible; animation-name: fadeInUp;padding: 35px;
-    padding-left: 0px;">
-                <h3 class="title d-flex align-items-center gap-2">
-                  MENAGE COMMERCIAL
-                </h3>
-                <p class="pra">
-                  Vous cherchez des partenaires de confiance pour nettoyer votre espace de travail à une fréquence
-                  régulière ? Demandez une soumission gratuite. Il vous suffit de remplir ce formulaire, et nos experts
-                  se déplaceront chez vous pour discuter de vos besoins.
-                </p>
-                <router-link :to="{ name: 'menage commercial' }">
-                  <button class="yellow-btn" style="color:white; background-color:#344767;">
-                    Reserver
-                  </button>
-                </router-link>
-              </div>
-
-            </div>
-          </div>
-        </div>
-
 
       </div>
-      <img decoding="async"
-        src="https://www.4damstheme.com/clenis/wp-content/plugins/clenis-toolkit/widgets/img/icon/working-ball.png"
-        alt="How It Works" class="working-bable" />
-    </div>
-  </div>
+
+    </section><!-- /Contact Section -->
+
+  </main>
+
 
 
 
@@ -544,7 +780,7 @@ justify-content: space-between;">
               line-height: 120%;
               font-weight: 700;
             ">
-            Subscribe to Our Newsletter
+            Abonnez-vous à notre infolettre et ne ratez aucun de nos bons plans exclusifs !
           </h3>
           <div class="wp-widget-group__inner-blocks">
             <p>
@@ -568,7 +804,7 @@ justify-content: space-between;">
             <form id="mc4wp-form-1" class="mc4wp-form mc4wp-form-227" method="post" data-id="227"
               data-name="subscription">
               <div class="mc4wp-form-fields">
-                <label class="fz-16 title fw-700 prafont" style="padding-right: 10px;">Enter your email</label>
+                <label class="fz-16 title fw-700 prafont" style="padding-right: 10px;">Entre Ton Email</label>
                 <input type="email" name="EMAIL" required="" style="
                     width: 100%;
                     max-width: 500px;
@@ -578,7 +814,7 @@ justify-content: space-between;">
                     padding: 13px 16px;
                     margin-bottom: 10px;
                   " />
-                <input class="cmn--btn" type="submit" value="Explore Our Offers" style="
+                <input class="cmn--btn" type="submit" value="Decouvrir Nos Offers" style="
                     padding: 12px 28px 15px;
                     color: white;
                     font-size: 16px;
@@ -628,9 +864,8 @@ justify-content: space-between;">
                   max-width: 325px;
                   margin-top: 40px;
                 ">
-                With a rich history spanning decades, our club has become a
-                symbol of excellence in the golfing community. offers a
-                challenging yet rewarding game play.
+                Avec une histoire riche s'étendant sur des décennies, notre club est devenu un symbole d'excellence dans
+                la communauté du golf. Il propose un gameplay stimulant mais gratifiant.
               </div>
               <ul class="footer-social d-flex align-items-center" style="gap: 24px">
                 <li style="list-style: none">
@@ -700,16 +935,16 @@ justify-content: space-between;">
                   display: inline-block;
                   margin-bottom: 41px;
                 ">
-                Quick links
+                Liens rapides
               </h4>
               <div class="wp-widget-group__inner-blocks">
                 <ul style="padding: 0; margin: 0; list-style: none">
                   <li>
-                    <a href="https://www.4damstheme.com/clenis/about-clenis/">About Us</a>
+                    <a href="https://www.4damstheme.com/clenis/about-clenis/">A propos</a>
                   </li>
 
                   <li>
-                    <a href="https://www.4damstheme.com/clenis/contact-us/">Contact Us</a>
+                    <a href="https://www.4damstheme.com/clenis/contact-us/">Contact Nous</a>
                   </li>
 
 
@@ -744,7 +979,7 @@ justify-content: space-between;">
                   </li>
 
                   <li>
-                    <a href="https://www.4damstheme.com/clenis/our-services/">Buandrie</a>
+                    <a href="https://www.4damstheme.com/clenis/our-services/">buanderie</a>
                   </li>
 
                   <li>
@@ -769,7 +1004,7 @@ justify-content: space-between;">
                   display: inline-block;
                   margin-bottom: 41px;
                 ">
-                Policy
+                Politique
               </h4>
               <div class="wp-widget-group__inner-blocks">
                 <ul style="padding: 0; margin: 0; list-style: none">
@@ -807,7 +1042,7 @@ justify-content: space-between;">
                   display: inline-block;
                   margin-bottom: 41px;
                 ">
-                Our Contact
+                Nos coordonnées
               </h4>
               <div class="wp-widget-group__inner-blocks">
                 <ul style="padding: 0; margin: 0; list-style: none">
@@ -910,6 +1145,1402 @@ justify-content: space-between;">
   <!-- <app-footer /> -->
 </template>
 <style scooped>
+a {
+  color: var(--accent-color);
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+a:hover {
+  color: color-mix(in srgb, var(--accent-color), transparent 25%);
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--heading-color);
+  font-family: var(--heading-font);
+}
+
+:root {
+  --default-font: "Roboto", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --heading-font: "Nunito", sans-serif;
+  --nav-font: "Inter", sans-serif;
+}
+
+/* Global Colors */
+:root {
+  /* Background Color - This color is applied to the background of the entire website as well as individual sections. */
+  --background-color: #ffffff;
+
+  /* Default Color - This is the default color used for the majority of the text content. */
+  --default-color: #3d4348;
+
+  /* Heading Color - This color is used for titles, headings and secondary elements. */
+  --heading-color: #3e5055;
+
+  /* Accent Color - This is the main accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out. */
+  --accent-color: linear-gradient(310deg, #2dce89 0%, #2dcecc 100%);
+
+  /* Contrast Color - This is a color used for text when the background color is one of the heading, accent, or default colors. Its purpose is to ensure proper contrast and readability when placed over these more dominant colors. */
+  --contrast-color: #ffffff;
+}
+
+/* Nav Menu Colors */
+:root {
+  /* Nav Color - This is the default color of the main navmenu links. */
+  --nav-color: #313336;
+
+  /* Nav Hover Color - This color is applied to main navmenu links when they are hovered over. */
+  --nav-hover-color: #77b6ca;
+
+  /* Nav Dropdown Background Color - This color is used as the background for dropdown boxes that appear when hovering over primary navigation items. */
+  --nav-dropdown-background-color: #ffffff;
+
+  /* Nav Dropdown Color - This color is used for navigation links of the dropdown items in the navigation menu. */
+  --nav-dropdown-color: #313336;
+
+  /* Nav Dropdown Hover Color - Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
+  --nav-dropdown-hover-color: #77b6ca;
+}
+
+/* Smooth scroll */
+:root {
+  scroll-behavior: smooth;
+}
+
+#preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  overflow: hidden;
+  background-color: var(--background-color);
+  transition: all 0.6s ease-out;
+  width: 100%;
+  height: 100vh;
+}
+
+#preloader:before,
+#preloader:after {
+  content: "";
+  position: absolute;
+  border: 4px solid var(--accent-color);
+  border-radius: 50%;
+  animation: animate-preloader 2s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+
+#preloader:after {
+  animation-delay: -0.5s;
+}
+
+@keyframes animate-preloader {
+  0% {
+    width: 10px;
+    height: 10px;
+    top: calc(50% - 5px);
+    left: calc(50% - 5px);
+    opacity: 1;
+  }
+
+  100% {
+    width: 72px;
+    height: 72px;
+    top: calc(50% - 36px);
+    left: calc(50% - 36px);
+    opacity: 0;
+  }
+}
+
+/*--------------------------------------------------------------
+# Scroll Top Button
+--------------------------------------------------------------*/
+.scroll-top {
+  position: fixed;
+  visibility: hidden;
+  opacity: 0;
+  right: 15px;
+  bottom: -15px;
+  z-index: 99999;
+  background-color: var(--accent-color);
+  width: 44px;
+  height: 44px;
+  border-radius: 50px;
+  transition: all 0.4s;
+}
+
+.scroll-top i {
+  font-size: 24px;
+  color: var(--contrast-color);
+  line-height: 0;
+}
+
+.scroll-top:hover {
+  background-color: color-mix(in srgb, var(--accent-color), transparent 20%);
+  color: var(--contrast-color);
+}
+
+.scroll-top.active {
+  visibility: visible;
+  opacity: 1;
+  bottom: 15px;
+}
+
+/*--------------------------------------------------------------
+# Disable aos animation delay on mobile devices
+--------------------------------------------------------------*/
+@media screen and (max-width: 768px) {
+  [data-aos-delay] {
+    transition-delay: 0 !important;
+  }
+}
+
+/*--------------------------------------------------------------
+# Global Page Titles & Breadcrumbs
+--------------------------------------------------------------*/
+.page-title {
+  --background-color: color-mix(in srgb, var(--default-color), transparent 96%);
+  color: var(--default-color);
+  background-color: var(--background-color);
+  padding: 25px 0;
+  position: relative;
+}
+
+.page-title h1 {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.page-title .breadcrumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 14px;
+}
+
+.page-title .breadcrumbs ol li+li {
+  padding-left: 10px;
+}
+
+.page-title .breadcrumbs ol li+li::before {
+  content: "/";
+  display: inline-block;
+  padding-right: 10px;
+  color: color-mix(in srgb, var(--default-color), transparent 70%);
+}
+
+/*--------------------------------------------------------------
+# Global Sections
+--------------------------------------------------------------*/
+section,
+.section {
+  color: var(--default-color);
+  background-color: var(--background-color);
+  padding: 60px 0;
+  scroll-margin-top: 100px;
+  overflow: clip;
+}
+
+@media (max-width: 1199px) {
+
+  section,
+  .section {
+    scroll-margin-top: 66px;
+  }
+}
+
+/*--------------------------------------------------------------
+# Global Section Titles
+--------------------------------------------------------------*/
+.section-title {
+  text-align: center;
+  padding-bottom: 60px;
+  position: relative;
+}
+
+.section-title h2 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  position: relative;
+}
+
+.section-title h2:after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 50px;
+  height: 3px;
+  background: var(--accent-color);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.section-title p {
+  margin-bottom: 0;
+}
+
+/*--------------------------------------------------------------
+# Hero Section
+--------------------------------------------------------------*/
+.hero {
+  width: 100%;
+  min-height: 70vh;
+  position: relative;
+  padding: 180px 0 40px 0;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.hero .hero-bg img {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.hero .hero-bg::before {
+  content: "";
+  background: color-mix(in srgb, var(--background-color), transparent 15%);
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
+
+.hero .container {
+  position: relative;
+  z-index: 3;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 56px;
+}
+
+.hero h1 span {
+  color: var(--accent-color);
+}
+
+.hero p {
+  color: color-mix(in srgb, var(--default-color), transparent 30%);
+  margin: 5px 0 30px 0;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+@media (min-width: 768px) {
+  .hero .hero-img {
+    max-width: 600px;
+  }
+}
+
+.hero .btn-get-started {
+  color: var(--contrast-color);
+  background: var(--accent-color);
+  font-family: var(--heading-font);
+  font-weight: 500;
+  font-size: 15px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 10px 28px;
+  border-radius: 50px;
+  transition: 0.5s;
+  box-shadow: 0 8px 28px color-mix(in srgb, var(--accent-color), transparent 80%);
+}
+
+.hero .btn-get-started:hover {
+  color: var(--contrast-color);
+  background: color-mix(in srgb, var(--accent-color), transparent 15%);
+  box-shadow: 0 8px 28px color-mix(in srgb, var(--accent-color), transparent 55%);
+}
+
+.hero .btn-watch-video {
+  font-size: 16px;
+  transition: 0.5s;
+  margin-left: 25px;
+  color: var(--default-color);
+  font-weight: 600;
+}
+
+.hero .btn-watch-video i {
+  color: var(--accent-color);
+  font-size: 32px;
+  transition: 0.3s;
+  line-height: 0;
+  margin-right: 8px;
+}
+
+.hero .btn-watch-video:hover {
+  color: var(--accent-color);
+}
+
+.hero .btn-watch-video:hover i {
+  color: color-mix(in srgb, var(--accent-color), transparent 15%);
+}
+
+@media (max-width: 640px) {
+  .hero h1 {
+    font-size: 28px;
+    line-height: 36px;
+  }
+
+  .hero p {
+    font-size: 18px;
+    line-height: 24px;
+    margin-bottom: 30px;
+  }
+
+  .hero .btn-get-started,
+  .hero .btn-watch-video {
+    font-size: 13px;
+  }
+}
+
+/*--------------------------------------------------------------
+# Featured Services Section
+--------------------------------------------------------------*/
+.featured-services {
+  --background-color: color-mix(in srgb, var(--accent-color), transparent 94%);
+  padding: 40px 0;
+}
+
+.featured-services .service-item {
+  position: relative;
+  padding-top: 20px;
+}
+
+.featured-services .service-item .icon {
+  background-color: color-mix(in srgb, var(--accent-color), transparent 80%);
+  width: 72px;
+  height: 72px;
+  position: relative;
+  margin-right: 15px;
+  line-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: ease-in-out 0.3s;
+}
+
+.featured-services .service-item .icon i {
+  color: var(--accent-color);
+  font-size: 32px;
+  z-index: 2;
+  position: relative;
+}
+
+.featured-services .service-item .title {
+  font-weight: 700;
+  margin-bottom: 5px;
+  font-size: 18px;
+}
+
+.featured-services .service-item .title a {
+  color: var(--heading-color);
+}
+
+.featured-services .service-item .title a:hover {
+  color: var(--accent-color);
+}
+
+.featured-services .service-item .description {
+  font-size: 14px;
+}
+
+.featured-services .service-item:hover .icon {
+  background-color: var(--accent-color);
+}
+
+.featured-services .service-item:hover .icon i {
+  color: var(--contrast-color);
+}
+
+/*--------------------------------------------------------------
+# About Section
+--------------------------------------------------------------*/
+.about {
+  padding-bottom: 20px;
+}
+
+.about .content .who-we-are {
+  text-transform: uppercase;
+  margin-bottom: 15px;
+  color: color-mix(in srgb, var(--default-color), transparent 40%);
+}
+
+.about .content h3 {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.about .content ul {
+  list-style: none;
+  padding: 0;
+}
+
+.about .content ul li {
+  padding-bottom: 10px;
+}
+
+.about .content ul i {
+  font-size: 1.25rem;
+  margin-right: 4px;
+  color: var(--accent-color);
+}
+
+.about .content p:last-child {
+  margin-bottom: 0;
+}
+
+.about .content .read-more {
+  background: var(--accent-color);
+  color: var(--contrast-color);
+  font-family: var(--heading-font);
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 1px;
+  padding: 12px 24px;
+  border-radius: 5px;
+  transition: 0.3s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about .content .read-more i {
+  font-size: 18px;
+  margin-left: 5px;
+  line-height: 0;
+  transition: 0.3s;
+}
+
+.about .content .read-more:hover {
+  background: color-mix(in srgb, var(--accent-color), transparent 20%);
+  padding-right: 19px;
+}
+
+.about .content .read-more:hover i {
+  margin-left: 10px;
+}
+
+.about .about-images img {
+  border-radius: 10px;
+}
+
+/*--------------------------------------------------------------
+# Clients Section
+--------------------------------------------------------------*/
+.clients {
+  padding: 20px 0;
+}
+
+.clients .client-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.clients .client-logo img {
+  padding: 20px 40px;
+  max-width: 90%;
+  transition: 0.3s;
+  opacity: 0.5;
+  filter: grayscale(100);
+}
+
+.clients .client-logo img:hover {
+  filter: none;
+  opacity: 1;
+}
+
+@media (max-width: 640px) {
+  .clients .client-logo img {
+    padding: 20px;
+  }
+}
+
+/*--------------------------------------------------------------
+# Features Section
+--------------------------------------------------------------*/
+.features .nav-tabs {
+  border: 0;
+}
+
+.features .nav-item {
+  width: 100%;
+  margin-bottom: 15px;
+  border: 1px solid #20c997;
+}
+
+.features .nav-item:last-child {
+  margin-bottom: 0;
+}
+
+.features .nav-link {
+  color: var(--heading-color);
+  border: 0;
+  padding: 30px;
+  transition: 0.3s;
+  border-radius: 10px;
+  display: flex;
+  cursor: pointer;
+}
+@media (max-width: 768px) {
+  .features .tab-pane img {
+    border-radius: 15px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+  }
+
+.features .nav-link i {
+  background-color: var(--contrast-color);
+  color: var(--accent-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20px;
+  width: 48px;
+  height: 48px;
+  font-size: 22px;
+  flex-shrink: 0;
+  border-radius: 50px;
+  box-shadow: 0 2px 4px color-mix(in srgb, var(--default-color), transparent 85%);
+}
+
+.features .nav-link h4 {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 0 10px 0;
+  transition: 0.3s;
+}
+
+.features .nav-link p {
+  font-size: 15px;
+  margin: 0;
+}
+
+.features .nav-link:hover {
+  background: color-mix(in srgb, var(--accent-color), transparent 96%);
+}
+
+.features .nav-link.active {
+  background: color-mix(in srgb, var(--accent-color), transparent 92%);
+}
+
+.features .tab-pane img {
+  border-radius: 15px;
+}
+
+/*--------------------------------------------------------------
+# Features Details Section
+--------------------------------------------------------------*/
+.features-details .features-item+.features-item {
+  margin-top: 60px;
+}
+
+.features-details .features-item .content {
+  background-color: color-mix(in srgb, var(--accent-color), transparent 95%);
+  color: color-mix(in srgb, var(--default-color), transparent 40%);
+  padding: 30px;
+  border-radius: 10px;
+}
+
+.features-details .features-item h3 {
+  font-weight: 700;
+  font-size: 26px;
+  margin-bottom: 15px;
+}
+
+.features-details .features-item .more-btn {
+  background-color: var(--accent-color);
+  /* color: var(--contrast-color); */
+  padding: 6px 30px;
+  border-radius: 6px;
+}
+
+.features-details .features-item .more-btn:hover {
+  background-color: color-mix(in srgb, var(--accent-color), transparent 20%);
+}
+
+.features-details .features-item ul {
+  list-style: none;
+  padding: 0;
+}
+
+.features-details .features-item ul li {
+  padding-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.features-details .features-item ul li:last-child {
+  padding-bottom: 0;
+}
+
+.features-details .features-item ul i {
+  font-size: 20px;
+  margin-right: 10px;
+  color: var(--accent-color);
+}
+
+.features-details .features-item img {
+  border-radius: 15px;
+}
+
+/*--------------------------------------------------------------
+# Services Section
+--------------------------------------------------------------*/
+.services {
+  --background-color: color-mix(in srgb, var(--accent-color), transparent 97%);
+}
+
+.services .service-item {
+  background-color: var(--contrast-color);
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 85%);
+  height: 100%;
+  padding: 30px;
+  transition: 0.3s;
+  border-radius: 10px;
+  display: flex;
+}
+
+.services .service-item .icon {
+  font-size: 32px;
+  border-radius: 10px;
+  position: relative;
+  margin-right: 25px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 72px;
+  flex-shrink: 0;
+}
+
+.services .service-item h3 {
+  color: color-mix(in srgb, var(--heading-color), transparent 25%);
+  font-weight: 700;
+  font-size: 22px;
+  transition: 0.3s;
+}
+
+.services .service-item p {
+  margin-bottom: 0;
+  color: color-mix(in srgb, var(--default-color), transparent 40%);
+  transition: 0.3s;
+}
+
+.services .service-item .read-more {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 10px;
+  transition: 0.3s;
+  font-size: 14px;
+}
+
+.services .service-item .read-more i {
+  margin-left: 10px;
+}
+
+.services .service-item.item-cyan .icon {
+  color: #0dcaf0;
+  border: 1px solid #0dcaf0;
+  background: rgba(13, 202, 240, 0.1);
+}
+
+.services .service-item.item-orange .icon {
+  color: #fd7e14;
+  border: 1px solid #fd7e14;
+  background: rgba(253, 126, 20, 0.1);
+}
+
+.services .service-item.item-teal .icon {
+  color: #20c997;
+  border: 1px solid #20c997;
+  background: rgba(32, 201, 151, 0.1);
+}
+
+.services .service-item.item-red .icon {
+  color: #df1529;
+  border: 1px solid #df1529;
+  background: rgba(223, 21, 4, 0.1);
+}
+
+.services .service-item.item-indigo .icon {
+  color: #6610f2;
+  border: 1px solid #6610f2;
+  background: rgba(102, 16, 242, 0.1);
+}
+
+.services .service-item.item-pink .icon {
+  color: #f3268c;
+  border: 1px solid #f3268c;
+  background: rgba(243, 38, 140, 0.1);
+}
+
+.services .service-item:hover {
+  box-shadow: 0px 2px 25px color-mix(in srgb, var(--default-color), transparent 90%);
+}
+
+.services .service-item:hover h3 {
+  color: var(--heading-color);
+}
+
+.services .service-item:hover p {
+  color: color-mix(in srgb, var(--default-color), transparent 10%);
+}
+
+/*--------------------------------------------------------------
+# More Features Section
+--------------------------------------------------------------*/
+.more-features .features-image {
+  position: relative;
+  min-height: 400px;
+}
+
+.more-features .features-image img {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.more-features h3 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.more-features .icon-box {
+  margin-top: 30px;
+  border: 1px solid #20c997;
+  border-radius: 15px;
+  padding: 10px;
+}
+
+.more-features .icon-box i {
+  color: var(--accent-color);
+  margin-right: 15px;
+  font-size: 24px;
+  line-height: 1.2;
+}
+
+.more-features .icon-box h4 {
+  font-weight: 600;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.more-features .icon-box p {
+  line-height: 24px;
+  font-size: 14px;
+  margin-bottom: 0;
+}
+
+/*--------------------------------------------------------------
+# Pricing Section
+--------------------------------------------------------------*/
+.pricing .pricing-item {
+  padding: 40px 40px;
+  height: 100%;
+  border-radius: 15px;
+  border: 1px solid #20c997;
+}
+
+.pricing h3 {
+  font-weight: 600;
+  margin-bottom: 15px;
+  font-size: 20px;
+}
+
+.pricing h4 {
+  color: var(--accent-color);
+  font-size: 48px;
+  font-weight: 700;
+  font-family: var(--heading-font);
+  margin-bottom: 0;
+}
+
+.pricing h4 sup {
+  font-size: 28px;
+}
+
+.pricing h4 span {
+  color: color-mix(in srgb, var(--default-color), transparent 50%);
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.pricing .description {
+  font-size: 14px;
+}
+
+.pricing .cta-btn {
+  background-color: var(--default-color);
+  color: var(--contrast-color);
+  display: block;
+  text-align: center;
+  padding: 10px 35px;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: var(--heading-font);
+  transition: 0.3s;
+  margin-top: 20px;
+  margin-bottom: 6px;
+}
+
+.pricing .cta-btn:hover {
+  background: var(--accent-color);
+  color: var(--contrast-color);
+}
+
+.pricing ul {
+  padding: 0;
+  list-style: none;
+  color: color-mix(in srgb, var(--default-color), transparent 30%);
+  text-align: left;
+  line-height: 20px;
+}
+
+.pricing ul li {
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+}
+
+.pricing ul li:last-child {
+  padding-bottom: 0;
+}
+
+.pricing ul i {
+  color: #059652;
+  font-size: 24px;
+  padding-right: 3px;
+}
+
+.pricing ul .na {
+  color: color-mix(in srgb, var(--default-color), transparent 60%);
+}
+
+.pricing ul .na i {
+  color: color-mix(in srgb, var(--default-color), transparent 60%);
+}
+
+.pricing ul .na span {
+  text-decoration: line-through;
+}
+
+.pricing .featured {
+  position: relative;
+}
+
+.pricing .featured .popular {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background-color: var(--accent-color);
+  color: var(--contrast-color);
+  padding: 5px 15px;
+  margin: 0;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.pricing .featured .cta-btn {
+  background: var(--accent-color);
+  color: var(--contrast-color);
+}
+
+@media (max-width: 992px) {
+  .pricing .box {
+    max-width: 60%;
+    margin: 0 auto 30px auto;
+  }
+}
+
+@media (max-width: 767px) {
+  .pricing .box {
+    max-width: 80%;
+    margin: 0 auto 30px auto;
+  }
+}
+
+@media (max-width: 420px) {
+  .pricing .box {
+    max-width: 100%;
+    margin: 0 auto 30px auto;
+  }
+}
+
+/*--------------------------------------------------------------
+# Faq Section
+--------------------------------------------------------------*/
+.faq .section-title {
+  padding-bottom: 20px;
+}
+
+.faq .faq-container .faq-item {
+  position: relative;
+  padding: 20px;
+  margin-bottom: 15px;
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 85%);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.faq .faq-container .faq-item:last-child {
+  margin-bottom: 0;
+}
+
+.faq .faq-container .faq-item h3 {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  margin: 0 30px 0 0;
+  transition: 0.3s;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.faq .faq-container .faq-item h3 .num {
+  color: var(--accent-color);
+  padding-right: 5px;
+}
+
+.faq .faq-container .faq-item h3:hover {
+  color: var(--accent-color);
+}
+
+.faq .faq-container .faq-item .faq-content {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: 0.3s ease-in-out;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.faq .faq-container .faq-item .faq-content p {
+  margin-bottom: 0;
+  overflow: hidden;
+}
+
+.faq .faq-container .faq-item .faq-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 16px;
+  line-height: 0;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.faq .faq-container .faq-item .faq-toggle:hover {
+  color: var(--accent-color);
+}
+
+.faq .faq-container .faq-active {
+  background-color: color-mix(in srgb, var(--accent-color), transparent 97%);
+  border-color: color-mix(in srgb, var(--accent-color), transparent 80%);
+}
+
+.faq .faq-container .faq-active h3 {
+  color: var(--accent-color);
+}
+
+.faq .faq-container .faq-active .faq-content {
+  grid-template-rows: 1fr;
+  visibility: visible;
+  opacity: 1;
+  padding-top: 10px;
+}
+
+.faq .faq-container .faq-active .faq-toggle {
+  transform: rotate(90deg);
+  color: var(--accent-color);
+}
+
+/*--------------------------------------------------------------
+# Testimonials Section
+--------------------------------------------------------------*/
+.testimonials {
+  --background-color: color-mix(in srgb, var(--accent-color), transparent 97%);
+}
+
+.testimonials .testimonial-item {
+  background-color: var(--contrast-color);
+  box-shadow: 0px 0 20px color-mix(in srgb, var(--default-color), transparent 90%);
+  box-sizing: content-box;
+  padding: 30px;
+  margin: 40px 30px;
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  transition: 0.3s;
+}
+
+.testimonials .testimonial-item .stars {
+  margin-bottom: 15px;
+}
+
+.testimonials .testimonial-item .stars i {
+  color: #ffc107;
+  margin: 0 1px;
+}
+
+.testimonials .testimonial-item .testimonial-img {
+  width: 90px;
+  border-radius: 50%;
+  border: 4px solid var(--background-color);
+  margin: 0 auto;
+}
+
+.testimonials .testimonial-item h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 10px 0 5px 0;
+}
+
+.testimonials .testimonial-item h4 {
+  font-size: 14px;
+  color: color-mix(in srgb, var(--default-color), transparent 40%);
+  margin: 0;
+}
+
+.testimonials .testimonial-item p {
+  font-style: italic;
+  margin: 0 auto 15px auto;
+}
+
+.testimonials .swiper-wrapper {
+  height: auto;
+}
+
+.testimonials .swiper-pagination {
+  margin-top: 20px;
+  position: relative;
+}
+
+.testimonials .swiper-pagination .swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  background-color: color-mix(in srgb, var(--default-color), transparent 85%);
+  opacity: 1;
+}
+
+.testimonials .swiper-pagination .swiper-pagination-bullet-active {
+  background-color: var(--accent-color);
+}
+
+.testimonials .swiper-slide {
+  opacity: 0.3;
+}
+
+@media (max-width: 1199px) {
+  .testimonials .swiper-slide-active {
+    opacity: 1;
+  }
+
+  .testimonials .swiper-pagination {
+    margin-top: 0;
+  }
+
+  .testimonials .testimonial-item {
+    margin: 40px 20px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .testimonials .swiper-slide-next {
+    opacity: 1;
+    transform: scale(1.12);
+  }
+}
+
+/*--------------------------------------------------------------
+# Contact Section
+--------------------------------------------------------------*/
+.contact .info-item {
+  padding: 20px 0 30px 0;
+  box-shadow: 0 0 4px color-mix(in srgb, var(--default-color), transparent 85%);
+}
+
+.contact .info-item i {
+  color: var(--accent-color);
+  width: 56px;
+  height: 56px;
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease-in-out;
+  border-radius: 50%;
+  box-shadow: 0 2px 3px color-mix(in srgb, var(--default-color), transparent 85%);
+}
+
+.contact .info-item h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 10px 0;
+}
+
+.contact .info-item p {
+  padding: 0;
+  margin-bottom: 0;
+  font-size: 14px;
+}
+
+.contact .php-email-form {
+  height: 100%;
+  padding: 30px;
+  box-shadow: 0 0 4px color-mix(in srgb, var(--default-color), transparent 85%);
+}
+
+@media (max-width: 575px) {
+  .contact .php-email-form {
+    padding: 20px;
+  }
+}
+
+.contact .php-email-form .error-message {
+  display: none;
+  background: #df1529;
+  color: #ffffff;
+  text-align: left;
+  padding: 15px;
+  margin-bottom: 24px;
+  font-weight: 600;
+}
+
+.contact .php-email-form .sent-message {
+  display: none;
+  color: #ffffff;
+  background: #059652;
+  text-align: center;
+  padding: 15px;
+  margin-bottom: 24px;
+  font-weight: 600;
+}
+
+.contact .php-email-form .loading {
+  display: none;
+  background: var(--background-color);
+  text-align: center;
+  padding: 15px;
+  margin-bottom: 24px;
+}
+
+
+.contact .php-email-form .loading:before {
+  content: "";
+  display: inline-block;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  margin: 0 10px -6px 0;
+  border: 3px solid var(--accent-color);
+  border-top-color: var(--background-color);
+  animation: animate-loading 1s linear infinite;
+}
+
+.contact .php-email-form input[type=text],
+.contact .php-email-form input[type=email],
+.contact .php-email-form textarea {
+  font-size: 14px;
+  padding: 10px 15px;
+  box-shadow: none;
+  border-radius: 0;
+  color: var(--default-color);
+  background-color: color-mix(in srgb, var(--background-color), transparent 50%);
+  border-color: color-mix(in srgb, var(--default-color), transparent 80%);
+}
+
+.contact .php-email-form input[type=text]:focus,
+.contact .php-email-form input[type=email]:focus,
+.contact .php-email-form textarea:focus {
+  border-color: var(--accent-color);
+}
+
+.contact .php-email-form input[type=text]::placeholder,
+.contact .php-email-form input[type=email]::placeholder,
+.contact .php-email-form textarea::placeholder {
+  color: color-mix(in srgb, var(--default-color), transparent 70%);
+}
+
+.contact .php-email-form button[type=submit] {
+  color: var(--contrast-color);
+  background: var(--accent-color);
+  border: 0;
+  padding: 10px 30px;
+  transition: 0.4s;
+  border-radius: 50px;
+}
+
+.contact .php-email-form button[type=submit]:hover {
+  background: color-mix(in srgb, var(--accent-color), transparent 20%);
+}
+
+@keyframes animate-loading {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/*--------------------------------------------------------------
+# Service Details Section
+--------------------------------------------------------------*/
+.service-details .service-box {
+  padding: 20px;
+  box-shadow: 0px 2px 20px color-mix(in srgb, var(--default-color), transparent 88%);
+}
+
+.service-details .service-box+.service-box {
+  margin-top: 30px;
+}
+
+.service-details .service-box h4 {
+  font-size: 20px;
+  font-weight: 700;
+  border-bottom: 2px solid color-mix(in srgb, var(--default-color), transparent 92%);
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
+
+.service-details .services-list a {
+  color: color-mix(in srgb, var(--default-color), transparent 20%);
+  background-color: color-mix(in srgb, var(--default-color), transparent 96%);
+  display: flex;
+  align-items: center;
+  padding: 12px 15px;
+  margin-top: 15px;
+  transition: 0.3s;
+}
+
+.service-details .services-list a:first-child {
+  margin-top: 0;
+}
+
+.service-details .services-list a i {
+  font-size: 16px;
+  margin-right: 8px;
+  color: var(--accent-color);
+}
+
+.service-details .services-list a.active {
+  color: var(--contrast-color);
+  background-color: var(--accent-color);
+}
+
+.service-details .services-list a.active i {
+  color: var(--contrast-color);
+}
+
+.service-details .services-list a:hover {
+  background-color: color-mix(in srgb, var(--accent-color), transparent 95%);
+  color: var(--accent-color);
+}
+
+.service-details .download-catalog a {
+  color: var(--default-color);
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  transition: 0.3s;
+  border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+}
+
+.service-details .download-catalog a:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.service-details .download-catalog a:last-child {
+  padding-bottom: 0;
+}
+
+.service-details .download-catalog a i {
+  font-size: 24px;
+  margin-right: 8px;
+  color: var(--accent-color);
+}
+
+.service-details .download-catalog a:hover {
+  color: var(--accent-color);
+}
+
+.service-details .help-box {
+  background-color: var(--accent-color);
+  color: var(--contrast-color);
+  margin-top: 30px;
+  padding: 30px 15px;
+}
+
+.service-details .help-box .help-icon {
+  font-size: 48px;
+}
+
+.service-details .help-box h4,
+.service-details .help-box a {
+  color: var(--contrast-color);
+}
+
+.service-details .services-img {
+  margin-bottom: 20px;
+}
+
+.service-details h3 {
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.service-details p {
+  font-size: 15px;
+}
+
+.service-details ul {
+  list-style: none;
+  padding: 0;
+  font-size: 15px;
+}
+
+.service-details ul li {
+  padding: 5px 0;
+  display: flex;
+  align-items: center;
+}
+
+.service-details ul i {
+  font-size: 20px;
+  margin-right: 8px;
+  color: var(--accent-color);
+}
+
 /* service menage */
 .work-wrapper1 {
   position: relative;
@@ -927,6 +2558,7 @@ justify-content: space-between;">
   z-index: 0;
   border-radius: 60px;
 }
+
 .work-wrapper2 {
   position: relative;
   padding-top: 80px;
@@ -943,6 +2575,7 @@ justify-content: space-between;">
   z-index: 0;
   border-radius: 60px;
 }
+
 .howit-worksection {
   position: relative;
   overflow: hidden;
@@ -959,6 +2592,7 @@ justify-content: space-between;">
   width: 490px;
   height: 490px;
 }
+
 .howwork-content {
   position: relative;
 }
@@ -1071,6 +2705,7 @@ justify-content: space-between;">
     height: 230px;
   }
 }
+
 @media (max-width: 1399px) {
   .work-wrapper2 {
     padding-top: 60px;
@@ -1114,6 +2749,7 @@ justify-content: space-between;">
     padding-right: 20px;
   }
 }
+
 /* working process */
 .step {
   flex: 1 1 calc(33.333% - 20px);
@@ -1156,22 +2792,28 @@ justify-content: space-between;">
     margin-bottom: 20px;
   }
 }
+
 /* button */
 .yellow-btn {
-  background-color: #30c7b5; /* Yellow color */
-  color: white; /* Text color */
+  background-color: #30c7b5;
+  /* Yellow color */
+  color: white;
+  /* Text color */
   border: none;
   padding: 10px 20px;
   border-radius: 5px;
   font-size: 16px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  margin-top: 20px; /* Adjust this value as needed */
+  margin-top: 20px;
+  /* Adjust this value as needed */
 }
 
 .yellow-btn:hover {
-  background-color: #30c7b5; /* Slightly darker yellow for hover effect */
+  background-color: #30c7b5;
+  /* Slightly darker yellow for hover effect */
 }
+
 .bg-yellow-button {
   background-color: #30c7b5;
   /* Yellow color */

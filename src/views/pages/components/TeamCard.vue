@@ -1,11 +1,11 @@
 <template>
   <section>
-    <span>our Services</span>
+    <span>Nos Services</span>
     <h2 class="service">Hygeco</h2>
     <p> Pour le ménage, ou la lessive, nous avons tout ce qu'il vous faut pour
       simplifier votre quotidien!
     </p>
-    <span class="bg-watermark">work</span>
+    <!-- <span class="bg-watermark">hygeco</span> -->
 
     <div class="cards">
       <a class="ref" href="/pages/service-menage">
@@ -63,6 +63,7 @@ export default {
 
 .service {
   color: #30c7b5;
+  margin-top: 1.5rem;
 }
 
 body {
@@ -120,7 +121,7 @@ section p {
   position: absolute;
   z-index: -1;
   left: 50%;
-  transform: translateX(-50%) translateY(-15%);
+  transform: translateX(-50%) translateY(-25%);
   user-select: none;
   letter-spacing: 0.5rem;
 }
@@ -139,7 +140,7 @@ section h2 {
 }
 
 .cards {
-  margin-top: 7rem;
+  margin-top: 3rem;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(12rem, 100%), 1fr));
   gap: 2rem;
