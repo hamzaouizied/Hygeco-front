@@ -1,6 +1,7 @@
 <script>
 import { onBeforeMount, onBeforeUnmount, reactive } from "vue";
 import { useStore } from "vuex";
+import { useRouter } from "vue-router";
 import ArgonInput from "@/components/ArgonInput.vue";
 import ArgonSwitch from "@/components/ArgonSwitch.vue";
 import ArgonButton from "@/components/ArgonButton.vue";
@@ -14,6 +15,7 @@ export default {
   },
   setup() {
     const store = useStore();
+    const router = useRouter();
     const body = document.getElementsByTagName("body")[0];
     const toggleDefaultLayout = () => store.commit("toggleDefaultLayout");
 
@@ -53,8 +55,8 @@ export default {
           const token = response.data.token;
           localStorage.setItem('token', token);
           console.log("Login successful");
-          // Redirect or perform other actions upon successful login
-          // e.g., this.$router.push({ name: 'Dashboard' });
+          // Redirect to the admin dashboard
+          router.push({ name: 'Dashboard admin' });
         } else {
           console.error("Unexpected response structure:", response);
         }
@@ -83,6 +85,7 @@ export default {
     };
   },
 };
+
 </script>
 
 <template>
@@ -183,3 +186,4 @@ export default {
     </section>
   </main>
 </template>
+

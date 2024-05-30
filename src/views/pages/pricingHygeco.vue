@@ -63,43 +63,7 @@ onBeforeUnmount(() => {
             You have Free Unlimited Updates and Premium Support on each package.
           </p>
       </div>
-      <div class="row p-5">
-        <div class="mx-auto text-center col-lg-4 col-md-6 col-7">
-          <div class="mt-5 nav-wrapper position-relative z-index-2">
-            <ul
-              id="tabs-pricing"
-              class="flex-row p-1 nav nav-pills nav-fill"
-              role="tablist"
-              style="background: #30c7b5;"
-            >
-              <li class="nav-item">
-                <a
-                  id="tabs-iconpricing-tab-1"
-                  class="mb-0 nav-link active"
-                  data-bs-toggle="tab"
-                  href="#monthly"
-                  role="tab"
-                  aria-controls="monthly"
-                  aria-selected="true"
-                  >Monthly</a
-                >
-              </li>
-              <li class="nav-item">
-                <a
-                  id="tabs-iconpricing-tab-2"
-                  class="mb-0 nav-link"
-                  data-bs-toggle="tab"
-                  href="#annual"
-                  role="tab"
-                  aria-controls="annual"
-                  aria-selected="false"
-                  >Annual</a
-                >
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
+      
       <div class="tab-content tab-space">
         <div id="monthly" class="tab-pane active">
           <div class="row">
@@ -118,8 +82,14 @@ onBeforeUnmount(() => {
                 :action="{
                   color: 'success',
                   route: 'javascript:;',
-                  label: 'Book Now',
+                  label: 'Reserver',
                 }"
+                :act="{
+                  color: 'success',
+                  route: 'javascript:;',
+                  label: 'Personaliser',
+                }"
+                
               />
             </div>
             <div class="mb-4 col-lg-4 mb-lg-0">
@@ -137,92 +107,26 @@ onBeforeUnmount(() => {
                 :action="{
                   color: 'success',
                   route: 'javascript:;',
-                  label: 'Book Now',
+                  label: 'Reserver',
+                }"
+                :act="{
+                  color: 'success',
+                  route: 'javascript:;',
+                  label: 'Personaliser',
                 }"
               />
             </div>
-            <div class="mb-4 col-lg-4 mb-lg-0">
-              <pricing-card
-                badge="Move Out/In Clean"
-                :price="{ currency: '$', value: '99' }"
-                :specifications="[
-                 { label: 'Regular cleaning', includes: true },
-                  { label: 'Deep Cleaning', includes: true },
-                  { label: 'Construction Cleaning', includes: true },
-                  { label: 'Windows Cleanig', includes: true },
-                  { label: 'Deep Cleaning', includes: true },
-                  { label: 'Regular cleaning', includes: true },
-                ]"
-                :action="{
-                  color: 'success',
-                  route: 'javascript:;',
-                  label: 'Book Now',
-                }"
-              />
+            <div class="mb-4 col-lg-4 mb-lg-0 perso">
+             <div class="cardi">
+              <div class="overplay">
+                <h1>HYGECO</h1>
+                <a href="#" class="btn"> Personaliser</a>
+              </div>
+             </div>
             </div>
           </div>
         </div>
-        <div id="annual" class="tab-pane">
-          <div class="row">
-            <div class="mb-4 col-lg-4 mb-lg-0">
-              <pricing-card
-                badge="Regular"
-                :price="{ currency: '$', value: '119' }"
-                :specifications="[
-                 { label: 'Regular cleaning', includes: true },
-                  { label: 'Deep Cleaning', includes: true },
-                  { label: 'Construction Cleaning', includes: false },
-                  { label: 'Windows Cleanig', includes: false },
-                  { label: 'Deep Cleaning', includes: false },
-                  { label: 'Regular cleaning', includes: false },
-                ]"
-                :action="{
-                  color: 'success',
-                  route: 'javascript:;',
-                  label: 'Book Now',
-                }"
-              />
-            </div>
-            <div class="mb-4 col-lg-4 mb-lg-0">
-              <pricing-card
-                badge="Deep Clean"
-                :price="{ currency: '$', value: '159' }"
-                :specifications="[
-                  { label: 'Regular cleaning', includes: true },
-                  { label: 'Deep Cleaning', includes: true },
-                  { label: 'Construction Cleaning', includes: false },
-                  { label: 'Windows Cleanig', includes: false },
-                  { label: 'Deep Cleaning', includes: false },
-                  { label: 'Regular cleaning', includes: false },
-                ]"
-                :action="{
-                  color: 'success',
-                  route: 'javascript:;',
-                  label: 'Book Now',
-                }"
-              />
-            </div>
-            <div class="mb-4 col-lg-4 mb-lg-0">
-              <pricing-card
-                badge="Move Out/In Clean"
-                :price="{ currency: '$', value: '399' }"
-                :specifications="[
-                  { label: 'Regular cleaning', includes: true },
-                  { label: 'Deep Cleaning', includes: true },
-                  { label: 'Construction Cleaning', includes: false },
-                  { label: 'Windows Cleanig', includes: false },
-                  { label: 'Deep Cleaning', includes: false },
-                  { label: 'Regular cleaning', includes: false },
-                ]"
-                :action="{
-                  color: 'success',
-                  route: 'javascript:;',
-                  label: 'Book Now',
-                }"
-              />
-            </div>
-          </div>
-        </div>
+        
       </div>
     </div>
   
@@ -973,5 +877,64 @@ background: var(--bg);
     overflow: hidden;
     border-radius: 100px;
     transition: all 0.5s;
+}
+.perso{
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 69vh;
+  background: #f8f9fa;
+}
+.cardi{
+  width: 100%;
+  height:100%;
+  position: relative;
+  margin: 0 1em;
+  background: url(https://radiustheme.com/demo/wordpress/themes/clenix/wp-content/uploads/2019/07/about1.jpg) center;
+  background-size: cover;
+  color: #fff;
+  border-radius: 18px;
+  box-shadow: #929292 0px 1px 1px 0px;
+}
+.cardi .overplay {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0 ;
+  width: 100%;
+  height: 100%;
+  background:linear-gradient(310deg, #2dce89 0%, #2dcecc 100%);
+  opacity: 0;
+  transition: 0.3s;
+  border-radius: 18px;
+
+}
+.cardi:hover .overplay {
+  opacity: 1;
+}
+.cardi .btn{
+  padding: 0.6em 1.3em;
+  text-decoration: none;
+  color: #fff;
+  border: 2px #fff solid;
+  letter-spacing: 1px;
+  border-radius: 8px;
+}
+.cardi .btn:hover {
+  background: rgb(255, 255,255,0.3);
+}
+.cardi .btn, .cardi h1 {
+  transition: 0.3s;
+  transform: translateY(-20px);
+
+}
+.cardi:hover .btn, .cardi:hover h1 {
+  transform: translateY(0);
 }
 </style>

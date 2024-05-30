@@ -27,6 +27,17 @@ defineProps({
       color: "dark",
     }),
   },
+  act: {
+    type: Object,
+    route: String,
+    label: String,
+    color: String,
+    default: () => ({
+      route: "/",
+      label: "Join",
+      color: "dark",
+    }),
+  },
 });
 </script>
 <template>
@@ -53,7 +64,7 @@ defineProps({
           ></i>
         </div>
         <div>
-          <span class="ps-3">{{ label }}</span>
+          <span class="ps-3" style="color: gray" >{{ label }}</span>
         </div>
       </div>
       <a
@@ -62,6 +73,14 @@ defineProps({
         :class="`bg-gradient-${action.color}`"
       >
         {{ action.label }}
+        <i class="fas fa-arrow-right ms-1"></i>
+      </a>
+      <a
+        :href="act.route"
+        class="mt-3 mb-0 btn btn-icon d-lg-block"
+        :class="`bg-gradient-${action.color}`"
+      >
+        {{ act.label }}
         <i class="fas fa-arrow-right ms-1"></i>
       </a>
     </div>
