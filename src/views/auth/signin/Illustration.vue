@@ -54,6 +54,7 @@ export default {
         if (response && response.data) {
           const token = response.data.token;
           localStorage.setItem('token', token);
+          store.commit('setAuthenticated', true);
           console.log("Login successful");
           // Redirect to the admin dashboard
           router.push({ name: 'Dashboard admin' });

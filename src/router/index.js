@@ -80,6 +80,7 @@ import Error500 from "../views/auth/error/Error500.vue";
 import lockBasic from "../views/auth/lock/Basic.vue";
 import lockCover from "../views/auth/lock/Cover.vue";
 import lockIllustration from "../views/auth/lock/Illustration.vue";
+import store from "../store";
 
 const routes = [
   {
@@ -438,6 +439,15 @@ const router = createRouter({
   history: createWebHistory(),
   routes,
   linkActiveClass: "active"
+});
+router.beforeEach(async (to, from, next) => {
+  if (to.name === 'Dashboard admin' &&!store.state.authenticated) {
+    next({ name: 'Signin Illustration' });
+  } else if (store.state.authenticated && (to.name === 'Signin Illustration' || to.name === 'Signup Illustration')) {
+    next({ name: 'Dashboard admin' });
+  } else {
+    next();
+  }
 });
 
 export default router;

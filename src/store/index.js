@@ -19,8 +19,12 @@ export default createStore({
     showMain: true,
     layout: "default",
     bootstrap,
+    authenticated: false,
   },
   mutations: {
+    setAuthenticated(state, authenticated) {
+      state.authenticated = authenticated;
+    },
     toggleConfigurator(state) {
       state.showConfig = !state.showConfig;
     },
