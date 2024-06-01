@@ -102,10 +102,10 @@ export default {
                 : ""
             }}
           </h3>
-          <router-link :to="{ name: 'Signin Basic' }" class="mb-0 btn btn-sm me-1"
+          <!-- <router-link :to="{ name: 'Signin Basic' }" class="mb-0 btn btn-sm me-1"
             :class="btnBackground ? btnBackground : ' text-white'">
             Book Now
-          </router-link>
+          </router-link> -->
         </div>
       </div>
     </div>
@@ -113,7 +113,7 @@ export default {
 
   <TeamCard />
   <div class="container">
-    <section class="counter-section pt-120 mt-7">
+    <section class="counter-section pt-120 mt-7" style="background-color: #f8f9fa;">
       <div class="container">
         <div class="counter-wrapper">
           <div class="counter__items odometer-item wow fadeInDown" data-wow-duration="0.4s" style="
@@ -177,7 +177,9 @@ export default {
 
   <section class="relative bg-cover bg-center py-7 mt-10" :style="{
     backgroundImage: 'url(' + require('../../assets/img/bar.png') + ')',
+    backgroundAttachment: 'fixed',
   }">
+  
     <div class="absolute inset-0"></div>
     <div class="container mx-auto relative flex justify-center items-center text-center">
       <div class="max-w-lg">
@@ -251,7 +253,8 @@ export default {
                     animation-delay: 0.4s;
                     animation-name: fadeInDown;
                   ">
-              <span> Nos service </span>
+                  <a href="/pages/service-menage"> <span> Nos service </span></a>
+             
             </div>
           </div>
         </div>
@@ -306,6 +309,7 @@ export default {
   </section>
   <section class="relative bg-cover bg-center py-7 mt-10" :style="{
     backgroundImage: 'url(' + require('../../assets/img/bar.png') + ')',
+    backgroundAttachment: 'fixed',
   }">
     <div class="absolute inset-0"></div>
     <div class="container mx-auto relative flex justify-center items-center text-center">
@@ -339,7 +343,7 @@ export default {
                 color: #30c7b5;
                 margin-bottom: -62px;
               ">
-              buanderie
+              Buanderie
             </h2>
 
             <!-- <p class=" wow fadeInDown" data-wow-delay="0.6"
@@ -358,7 +362,7 @@ export default {
                 padding-left: 17px;
               ">
               <p class="pra">
-                * Dites adieu aux corvées de lessive avec notre service de buanderie pratique !
+                Dites adieu aux corvées de lessive avec notre service de buanderie pratique !
               </p>
               <p class="pra">
                 Que vous
@@ -374,7 +378,8 @@ export default {
                     animation-delay: 0.4s;
                     animation-name: fadeInDown;
                   ">
-            <span> Nos service </span>
+                  <a href="/pages/service-menage"> <span> Nos service </span></a>
+            
           </div>
         </div>
       </div>

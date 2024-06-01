@@ -8,7 +8,7 @@
           remeaque ipsa.</p>
       </div>
   
-      <section class="Carousel" ref="carousel" tabindex="-1">
+      <section class="Carousel" ref="carousel" tabindex="-1" style="background-color: #f8f9fa;">
         <h2 class="Hidden">Gallerie</h2>
         <article
           v-for="(card, index) in cards"

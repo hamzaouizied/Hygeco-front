@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section style="background-color: #f8f9fa;" >
     <span>Nos Services</span>
     <h2 class="service">Hygeco</h2>
     <p> Pour le ménage, ou la lessive, nous avons tout ce qu'il vous faut pour

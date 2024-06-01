@@ -86,7 +86,7 @@ export default {
       </div>
     </div>
   </div>
-  <section class="choose-section1 overflow-hidden pb-90 pt-120 position-relative ">
+  <section class="choose-section1 overflow-hidden pb-90 pt-120 position-relative " style="background-color: #f8f9fa;">
     <div class="choose-wrapper pb-90 mt-5">
       <div class="container">
         <div class="row g-0 justify-content-between">
@@ -194,9 +194,9 @@ export default {
           </div>
         </div>
       </div>
-      <img decoding="async"
+      <!-- <img decoding="async"
         src="https://www.4damstheme.com/clenis/wp-content/plugins/clenis-toolkit/widgets/img/service/choos-tablet.png"
-        alt="This Service Focus on Clean &amp; Maintaining Homes" class="ripple" />
+        alt="This Service Focus on Clean &amp; Maintaining Homes" class="ripple" /> -->
       <img decoding="async"
         src="https://www.4damstheme.com/clenis/wp-content/plugins/clenis-toolkit/widgets/img/service/ps.png"
         alt="This Service Focus on Clean &amp; Maintaining Homes" class="ripple-ps" />
@@ -321,7 +321,7 @@ export default {
     </div>
   </div>
   <div class="container">
-    <section class="counter-section pt-120 mt-7">
+    <section class="counter-section pt-120 mt-2" style="background-color: #f8f9fa;">
       <div class="container">
         <div class="counter-wrapper">
           <div class="counter__items odometer-item wow fadeInDown" data-wow-duration="0.4s" style="
