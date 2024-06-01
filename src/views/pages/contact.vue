@@ -51,8 +51,8 @@ export default {
     setNavPills,
     validateForm() {
       const errors = {};
-      if (!this.form.firstName) {
-        errors.firstName = 'Le nom complet est obligatoire';
+      if (!this.form.first_name) {
+        errors.first_name = 'Le nom complet est obligatoire';
       }
       if (!this.form.address) {
         errors.address = 'L\'adresse est obligatoire';
@@ -78,12 +78,17 @@ export default {
     async submitForm() {
       if (this.validateForm()) {
         try {
-          const response = await axios.post('/api/submit', this.form);
+          const response = await axios.post('https://hygeco-back.test/api/submit-form', this.form);
+          this.$swal('Formulaire soumis avec succès');
           console.log('Form submitted successfully:', response.data);
+          this.reinitialiserFormulaire();
         } catch (error) {
           console.error('Error submitting form:', error);
         }
       }
+    },
+    reinitialiserFormulaire() {
+      this.form = {};
     }
   },
 
@@ -227,9 +232,9 @@ export default {
                       <div class="clean-form-grp">
                         <p>
                           <label>Nom complet</label><br />
-                          <input v-model="form.firstName" class="wpcf7-form-control wpcf7-text" aria-required="true"
-                            placeholder="Nom complet" type="text" name="firstName" />
-                          <span v-if="errors.firstName" class="error">{{ errors.firstName }}</span>
+                          <input v-model="form.first_name" class="wpcf7-form-control wpcf7-text" aria-required="true"
+                            placeholder="Nom complet" type="text" name="first_name" />
+                          <span v-if="errors.first_name" class="error">{{ errors.first_name }}</span>
                         </p>
                       </div>
                     </div>
