@@ -29,18 +29,7 @@ export default {
   data() {
     return {
       store: useStore(),
-      currentIndexHead: 0,
-      existingSlides: [
-        {
-          imageUrl: require("../../assets/img/header1.png"),
-          text: "Let the green clean begin. Linen's bright, cleaning's right, Hygeco's here day or night!",
-        },
-        {
-          imageUrl: require("../../assets/img/header2.png"),
-          text: "Let the green clean begin. Linen's bright, cleaning's right, Hygeco's here day or night!",
-        },
-      ],
-      intervalId: null,
+     
     };
   },
   mounted() {
