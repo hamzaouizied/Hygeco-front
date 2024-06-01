@@ -127,6 +127,11 @@ export default {
                     </div>
                     <argon-switch id="rememberMe" name="rememberMe">
                       Remember me
+                      <router-link
+                      :to="{ name: 'Signup Illustration' }"
+                      class="text-success text-gradient font-weight-bold"
+                      >mot de passe oublié?</router-link
+                    >
                     </argon-switch>
                     <div class="text-center">
                       <argon-button

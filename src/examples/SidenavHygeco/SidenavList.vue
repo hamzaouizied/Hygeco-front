@@ -85,208 +85,93 @@ const getRoute = () => {
         </h6>
       </li>
       <li class="nav-item">
-        <sidenav-collapse
-          collapse-ref="pagesExamples"
-          nav-text="Pages"
-          :class="getRoute() === 'pages' ? 'active' : ''"
-        >
-          <template #icon>
-            <i class="ni ni-ungroup text-warning text-sm opacity-10"></i>
-          </template>
-          <template #list>
-            <ul class="nav ms-4">
-              <!-- <sidenav-collapse-item
-                refer="profileExample"
-                mini-icon="P"
-                text="Profile"
-              >
-                <template #nav-child-item>
-                  <sidenav-item
-                    :to="{ name: 'Profile Overview' }"
-                    mini-icon="P"
-                    text="Profile Overview"
-                  />
-                  <sidenav-item
-                    :to="{ name: 'Teams' }"
-                    mini-icon="T"
-                    text="Teams"
-                  />
-                  <sidenav-item
-                    :to="{ name: 'All Projects' }"
-                    mini-icon="A"
-                    text="All Projects"
-                  />
-                </template>
-              </sidenav-collapse-item> -->
+  <sidenav-collapse-item
+    refer="usersExample"
+    mini-icon="U"
+    text="Utilisateurs"
+  >
+    <template #nav-child-item>
+      <sidenav-item
+        :to="{ name: 'Data Hygeco' }"
+        mini-icon="E"
+        text="Employees"
+      />
+      <sidenav-item
+        :to="{ name: 'Clients Hygeco' }"
+        mini-icon="C"
+        text="Clients"
+      />
+      <sidenav-item
+        :to="{ name: 'Commercial Hygeco' }"
+        mini-icon="CC"
+        text="Commercial Clients"
+      />
+      <sidenav-item
+        :to="{ name: 'New User' }"
+        mini-icon="N"
+        text="New User"
+      />
+    </template>
+  </sidenav-collapse-item>
 
-              <sidenav-collapse-item
-                refer="usersExample"
-                mini-icon="U"
-                text="Utilisateurs"
-              >
-                <template #nav-child-item>
-                  <sidenav-item
-                    :to="{ name: 'Data Hygeco' }"
-                    mini-icon="E"
-                    text="Employees"
-                  />
-                  <sidenav-item
-                    :to="{ name: 'Clients Hygeco' }"
-                    mini-icon="C"
-                    text="Clients"
-                  />
-                  <sidenav-item
-                    :to="{ name: 'Commercial Hygeco' }"
-                    mini-icon="CC"
-                    text="Commercial Clients"
-                  />
-                  <sidenav-item
-                    :to="{ name: 'New User' }"
-                    mini-icon="N"
-                    text="New User"
-                  />
-                </template>
-              </sidenav-collapse-item>
-              <sidenav-collapse-item
-                refer="usersExample"
-                mini-icon="R"
-                text="Reservations"
-              >
-                <template #nav-child-item>
-                  <sidenav-item
-                    :to="{ name: 'Reservation Hygeco' }"
-                    mini-icon="R"
-                    text="Nos Reservations"
-                  />
-                  <sidenav-item
-                    :to="{ name: 'Clients Hygeco' }"
-                    mini-icon="C"
-                    text="Clients"
-                  />
-                  <sidenav-item
-                    :to="{ name: 'Commercial Hygeco' }"
-                    mini-icon="CC"
-                    text="Commercial Clients"
-                  />
-                  <sidenav-item
-                    :to="{ name: 'New User' }"
-                    mini-icon="N"
-                    text="New User"
-                  />
-                </template>
-              </sidenav-collapse-item>
-              <sidenav-collapse-item
-                refer="usersExample"
-                mini-icon="S"
-                text="Services"
-              >
-                <template #nav-child-item>
-                  <sidenav-item
-                    :to="{ name: 'Data Hygeco' }"
-                    mini-icon="R"
-                    text="Employees"
-                  />
-                  <sidenav-item
-                    :to="{ name: 'Clients Hygeco' }"
-                    mini-icon="C"
-                    text="Clients"
-                  />
-                  <sidenav-item
-                    :to="{ name: 'Commercial Hygeco' }"
-                    mini-icon="CC"
-                    text="Commercial Clients"
-                  />
-                  <sidenav-item
-                    :to="{ name: 'New User' }"
-                    mini-icon="N"
-                    text="New User"
-                  />
-                </template>
-              </sidenav-collapse-item>
+  <sidenav-collapse-item
+    refer="usersExample"
+    mini-icon="R"
+    text="Reservations"
+  >
+    <template #nav-child-item>
+      <sidenav-item
+        :to="{ name: 'Reservation Hygeco' }"
+        mini-icon="R"
+        text="Nos Reservations"
+      />
+      <sidenav-item
+        :to="{ name: 'Clients Hygeco' }"
+        mini-icon="C"
+        text="Clients"
+      />
+      <sidenav-item
+        :to="{ name: 'Commercial Hygeco' }"
+        mini-icon="CC"
+        text="Commercial Clients"
+      />
+      <sidenav-item
+        :to="{ name: 'New User' }"
+        mini-icon="N"
+        text="New User"
+      />
+    </template>
+  </sidenav-collapse-item>
 
-              <!-- <sidenav-collapse-item
-                refer="accountExample"
-                mini-icon="A"
-                text="Account"
-              >
-                <template #nav-child-item>
-                  <sidenav-item
-                    :to="{ name: 'Settings' }"
-                    mini-icon="S"
-                    text="Settings"
-                  />
-                  <sidenav-item
-                    :to="{ name: 'Billing' }"
-                    mini-icon="B"
-                    text="Billing"
-                  />
-                  <sidenav-item
-                    :to="{ name: 'Invoice' }"
-                    mini-icon="I"
-                    text="Invoice"
-                  />
-                  <sidenav-item
-                    :to="{ name: 'Security' }"
-                    mini-icon="S"
-                    text="Security"
-                  />
-                </template>
-              </sidenav-collapse-item>
-
-              <sidenav-collapse-item
-                refer="projectsExample"
-                mini-icon="P"
-                text="Projects"
-              >
-                <template #nav-child-item>
-                  <sidenav-item
-                    :to="{ name: 'General' }"
-                    mini-icon="G"
-                    text="General"
-                  />
-                  <sidenav-item
-                    :to="{ name: 'Timeline' }"
-                    mini-icon="T"
-                    text="Timeline"
-                  />
-                  <sidenav-item
-                    :to="{ name: 'New Project' }"
-                    mini-icon="N"
-                    text="New Project"
-                  />
-                </template>
-              </sidenav-collapse-item>
-
-              <sidenav-item
-                :to="{ name: 'Pricing Page' }"
-                mini-icon="P"
-                text="Pricing Page"
-              />
-              <sidenav-item :to="{ name: 'RTL' }" mini-icon="R" text="RTL" />
-              <sidenav-item
-                :to="{ name: 'Widgets' }"
-                mini-icon="W"
-                text="Widgets"
-              />
-              <sidenav-item
-                :to="{ name: 'Charts' }"
-                mini-icon="C"
-                text="Charts"
-              />
-              <sidenav-item
-                :to="{ name: 'Sweet Alerts' }"
-                mini-icon="S"
-                text="Sweet Alerts"
-              />
-              <sidenav-item
-                :to="{ name: 'Notifications' }"
-                mini-icon="N"
-                text="Notifications"
-              /> -->
-            </ul>
-          </template>
-        </sidenav-collapse>
-      </li>
+  <sidenav-collapse-item
+    refer="usersExample"
+    mini-icon="S"
+    text="Services"
+  >
+    <template #nav-child-item>
+      <sidenav-item
+        :to="{ name: 'Data Hygeco' }"
+        mini-icon="R"
+        text="Employees"
+      />
+      <sidenav-item
+        :to="{ name: 'Clients Hygeco' }"
+        mini-icon="C"
+        text="Clients"
+      />
+      <sidenav-item
+        :to="{ name: 'Commercial Hygeco' }"
+        mini-icon="CC"
+        text="Commercial Clients"
+      />
+      <sidenav-item
+        :to="{ name: 'New User' }"
+        mini-icon="N"
+        text="New User"
+      />
+    </template>
+  </sidenav-collapse-item>
+</li>
 
       <!-- <li class="nav-item">
         <sidenav-collapse

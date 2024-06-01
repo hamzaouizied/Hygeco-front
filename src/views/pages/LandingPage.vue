@@ -27,11 +27,11 @@ export default {
       currentIndexHead: 0,
       existingSlides: [
         {
-          imageUrl: require("../../assets/img/header1.png"),
+          imageUrl: require("../../assets/img/banniere11.png"),
           text: "D'un linge frais à un ménage parfait, Hygeco prend le relais!",
         },
         {
-          imageUrl: require("../../assets/img/header2.png"),
+          imageUrl: require("../../assets/img/o2.png"),
           text: "D'un linge frais à un ménage parfait, Hygeco prend le relais!",
         },
       ],
@@ -110,6 +110,7 @@ export default {
       </div>
     </div>
   </div>
+
   <TeamCard />
   <div class="container">
     <section class="counter-section pt-120 mt-7">
@@ -433,6 +434,7 @@ export default {
   </section>
 
   <ProjectGallerie />
+
   <section class="testimonials">
     <div class="heading text-center">
       <h2>

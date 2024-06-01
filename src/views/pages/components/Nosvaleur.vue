@@ -20,17 +20,17 @@ export default {
       landscapes: [
        
         {
-          image: "https://radiustheme.com/demo/wordpress/themes/clenix/wp-content/uploads/2019/07/about1.jpg",
+          image: require("../../../assets/img/f2.png"),
           description: "Nous utilisons des sacs réutilisables pour la collecte linges,réduisant ainsi notre consommation de plastique et favorisant la durabilité. ",
           title: "Sacs réutilisables Hygeco"
         },
         {
-          image: "https://radiustheme.com/demo/wordpress/themes/clenix/wp-content/uploads/2019/07/about1.jpg",
+          image: require("../../../assets/img/f2.png"),
           description: "Nous utilisons exclusivement des produits de nettoyage certifiés écologiques, qui sont sûrs pour l'environnement et la santé de nos clients.  ",
           title: "Produits de nettoyage certifiés écologiques"
         },
         {
-          image: "https://radiustheme.com/demo/wordpress/themes/clenix/wp-content/uploads/2019/07/about1.jpg",
+          image: require("../../../assets/img/f2.png"),
           description: "Nos véhicules de transport sont électriques,contribuant ainsi à la réduction des émissions de carbone et à la préservation de l'air que nous respirons.",
           title: "Véhicules de transport électriques "
         },

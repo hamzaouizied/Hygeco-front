@@ -64,7 +64,7 @@ export default {
 
 
   <div class="page-header position-relative" :style="{
-    backgroundImage: 'url(' + require('../../assets/img/header2.png') + ')',
+    backgroundImage: 'url(' + require('../../assets/img/o2.png') + ')',
     backgroundSize: 'cover',
     padding: '100px',
   }">
@@ -94,7 +94,7 @@ export default {
             <div class="choose-left-cont">
               <div class="thumb1">
                 <img decoding="async"
-                  src="https://www.4damstheme.com/clenis/wp-content/uploads/2024/04/choose-thumb.png"
+                  src="../../assets/img/a2.png"
                   alt="Success Project " />
               </div>
               <!-- <div class="prograss-box">
@@ -142,7 +142,7 @@ export default {
               <div class="adjust-content">
                 <div class="thumb-ad">
                   <img decoding="async"
-                    src="https://www.4damstheme.com/clenis/wp-content/uploads/2024/04/choose-thumb1.png"
+                    src="../../assets/img/a1.png"
                     alt="This Service Focus on Clean &amp; Maintaining Homes" />
                 </div>
                 <div class="adjust-content-info">
@@ -214,7 +214,7 @@ export default {
       <div class="col-xl-4 col-lg-4 col-md-5 col-sm-5">
         <div class="thumb-about2">
           <img style="width: 100%;border-radius: 60px;" decoding="async"
-            src="https://www.4damstheme.com/clenis/wp-content/uploads/2024/04/about-cate.png"
+            src="../../assets/img/f1.png"
             alt="Cleaning Today for Making Your Future Excellent">
         </div>
 

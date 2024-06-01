@@ -148,13 +148,14 @@ pendant que nous prenons soin de leurs besoins de nettoyage et de gestion du lin
 }
 
 .description p {
-  color: #021e0a;
+  color: #fff;
   padding-top: 5px;
   font-weight: 700;
 }
 
 .description h4 {
   text-transform: uppercase;
+  color: #fff;
 }
 
 input {
@@ -170,19 +171,19 @@ input:checked + label .description {
   transform: translateY(0) !important;
 }
 .card[for="c1"] {
-    background-image: url('https://radiustheme.com/demo/wordpress/themes/clenix/wp-content/uploads/2019/07/about1.jpg');
+    background-image: url('../../../assets/img/nv.png');
 }
 .card[for="c2"] {
-    background-image: url('https://radiustheme.com/demo/wordpress/themes/clenix/wp-content/uploads/2019/07/about1.jpg');
+    background-image: url('../../../assets/img/nv.png');
 }
 .card[for="c3"] {
-    background-image: url('https://radiustheme.com/demo/wordpress/themes/clenix/wp-content/uploads/2019/07/about1.jpg');
+    background-image: url('../../../assets/img/nv.png');
 }
 .card[for="c4"] {
-    background-image: url('https://radiustheme.com/demo/wordpress/themes/clenix/wp-content/uploads/2019/07/about1.jpg');
+    background-image: url('../../../assets/img/nv.png');
 }
 .card[for="c5"] {
-    background-image: url('https://radiustheme.com/demo/wordpress/themes/clenix/wp-content/uploads/2019/07/about1.jpg');
+    background-image: url('../../../assets/img/nv.png');
 }
 /* Responsive Styles */
 @media (max-width: 768px) {
