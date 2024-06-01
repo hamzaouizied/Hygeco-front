@@ -50,10 +50,10 @@ onBeforeUnmount(() => {
 
   <navbar is-blur="blur border-radius-lg my-3 py-2 start-0 end-0 mx-4 shadow" btn-background="bg-gradient-success"
     :dark-mode="true" style="position: absolute;" />
-  <main class="main">
+  <main class="main" style="background-color: #f8f9fa;">
 
     <!-- Hero Section -->
-    <section id="hero" class="hero section">
+    <section id="hero" class="hero section" style="background-color: #f8f9fa;">
       <div class="hero-bg">
         <img src="../../assets/img/hero-bg-light.webp" alt="">
       </div>
@@ -79,7 +79,7 @@ onBeforeUnmount(() => {
 
 
     <!-- About Section -->
-    <section id="about" class="about section">
+    <section id="about" class="about section" style="background-color: #f8f9fa;">
 
       <div class="container">
 
@@ -126,7 +126,7 @@ onBeforeUnmount(() => {
 
 
     <!-- Features Section -->
-    <section id="features" class="features section">
+    <section id="features" class="features section" style="background-color: #f8f9fa;">
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
@@ -205,7 +205,7 @@ onBeforeUnmount(() => {
     </section><!-- /Features Section -->
 
     <!-- Features Details Section -->
-    <section id="features-details" class="features-details section">
+    <section id="features-details" class="features-details section" style="background-color: #f8f9fa;">
 
       <div class="container">
 
@@ -237,7 +237,7 @@ onBeforeUnmount(() => {
 
 
     <!-- Services Section -->
-    <section id="services" class="services section">
+    <section id="services" class="services section" style="background-color: #f8f9fa;">
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
@@ -308,7 +308,7 @@ onBeforeUnmount(() => {
 
     </section><!-- /Services Section -->
     <!-- Features Details Section -->
-    <section id="features-details" class="features-details section">
+    <section id="features-details" class="features-details section" style="background-color: #f8f9fa;">
 
       <div class="container">
 
@@ -345,7 +345,7 @@ onBeforeUnmount(() => {
 
 
     <!-- Services Section -->
-    <section id="services" class="services section">
+    <section id="services" class="services section" style="background-color: #f8f9fa;">
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
@@ -417,7 +417,7 @@ onBeforeUnmount(() => {
     </section><!-- /Services Section -->
 
     <!-- More Features Section -->
-    <section id="more-features" class="more-features section">
+    <section id="more-features" class="more-features section" style="background-color: #f8f9fa;">
 
       <div class="container">
 
@@ -433,7 +433,7 @@ onBeforeUnmount(() => {
 
             <div class="row">
 
-              <div class="col-lg-6 icon-box d-flex">
+              <div class="col-lg-5 icon-box d-flex ">
                 <i class="bi bi-easel flex-shrink-0"></i>
                 <div>
                   <h4>Nettoyage complet</h4>
@@ -442,7 +442,7 @@ onBeforeUnmount(() => {
                 </div>
               </div><!-- End Icon Box -->
 
-              <div class="col-lg-6 icon-box d-flex">
+              <div class="col-lg-5 icon-box d-flex ">
                 <i class="bi bi-patch-check flex-shrink-0"></i>
                 <div>
                   <h4>Attention aux détails </h4>
@@ -451,7 +451,7 @@ onBeforeUnmount(() => {
                 </div>
               </div><!-- End Icon Box -->
 
-              <div class="col-lg-6 icon-box d-flex">
+              <div class="col-lg-5 icon-box d-flex">
                 <i class="bi bi-brightness-high flex-shrink-0"></i>
                 <div>
                   <h4>Déménagement sans stress</h4>
@@ -461,7 +461,7 @@ onBeforeUnmount(() => {
                 </div>
               </div><!-- End Icon Box -->
 
-              <div class="col-lg-6 icon-box d-flex">
+              <div class="col-lg-5 icon-box d-flex">
                 <i class="bi bi-brightness-high flex-shrink-0"></i>
                 <div>
                   <h4>Délai rapide</h4>
@@ -486,7 +486,7 @@ onBeforeUnmount(() => {
     </section><!-- /More Features Section -->
 
     <!-- Pricing Section -->
-    <section id="pricing" class="pricing section">
+    <section id="pricing" class="pricing section" style="background-color: #f8f9fa;">
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
@@ -541,7 +541,7 @@ onBeforeUnmount(() => {
 
     </argon-alert>
 
-    <section id="features" class="features section">
+    <section id="features" class="features section" style="background-color: #f8f9fa;">
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
@@ -639,7 +639,7 @@ onBeforeUnmount(() => {
     </section>
 
     <!-- Clients Section -->
-    <section id="clients" class="clients section">
+    <section id="clients" class="clients section" style="background-color: #f8f9fa;">
 
       <div class="container" data-aos="fade-up">
 
@@ -676,7 +676,7 @@ onBeforeUnmount(() => {
     </section><!-- /Clients Section -->
 
     <!-- Contact Section -->
-    <section id="contact" class="contact section">
+    <section id="contact" class="contact section" style="background-color: #f8f9fa;">
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
@@ -1931,7 +1931,9 @@ section,
 }
 
 .more-features .icon-box {
+  /* margin: 30px 0 20px; */
   margin-top: 30px;
+  margin-right: 20px;
   border: 1px solid #20c997;
   border-radius: 15px;
   padding: 10px;

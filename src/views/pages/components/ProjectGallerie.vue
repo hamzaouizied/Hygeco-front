@@ -1,63 +1,72 @@
 <template>
-  <div class="Main">
-    <div class="text-center" style="margin-bottom: 40px;">
-      <h2 style="font-size: 2em;
-  margin-bottom: 10px;">Nos Projets</h2>
-      <p style=" font-size: 1em;
+    <div class="Main">
+        <div class="text-center" style="margin-bottom: 40px;">
+        <h2 style="font-size: 2em;
+  margin-bottom: 10px;">Our Recent Work</h2>
+        <p style=" font-size: 1em;
   color: #666;">Perspiciatis unde omnis iste natus error sit voluptatem accusantium dol oremque laudantium, totam
-        remeaque ipsa.</p>
-    </div>
-
-    <section class="Carousel" ref="carousel" tabindex="-1">
-      <h2 class="Hidden">Gallerie</h2>
-      <article v-for="(card, index) in cards" :key="index" :class="['Card', 'Card--overlay', card.type]" :id="card.id"
-        @click="navigateToCard(card.id)">
-        <div class="Card__media">
-          <img class="Card__image" :src="card.imageUrl" :alt="card.imageAlt" :width="card.imageWidth"
-            :height="card.imageHeight" loading="lazy" />
-        </div>
-        <div class="Card__main">
-          <h2 class="Card__heading"><a :href="card.linkUrl" class="Card__link">{{ card.title }}</a></h2>
-          <p>{{ card.description }}</p>
-        </div>
-      </article>
-    </section>
-
-    <nav class="Pagination">
-      <h2 class="Hidden">Carousel Navigation</h2>
-      <button class="Arrow" type="button" aria-controls="carousel" @click="previousCard" :disabled="isFirstCard">
-        <svg width="16" height="16" viewBox="0 0 16 16" role="presentation">
-          <path fill-rule="evenodd"
-            d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z" />
-        </svg>
-        <span class="Hidden">Previous slide</span>
-      </button>
-      <button class="Arrow" type="button" aria-controls="carousel" @click="nextCard" :disabled="isLastCard">
-        <svg width="16" height="16" viewBox="0 0 16 16" role="presentation">
-          <path fill-rule="evenodd"
-            d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z" />
-        </svg>
-        <span class="Hidden">Next slide</span>
-      </button>
-      <div class="Dots">
-        <a v-for="(card, index) in cards" :key="index" :href="`#${card.id}`" class="Dot" tabindex="-1">
-          <span class="Hidden">Slide {{ index + 1 }}</span>
-        </a>
+          remeaque ipsa.</p>
       </div>
-    </nav>
-  </div>
-</template>
-
-<script>
+  
+      <section class="Carousel" ref="carousel" tabindex="-1" style="background-color: #f8f9fa;">
+        <h2 class="Hidden">Gallerie</h2>
+        <article
+          v-for="(card, index) in cards"
+          :key="index"
+          :class="['Card', 'Card--overlay', card.type]"
+          :id="card.id"
+          @click="navigateToCard(card.id)"
+        >
+          <div class="Card__media">
+            <img
+              class="Card__image"
+              :src="card.imageUrl"
+              :alt="card.imageAlt"
+              :width="card.imageWidth"
+              :height="card.imageHeight"
+              loading="lazy"
+            />
+          </div>
+          <div class="Card__main">
+            <h2 class="Card__heading"><a :href="card.linkUrl" class="Card__link">{{ card.title }}</a></h2>
+            <p>{{ card.description }}</p>
+          </div>
+        </article>
+      </section>
+  
+      <nav class="Pagination">
+        <h2 class="Hidden">Carousel Navigation</h2>
+        <button class="Arrow" type="button" aria-controls="carousel" @click="previousCard" :disabled="isFirstCard">
+          <svg width="16" height="16" viewBox="0 0 16 16" role="presentation">
+            <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
+          </svg>
+          <span class="Hidden">Previous slide</span>
+        </button>
+        <button class="Arrow" type="button" aria-controls="carousel" @click="nextCard" :disabled="isLastCard">
+          <svg width="16" height="16" viewBox="0 0 16 16" role="presentation">
+            <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
+          </svg>
+          <span class="Hidden">Next slide</span>
+        </button>
+        <div class="Dots">
+          <a v-for="(card, index) in cards" :key="index" :href="`#${card.id}`" class="Dot" tabindex="-1">
+            <span class="Hidden">Slide {{ index + 1 }}</span>
+          </a>
+        </div>
+      </nav>
+    </div>
+  </template>
+  
+  <script>
 export default {
   data() {
     return {
       cards: [
-        { id: 'card-1', type: 'Card--square', imageUrl: 'https://radiustheme.com/demo/wordpress/themes/clenix/wp-content/uploads/2019/07/window-620x672.jpg', imageAlt: 'Card image description', imageWidth: '480', imageHeight: '480', title: 'Prefer 1/1 aspect ratio', linkUrl: '#', description: 'This is a demo card with 1/1 aspect ratio.' },
-        { id: 'card-2', type: 'Card--wide', imageUrl: 'https://radiustheme.com/demo/wordpress/themes/clenix/wp-content/uploads/2019/07/house5-620x672.jpg', imageAlt: 'Card image description', imageWidth: '960', imageHeight: '480', title: 'Wide aspect ratio', linkUrl: '#', description: 'This is a demo card with a wide aspect ratio.' },
-        { id: 'card-3', type: 'Card--tall', imageUrl: 'https://radiustheme.com/demo/wordpress/themes/clenix/wp-content/uploads/2019/10/bedroom-620x672.jpg', imageAlt: 'Card image description', imageWidth: '400', imageHeight: '800', title: 'Tall aspect ratio', linkUrl: '#', description: 'This is a demo card with a tall aspect ratio.' },
-        { id: 'card-4', type: 'Card--tall', imageUrl: 'https://images.unsplash.com/photo-1621160471147-c5be030e199b?crop=entropy&cs=srgb&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTYyMzMxMTEzMw&ixlib=rb-1.2.1&q=85&height=480', imageAlt: 'Card image description', imageWidth: '400', imageHeight: '800', title: 'Tall aspect ratio', linkUrl: '#', description: 'This is a demo card with a tall aspect ratio.' }]
-
+            { id: 'card-1', type: 'Card--square', imageUrl: 'https://radiustheme.com/demo/wordpress/themes/clenix/wp-content/uploads/2019/07/window-620x672.jpg', imageAlt: 'Card image description', imageWidth: '480', imageHeight: '480', title: 'Prefer 1/1 aspect ratio', linkUrl: '#', description: 'This is a demo card with 1/1 aspect ratio.' },
+            { id: 'card-2', type: 'Card--wide', imageUrl: 'https://radiustheme.com/demo/wordpress/themes/clenix/wp-content/uploads/2019/07/house5-620x672.jpg', imageAlt: 'Card image description', imageWidth: '960', imageHeight: '480', title: 'Wide aspect ratio', linkUrl: '#', description: 'This is a demo card with a wide aspect ratio.' },
+             { id: 'card-3', type: 'Card--tall', imageUrl: 'https://radiustheme.com/demo/wordpress/themes/clenix/wp-content/uploads/2019/10/bedroom-620x672.jpg', imageAlt: 'Card image description', imageWidth: '400', imageHeight: '800', title: 'Tall aspect ratio', linkUrl: '#', description: 'This is a demo card with a tall aspect ratio.'  },
+             { id: 'card-4', type: 'Card--tall', imageUrl: 'https://images.unsplash.com/photo-1621160471147-c5be030e199b?crop=entropy&cs=srgb&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTYyMzMxMTEzMw&ixlib=rb-1.2.1&q=85&height=480', imageAlt: 'Card image description', imageWidth: '400', imageHeight: '800', title: 'Tall aspect ratio', linkUrl: '#', description: 'This is a demo card with a tall aspect ratio.'  }     ]
+     
     };
   },
   computed: {
@@ -100,8 +109,8 @@ export default {
   }
 };
 </script>
-
-<style scoped>
+  
+  <style scoped>
 :root {
   --theme-blue: 200, 80%, 38%;
   --theme-red: 350, 63%, 52%;
@@ -177,12 +186,12 @@ a,
     min-height: 100%;
     scroll-snap-align: start;
   }
-
+  
   .Card__media {
     aspect-ratio: auto;
   }
 
-  &>div:empty {
+  & > div:empty {
     position: relative;
 
     &:first-child {
@@ -215,7 +224,7 @@ a,
     .Card__media {
       padding-block-end: 0 !important;
     }
-
+    
     .Card__image {
       position: relative !important;
     }
@@ -267,7 +276,6 @@ a,
       margin-inline-end: auto;
       order: -1;
     }
-
     &:last-of-type {
       margin-inline-start: auto;
       order: 1;
@@ -306,7 +314,6 @@ a,
 
     &:not(:focus-visible) {
       color: hsl(var(--theme-red));
-
       svg {
         box-shadow: none;
       }
@@ -376,7 +383,7 @@ a,
   position: relative;
   z-index: -1;
 
-  &>* {
+  & > * {
     border-radius: inherit;
     height: 100%;
     object-fit: cover;
@@ -397,7 +404,7 @@ a,
     z-index: 2;
   }
 
-  &>* {
+  & > * {
     margin: 0;
   }
 }
@@ -453,7 +460,7 @@ a,
     &::after {
       opacity: 1;
     }
-
+    
     &:not(:focus):not(:hover) {
       &::after {
         border-color: hsla(var(--card-foreground-color), 0.5);
@@ -470,13 +477,18 @@ a,
   --card-hover-color: var(--theme-white);
 
   grid-template-rows:
-    [media-start] 1fr [overlay-start] 1rem [main-start] auto [main-end overlay-end media-end];
+    [media-start] 1fr
+    [overlay-start] 1rem
+    [main-start] auto
+    [main-end overlay-end media-end];
 
   &::before {
-    background: linear-gradient(to top,
-        hsla(var(--card-shadow-color), 0.8) 20%,
-        hsla(var(--card-shadow-color), 0.3) 60%,
-        transparent);
+    background: linear-gradient(
+      to top,
+      hsla(var(--card-shadow-color), 0.8) 20%,
+      hsla(var(--card-shadow-color), 0.3) 60%,
+      transparent
+    );
     border-bottom-left-radius: 1rem;
     border-bottom-right-radius: 1rem;
     content: '';
@@ -557,7 +569,8 @@ a,
 
 @font-face {
   font-family: 'Raleway';
-  src: url('https://assets.codepen.io/85421/Raleway-VariableFont.woff2') format('woff2');
+  src: url('https://assets.codepen.io/85421/Raleway-VariableFont.woff2')
+    format('woff2');
   font-display: swap;
   font-weight: 1 900;
   font-style: normal;
@@ -592,22 +605,22 @@ img {
   padding: 1.5rem 5vw;
   width: 100%;
 
-  &>*:first-child {
+  & > *:first-child {
     margin-block-start: 0;
   }
 
-  &>h1 {
+  & > h1 {
     font-weight: 800;
   }
 
-  &>h1,
-  &>h2,
-  &>h3 {
+  & > h1,
+  & > h2,
+  & > h3 {
     line-height: 1.25;
     margin-block: 1.5rem 1rem;
   }
 
-  &>ul {
+  & > ul {
     margin-block: 1.5rem;
     padding-inline: 2rem 0;
 
@@ -616,7 +629,7 @@ img {
     }
   }
 
-  &>p {
+  & > p {
     margin-block: 1rem;
   }
 
@@ -624,4 +637,5 @@ img {
     font-weight: 500;
   }
 }
-</style>
+  </style>
+  

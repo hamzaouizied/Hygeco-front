@@ -893,7 +893,7 @@ background: var(--bg);
   height:100%;
   position: relative;
   margin: 0 1em;
-  background: url(https://radiustheme.com/demo/wordpress/themes/clenix/wp-content/uploads/2019/07/about1.jpg) center;
+  background: url('../../assets/img/o1.png') center;
   background-size: cover;
   color: #fff;
   border-radius: 18px;

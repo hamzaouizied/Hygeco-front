@@ -29,18 +29,7 @@ export default {
   data() {
     return {
       store: useStore(),
-      currentIndexHead: 0,
-      existingSlides: [
-        {
-          imageUrl: require("../../assets/img/header1.png"),
-          text: "Let the green clean begin. Linen's bright, cleaning's right, Hygeco's here day or night!",
-        },
-        {
-          imageUrl: require("../../assets/img/header2.png"),
-          text: "Let the green clean begin. Linen's bright, cleaning's right, Hygeco's here day or night!",
-        },
-      ],
-      intervalId: null,
+     
     };
   },
   mounted() {
@@ -75,7 +64,7 @@ export default {
 
 
   <div class="page-header position-relative" :style="{
-    backgroundImage: 'url(' + require('../../assets/img/header2.png') + ')',
+    backgroundImage: 'url(' + require('../../assets/img/o2.png') + ')',
     backgroundSize: 'cover',
     padding: '100px',
   }">
@@ -97,7 +86,7 @@ export default {
       </div>
     </div>
   </div>
-  <section class="choose-section1 overflow-hidden pb-90 pt-120 position-relative ">
+  <section class="choose-section1 overflow-hidden pb-90 pt-120 position-relative " style="background-color: #f8f9fa;">
     <div class="choose-wrapper pb-90 mt-5">
       <div class="container">
         <div class="row g-0 justify-content-between">
@@ -105,7 +94,7 @@ export default {
             <div class="choose-left-cont">
               <div class="thumb1">
                 <img decoding="async"
-                  src="https://www.4damstheme.com/clenis/wp-content/uploads/2024/04/choose-thumb.png"
+                  src="../../assets/img/a2.png"
                   alt="Success Project " />
               </div>
               <!-- <div class="prograss-box">
@@ -153,7 +142,7 @@ export default {
               <div class="adjust-content">
                 <div class="thumb-ad">
                   <img decoding="async"
-                    src="https://www.4damstheme.com/clenis/wp-content/uploads/2024/04/choose-thumb1.png"
+                    src="../../assets/img/a1.png"
                     alt="This Service Focus on Clean &amp; Maintaining Homes" />
                 </div>
                 <div class="adjust-content-info">
@@ -205,9 +194,9 @@ export default {
           </div>
         </div>
       </div>
-      <img decoding="async"
+      <!-- <img decoding="async"
         src="https://www.4damstheme.com/clenis/wp-content/plugins/clenis-toolkit/widgets/img/service/choos-tablet.png"
-        alt="This Service Focus on Clean &amp; Maintaining Homes" class="ripple" />
+        alt="This Service Focus on Clean &amp; Maintaining Homes" class="ripple" /> -->
       <img decoding="async"
         src="https://www.4damstheme.com/clenis/wp-content/plugins/clenis-toolkit/widgets/img/service/ps.png"
         alt="This Service Focus on Clean &amp; Maintaining Homes" class="ripple-ps" />
@@ -225,7 +214,7 @@ export default {
       <div class="col-xl-4 col-lg-4 col-md-5 col-sm-5">
         <div class="thumb-about2">
           <img style="width: 100%;border-radius: 60px;" decoding="async"
-            src="https://www.4damstheme.com/clenis/wp-content/uploads/2024/04/about-cate.png"
+            src="../../assets/img/f1.png"
             alt="Cleaning Today for Making Your Future Excellent">
         </div>
 
@@ -332,7 +321,7 @@ export default {
     </div>
   </div>
   <div class="container">
-    <section class="counter-section pt-120 mt-7">
+    <section class="counter-section pt-120 mt-2" style="background-color: #f8f9fa;">
       <div class="container">
         <div class="counter-wrapper">
           <div class="counter__items odometer-item wow fadeInDown" data-wow-duration="0.4s" style="

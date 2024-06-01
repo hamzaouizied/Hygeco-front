@@ -1,6 +1,10 @@
 <script setup>
 // import downArrWhite from "@/assets/img/down-arrow-white.svg";
 // import downArrBlack from "@/assets/img/down-arrow-dark.svg";
+import { computed } from "vue";
+import { useStore } from "vuex";
+import { useRouter } from "vue-router";
+
 defineProps({
   btnBackground: {
     type: String,
@@ -15,6 +19,17 @@ defineProps({
     default: false,
   },
 });
+const router = useRouter();
+const store = useStore();
+const isAuthenticated = computed(() => store.state.authenticated);
+
+function logout() {
+  store.commit("setAuthenticated", false);
+  localStorage.removeItem("token");
+  console.log("log out succefully");
+  // Redirect to the login page
+  router.push({ name: "Landing Page" });
+}
 </script>
 <template>
   <!-- Navbar -->
@@ -85,12 +100,21 @@ defineProps({
           </li>
         </ul>
         <router-link
-          :to="{ name: 'Signin Illustration' }"
-          class="mb-0 btn btn-sm me-1"
-          :class="btnBackground ? btnBackground : 'bg-white text-dark'"
-        >
-          Sign In
-        </router-link>
+      v-if="!isAuthenticated"
+      :to="{ name: 'Signin Illustration' }"
+      class="mb-0 btn btn-sm me-1"
+      :class="btnBackground? btnBackground : 'bg-white text-dark'"
+    >
+      Sign In
+    </router-link>
+    <button
+      v-else
+      @click="logout"
+      class="mb-0 btn btn-sm me-1"
+      :class="btnBackground? btnBackground : 'bg-white text-dark'"
+    >
+      Log Out
+    </button>
       </div>
     </div>
   </nav>
