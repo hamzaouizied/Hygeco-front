@@ -1,40 +1,93 @@
-<script setup>
-import { onMounted, onBeforeUnmount } from "vue";
-import { useStore } from "vuex";
+<script>
+import { mapState } from "vuex";
 import Navbar from "@/examples/PageLayout/NavbarHygeco.vue";
-// import PricingCard from "./components/PricingCard.vue";
-// import AppFooter from "@/examples/PageLayout/Footer.vue";
-// import AccordionItem from "./components/AccordionItem.vue";
 import setNavPills from "@/assets/js/nav-pills.js";
-// import ComplexBackgroundCard from "@/views/ecommerce/components/ComplexBackgroundCard.vue";
 import PlayerCard from "@/views/dashboards/components/PlayerCard.vue";
+import axios from 'axios';
 
+export default {
+  components: {
+    Navbar,
+    PlayerCard,
+  },
+  data() {
+    return {
+      form: {
+        firstName: '',
+        address: '',
+        email: '',
+        service: '',
+        note: ''
+      },
+      errors: {}
+    };
+  },
+  computed: {
+    ...mapState({
+      showSidenav: state => state.showSidenav,
+      showNavbar: state => state.showNavbar,
+      showFooter: state => state.showFooter,
+      isPinned: state => state.isPinned,
+    }),
+  },
+  mounted() {
+    this.$store.state.showSidenav = false;
+    this.$store.state.showNavbar = false;
+    this.$store.state.showFooter = false;
+    this.setNavPills();
+  },
+  beforeUnmount() {
+    this.$store.state.showSidenav = false;
+    this.$store.state.showNavbar = false;
+    this.$store.state.showFooter = true;
+    if (this.$store.state.isPinned === false) {
+      const sidenav_show = document.querySelector(".g-sidenav-show");
+      sidenav_show.classList.remove("g-sidenav-hidden");
+      sidenav_show.classList.add("g-sidenav-pinned");
+      this.$store.state.isPinned = true;
+    }
+  },
+  methods: {
+    setNavPills,
+    validateForm() {
+      const errors = {};
+      if (!this.form.firstName) {
+        errors.firstName = 'Le nom complet est obligatoire';
+      }
+      if (!this.form.address) {
+        errors.address = 'L\'adresse est obligatoire';
+      }
+      if (!this.form.email) {
+        errors.email = 'L\'email est obligatoire';
+      } else if (!this.isValidEmail(this.form.email)) {
+        errors.email = 'L\'email doit être valide';
+      }
+      if (!this.form.service) {
+        errors.service = 'Le service est obligatoire';
+      }
+      if (!this.form.note) {
+        errors.note = 'La note est obligatoire';
+      }
+      this.errors = errors;
+      return Object.keys(errors).length === 0;
+    },
+    isValidEmail(email) {
+      const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@(([^<>()[\]\.,;:\s@"]+\.)+[^<>()[\]\.,;:\s@"]{2,})$/i;
+      return re.test(email);
+    },
+    async submitForm() {
+      if (this.validateForm()) {
+        try {
+          const response = await axios.post('/api/submit', this.form);
+          console.log('Form submitted successfully:', response.data);
+        } catch (error) {
+          console.error('Error submitting form:', error);
+        }
+      }
+    }
+  },
 
-
-const store = useStore();
-
-
-// const slides = [...existingSlides, ...testimonialSlides];
-// const currentIndex = ref(0);
-
-onMounted(() => {
-  store.state.showSidenav = false;
-  store.state.showNavbar = false;
-  store.state.showFooter = false;
-  setNavPills();
-});
-onBeforeUnmount(() => {
-  store.state.showSidenav = false;
-  store.state.showNavbar = false;
-  store.state.showFooter = true;
-  if (store.state.isPinned === false) {
-    const sidenav_show = document.querySelector(".g-sidenav-show");
-    sidenav_show.classList.remove("g-sidenav-hidden");
-    sidenav_show.classList.add("g-sidenav-pinned");
-    store.state.isPinned = true;
-  }
-});
-
+};
 </script>
 
 <template>
@@ -166,52 +219,37 @@ onBeforeUnmount(() => {
                 <p role="status" aria-live="polite" aria-atomic="true"></p>
                 <ul></ul>
               </div>
-              <form action="/clenis/#wpcf7-f9-p72-o1" method="post" class="wpcf7-form init clenis-cf7-form"
-                aria-label="Contact form" novalidate="novalidate" data-status="init">
-                <div style="display: none">
-                  <input type="hidden" name="_wpcf7" value="9" />
-                  <input type="hidden" name="_wpcf7_version" value="5.9.3" />
-                  <input type="hidden" name="_wpcf7_locale" value="en_US" />
-                  <input type="hidden" name="_wpcf7_unit_tag" value="wpcf7-f9-p72-o1" />
-                  <input type="hidden" name="_wpcf7_container_post" value="72" />
-                  <input type="hidden" name="_wpcf7_posted_data_hash" value="" />
-                </div>
-                <div class="cleaning-form wow fadeInUp" data-wow-delay="0.6s" style="
-                    visibility: visible;
-                    animation-delay: 0.6s;
-                    animation-name: fadeInUp;
-                  ">
+              <form @submit.prevent="submitForm" class="wpcf7-form init clenis-cf7-form" aria-label="Contact form">
+                <div class="cleaning-form wow fadeInUp" data-wow-delay="0.6s"
+                  style="visibility: visible; animation-delay: 0.6s; animation-name: fadeInUp;">
                   <div class="row g-4">
                     <div class="col-lg-6 col-md-6">
                       <div class="clean-form-grp">
                         <p>
-                          <label>First Name</label><br />
-                          <span class="wpcf7-form-control-wrap" data-name="text-454"><input size="40"
-                              class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true"
-                              aria-invalid="false" placeholder="First name" value="" type="text"
-                              name="text-454" /></span>
+                          <label>Nom complet</label><br />
+                          <input v-model="form.firstName" class="wpcf7-form-control wpcf7-text" aria-required="true"
+                            placeholder="Nom complet" type="text" name="firstName" />
+                          <span v-if="errors.firstName" class="error">{{ errors.firstName }}</span>
                         </p>
                       </div>
                     </div>
                     <div class="col-lg-6 col-md-6">
                       <div class="clean-form-grp">
                         <p>
-                          <label>Address</label><br />
-                          <span class="wpcf7-form-control-wrap" data-name="text-454"><input size="40"
-                              class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true"
-                              aria-invalid="false" placeholder="Your Address" value="" type="text"
-                              name="text-454" /></span>
+                          <label>Adresse</label><br />
+                          <input v-model="form.address" class="wpcf7-form-control wpcf7-text" aria-required="true"
+                            placeholder="Adresse" type="text" name="address" />
+                          <span v-if="errors.address" class="error">{{ errors.address }}</span>
                         </p>
                       </div>
                     </div>
                     <div class="col-lg-6 col-md-6">
                       <div class="clean-form-grp">
                         <p>
-                          <label>Your Email</label><br />
-                          <span class="wpcf7-form-control-wrap" data-name="email-332"><input size="40"
-                              class="wpcf7-form-control wpcf7-email wpcf7-validates-as-required wpcf7-text wpcf7-validates-as-email"
-                              aria-required="true" aria-invalid="false" placeholder="Your Email" value="" type="email"
-                              name="email-332" /></span>
+                          <label>E-mail</label><br />
+                          <input v-model="form.email" class="wpcf7-form-control wpcf7-email" aria-required="true"
+                            placeholder="E-mail" type="email" name="email" />
+                          <span v-if="errors.email" class="error">{{ errors.email }}</span>
                         </p>
                       </div>
                     </div>
@@ -219,8 +257,8 @@ onBeforeUnmount(() => {
                       <div class="clean-form-grp">
                         <p>
                           <label>Service</label><br />
-                          <span class="wpcf7-form-control-wrap" data-name="text-454">
-                            <select class="wpcf7-form-control wpcf7-select" aria-invalid="false" name="service" style="
+                          <select v-model="form.service" class="wpcf7-form-control wpcf7-select" aria-invalid="false"
+                            name="service" style="
                                 border-radius: 10px;
                                 border: 1px solid rgba(255, 255, 255, 0.15);
                                 outline: none;
@@ -229,79 +267,43 @@ onBeforeUnmount(() => {
                                 background: transparent;
                                 width: 100%;
                               ">
-                              <option style="background-color: #30c7b5" value="">
-                                Select a service
-                              </option>
-                              <option style="background-color: #30c7b5" value="Service 1">
-                                Service 1
-                              </option>
-                              <option style="background-color: #30c7b5" value="Service 2">
-                                Service 2
-                              </option>
-                              <!-- Add more options as needed -->
-                            </select>
-                          </span>
+                            <option style="background-color: #30c7b5" value="" disabled>Sélectionner un service</option>
+                            <option style="background-color: #30c7b5" value="Service 1">Menage</option>
+                            <option style="background-color: #30c7b5" value="Service 2">Buandrie</option>
+                            <option style="background-color: #30c7b5" value="Service 2">Commercial</option>
+                            <!-- Add more options as needed -->
+                          </select>
+                          <span v-if="errors.service" class="error">{{ errors.service }}</span>
                         </p>
                       </div>
                     </div>
-                    <!-- <div class="col-lg-6 col-md-6">
-                      <div class="clean-form-grp">
-                        <p>
-                          <label>Day of Service</label><br />
-                          <span
-                            class="wpcf7-form-control-wrap"
-                            data-name="text-454"
-                            ><input
-                              size="40"
-                              class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required"
-                              aria-required="true"
-                              aria-invalid="false"
-                              placeholder="Day of Service"
-                              value=""
-                              type="date"
-                              style="
-                                border-radius: 10px;
-                                border: 1px solid rgba(255, 255, 255, 0.15);
-                                outline: none;
-                                color: rgba(255, 255, 255, 0.55);
-                                padding: 16px 23px;
-                                background: transparent;
-                                width: 100%;
-                              "
-                              name="text-454"
-                          /></span>
-                        </p>
-                      </div>
-                    </div> -->
                     <div class="col-lg-12">
                       <div class="clean-form-grp">
                         <p>
-                          <label>Add a Note</label><br />
-                          <span class="wpcf7-form-control-wrap" data-name="textarea-35">
-                            <textarea cols="40" rows="10"
-                              class="wpcf7-form-control wpcf7-textarea wpcf7-validates-as-required" aria-required="true"
-                              aria-invalid="false" placeholder="Add a note" name="textarea-35"></textarea>
-                          </span>
+                          <label>Écrire une note</label><br />
+                          <textarea v-model="form.note" class="wpcf7-form-control wpcf7-textarea" aria-required="true"
+                            placeholder="Écrire une note" name="note"></textarea>
+                          <span v-if="errors.note" class="error">{{ errors.note }}</span>
                         </p>
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="clean-form-grp">
                         <p style="margin-bottom: 0px">
-                          <input class="wpcf7-form-control wpcf7-submit has-spinner cmn--btn cmn-alt2" type="submit"
-                            value="Submit Your Information" style="
+                          <button class="wpcf7-form-control wpcf7-submit" type="submit" style="
                               border: unset;
                               color: white;
                               background: #344767;
                               border-radius: 87px;
-                              font-size: 16px;
-                            " /><span class="wpcf7-spinner"></span>
+                              padding: 1rem;
+                              font-size: 16px;">Soumettre vos informations</button>
                         </p>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="wpcf7-response-output" aria-hidden="true"></div>
+                <div class=" wpcf7-response-output" aria-hidden="true">
+                </div>
               </form>
             </div>
           </div>
@@ -2978,5 +2980,10 @@ onBeforeUnmount(() => {
   overflow: hidden;
   border-radius: 100px;
   transition: all 0.5s;
+}
+
+.error {
+  color: red;
+  font-weight: 600;
 }
 </style>
