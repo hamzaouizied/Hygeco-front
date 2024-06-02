@@ -52,12 +52,10 @@ export default {
           }
         });
         if (response && response.data) {
-          const token = response.data.token;
-          localStorage.setItem('token', token);
-          store.commit('setAuthenticated', true);
-          console.log("Login successful");
-          // Redirect to the admin dashboard
-          router.push({ name: 'Dashboard admin' });
+            const token = response.data.access_token;
+            localStorage.setItem('token', token);
+            store.commit('setAuthenticated', true);
+            router.push({ name: 'Dashboard admin' });
         } else {
           console.error("Unexpected response structure:", response);
         }

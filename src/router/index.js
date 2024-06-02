@@ -39,6 +39,10 @@ import Kanban from "../views/applications/Kanban.vue";
 import Wizard from "../views/applications/wizard/Wizard.vue";
 import DataTables from "../views/applications/DataTables.vue";
 import DataTablesHygeco from "../views/applications/DataTabelsHygeco.vue";
+import ContactClient from "../views/applications/contact-client.vue";
+import ContactCommercial from "../views/applications/contact-commercial.vue";
+
+
 import ClientHygeco from "../views/applications/ClientsHygeco.vue";
 import CommercialHygeco from "../views/applications/CommercialHygeco.vue";
 import ReservationsHygeco from "../views/applications/ReservationList.vue";
@@ -252,6 +256,16 @@ const routes = [
     path: "/applications/data-Hygeco",
     name: "Data Hygeco",
     component: DataTablesHygeco
+  },
+  {
+    path: "/applications/contact-client",
+    name: "Contact Client",
+    component: ContactClient
+  },
+  {
+    path: "/applications/contact-commercial",
+    name: "Contact Commercial",
+    component: ContactCommercial
   },
   {
     path: "/applications/client-Hygeco",
