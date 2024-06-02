@@ -1,64 +1,117 @@
-<script >
-// import { onMounted, onBeforeUnmount} from "vue";
-import { useStore } from "vuex";
+<script>
+import { mapState } from "vuex";
 import Navbar from "@/examples/PageLayout/NavbarHygeco.vue";
-// import AppFooter from "@/examples/PageLayout/Footer.vue";
-// import AccordionItem from "./components/AccordionItem.vue";
 import setNavPills from "@/assets/js/nav-pills.js";
-// import ComplexBackgroundCard from "@/views/ecommerce/components/ComplexBackgroundCard.vue";
 import PlayerCard from "@/views/dashboards/components/PlayerCard.vue";
+import axios from 'axios';
+
 export default {
   components: {
     Navbar,
-    // ProjectGallerie,
-    // TeamCard
-    // PricingCard,
-    // AppFooter,
-    // AccordionItem,
-    // ComplexBackgroundCard,
     PlayerCard,
   },
   data() {
     return {
-      store: useStore(),
-      currentIndexHead: 0,
-      existingSlides: [
-        {
-          imageUrl: require("../../assets/img/header1.png"),
-          text: "Let the green clean begin. Linen's bright, cleaning's right, Hygeco's here day or night!",
-        },
-        {
-          imageUrl: require("../../assets/img/header2.png"),
-          text: "Let the green clean begin. Linen's bright, cleaning's right, Hygeco's here day or night!",
-        },
-      ],
-      intervalId: null,
+      form: {
+        nom_entreprise: '',
+        email: '',
+        telephone: '',
+        nom_responsable: '',
+        rue: '',
+        unite: '',
+        ville: '',
+        province: '',
+        code_postal:''
+      },
+      errors: {}
     };
   },
+  computed: {
+    ...mapState({
+      showSidenav: state => state.showSidenav,
+      showNavbar: state => state.showNavbar,
+      showFooter: state => state.showFooter,
+      isPinned: state => state.isPinned,
+    }),
+  },
   mounted() {
-    this.store.state.showSidenav = false;
-    this.store.state.showNavbar = false;
-    this.store.state.showFooter = false;
-    setNavPills();
-    // this.startSlideshow();
+    this.$store.state.showSidenav = false;
+    this.$store.state.showNavbar = false;
+    this.$store.state.showFooter = false;
+    this.setNavPills();
   },
   beforeUnmount() {
-    // this.stopSlideshow();
-    this.store.state.showSidenav = false;
-    this.store.state.showNavbar = false;
-    this.store.state.showFooter = true;
-    if (this.store.state.isPinned === false) {
+    this.$store.state.showSidenav = true;
+    this.$store.state.showNavbar = false;
+    this.$store.state.showFooter = true;
+    if (this.$store.state.isPinned === false) {
       const sidenav_show = document.querySelector(".g-sidenav-show");
       sidenav_show.classList.remove("g-sidenav-hidden");
       sidenav_show.classList.add("g-sidenav-pinned");
-      this.store.state.isPinned = true;
+      this.$store.state.isPinned = true;
     }
   },
+  methods: {
+    setNavPills,
+    validateForm() {
+      const errors = {};
+      if (!this.form.nom_entreprise) {
+        errors.nom_entreprise = 'Le nom complet est obligatoire';
+      }
+      if (!this.form.rue) {
+        errors.rue = 'L\'adresse est obligatoire';
+      }
+      if (!this.form.unite) {
+        errors.unite = 'L\'adresse est obligatoire';
+      }
+      if (!this.form.ville) {
+        errors.ville = 'L\'adresse est obligatoire';
+      }
+      if (!this.form.province) {
+        errors.province = 'L\'adresse est obligatoire';
+      }
+      if (!this.form.code_postal) {
+        errors.code_postal = 'L\'adresse est obligatoire';
+      }
+      if (!this.form.email) {
+        errors.email = 'L\'email est obligatoire';
+      } else if (!this.isValidEmail(this.form.email)) {
+        errors.email = 'L\'email doit être valide';
+      }
+      if (!this.form.nom_responsable) {
+        errors.nom_responsable = 'Le nom est obligatoire';
+      }
+      if (!this.form.telephone) {
+        errors.telephone = 'Le telephone est obligatoire';
+      }
+      this.errors = errors;
+      return Object.keys(errors).length === 0;
+    },
+    isValidEmail(email) {
+      const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@(([^<>()[\]\.,;:\s@"]+\.)+[^<>()[\]\.,;:\s@"]{2,})$/i;
+      return re.test(email);
+    },
+    async submitForm() {
+      if (this.validateForm()) {
+        try {
+          const response = await axios.post('https://hygeco-back.test/api/submit-forms', this.form);
+          this.$swal('Formulaire soumis avec succès');
+          console.log('Form submitted successfully:', response.data);
+          this.reinitialiserFormulaire();
+        } catch (error) {
+          console.error('Error submitting form:', error);
+        }
+      }
+    },
+    reinitialiserFormulaire() {
+      this.form = {};
+    }
+  },
+
 };
 </script>
 
 <template>
-    <!-- <div class="green-bar" style="background-color: #34C759; height: 5px;"></div> -->
 
       <div class="container-fluid" style="background-color: #30c7b5;height: 41px;">
         <div class="text-center">
@@ -78,13 +131,7 @@ export default {
 
         <div class="container pb-10 pb-lg-9 pt-7 postion-relative z-index-2">
             <div class="row">
-                <!-- <div class="mx-auto text-center col-md-6 mt-4">
-                    <h3 class="text-start">Menage Commercial</h3>
-                    <p class="text-white">
-                        Hygeco is a Montreal-based company that offers a range of professional cleaning and laundry
-                        services
-                    </p>
-                </div> -->
+           
             </div>
             <div class="row">
                 <div class="mx-auto text-center col-lg-4 col-md-6 col-7">
@@ -131,17 +178,7 @@ export default {
 
 
                 </h2>
-                <!-- <div
-                  class="cmn--btn cmn-alt2 wow fadeInDown"
-                  data-wow-delay="0.4s"
-                  style="
-                    visibility: visible;
-                    animation-delay: 0.4s;
-                    animation-name: fadeInDown;
-                  "
-                >
-                  <span> Contact Us </span>
-                </div> -->
+            
               </div>
               <div class="cleaning-info">
                 <div
@@ -233,33 +270,12 @@ export default {
                 <ul></ul>
               </div>
               <form
-                action="/clenis/#wpcf7-f9-p72-o1"
-                method="post"
+              @submit.prevent="submitForm"
+                
                 class="wpcf7-form init clenis-cf7-form"
                 aria-label="Contact form"
-                novalidate="novalidate"
-                data-status="init"
               >
-                <div style="display: none">
-                  <input type="hidden" name="_wpcf7" value="9" />
-                  <input type="hidden" name="_wpcf7_version" value="5.9.3" />
-                  <input type="hidden" name="_wpcf7_locale" value="en_US" />
-                  <input
-                    type="hidden"
-                    name="_wpcf7_unit_tag"
-                    value="wpcf7-f9-p72-o1"
-                  />
-                  <input
-                    type="hidden"
-                    name="_wpcf7_container_post"
-                    value="72"
-                  />
-                  <input
-                    type="hidden"
-                    name="_wpcf7_posted_data_hash"
-                    value=""
-                  />
-                </div>
+              
                 <div
                   class="cleaning-form wow fadeInUp"
                   data-wow-delay="0.6s"
@@ -274,19 +290,15 @@ export default {
                       <div class="clean-form-grp">
                         <p>
                           <label>Nom de l'entreprise</label><br />
-                          <span
-                            class="wpcf7-form-control-wrap"
-                            data-name="text-454"
-                            ><input
-                              size="40"
+                          <input v-model="form.nom_entreprise"
                               class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required"
                               aria-required="true"
-                              aria-invalid="false"
                               placeholder="Nom de l'entreprise"
-                              value=""
                               type="text"
-                              name="text-454"
-                          /></span>
+                              name="nom_entreprise"
+                          /><span
+                          v-if="errors.nom_entreprise" class="error"
+                            >{{ errors.nom_entreprise }}</span>
                         </p>
                       </div>
                     </div>
@@ -294,20 +306,10 @@ export default {
                     <div class="col-lg-6 col-md-6">
                       <div class="clean-form-grp">
                         <p>
-                          <label>Email</label><br />
-                          <span
-                            class="wpcf7-form-control-wrap"
-                            data-name="email-332"
-                            ><input
-                              size="40"
-                              class="wpcf7-form-control wpcf7-email wpcf7-validates-as-required wpcf7-text wpcf7-validates-as-email"
-                              aria-required="true"
-                              aria-invalid="false"
-                              placeholder="Your Email"
-                              value=""
-                              type="email"
-                              name="email-332"
-                          /></span>
+                          <label>E-mail</label><br />
+                          <input v-model="form.email" class="wpcf7-form-control wpcf7-email" aria-required="true"
+                            placeholder="E-mail" type="email" name="email" />
+                          <span v-if="errors.email" class="error">{{ errors.email }}</span>
                         </p>
                       </div>
                     </div>
@@ -315,19 +317,9 @@ export default {
                       <div class="clean-form-grp">
                         <p>
                           <label>Telephone</label><br />
-                          <span
-                            class="wpcf7-form-control-wrap"
-                            data-name="email-332"
-                            ><input
-                              size="40"
-                              class="wpcf7-form-control wpcf7-email wpcf7-validates-as-required wpcf7-text wpcf7-validates-as-email"
-                              aria-required="true"
-                              aria-invalid="false"
-                              placeholder="Numero de telephone"
-                              value=""
-                              type="email"
-                              name="email-332"
-                          /></span>
+                          <input v-model="form.telephone" class="wpcf7-form-control wpcf7-email" aria-required="true"
+                            placeholder="Telephone" type="text" name="telephone" />
+                          <span v-if="errors.telephone" class="error">{{ errors.telephone }}</span>
                         </p>
                       </div>
                     </div>
@@ -335,19 +327,9 @@ export default {
                       <div class="clean-form-grp">
                         <p>
                           <label>Nom de Responsable</label><br />
-                          <span
-                            class="wpcf7-form-control-wrap"
-                            data-name="email-332"
-                            ><input
-                              size="40"
-                              class="wpcf7-form-control wpcf7-email wpcf7-validates-as-required wpcf7-text wpcf7-validates-as-email"
-                              aria-required="true"
-                              aria-invalid="false"
-                              placeholder="Nom de Responsable"
-                              value=""
-                              type="email"
-                              name="email-332"
-                          /></span>
+                          <input v-model="form.nom_responsable" class="wpcf7-form-control wpcf7-email" aria-required="true"
+                            placeholder="Nom de Responsable" type="text" name="nom_responsable" />
+                          <span v-if="errors.nom_responsable" class="error">{{ errors.nom_responsable }}</span>
                         </p>
                       </div>
                     </div>
@@ -355,71 +337,21 @@ export default {
                       <div class="clean-form-grp">
                         <p>
                           <label>Address</label><br />
-                          <span
-                            class="wpcf7-form-control-wrap address-span "
-                            data-name="text-454"
-                            ><input
-                              size="40"
-                              class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required"
-                              aria-required="true"
-                              aria-invalid="false"
-                              placeholder="Rue"
-                              value=""
-                              type="text"
-                              name="text-454"
-                          /></span>
-                          <span
-                            class="wpcf7-form-control-wrap address-span "
-                            data-name="text-454"
-                            ><input
-                              size="40"
-                              class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required"
-                              aria-required="true"
-                              aria-invalid="false"
-                              placeholder="Unite"
-                              value=""
-                              type="text"
-                              name="text-454"
-                          /></span>
-                          <span
-                            class="wpcf7-form-control-wrap address-span "
-                            data-name="text-454"
-                            ><input
-                              size="40"
-                              class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required"
-                              aria-required="true"
-                              aria-invalid="false"
-                              placeholder="Ville"
-                              value=""
-                              type="text"
-                              name="text-454"
-                          /></span>
-                          <span
-                            class="wpcf7-form-control-wrap address-span "
-                            data-name="text-454"
-                            ><input
-                              size="40"
-                              class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required"
-                              aria-required="true"
-                              aria-invalid="false"
-                              placeholder="Province"
-                              value=""
-                              type="text"
-                              name="text-454"
-                          /></span>
-                          <span
-                            class="wpcf7-form-control-wrap  address-span "
-                            data-name="text-454"
-                            ><input
-                              size="40"
-                              class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required"
-                              aria-required="true"
-                              aria-invalid="false"
-                              placeholder="Code postal"
-                              value=""
-                              type="text"
-                              name="text-454"
-                          /></span>
+                          <input v-model="form.rue" class="wpcf7-form-control wpcf7-email" aria-required="true"
+                            placeholder="Rue" type="text" name="rue" />
+                          <span v-if="errors.rue" class="error">{{ errors.rue }}</span>
+                          <input v-model="form.unite" class="wpcf7-form-control wpcf7-email" aria-required="true"
+                            placeholder="Unite" type="text" name="unite" />
+                          <span v-if="errors.unite" class="error">{{ errors.unite }}</span>
+                          <input v-model="form.ville" class="wpcf7-form-control wpcf7-email" aria-required="true"
+                            placeholder="Ville" type="text" name="ville" />
+                          <span v-if="errors.ville" class="error">{{ errors.ville }}</span>
+                          <input v-model="form.province" class="wpcf7-form-control wpcf7-email" aria-required="true"
+                            placeholder="Province" type="text" name="province" />
+                          <span v-if="errors.province" class="error">{{ errors.province }}</span>
+                          <input v-model="form.code_postal" class="wpcf7-form-control wpcf7-email" aria-required="true"
+                            placeholder="Code Postal" type="text" name="code_postal" />
+                          <span v-if="errors.code_postal" class="error">{{ errors.code_postal }}</span>
                         </p>
                       </div>
                     </div>
@@ -476,18 +408,13 @@ export default {
                     <div class="col-lg-6">
                       <div class="clean-form-grp">
                         <p style="margin-bottom: 0px">
-                          <input
-                            class="wpcf7-form-control wpcf7-submit has-spinner cmn--btn cmn-alt2"
-                            type="submit"
-                            value="Submit Your Information"
-                            style="
+                          <button class="wpcf7-form-control wpcf7-submit" type="submit" style="
                               border: unset;
                               color: white;
                               background: #344767;
                               border-radius: 87px;
-                              font-size: 16px;
-                            "
-                          /><span class="wpcf7-spinner"></span>
+                              padding: 1rem;
+                              font-size: 16px;">Soumettre vos informations</button>
                         </p>
                       </div>
                     </div>
@@ -1240,6 +1167,10 @@ export default {
 .address-span {
   display: block; /* This makes each span take up the full width and ensures the margin applies correctly */
   margin-bottom: 10px; /* Adjust the value to control the space between spans */
+}
+.error {
+  color: red;
+  font-weight: 600;
 }
 .choose-section1::before {
   position: absolute;

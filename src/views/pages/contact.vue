@@ -37,7 +37,7 @@ export default {
     this.setNavPills();
   },
   beforeUnmount() {
-    this.$store.state.showSidenav = false;
+    this.$store.state.showSidenav = true;
     this.$store.state.showNavbar = false;
     this.$store.state.showFooter = true;
     if (this.$store.state.isPinned === false) {
@@ -273,9 +273,9 @@ export default {
                                 width: 100%;
                               ">
                             <option style="background-color: #30c7b5" value="" disabled>Sélectionner un service</option>
-                            <option style="background-color: #30c7b5" value="Service 1">Menage</option>
-                            <option style="background-color: #30c7b5" value="Service 2">Buandrie</option>
-                            <option style="background-color: #30c7b5" value="Service 2">Commercial</option>
+                            <option style="background-color: #30c7b5" value="Menage">Menage</option>
+                            <option style="background-color: #30c7b5" value="Buandrie">Buandrie</option>
+                            <option style="background-color: #30c7b5" value="Commercial">Commercial</option>
                             <!-- Add more options as needed -->
                           </select>
                           <span v-if="errors.service" class="error">{{ errors.service }}</span>

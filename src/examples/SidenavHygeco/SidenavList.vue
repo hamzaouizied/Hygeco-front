@@ -171,6 +171,25 @@ const getRoute = () => {
       />
     </template>
   </sidenav-collapse-item>
+  <sidenav-collapse-item
+    refer="usersExample"
+    mini-icon="C"
+    text="Contacts"
+  >
+    <template #nav-child-item>
+      <sidenav-item
+        :to="{ name: 'Contact Client' }"
+        mini-icon="R"
+        text="Contact Client"
+      />
+      <sidenav-item
+        :to="{ name: 'Contact Commercial' }"
+        mini-icon="C"
+        text="Contact Commercial"
+      />
+     
+    </template>
+  </sidenav-collapse-item>
 </li>
 
       <!-- <li class="nav-item">
