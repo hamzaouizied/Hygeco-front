@@ -908,44 +908,7 @@ export default {
               </div>
             </div>
           </div>
-          <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 wow fadeInUp" data-wow-duration="2.3s" style="
-              visibility: visible;
-              animation-duration: 2.3s;
-              animation-name: fadeInUp;
-            ">
-            <div id="block-18" class="widget-footer widget_block footer__item">
-              <h4 class="footer__title" style="
-                  font-weight: 700;
-                  text-transform: capitalize;
-                  color: #30c7b5;
-                  display: inline-block;
-                  margin-bottom: 41px;
-                ">
-                Politique
-              </h4>
-              <div class="wp-widget-group__inner-blocks">
-                <ul style="padding: 0; margin: 0; list-style: none">
-                  <li>
-                    <a href="https://www.4damstheme.com/clenis/about-clenis/">Ban plans</a>
-                  </li>
-
-                  <li>
-                    <a href="https://www.4damstheme.com/clenis/faqs-page/">Reservtion</a>
-                  </li>
-
-
-
-                  <li>
-                    <a href="https://www.4damstheme.com/clenis/about-clenis/">Privacy Policy</a>
-                  </li>
-
-                  <li>
-                    <a href="https://www.4damstheme.com/clenis/about-clenis/">Testimonial</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
+         
           <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 wow fadeInUp" data-wow-duration="2.3s" style="
               visibility: visible;
               animation-duration: 2.3s;
@@ -1008,10 +971,10 @@ export default {
                         font-weight: 400;
                         line-height: 140%;
                       ">
-                      Mon - Fri 12:00 - 18:00
+                      Lun - Ven 12:00 - 18:00
                     </span>
                   </li>
-                  <li style="display: flex; align-items: center; gap: 9px">
+                  <li style="margin-bottom: 24px">
                     <svg width="14" height="17" viewBox="0 0 14 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path
                         d="M7 14.6746L10.7123 10.9623C12.7625 8.91208 12.7625 5.58794 10.7123 3.53769C8.66208 1.48744 5.33794 1.48744 3.28769 3.53769C1.23744 5.58794 1.23744 8.91208 3.28769 10.9623L7 14.6746ZM7 16.7959L2.22703 12.023C-0.40901 9.3869 -0.40901 5.11307 2.22703 2.47703C4.86307 -0.15901 9.1369 -0.15901 11.773 2.47703C14.409 5.11307 14.409 9.3869 11.773 12.023L7 16.7959ZM7 8.75C7.82845 8.75 8.5 8.07845 8.5 7.25C8.5 6.42157 7.82845 5.75 7 5.75C6.17155 5.75 5.5 6.42157 5.5 7.25C5.5 8.07845 6.17155 8.75 7 8.75ZM7 10.25C5.34314 10.25 4 8.90683 4 7.25C4 5.59314 5.34314 4.25 7 4.25C8.65683 4.25 10 5.59314 10 7.25C10 8.90683 8.65683 10.25 7 10.25Z"
@@ -1019,7 +982,7 @@ export default {
                     </svg>
                     <span style="
                         color: #748aa0;
-                        font-size: 16px;
+                        font-size: 15px;
                         font-style: normal;
                         font-weight: 400;
                         line-height: 140%;

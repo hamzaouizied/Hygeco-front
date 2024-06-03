@@ -3,12 +3,15 @@ import { mapState } from "vuex";
 import Navbar from "@/examples/PageLayout/NavbarHygeco.vue";
 import setNavPills from "@/assets/js/nav-pills.js";
 import PlayerCard from "@/views/dashboards/components/PlayerCard.vue";
-import axios from 'axios';
+// import axios from 'axios';
+import Contact from "./components/contact.vue";
+
 
 export default {
   components: {
     Navbar,
     PlayerCard,
+    Contact,
   },
   data() {
     return {
@@ -49,49 +52,7 @@ export default {
   },
   methods: {
     setNavPills,
-    validateForm() {
-      const errors = {};
-      if (!this.form.first_name) {
-        errors.first_name = 'Le nom complet est obligatoire';
-      }
-      if (!this.form.address) {
-        errors.address = 'L\'adresse est obligatoire';
-      }
-      if (!this.form.email) {
-        errors.email = 'L\'email est obligatoire';
-      } else if (!this.isValidEmail(this.form.email)) {
-        errors.email = 'L\'email doit être valide';
-      }
-      if (!this.form.service) {
-        errors.service = 'Le service est obligatoire';
-      }
-      if (!this.form.note) {
-        errors.note = 'La note est obligatoire';
-      }
-      this.errors = errors;
-      return Object.keys(errors).length === 0;
-    },
-    isValidEmail(email) {
-      const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@(([^<>()[\]\.,;:\s@"]+\.)+[^<>()[\]\.,;:\s@"]{2,})$/i;
-      return re.test(email);
-    },
-    async submitForm() {
-      if (this.validateForm()) {
-        try {
-          const response = await axios.post('https://hygeco-back.test/api/submit-form', this.form);
-          this.$swal('Formulaire soumis avec succès');
-          console.log('Form submitted successfully:', response.data);
-          this.reinitialiserFormulaire();
-        } catch (error) {
-          console.error('Error submitting form:', error);
-        }
-      }
-    },
-    reinitialiserFormulaire() {
-      this.form = {};
-    }
   },
-
 };
 </script>
 
@@ -131,197 +92,10 @@ export default {
       </div>
     </div>
   </div>
+  <Contact />
 
-  <div class="container-fluid p-5">
-    <section class="cleaning-quote position-relative">
-      <div class="cleaning-thumbing">
-        <img decoding="async" src="../../assets/img/2.png" alt="Contact Us" />
-      </div>
-      <div class="container">
-        <div class="row g-4">
-          <div class="col-lg-5">
-            <div class="cleaning-quote-content">
-              <div class="cmn-section-title" style="margin-top: 4.5rem;">
 
-                <h2 class="white mt-xxl-4 mt-2 mb-0 wow fadeInUp" data-wow-delay="0.6s" style="
-                    visibility: visible;
-                    animation-delay: 0.6s;
-                    animation-name: fadeInUp;
-                    color: white;
-                  ">
-                  Request a free cleaning quote today
-                </h2>
-                <div class="cmn--btn cmn-alt2 wow fadeInDown" data-wow-delay="0.4s" style="
-                    visibility: visible;
-                    animation-delay: 0.4s;
-                    animation-name: fadeInDown;
-                  ">
-                  <span> Contact Us </span>
-                </div>
-              </div>
-              <div class="cleaning-info">
-                <div class="cleaning-info-item wow fadeInDown" data-wow-delay="0.7s" style="
-                    visibility: visible;
-                    animation-delay: 0.7s;
-                    animation-name: fadeInDown;
-                  ">
-                  <div class="c-info-icon d-flex align-items-center">
-                    <svg aria-hidden="true" class="e-font-icon-svg e-fas-map-marker-alt" viewBox="0 0 384 512"
-                      xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M172.268 501.67C26.97 291.031 0 269.413 0 192 0 85.961 85.961 0 192 0s192 85.961 192 192c0 77.413-26.97 99.031-172.268 309.67-9.535 13.774-29.93 13.773-39.464 0zM192 272c44.183 0 80-35.817 80-80s-35.817-80-80-80-80 35.817-80 80 35.817 80 80 80z">
-                      </path>
-                    </svg>
-                    <span class="pra"> Telephone </span>
-                  </div>
-                  <h3 class="title" style="font-size: 1.5rem">
-                    +1 514-939-2020
-                  </h3>
-                </div>
-                <div class="cleaning-info-item wow fadeInDown" data-wow-delay="0.7s" style="
-                    visibility: visible;
-                    animation-delay: 0.7s;
-                    animation-name: fadeInDown;
-                  ">
-                  <div class="c-info-icon d-flex align-items-center">
-                    <svg aria-hidden="true" class="e-font-icon-svg e-fas-map-marker-alt" viewBox="0 0 384 512"
-                      xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M172.268 501.67C26.97 291.031 0 269.413 0 192 0 85.961 85.961 0 192 0s192 85.961 192 192c0 77.413-26.97 99.031-172.268 309.67-9.535 13.774-29.93 13.773-39.464 0zM192 272c44.183 0 80-35.817 80-80s-35.817-80-80-80-80 35.817-80 80 35.817 80 80 80z">
-                      </path>
-                    </svg>
-                    <span class="pra"> Location </span>
-                  </div>
-                  <h3 class="title" style="font-size: 1.2rem">
-                    Montréal,Canada
-                    <span class="d-block">4260 Notre Dame,Ouest</span>
-                  </h3>
-                </div>
-                <div class="cleaning-info-item wow fadeInDown" data-wow-delay="0.7s" style="
-                    visibility: visible;
-                    animation-delay: 0.7s;
-                    animation-name: fadeInDown;
-                  ">
-                  <div class="c-info-icon d-flex align-items-center">
-                    <svg aria-hidden="true" class="e-font-icon-svg e-fas-envelope" viewBox="0 0 512 512"
-                      xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z">
-                      </path>
-                    </svg>
-                    <span class="pra"> Mail Us </span>
-                  </div>
-                  <h3 class="title" style="font-size: 1.2rem">
-                    info@heygeco.ca
-                  </h3>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-7">
-            <div class="wpcf7 js" id="wpcf7-f9-p72-o1" lang="en-US" dir="ltr">
-              <div class="screen-reader-response">
-                <p role="status" aria-live="polite" aria-atomic="true"></p>
-                <ul></ul>
-              </div>
-              <form @submit.prevent="submitForm" class="wpcf7-form init clenis-cf7-form" aria-label="Contact form">
-                <div class="cleaning-form wow fadeInUp" data-wow-delay="0.6s"
-                  style="visibility: visible; animation-delay: 0.6s; animation-name: fadeInUp;">
-                  <div class="row g-4">
-                    <div class="col-lg-6 col-md-6">
-                      <div class="clean-form-grp">
-                        <p>
-                          <label>Nom complet</label><br />
-                          <input v-model="form.first_name" class="wpcf7-form-control wpcf7-text" aria-required="true"
-                            placeholder="Nom complet" type="text" name="first_name" />
-                          <span v-if="errors.first_name" class="error">{{ errors.first_name }}</span>
-                        </p>
-                      </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6">
-                      <div class="clean-form-grp">
-                        <p>
-                          <label>Adresse</label><br />
-                          <input v-model="form.address" class="wpcf7-form-control wpcf7-text" aria-required="true"
-                            placeholder="Adresse" type="text" name="address" />
-                          <span v-if="errors.address" class="error">{{ errors.address }}</span>
-                        </p>
-                      </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6">
-                      <div class="clean-form-grp">
-                        <p>
-                          <label>E-mail</label><br />
-                          <input v-model="form.email" class="wpcf7-form-control wpcf7-email" aria-required="true"
-                            placeholder="E-mail" type="email" name="email" />
-                          <span v-if="errors.email" class="error">{{ errors.email }}</span>
-                        </p>
-                      </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6">
-                      <div class="clean-form-grp">
-                        <p>
-                          <label>Service</label><br />
-                          <select v-model="form.service" class="wpcf7-form-control wpcf7-select" aria-invalid="false"
-                            name="service" style="
-                                border-radius: 10px;
-                                border: 1px solid rgba(255, 255, 255, 0.15);
-                                outline: none;
-                                color: rgba(255, 255, 255, 0.55);
-                                padding: 16px 23px;
-                                background: transparent;
-                                width: 100%;
-                              ">
-                            <option style="background-color: #30c7b5" value="" disabled>Sélectionner un service</option>
-                            <option style="background-color: #30c7b5" value="Menage">Menage</option>
-                            <option style="background-color: #30c7b5" value="Buandrie">Buandrie</option>
-                            <option style="background-color: #30c7b5" value="Commercial">Commercial</option>
-                            <!-- Add more options as needed -->
-                          </select>
-                          <span v-if="errors.service" class="error">{{ errors.service }}</span>
-                        </p>
-                      </div>
-                    </div>
-                    <div class="col-lg-12">
-                      <div class="clean-form-grp">
-                        <p>
-                          <label>Écrire une note</label><br />
-                          <textarea v-model="form.note" class="wpcf7-form-control wpcf7-textarea" aria-required="true"
-                            placeholder="Écrire une note" name="note"></textarea>
-                          <span v-if="errors.note" class="error">{{ errors.note }}</span>
-                        </p>
-                      </div>
-                    </div>
-                    <div class="col-lg-6">
-                      <div class="clean-form-grp">
-                        <p style="margin-bottom: 0px">
-                          <button class="wpcf7-form-control wpcf7-submit" type="submit" style="
-                              border: unset;
-                              color: white;
-                              background: #344767;
-                              border-radius: 87px;
-                              padding: 1rem;
-                              font-size: 16px;">Soumettre vos informations</button>
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class=" wpcf7-response-output" aria-hidden="true">
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-      <img decoding="async"
-        src="https://www.4damstheme.com/clenis/wp-content/plugins/clenis-toolkit/widgets/img/icon/working-ball.png"
-        alt="Contact Us" class="cleaning-shape" />
-      <img decoding="async"
-        src="https://www.4damstheme.com/clenis/wp-content/plugins/clenis-toolkit/widgets/img/icon/cirs.png"
-        alt="Contact Us" class="working-cirs" />
-    </section>
-  </div>
+  
   <div class="container">
     <div class="row">
       <div class="col-12">
@@ -553,44 +327,7 @@ export default {
               </div>
             </div>
           </div>
-          <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 wow fadeInUp" data-wow-duration="2.3s" style="
-              visibility: visible;
-              animation-duration: 2.3s;
-              animation-name: fadeInUp;
-            ">
-            <div id="block-18" class="widget-footer widget_block footer__item">
-              <h4 class="footer__title" style="
-                  font-weight: 700;
-                  text-transform: capitalize;
-                  color: #30c7b5;
-                  display: inline-block;
-                  margin-bottom: 41px;
-                ">
-                Politique
-              </h4>
-              <div class="wp-widget-group__inner-blocks">
-                <ul style="padding: 0; margin: 0; list-style: none">
-                  <li>
-                    <a href="https://www.4damstheme.com/clenis/about-clenis/">Ban plans</a>
-                  </li>
-
-                  <li>
-                    <a href="https://www.4damstheme.com/clenis/faqs-page/">Reservtion</a>
-                  </li>
-
-
-
-                  <li>
-                    <a href="https://www.4damstheme.com/clenis/about-clenis/">Privacy Policy</a>
-                  </li>
-
-                  <li>
-                    <a href="https://www.4damstheme.com/clenis/about-clenis/">Testimonial</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
+         
           <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 wow fadeInUp" data-wow-duration="2.3s" style="
               visibility: visible;
               animation-duration: 2.3s;
@@ -653,10 +390,10 @@ export default {
                         font-weight: 400;
                         line-height: 140%;
                       ">
-                      Mon - Fri 12:00 - 18:00
+                      Lun - Ven 12:00 - 18:00
                     </span>
                   </li>
-                  <li style="display: flex; align-items: center; gap: 9px">
+                  <li style="margin-bottom: 24px">
                     <svg width="14" height="17" viewBox="0 0 14 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path
                         d="M7 14.6746L10.7123 10.9623C12.7625 8.91208 12.7625 5.58794 10.7123 3.53769C8.66208 1.48744 5.33794 1.48744 3.28769 3.53769C1.23744 5.58794 1.23744 8.91208 3.28769 10.9623L7 14.6746ZM7 16.7959L2.22703 12.023C-0.40901 9.3869 -0.40901 5.11307 2.22703 2.47703C4.86307 -0.15901 9.1369 -0.15901 11.773 2.47703C14.409 5.11307 14.409 9.3869 11.773 12.023L7 16.7959ZM7 8.75C7.82845 8.75 8.5 8.07845 8.5 7.25C8.5 6.42157 7.82845 5.75 7 5.75C6.17155 5.75 5.5 6.42157 5.5 7.25C5.5 8.07845 6.17155 8.75 7 8.75ZM7 10.25C5.34314 10.25 4 8.90683 4 7.25C4 5.59314 5.34314 4.25 7 4.25C8.65683 4.25 10 5.59314 10 7.25C10 8.90683 8.65683 10.25 7 10.25Z"
@@ -664,7 +401,7 @@ export default {
                     </svg>
                     <span style="
                         color: #748aa0;
-                        font-size: 16px;
+                        font-size: 15px;
                         font-style: normal;
                         font-weight: 400;
                         line-height: 140%;

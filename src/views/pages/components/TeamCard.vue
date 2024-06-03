@@ -1,5 +1,5 @@
 <template>
-  <section style="background-color: #f8f9fa;" >
+  <section style="background-color: #f8f9fa;">
     <span>Nos Services</span>
     <h2 class="service">Hygeco</h2>
     <p> Pour le ménage, ou la lessive, nous avons tout ce qu'il vous faut pour
@@ -11,29 +11,26 @@
       <a class="ref" href="/pages/service-menage">
 
         <div class="card">
-          <img src="../../../assets/img/t-2.png"
-            alt="Franklin Carlson">
+          <img src="../../../assets/img/t-2.png" alt="Franklin Carlson">
 
-          <h3 class="service">Buandrie</h3>
-          <p>Self Service</p>
+          <h3 class="service">Buanderie</h3>
+          <p>Collecte et Livraison</p>
         </div>
       </a>
 
       <div class="card">
-        <img src="../../../assets/img/t-1.png"
-          alt="Antonia Moore">
+        <img src="../../../assets/img/t-1.png" alt="Antonia Moore">
 
         <h3 class="service">Services Résidentiels</h3>
-        <p>Full package</p>
+        <p>Forfait Complet</p>
       </div>
 
       <a class="ref" href="/pages/menage-commercial">
         <div class="card">
-          <img src="../../../assets/img/t-3.png"
-            alt="Travis Lynch">
+          <img src="../../../assets/img/t-3.png" alt="Travis Lynch">
 
           <h3 class="service">Services Commerciaux</h3>
-          <p>Full Package</p>
+          <p>Forfait Complet</p>
         </div>
       </a>
 

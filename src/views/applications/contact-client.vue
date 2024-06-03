@@ -15,6 +15,9 @@
                             <thead class="thead-light">
                                 <tr>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        Objet
+                                    </th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                         Nom
                                     </th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
@@ -29,7 +32,7 @@
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                         Note
                                     </th>
-                                   
+
                                 </tr>
                             </thead>
                             <tbody>
@@ -67,7 +70,7 @@ export default {
         this.fetchContacts()
     },
     methods: {
-        async fetchContacts() {  
+        async fetchContacts() {
             const token = localStorage.getItem('token')
             await axios.request({
                 headers: {
@@ -83,21 +86,21 @@ export default {
 
 
         initDataTable() {
-  if (this.contacts.length > 0) {
-    const tableRows = this.contacts.map(contact => {
-      // assuming contact has properties like name, email, phone, etc.
-      return [contact.first_name, contact.address, contact.email, contact.service, contact.note]; // add more columns as needed
-    });
+            if (this.contacts.length > 0) {
+                const tableRows = this.contacts.map(contact => {
+                    // assuming contact has properties like name, email, phone, etc.
+                    return [contact.object, contact.first_name, contact.address, contact.email, contact.service, contact.note]; // add more columns as needed
+                });
 
-    this.$nextTick(() => {
-      const dataTableBasic = new DataTable("#datatable-basic", {
-        searchable: true,
-        fixedHeight: true,
-      });
-      dataTableBasic.rows.add(tableRows);
-    });
-  }
-}
+                this.$nextTick(() => {
+                    const dataTableBasic = new DataTable("#datatable-basic", {
+                        searchable: true,
+                        fixedHeight: true,
+                    });
+                    dataTableBasic.rows.add(tableRows);
+                });
+            }
+        }
     }
 }
 </script>

@@ -1,35 +1,30 @@
 <script>
-// import { ref } from 'vue';
 import { useStore } from 'vuex';
 import Navbar from "@/examples/PageLayout/NavbarHygeco.vue";
-// import PricingCard from "./components/PricingCard.vue";
-// import AppFooter from "@/examples/PageLayout/Footer.vue";
+
 import AccordionItem from "./components/AccordionItem.vue";
 import setNavPills from "@/assets/js/nav-pills.js";
 import ProjectGallerie from "./components/ProjectGallerie.vue";
 import Valeur from "./components/Nosvaleur.vue";
-import SwiperCards from "./components/slide.vue";
+import Testimonials from './components/Testimonials.vue'
 
-// import TeamCard from "./components/TeamCard.vue";
 
-// import ComplexBackgroundCard from "@/views/ecommerce/components/ComplexBackgroundCard.vue";
+
 
 export default {
   components: {
     Navbar,
     ProjectGallerie,
     Valeur,
-    SwiperCards,
-    // TeamCard
-    // PricingCard,
-    // AppFooter,
+    Testimonials,
+
     AccordionItem,
-    // ComplexBackgroundCard,
+
   },
   data() {
     return {
       store: useStore(),
-     
+
     };
   },
   mounted() {
@@ -93,9 +88,7 @@ export default {
           <div class="col-xxl-4 col-xl-5 col-lg-5 col-md-8 order-1 order-lg-0">
             <div class="choose-left-cont">
               <div class="thumb1">
-                <img decoding="async"
-                  src="../../assets/img/a2.png"
-                  alt="Success Project " />
+                <img decoding="async" src="../../assets/img/a2.png" alt="Success Project " />
               </div>
               <!-- <div class="prograss-box">
                   <div
@@ -127,10 +120,19 @@ export default {
           <div class="col-xxl-7 col-xl-7 col-lg-7">
             <div class="choose-content-right">
               <div class="cmn-section-title apointment-content">
-                <div class="cmn--btn cmn-alt2 wow fadeInUp" data-wow-delay="1.5"
-                  style="visibility: visible; animation-name: fadeInUp">
-                  <span style="font-weight: 700;font-size: 18px;">Qui sommes-nous ?</span>
-                </div>
+
+                <!-- <div class="cmn--btn cmn-alt1 wow fadeInDown" data-wow-delay="0.4"
+              style="visibility: visible; animation-name: fadeInDown">
+              <span> Working Process </span>
+            </div> -->
+                <h2 class="white mt-xxl-4 mt-2 wow fadeInUp" data-wow-delay="0.5" style="
+                visibility: visible;
+                animation-name: fadeInUp;
+                color: #30c7b5;
+              ">
+                  Qui Somme Nous ?
+                </h2>
+
                 <h2 class="title mt-xxl-4 mt-2 mb-0 wow fadeInDown" data-wow-delay="1.5"
                   style="visibility: visible; animation-name: fadeInDown;font-weight: 700;font-size: 18px;">
                   Hygeco est votre partenaire local pour tous vos besoins en matière de nettoyage. Fondée
@@ -141,17 +143,16 @@ export default {
               </div>
               <div class="adjust-content">
                 <div class="thumb-ad">
-                  <img decoding="async"
-                    src="../../assets/img/a1.png"
+                  <img decoding="async" src="../../assets/img/a1.png"
                     alt="This Service Focus on Clean &amp; Maintaining Homes" />
                 </div>
                 <div class="adjust-content-info">
-                  <p>
+                  <!-- <p>
                     Nous nous distinguons par notre approche personnalisée et notre grande attention aux
                     détails. Que ce soit pour le nettoyage de votre domicile, la gestion de votre linge, ou
                     l'entretien régulier de votre espace de vie, nous sommes là pour répondre à vos besoins
                     spécifiques, quel que soit leur nature ou leur ampleur.
-                  </p>
+                  </p> -->
 
                   <div class="adjust-item adjust-first-item wow fadeInDown" data-wow-delay="1.6"
                     style="visibility: visible; animation-name: fadeInDown">
@@ -202,19 +203,76 @@ export default {
         alt="This Service Focus on Clean &amp; Maintaining Homes" class="ripple-ps" />
     </div>
   </section>
-  <div class="container">
-    <div class="text-center">
-      <h2>Nos Valeur</h2>
+  <section class="working-process" style="text-align: center; padding: 40px 20px; background-color: #f9f9f9">
+    <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 15px">
+      <div class="title-section" style="margin-bottom: 40px">
+        <h2 style="font-size: 51px; margin-bottom: 10px;color:#30c7b5">Nos Valeurs</h2>
+
+      </div>
+      <div class="process-steps" style="display: flex; flex-wrap: wrap; justify-content: space-between">
+        <div class="step">
+          <div class="icon">
+            <i class="fa fa-calendar-check-o"></i>
+          </div>
+          <h3><a href="#">ÉCORESPONSABILITÉ</a></h3>
+          <p>
+            Nous utilisons des pratiques respectueuses de l'environnement à chaque étape de nos services, des produits
+            écologiques, des sacs de linges réutilisables aux véhicules électriques.
+
+          </p>
+        </div>
+        <div class="step">
+          <div class="icon">
+            <i class="fa fa-envelope-o"></i>
+          </div>
+          <h3><a href="#">FIABILITÉ</a></h3>
+          <p>
+            Notre équipe professionnelle prendra soin de votre linge et de vos équipements à la maison. Nous nous
+            engageons à prendre soin de vos affaires et à offrir un service fiable et de qualité à chaque visite.
+          </p>
+        </div>
+        <div class="step">
+          <div class="icon">
+            <i class="fa fa-smile-o"></i>
+          </div>
+          <h3><a href="#">FLEXIBILITÉ</a></h3>
+          <p>
+            Nous comprenons que chaque client a des besoins uniques. C'est pourquoi nous nous adaptons à vos préférences
+            et à votre emploi du temps pour vous offrir un service personnalisé.
+
+          </p>
+        </div>
+        <div class="step">
+          <div class="icon">
+            <i class="fa fa-smile-o"></i>
+          </div>
+          <h3><a href="#">EXCELLENCE</a></h3>
+          <p>
+            Nous nous efforçons constamment d'atteindre l'excellence dans tout ce que nous faisons, que ce soit dans la
+            qualité de nos services ou dans notre engagement envers la satisfaction client
+          </p>
+        </div>
+        <div class="step">
+          <div class="icon">
+            <i class="fa fa-smile-o"></i>
+          </div>
+          <h3><a href="#"> ÉPANOUISSEMENT</a></h3>
+          <p>
+            Nous visons l'épanouissement de nos clients en leur offrant un environnement propre et sain, tout en leur
+            permettant de profiter pleinement de la vie pendant que nous prenons soin de leurs besoins de nettoyage et
+            de gestion du linge
+          </p>
+        </div>
+      </div>
     </div>
-    <SwiperCards />
-  </div>
+  </section>
+
 
   <div class="container ">
-    <div class="row g-lg-4 g-4  align-items-center mb-60">
+    <div class="row g-lg-4 g-4  align-items-center mb-60 ">
       <div class="col-xl-4 col-lg-4 col-md-5 col-sm-5">
         <div class="thumb-about2">
-          <img style="width: 100%;border-radius: 60px;" decoding="async"
-            src="../../assets/img/f1.png"
+          <img style="width: 100%;border-radius: 60px;" decoding="async" src="../../assets/img/f1.png"
             alt="Cleaning Today for Making Your Future Excellent">
         </div>
 
@@ -222,17 +280,15 @@ export default {
       <div class="col-xl-5 col-lg-5 col-md-6 col-sm-7">
         <div class="about-content-head2" style="margin-left: 25px;">
           <div class="cmn-section-title apointment-content">
-            <div class="cmn--btn cmn-alt2 wow fadeInUp" data-wow-delay="1.5"
-              style="visibility: visible; animation-name: fadeInUp;">
-              <span style="font-weight: 700;font-size: 18px;">
-                Développement Durable </span>
-            </div>
-            <h2 class="title mt-xxl-4 mt-2 mb-0 wow fadeInDown" data-wow-delay="1.5"
-              style="visibility: visible; animation-name: fadeInDown; font-size: 18px;  font-weight: 700;  font-family: 'Geologica', sans-serif;">
-              Chez Hygeco, nous nous engageons à adopter des pratiques durables pour minimiser notre
-              empreinte environnementale et promouvoir un avenir plus propre et plus sain. Voici
-              comment nous contribuons au développement durable </h2>
+
+            <h2 style="font-weight: 700;font-size: 45px;color: #30c7b5;">
+              Développement Durable </h2>
           </div>
+          <h2 class="title mt-xxl-4 mt-2 mb-0 wow fadeInDown" data-wow-delay="1.5"
+            style="visibility: visible; animation-name: fadeInDown; font-size: 18px;  font-weight: 700;  font-family: 'Geologica', sans-serif;">
+            Chez Hygeco, nous nous engageons à adopter des pratiques durables pour minimiser notre
+            empreinte environnementale et promouvoir un avenir plus propre et plus sain. Voici
+            comment nous contribuons au développement durable </h2>
         </div>
       </div>
       <div class="col-xl-2 col-lg-3 col-md-3">
@@ -249,11 +305,18 @@ export default {
                 alt="Cleaning Today for Making Your Future Excellent">
             </div>
             <span class="icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
                   d="M9.69771 13.2478C9.62571 13.2478 8.04171 13.2478 7.32171 13.2478C6.93771 13.2478 6.81771 13.1038 6.81771 12.7438C6.81771 11.7838 6.81771 10.7998 6.81771 9.83983C6.81771 9.45583 6.96171 9.33583 7.32171 9.33583H9.69771C9.69771 9.26383 9.69771 7.87183 9.69771 7.22383C9.69771 6.26383 9.86571 5.35183 10.3457 4.51183C10.8497 3.64783 11.5697 3.07183 12.4817 2.73583C13.0817 2.51983 13.6817 2.42383 14.3297 2.42383H16.6817C17.0177 2.42383 17.1617 2.56783 17.1617 2.90383V5.63983C17.1617 5.97583 17.0177 6.11983 16.6817 6.11983C16.0337 6.11983 15.3857 6.11983 14.7377 6.14383C14.0897 6.14383 13.7537 6.45583 13.7537 7.12783C13.7297 7.84783 13.7537 8.54383 13.7537 9.28783H16.5377C16.9217 9.28783 17.0657 9.43183 17.0657 9.81583V12.7198C17.0657 13.1038 16.9457 13.2238 16.5377 13.2238C15.6737 13.2238 13.8257 13.2238 13.7537 13.2238V21.0478C13.7537 21.4558 13.6337 21.5998 13.2017 21.5998C12.1937 21.5998 11.2097 21.5998 10.2017 21.5998C9.84171 21.5998 9.69771 21.4558 9.69771 21.0958C9.69771 18.5758 9.69771 13.3198 9.69771 13.2478Z"
                   fill="#30c7b5"></path>
+              </svg> -->
+              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                class="bi bi-globe-americas" viewBox="0 0 16 16">
+                <path
+                  d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0M2.04 4.326c.325 1.329 2.532 2.54 3.717 3.19.48.263.793.434.743.484q-.121.12-.242.234c-.416.396-.787.749-.758 1.266.035.634.618.824 1.214 1.017.577.188 1.168.38 1.286.983.082.417-.075.988-.22 1.52-.215.782-.406 1.48.22 1.48 1.5-.5 3.798-3.186 4-5 .138-1.243-2-2-3.5-2.5-.478-.16-.755.081-.99.284-.172.15-.322.279-.51.216-.445-.148-2.5-2-1.5-2.5.78-.39.952-.171 1.227.182.078.099.163.208.273.318.609.304.662-.132.723-.633.039-.322.081-.671.277-.867.434-.434 1.265-.791 2.028-1.12.712-.306 1.365-.587 1.579-.88A7 7 0 1 1 2.04 4.327Z"
+                  fill="#30c7b5" />
               </svg>
+
             </span>
           </a>
         </div>
@@ -261,61 +324,6 @@ export default {
       <div class="row g-4 justify-content-center position-relative">
         <Valeur />
 
-        <!-- <div class="col-lg-4 col-md-6">
-          <div class="bn-category-item">
-            <div class="bn-cate-head">
-
-
-              <div class="cont ">
-
-                <h3 class="title " style="font-weight: 700;font-size: 20px;">
-                  Sacs réutilisables Hygeco         </h3>
-              </div>
-            </div>
-            <p>
-              Nous utilisons des sacs réutilisables pour la collecte de
-              linges,réduisant ainsi notre consommation de plastique et favorisant la durabilité. </p>
-
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6">
-          <div class="bn-category-item">
-            <div class="bn-cate-head">
-
-
-              <div class="cont">
-
-                <h3 class="title" style="font-weight: 700;font-size: 18px;">
-                  Produits de nettoyage certifiés écologiques </h3>
-              </div>
-            </div>
-            <p>
-              Nous utilisons exclusivement des
-              produits de nettoyage certifiés écologiques, qui sont sûrs pour l'environnement et la
-              santé de nos clients.
-            </p>
-
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6">
-          <div class="bn-category-item">
-            <div class="bn-cate-head">
-
-
-              <div class="cont">
-
-                <h3 class="title" style="font-weight: 700;font-size: 18px;">
-                  Véhicules de transport électriques </h3>
-              </div>
-            </div>
-            <p>
-              Nos véhicules de transport sont électriques,
-              contribuant ainsi à la réduction des émissions de carbone et à la préservation de
-              l'air que nous respirons.
-            </p>
-
-          </div>
-        </div> -->
 
       </div>
     </div>
@@ -383,76 +391,9 @@ export default {
     </section>
   </div>
   <ProjectGallerie />
+  <Testimonials />
 
-  <section class="testimonials">
-    <div class="heading text-center">
-      <h2>
-        Ce que
-        <span>disent</span>
-        les clients ?
-      </h2>
-    </div>
-    <div class="container">
-      <div class="row text-center">
-        <div class="col-md-12">
-          <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-            <!-- Indicators-->
-            <ol class="carousel-indicators">
-              <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-              <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-              <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-            </ol>
 
-            <div class="carousel-inner">
-              <!-- Item-1 -->
-              <div class="carousel-item active text-center">
-                <img src="https://i.ibb.co/8x9xK4H/team.jpg" alt="" class="center-block team" />
-                <h3>Alamin Musa</h3>
-                <h4>Front End Developer</h4>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Aliquam porttitordapibus dictum.<br />
-                  Fusce faucibus ligula scelerisque, eleifend turpis in
-                </p>
-              </div>
-              <!-- Item-2 -->
-              <div class="carousel-item text-center">
-                <img src="https://i.ibb.co/8x9xK4H/team.jpg" alt="" class="center-block team" />
-                <h3>Alamin Musa</h3>
-                <h4>Front End Developer</h4>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Aliquam porttitordapibus dictum.<br />
-                  Fusce faucibus ligula scelerisque, eleifend turpis in
-                </p>
-              </div>
-              <!-- Item-3 -->
-              <div class="carousel-item text-center">
-                <img src="https://i.ibb.co/8x9xK4H/team.jpg" alt="" class="center-block team" />
-                <h3>Alamin Musa</h3>
-                <h4>Front End Developer</h4>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Aliquam porttitordapibus dictum.<br />
-                  Fusce faucibus ligula scelerisque, eleifend turpis in
-                </p>
-              </div>
-            </div>
-            <a class="carousel-control-prev control" data-target="#carouselExampleIndicators" role="button"
-              data-slide="prev">
-              <span class="fa fa-angle-left icon" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next control" data-target="#carouselExampleIndicators" role="button"
-              data-slide="next">
-              <span class="fa fa-angle-right icon" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
   <div class="container my-6">
 
     <div class="mt-8 row">
@@ -468,80 +409,92 @@ export default {
       <div class="mx-auto col-md-10">
         <div id="accordionRental" class="accordion">
           <accordion-item accordion-id="headingOne" collapse-id="collapseOne" active>
-            <template #question>How do I order?</template>
+            <template #question>Quels services proposez-vous ?</template>
             <template #answer>
-              We’re not always in the position that we want to be at. We’re
-              constantly growing. We’re constantly making mistakes. We’re
-              constantly trying to express ourselves and actualize our dreams.
-              If you have the opportunity to play this game of life you need to
-              appreciate every moment. A lot of people don’t appreciate the
-              moment until it’s passed.
+              Nous offrons une gamme complète de services de ménage et de buanderie, incluant :
+
+              Nettoyage régulier de la maison
+              Nettoyage en profondeur
+              Lavage, séchage et repassage du linge
+              Nettoyage des vitres
+              Nettoyage après déménagement ou événement
             </template>
           </accordion-item>
           <accordion-item accordion-id="headingTwo" collapse-id="collapseTwo">
-            <template #question>How can i make the payment?</template>
+            <template #question>Comment puis-je réserver un service ?</template>
             <template #answer>
-              It really matters and then like it really doesn’t matter. What
-              matters is the people who are sparked by it. And the people who
-              are like offended by it, it doesn’t matter. Because it&#39;s
-              motivating the doers. Because I’m here to follow my dreams and and
-              inspire other people to follow their dreams, too.
-              <br />We’re not always in the position that we want to be at.
-              We’re constantly growing. We’re constantly making mistakes. We’re
-              constantly trying to express ourselves and actualize our dreams.
-              If you have the opportunity to play this game of life you need to
-              appreciate every moment. A lot of people don’t appreciate the
-              moment until it’s passed.
+              Vous pouvez réserver un service en ligne via notre site internet. Allez à la section "Réservation",
+              choisissez le service dont vous avez besoin, sélectionnez la date et l'heure, puis remplissez les
+              informations nécessaires. Vous recevrez une confirmation par e-mail une fois la réservation effectuée.
             </template>
           </accordion-item>
 
           <accordion-item accordion-id="headingThree" collapse-id="collapseThree">
-            <template #question>How much time does it take to receive the order?</template>
+            <template #question>Quels sont vos tarifs ?</template>
             <template #answer>
-              The time is now for it to be okay to be great. People in this
-              world shun people for being great. For being a bright color. For
-              standing out. But the time is now to be okay to be the greatest
-              you. Would you believe in what you believe in, if you were the
-              only one who believed it? If everything I did failed - which it
-              doesn&#39;t, it actually succeeds - just the fact that I&#39;m
-              willing to fail is an inspiration. People are so scared to lose
-              that they don&#39;t even try. Like, one thing people can&#39;t say
-              is that I&#39;m not trying, and I&#39;m not trying my hardest, and
-              I&#39;m not trying to do the best way I know how.
+              Nos tarifs varient en fonction du service et de la durée. Vous pouvez consulter notre grille tarifaire sur
+              la page "Tarifs" de notre site ou lors de la réservation en ligne. Nous offrons également des forfaits et
+              des réductions pour des services réguliers.
+
             </template>
           </accordion-item>
 
           <accordion-item accordion-id="headingFour" collapse-id="collapseFour">
-            <template #question>Can I resell the products?</template>
+            <template #question>Proposez-vous des services de ménage et de buanderie pour les entreprises ?</template>
             <template #answer>
-              I always felt like I could do anything. That’s the main thing
-              people are controlled by! Thoughts- their perception of
-              themselves! They&#39;re slowed down by their perception of
-              themselves. If you&#39;re taught you can’t do anything, you won’t
-              do anything. I was taught I could do everything.
-              <br />
-              <br />If everything I did failed - which it doesn&#39;t, it
-              actually succeeds - just the fact that I&#39;m willing to fail is
-              an inspiration. People are so scared to lose that they don&#39;t
-              even even try. Like, one thing people can&#39;t say is that
-              I&#39;m not trying, and I&#39;m not trying my hardest, and I&#39;m
-              not trying trying to do the best way I know how.
+              Oui, nous offrons également des services pour les entreprises, y compris le nettoyage de bureaux et de
+              locaux commerciaux ainsi que la gestion du linge pour les entreprises. Contactez-nous pour un devis
+              personnalisé.
             </template>
           </accordion-item>
 
           <accordion-item accordion-id="headingFifth" collapse-id="collapseFifth">
-            <template #question>Where do I find the shipping details?</template>
+            <template #question>Quelles sont les mesures d'hygiène que vous prenez ?</template>
             <template #answer>
-              There’s nothing I really wanted to do in life that I wasn’t able
-              to get good at. That’s my skill. I’m not really specifically
-              talented at anything except for the ability to learn. That’s what
-              I do. That’s what I’m here for. Don’t be afraid to be wrong
-              because you can’t learn anything from a compliment. I always felt
-              like I could do anything. That’s the main thing people are
-              controlled by! Thoughts- their perception of themselves!
-              They&#39;re slowed down by their perception of themselves. If
-              you&#39;re taught you can’t do anything, you won’t do anything. I
-              was taught I could do everything.
+              La propreté et la sécurité sont nos priorités. Nous utilisons des produits de nettoyage de haute qualité
+              et respectueux de l'environnement. Nos équipes sont formées aux protocoles de nettoyage et d'hygiène
+              stricts, notamment en ce qui concerne la désinfection des surfaces.
+
+            </template>
+          </accordion-item>
+          <accordion-item accordion-id="headingFifth" collapse-id="collapseSexth">
+            <template #question>Puis-je annuler ou modifier ma réservation ?</template>
+            <template #answer>
+              Oui, vous pouvez annuler ou modifier votre réservation jusqu'à 24 heures avant l'heure prévue du service.
+              Connectez-vous à votre compte sur notre site pour effectuer les modifications nécessaires ou contactez
+              notre service client.
+            </template>
+          </accordion-item>
+          <accordion-item accordion-id="headingFifth" collapse-id="collapseSeven">
+            <template #question>Que dois-je faire avant l'arrivée de l'équipe de nettoyage ?</template>
+            <template #answer>
+              Nous vous recommandons de ranger les objets personnels et de fournir un accès facile aux zones à nettoyer.
+              Si vous avez des instructions spécifiques, veuillez les mentionner lors de la réservation ou informer
+              notre équipe à leur arrivée.
+
+            </template>
+          </accordion-item>
+          <accordion-item accordion-id="headingFifth" collapse-id="collapseEight">
+            <template #question>Quels moyens de paiement acceptez-vous ?</template>
+            <template #answer>
+              Nous acceptons les paiements par carte de crédit, PayPal et virements bancaires. Le paiement est requis
+              lors de la réservation en ligne pour garantir le service.
+            </template>
+          </accordion-item>
+          <accordion-item accordion-id="headingFifth" collapse-id="collapseNine">
+            <template #question>Que faire si je ne suis pas satisfait du service ?</template>
+            <template #answer>
+              Votre satisfaction est importante pour nous. Si vous n'êtes pas satisfait du service reçu, veuillez nous
+              contacter dans les 24 heures suivant le service. Nous ferons de notre mieux pour résoudre le problème, y
+              compris offrir une nouvelle prestation si nécessaire.
+            </template>
+          </accordion-item>
+          <accordion-item accordion-id="headingFifth" collapse-id="collapseTen">
+            <template #question>Comment puis-je contacter le service client ?</template>
+            <template #answer>
+              Vous pouvez nous contacter par téléphone, par e-mail ou via le formulaire de contact sur notre site
+              internet. Notre équipe de service client est disponible du lundi au samedi de 8h à 18h pour répondre à
+              toutes vos questions.
             </template>
           </accordion-item>
         </div>
@@ -774,44 +727,7 @@ export default {
               </div>
             </div>
           </div>
-          <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 wow fadeInUp" data-wow-duration="2.3s" style="
-              visibility: visible;
-              animation-duration: 2.3s;
-              animation-name: fadeInUp;
-            ">
-            <div id="block-18" class="widget-footer widget_block footer__item">
-              <h4 class="footer__title" style="
-                  font-weight: 700;
-                  text-transform: capitalize;
-                  color: #30c7b5;
-                  display: inline-block;
-                  margin-bottom: 41px;
-                ">
-                Politique
-              </h4>
-              <div class="wp-widget-group__inner-blocks">
-                <ul style="padding: 0; margin: 0; list-style: none">
-                  <li>
-                    <a href="https://www.4damstheme.com/clenis/about-clenis/">Ban plans</a>
-                  </li>
 
-                  <li>
-                    <a href="https://www.4damstheme.com/clenis/faqs-page/">Reservtion</a>
-                  </li>
-
-
-
-                  <li>
-                    <a href="https://www.4damstheme.com/clenis/about-clenis/">Privacy Policy</a>
-                  </li>
-
-                  <li>
-                    <a href="https://www.4damstheme.com/clenis/about-clenis/">Testimonial</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
           <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 wow fadeInUp" data-wow-duration="2.3s" style="
               visibility: visible;
               animation-duration: 2.3s;
@@ -874,10 +790,10 @@ export default {
                         font-weight: 400;
                         line-height: 140%;
                       ">
-                      Mon - Fri 12:00 - 18:00
+                      Lun - Ven 12:00 - 18:00
                     </span>
                   </li>
-                  <li style="display: flex; align-items: center; gap: 9px">
+                  <li style="margin-bottom: 24px">
                     <svg width="14" height="17" viewBox="0 0 14 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path
                         d="M7 14.6746L10.7123 10.9623C12.7625 8.91208 12.7625 5.58794 10.7123 3.53769C8.66208 1.48744 5.33794 1.48744 3.28769 3.53769C1.23744 5.58794 1.23744 8.91208 3.28769 10.9623L7 14.6746ZM7 16.7959L2.22703 12.023C-0.40901 9.3869 -0.40901 5.11307 2.22703 2.47703C4.86307 -0.15901 9.1369 -0.15901 11.773 2.47703C14.409 5.11307 14.409 9.3869 11.773 12.023L7 16.7959ZM7 8.75C7.82845 8.75 8.5 8.07845 8.5 7.25C8.5 6.42157 7.82845 5.75 7 5.75C6.17155 5.75 5.5 6.42157 5.5 7.25C5.5 8.07845 6.17155 8.75 7 8.75ZM7 10.25C5.34314 10.25 4 8.90683 4 7.25C4 5.59314 5.34314 4.25 7 4.25C8.65683 4.25 10 5.59314 10 7.25C10 8.90683 8.65683 10.25 7 10.25Z"
@@ -885,7 +801,7 @@ export default {
                     </svg>
                     <span style="
                         color: #748aa0;
-                        font-size: 16px;
+                        font-size: 15px;
                         font-style: normal;
                         font-weight: 400;
                         line-height: 140%;
@@ -927,6 +843,12 @@ export default {
   </footer>
 </template>
 <style scoped>
+@media (max-width: 767px) {
+  .row.g-lg-4.g-4.align-items-center.mb-60 {
+    margin-top: -58rem;
+  }
+}
+
 .cmn--btn.cmn-alt2 {
   background: #30c7b5;
   ;
@@ -3001,6 +2923,7 @@ export default {
 }
 
 .step {
+  margin-left: 1rem;
   flex: 1 1 calc(33.333% - 20px);
   box-sizing: border-box;
   margin-bottom: 40px;
@@ -3017,7 +2940,7 @@ export default {
 
 .icon {
   font-size: 48px;
-  color: #3498db;
+  color: #30c7b5;
   margin-bottom: 20px;
 }
 
