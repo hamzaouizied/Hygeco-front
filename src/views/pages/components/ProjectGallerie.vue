@@ -1,49 +1,25 @@
 <template>
   <div class="Main">
-    <section class="Carousel" ref="carousel" tabindex="-1" style="background-color: #f8f9fa;">
-      <h2 class="Hidden">Gallerie</h2>
-      <article class="Card Card--overlay Card--square" id="card-1" @click="navigateToCard('card-1')">
+    <div class="text-center" style="margin-bottom: 40px;">
+      <h2 style="font-size: 2em; margin-bottom: 10px;">Our Recent Work</h2>
+      <p style="font-size: 1em; color: #666;">
+        Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam remeaque ipsa.
+      </p>
+    </div>
+
+    <section class="Carousel" ref="carousel" tabindex="-1">
+      <h2 class="Hidden">Gallery</h2>
+      <article v-for="(card, index) in cards" :key="index" :class="['Card', 'Card--overlay', card.type]" :id="card.id"
+        @click="navigateToCard(card.id)">
         <div class="Card__media">
-          <img class="Card__image"
-            src="https://radiustheme.com/demo/wordpress/themes/clenix/wp-content/uploads/2019/07/window-620x672.jpg"
-            alt="Card image description" width="480" height="480" loading="lazy" />
+          <img class="Card__image" :src="card.imageUrl" :alt="card.imageAlt" :width="card.imageWidth"
+            :height="card.imageHeight" loading="lazy" />
         </div>
         <div class="Card__main">
-          <h2 class="Card__heading"><a href="#" class="Card__link">Prefer 1/1 aspect ratio</a></h2>
-          <p>This is a demo card with 1/1 aspect ratio.</p>
-        </div>
-      </article>
-      <article class="Card Card--overlay Card--wide" id="card-2" @click="navigateToCard('card-2')">
-        <div class="Card__media">
-          <img class="Card__image"
-            src="https://radiustheme.com/demo/wordpress/themes/clenix/wp-content/uploads/2019/07/house5-620x672.jpg"
-            alt="Card image description" width="960" height="480" loading="lazy" />
-        </div>
-        <div class="Card__main">
-          <h2 class="Card__heading"><a href="#" class="Card__link">Wide aspect ratio</a></h2>
-          <p>This is a demo card with a wide aspect ratio.</p>
-        </div>
-      </article>
-      <article class="Card Card--overlay Card--tall" id="card-3" @click="navigateToCard('card-3')">
-        <div class="Card__media">
-          <img class="Card__image"
-            src="https://radiustheme.com/demo/wordpress/themes/clenix/wp-content/uploads/2019/10/bedroom-620x672.jpg"
-            alt="Card image description" width="400" height="800" loading="lazy" />
-        </div>
-        <div class="Card__main">
-          <h2 class="Card__heading"><a href="#" class="Card__link">Tall aspect ratio</a></h2>
-          <p>This is a demo card with a tall aspect ratio.</p>
-        </div>
-      </article>
-      <article class="Card Card--overlay Card--tall" id="card-4" @click="navigateToCard('card-4')">
-        <div class="Card__media">
-          <img class="Card__image"
-            src="https://images.unsplash.com/photo-1621160471147-c5be030e199b?crop=entropy&cs=srgb&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTYyMzMxMTEzMw&ixlib=rb-1.2.1&q=85&height=480"
-            alt="Card image description" width="400" height="800" loading="lazy" />
-        </div>
-        <div class="Card__main">
-          <h2 class="Card__heading"><a href="#" class="Card__link">Tall aspect ratio</a></h2>
-          <p>This is a demo card with a tall aspect ratio.</p>
+          <h2 class="Card__heading">
+            <a :href="card.linkUrl" class="Card__link">{{ card.title }}</a>
+          </h2>
+          <p>{{ card.description }}</p>
         </div>
       </article>
     </section>
@@ -65,17 +41,8 @@
         <span class="Hidden">Next slide</span>
       </button>
       <div class="Dots">
-        <a href="#card-1" class="Dot" tabindex="-1">
-          <span class="Hidden">Slide 1</span>
-        </a>
-        <a href="#card-2" class="Dot" tabindex="-1">
-          <span class="Hidden">Slide 2</span>
-        </a>
-        <a href="#card-3" class="Dot" tabindex="-1">
-          <span class="Hidden">Slide 3</span>
-        </a>
-        <a href="#card-4" class="Dot" tabindex="-1">
-          <span class="Hidden">Slide 4</span>
+        <a v-for="(card, index) in cards" :key="index" :href="`#${card.id}`" class="Dot" tabindex="-1">
+          <span class="Hidden">Slide {{ index + 1 }}</span>
         </a>
       </div>
     </nav>
@@ -83,11 +50,57 @@
 </template>
 
 <script>
+// import { ref, computed } from 'vue';
+
 export default {
   data() {
     return {
-
-
+      cards: [
+        {
+          id: 'card-1',
+          type: 'Card--square',
+          imageUrl: 'https://radiustheme.com/demo/wordpress/themes/clenix/wp-content/uploads/2019/07/window-620x672.jpg',
+          imageAlt: 'Card image description',
+          imageWidth: '480',
+          imageHeight: '480',
+          title: 'Prefer 1/1 aspect ratio',
+          linkUrl: '#',
+          description: 'This is a demo card with 1/1 aspect ratio.',
+        },
+        {
+          id: 'card-2',
+          type: 'Card--wide',
+          imageUrl: 'https://radiustheme.com/demo/wordpress/themes/clenix/wp-content/uploads/2019/07/house5-620x672.jpg',
+          imageAlt: 'Card image description',
+          imageWidth: '960',
+          imageHeight: '480',
+          title: 'Wide aspect ratio',
+          linkUrl: '#',
+          description: 'This is a demo card with a wide aspect ratio.',
+        },
+        {
+          id: 'card-3',
+          type: 'Card--tall',
+          imageUrl: 'https://radiustheme.com/demo/wordpress/themes/clenix/wp-content/uploads/2019/10/bedroom-620x672.jpg',
+          imageAlt: 'Card image description',
+          imageWidth: '400',
+          imageHeight: '800',
+          title: 'Tall aspect ratio',
+          linkUrl: '#',
+          description: 'This is a demo card with a tall aspect ratio.',
+        },
+        {
+          id: 'card-4',
+          type: 'Card--tall',
+          imageUrl: 'https://images.unsplash.com/photo-1621160471147-c5be030e199b?crop=entropy&cs=srgb&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTYyMzMxMTEzMw&ixlib=rb-1.2.1&q=85&height=480',
+          imageAlt: 'Card image description',
+          imageWidth: '400',
+          imageHeight: '800',
+          title: 'Tall aspect ratio',
+          linkUrl: '#',
+          description: 'This is a demo card with a tall aspect ratio.',
+        },
+      ],
     };
   },
   computed: {
@@ -95,8 +108,12 @@ export default {
       return this.$refs.carousel?.scrollLeft === 0;
     },
     isLastCard() {
-      return this.$refs.carousel?.scrollLeft >= this.$refs.carousel?.scrollWidth;
-    }
+      const carousel = this.$refs.carousel;
+      if (carousel) {
+        return carousel.scrollLeft + carousel.clientWidth >= carousel.scrollWidth;
+      }
+      return false;
+    },
   },
   methods: {
     previousCard() {
@@ -104,7 +121,7 @@ export default {
       if (carousel) {
         carousel.scrollTo({
           left: carousel.scrollLeft - carousel.clientWidth,
-          behavior: 'smooth'
+          behavior: 'smooth',
         });
       }
     },
@@ -113,21 +130,23 @@ export default {
       if (carousel) {
         carousel.scrollTo({
           left: carousel.scrollLeft + carousel.clientWidth,
-          behavior: 'smooth'
+          behavior: 'smooth',
         });
       }
     },
-    navigateToCard(id) {
-      const card = document.getElementById(id);
+    navigateToCard(id)
+ {
+      const card = document.getElementById(id)
+;
       if (card) {
         card.scrollIntoView({
           behavior: 'smooth',
           block: 'center',
-          inline: 'nearest'
+          inline: 'nearest',
         });
       }
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -153,505 +172,180 @@ export default {
 a {
   color: hsl(var(--theme-blue));
   transition: color 150ms, text-decoration-color 150ms;
+}
 
-  &:active,
-  &:visited {
-    color: hsl(var(--theme-blue));
-  }
+a:active,
+a:visited {
+  color: hsl(var(--theme-blue));
+}
 
-  &:hover {
-    color: hsl(var(--theme-red));
-  }
+a:hover {
+  color: hsl(var(--theme-red));
+}
 
-  &:focus,
-  &:hover {
-    text-decoration-color: transparent;
-  }
+a:focus,
+a:hover {
+  text-decoration-color: transparent;
 }
 
 a,
-[tabindex='-1'] {
-  &:focus {
-    outline: 0.125rem solid hsl(var(--theme-pink));
-
-    &:not(:focus-visible) {
-      outline: none;
-    }
-  }
+[tabindex='-1']:focus {
+  outline: 0.125rem solid hsl(var(--theme-pink));
 }
 
-.Carousel {
-  --carousel-gap: 1rem;
-  border-radius: 1rem;
-  display: flex;
-  gap: var(--carousel-gap);
-  overflow-y: hidden;
-  overflow-x: auto;
-  position: relative;
-  scroll-behavior: auto;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: none;
-  -webkit-overflow-scrolling: touch;
-  height: 50vw;
-  outline: none !important;
-  min-height: 20rem;
-  max-height: 30rem;
-
-  &::-webkit-scrollbar {
-    display: none;
-  }
-
-  .Card {
-    aspect-ratio: var(--card-ratio);
-    flex: 1 0 auto;
-    min-height: 100%;
-    scroll-snap-align: start;
-  }
-
-  .Card__media {
-    aspect-ratio: auto;
-  }
-
-  &>div:empty {
-    position: relative;
-
-    &:first-child {
-      inset-inline-start: 10%;
-      margin-inline-end: calc(-1 * var(--carousel-gap));
-    }
-
-    &:last-child {
-      inset-inline-end: 10%;
-      margin-inline-start: calc(-1 * var(--carousel-gap));
-    }
-  }
-}
-
-.Carousel--single {
-  .Card {
-    --card-ratio: auto;
-    flex: 1 0 100%;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .Carousel {
-    scroll-behavior: auto;
-  }
-}
-
-@supports not (aspect-ratio: 1/1) {
-  .Carousel {
-    .Card__media {
-      padding-block-end: 0 !important;
-    }
-
-    .Card__image {
-      position: relative !important;
-    }
-  }
-}
-
-.Dots {
-  align-items: center;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.Dot {
-  border-radius: 100%;
-  display: block;
-  height: 1.5rem;
-  width: 1.5rem;
-  position: relative;
-
-  &::after {
-    background: currentColor;
-    border-radius: 100%;
-    content: '';
-    display: block;
-    height: 0.375rem;
-    width: 0.375rem;
-    left: 50%;
-    position: absolute;
-    top: 50%;
-    transform: translateX(-50%) translateY(-50%);
-  }
-}
-
-.Dot--active {
-  color: hsl(var(--theme-pink)) !important;
-}
-
-.Pagination {
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  margin: 1rem -0.5rem;
-
-  .Arrow {
-    flex: 0 0 auto;
-
-    &:first-of-type {
-      margin-inline-end: auto;
-      order: -1;
-    }
-
-    &:last-of-type {
-      margin-inline-start: auto;
-      order: 1;
-    }
-  }
-}
-
-.Arrow {
-  align-items: center;
-  appearance: none;
+button {
   background: transparent;
   border: none;
-  border-radius: 0.125rem;
   cursor: pointer;
-  color: hsl(var(--theme-blue));
-  display: flex;
-  height: 3rem;
-  justify-content: center;
-  opacity: 1;
-  padding: 0.5rem;
-  transition: opacity 150ms, color 150ms;
-  width: 3rem;
+}
 
-  &:hover {
-    color: hsl(var(--theme-red));
-  }
+button[disabled] {
+  cursor: not-allowed;
+}
 
-  &:focus {
-    color: hsl(var(--theme-pink));
-    outline: none;
-
-    svg {
-      box-shadow: 0 0 0 0.125rem hsla(var(--theme-white), 1),
-        0 0 0 0.25rem currentColor;
-    }
-
-    &:not(:focus-visible) {
-      color: hsl(var(--theme-red));
-
-      svg {
-        box-shadow: none;
-      }
-    }
-  }
-
-  &[disabled] {
-    color: hsl(var(--theme-dark));
-    opacity: 0.4;
-    pointer-events: none;
-  }
-
-  svg {
-    border-radius: 100%;
-    fill: currentColor;
-    height: 100%;
-    width: 100%;
-    transition: box-shadow 150ms;
-
-    [dir='rtl'] & {
-      transform: scaleX(-1);
-    }
-  }
+button:focus-visible,
+button:hover {
+  color: hsl(var(--theme-red));
 }
 
 .Hidden {
-  border: 0 !important;
-  clip: rect(0 0 0 0) !important;
-  clip-path: inset(50%) !important;
-  height: 1px !important;
-  margin: -1px !important;
-  overflow: hidden !important;
-  padding: 0 !important;
-  position: absolute !important;
-  width: 1px !important;
-  white-space: nowrap !important;
-}
-
-
-:root {
-  --card-link-color: var(--theme-blue);
-  --card-hover-color: var(--theme-red);
-  --card-focus-color: var(--theme-pink);
-  --card-inner-focus-color: var(--theme-white);
-  --card-shadow-color: var(--theme-black);
-  --card-foreground-color: var(--theme-dark);
-  --card-background-color: var(--theme-dark);
-}
-
-.Card {
-  --card-ratio: auto 1/1;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: [media-start] auto [media-end main-start] auto [main-end];
-  max-width: 100%;
-  position: relative;
-}
-
-.Card__media {
-  aspect-ratio: var(--card-ratio);
-  background: hsla(var(--card-background-color), 0.5);
-  border-radius: 1rem;
-  grid-column: 1 / -1;
-  grid-row: media-start / media-end;
-  max-width: 100%;
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  margin: -1px;
   overflow: hidden;
-  position: relative;
-  z-index: -1;
-
-  &>* {
-    border-radius: inherit;
-    height: 100%;
-    object-fit: cover;
-    position: absolute;
-    width: 100%;
-  }
-}
-
-.Card__main {
-  align-self: end;
-  color: hsl(var(--card-foreground-color));
-  grid-column: 1 / -1;
-  grid-row: main-start / main-end;
-  padding: 1.25rem;
-
-  [href]:not(.Card__link) {
-    position: relative;
-    z-index: 2;
-  }
-
-  &>* {
-    margin: 0;
-  }
-}
-
-.Card__link {
-  color: hsl(var(--card-link-color));
-  font-weight: 600;
-  text-decoration-line: underline;
-  text-decoration-color: hsla(var(--card-link-color), 0.2);
-  text-decoration-thickness: 0.125rem;
-  text-decoration-skip: ink;
-  text-decoration-skip-ink: all;
-  text-decoration-offset: 100%;
-
-  &::after {
-    border: 0.125rem solid hsl(var(--card-focus-color));
-    box-shadow: inset 0 0 0 0.125rem hsla(var(--card-inner-focus-color), 1);
-    border-radius: 1rem;
-    bottom: 0;
-    content: '';
-    display: block;
-    left: 0;
-    opacity: 0;
-    position: absolute;
-    right: 0;
-    top: 0;
-    transition: border-color 150ms, opacity 150ms;
-    z-index: 1;
-  }
-
-  &:hover,
-  &:focus {
-    text-decoration-color: hsla(var(--card-hover-color), 1);
-
-    &::after {
-      opacity: 1;
-    }
-  }
-
-  &:focus {
-    outline: none;
-    text-decoration-color: currentColor;
-  }
-}
-
-.Card__heading {
-  line-height: 1.25;
-  margin-block-end: 0.5rem;
-}
-
-.Card--border {
-  .Card__link {
-    &::after {
-      opacity: 1;
-    }
-
-    &:not(:focus):not(:hover) {
-      &::after {
-        border-color: hsla(var(--card-foreground-color), 0.5);
-      }
-    }
-  }
-}
-
-.Card--overlay {
-  --card-shadow-color: var(--theme-black);
-  --card-foreground-color: var(--theme-white);
-  --card-background-color: var(--theme-dark);
-  --card-link-color: var(--theme-white);
-  --card-hover-color: var(--theme-white);
-
-  grid-template-rows:
-    [media-start] 1fr [overlay-start] 1rem [main-start] auto [main-end overlay-end media-end];
-
-  &::before {
-    background: linear-gradient(to top,
-        hsla(var(--card-shadow-color), 0.8) 20%,
-        hsla(var(--card-shadow-color), 0.3) 60%,
-        transparent);
-    border-bottom-left-radius: 1rem;
-    border-bottom-right-radius: 1rem;
-    content: '';
-    display: block;
-    grid-column: 1 / -1;
-    grid-row: overlay-start / overlay-end;
-    overflow: hidden;
-  }
-
-  .Card__main {
-    p {
-      text-shadow: 0 0.0625rem 0.0625rem hsl(var(--card-shadow-color));
-    }
-
-    a {
-      color: hsl(var(--card-link-color));
-
-      &:active,
-      &:visited {
-        color: hsl(var(--card-link-color));
-      }
-
-      &:hover,
-      &:focus {
-        color: hsl(var(--card-hover-color));
-      }
-    }
-  }
-}
-
-.Card--square {
-  --card-ratio: auto 1/1;
-}
-
-.Card--photo {
-  --card-ratio: auto 4/3;
-}
-
-.Card--portrait {
-  --card-ratio: auto 3/4;
-}
-
-.Card--wide {
-  --card-ratio: auto 16/9;
-}
-
-@supports not (aspect-ratio: 1/1) {
-  .Card__media {
-    height: 100%;
-    padding-block-end: calc(100% * (1 / 1));
-  }
-
-  .Card--square {
-    .Card__media {
-      padding-block-end: calc(100% * (1 / 1));
-    }
-  }
-
-  .Card--photo {
-    .Card__media {
-      padding-block-end: calc(100% * (3 / 4));
-    }
-  }
-
-  .Card--portrait {
-    .Card__media {
-      padding-block-end: calc(100% * (4 / 3));
-    }
-  }
-
-  .Card--wide {
-    .Card__media {
-      padding-block-end: calc(100% * (9 / 16));
-    }
-  }
-}
-
-
-@font-face {
-  font-family: 'Raleway';
-  src: url('https://assets.codepen.io/85421/Raleway-VariableFont.woff2') format('woff2');
-  font-display: swap;
-  font-weight: 1 900;
-  font-style: normal;
-  unicode-range: U+0020-007F, U+00A0-00FF, U+0100-017F, U+2000-206F;
-}
-
-@font-face {
-  font-family: 'Fallback';
-  size-adjust: 104%;
-  ascent-override: 96%;
-  src: local('Arial');
-}
-
-html {
-  line-height: 1.5;
-  font-family: Raleway, Fallback, sans-serif;
-}
-
-body {
-  margin: 0;
-}
-
-img {
-  display: block;
-  height: auto;
-  max-width: 100%;
+  padding: 0;
+  position: absolute;
+  width: 1px;
 }
 
 .Main {
+  max-width: 80rem;
   margin: 0 auto;
-  max-width: calc(90rem + 10vw);
-  padding: 1.5rem 5vw;
+  padding: 2rem;
+}
+
+.Carousel {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 80%;
+  grid-gap: 0.75rem;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  scroll-padding: 0 0.5rem;
+  padding: 0 0.5rem;
+  padding-bottom: 2.5rem;
+}
+
+.Card {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  scroll-snap-align: center;
+  background: hsl(var(--theme-white));
+  border-radius: 0.75rem;
+  overflow: hidden;
+  position: relative;
+  outline: none;
+}
+
+.Card__media {
+  margin: 0;
+  padding-top: 100%;
+  position: relative;
+}
+
+.Card__image {
+  height: 100%;
+  left: 0;
+  object-fit: cover;
+  object-position: center;
+  position: absolute;
+  top: 0;
   width: 100%;
+}
 
-  &>*:first-child {
-    margin-block-start: 0;
-  }
+.Card__main {
+  padding: 0.75rem;
+}
 
-  &>h1 {
-    font-weight: 800;
-  }
+.Card__heading {
+  font-size: 1.5rem;
+  line-height: 1;
+}
 
-  &>h1,
-  &>h2,
-  &>h3 {
-    line-height: 1.25;
-    margin-block: 1.5rem 1rem;
-  }
+.Card__link {
+  text-decoration: none;
+}
 
-  &>ul {
-    margin-block: 1.5rem;
-    padding-inline: 2rem 0;
+.Card__link:focus,
+.Card__link:hover {
+  text-decoration: underline;
+  text-decoration-color: hsl(var(--theme-blue));
+}
 
-    li {
-      margin-block: 0.5rem;
-    }
-  }
+.Card__link:focus-visible,
+.Card__link:hover {
+  text-decoration-color: hsl(var(--theme-red));
+}
 
-  &>p {
-    margin-block: 1rem;
-  }
+.Card--overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(to top,
+      hsla(var(--theme-black), 0.75) 0%,
+      hsla(var(--theme-black), 0) 50%);
+}
 
-  a:not([class]) {
-    font-weight: 500;
-  }
+.Card--overlay * {
+  color: hsl(var(--theme-white));
+  position: relative;
+  z-index: 1;
+}
+
+.Card--overlay .Card__media {
+  margin-top: auto;
+}
+
+.Pagination {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: min-content;
+  gap: 0.25rem;
+  justify-content: center;
+  margin-top: -2rem;
+  padding-bottom: 2rem;
+}
+
+.Arrow {
+  background: hsl(var(--theme-light));
+  border-radius: 50%;
+  display: grid;
+  padding: 0.25rem;
+}
+
+.Dots {
+  display: grid;
+  grid-auto-flow: column;
+  gap: 0.25rem;
+}
+
+.Dot {
+  background: hsla(var(--theme-dark), 0.1);
+  border-radius: 50%;
+  display: block;
+  height: 0.75rem;
+  width: 0.75rem;
+}
+
+.Dot:focus,
+.Dot:hover {
+  background: hsla(var(--theme-dark), 0.25);
+}
+
+.Dot:focus-visible,
+.Dot:hover {
+  background: hsl(var(--theme-pink));
 }
 </style>
