@@ -1,802 +1,309 @@
 <script>
-// import { ref } from 'vue';
-import { useStore } from 'vuex';
-import Navbar from "@/examples/PageLayout/NavbarHygeco.vue";
-// import PricingCard from "./components/PricingCard.vue";
-// import AppFooter from "@/examples/PageLayout/Footer.vue";
-// import AccordionItem from "./components/AccordionItem.vue";
+import { mapState } from "vuex";
 import setNavPills from "@/assets/js/nav-pills.js";
-import ProjectGallerie from "./components/ProjectGallerie.vue";
-import TeamCard from "./components/TeamCard.vue";
-import Contact from "./components/contact.vue";
-import Testimonials from './components/Testimonials.vue'
-
-
-// import ComplexBackgroundCard from "@/views/ecommerce/components/ComplexBackgroundCard.vue";
+import axios from 'axios';
 
 export default {
-  components: {
-    Navbar,
-    ProjectGallerie,
-    TeamCard,
-    Contact,
-    Testimonials
-    // PricingCard,
-    // AppFooter,
-    // AccordionItem,
-    // ComplexBackgroundCard,
-  },
+  name: 'Contact',
   data() {
     return {
-      store: useStore(),
-      currentIndexHead: 0,
-      existingSlides: [
-        {
-          imageUrl: require("../../assets/img/banniere11.png"),
-          text: "D'un linge frais à un ménage parfait, Hygeco prend le relais!",
-        },
-        {
-          imageUrl: require("../../assets/img/o2.png"),
-          text: "D'un linge frais à un ménage parfait, Hygeco prend le relais!",
-        },
-      ],
-      intervalId: null,
+      form: {
+        firstName: '',
+        address: '',
+        email: '',
+        service: '',
+        object: '',
+        note: ''
+      },
+      errors: {}
     };
   },
+  computed: {
+    ...mapState({
+      showSidenav: state => state.showSidenav,
+      showNavbar: state => state.showNavbar,
+      showFooter: state => state.showFooter,
+      isPinned: state => state.isPinned,
+    }),
+  },
   mounted() {
-    this.store.state.showSidenav = false;
-    this.store.state.showNavbar = false;
-    this.store.state.showFooter = false;
-    setNavPills();
-    this.startSlideshow();
+    this.$store.state.showSidenav = false;
+    this.$store.state.showNavbar = false;
+    this.$store.state.showFooter = false;
+    this.setNavPills();
   },
   beforeUnmount() {
-    this.stopSlideshow();
-    this.store.state.showSidenav = true;
-    this.store.state.showNavbar = false;
-    this.store.state.showFooter = true;
-    if (this.store.state.isPinned === false) {
+    this.$store.state.showSidenav = true;
+    this.$store.state.showNavbar = false;
+    this.$store.state.showFooter = true;
+    if (this.$store.state.isPinned === false) {
       const sidenav_show = document.querySelector(".g-sidenav-show");
       sidenav_show.classList.remove("g-sidenav-hidden");
       sidenav_show.classList.add("g-sidenav-pinned");
-      this.store.state.isPinned = true;
+      this.$store.state.isPinned = true;
     }
   },
   methods: {
-    startSlideshow() {
-      this.intervalId = setInterval(() => {
-        this.currentIndexHead =
-          (this.currentIndexHead + 1) % this.existingSlides.length;
-      }, 5000); // Change image every 5 seconds (adjust as needed)
+    setNavPills,
+    validateForm() {
+      const errors = {};
+      if (!this.form.first_name) {
+        errors.first_name = 'Le nom complet est obligatoire';
+      }
+      if (!this.form.address) {
+        errors.address = 'L\'adresse est obligatoire';
+      }
+      if (!this.form.email) {
+        errors.email = 'L\'email est obligatoire';
+      } else if (!this.isValidEmail(this.form.email)) {
+        errors.email = 'L\'email doit être valide';
+      }
+      if (!this.form.service) {
+        errors.service = 'Le service est obligatoire';
+      }
+      if (!this.form.object) {
+        errors.object = 'Le objet est obligatoire';
+      }
+      if (!this.form.note) {
+        errors.note = 'La note est obligatoire';
+      }
+      this.errors = errors;
+      return Object.keys(errors).length === 0;
     },
-    stopSlideshow() {
-      clearInterval(this.intervalId);
+    isValidEmail(email) {
+      const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i
+        ;
+      return re.test(email);
+    },
+    async submitForm() {
+      if (this.validateForm()) {
+        try {
+          const response = await axios.post('https://hygeco-back.test/api/submit-contact-form', this.form);
+          this.$swal('Formulaire soumis avec succès');
+          console.log('Form submitted successfully:', response.data);
+          this.reinitialiserFormulaire();
+        } catch (error) {
+          console.error('Error submitting form:', error);
+        }
+      }
+    },
+    reinitialiserFormulaire() {
+      this.form = {};
     }
-  }
+  },
+
 };
 </script>
 
-
 <template>
-  <!-- <div class="green-bar" style="background-color: #34C759; height: 5px;"></div> -->
 
-  <div class="container-fluid" style="background-color: #30c7b5; height: 41px">
-    <div class="text-center">
-      <h3 style="color: white">50% OFF</h3>
-    </div>
-  </div>
 
-  <navbar is-blur="blur border-radius-lg my-3 py-2 start-0 end-0 mx-4 shadow" btn-background="bg-gradient-success"
-    :dark-mode="true" style="position: absolute" />
 
-  <div class="page-header position-relative" :style="{
-    backgroundImage: existingSlides[currentIndexHead]
-      ? `url(${existingSlides[currentIndexHead].imageUrl})`
-      : '',
 
-    backgroundSize: 'cover',
-    padding: '100px',
-  }">
-    <div class="container pb-10 pb-lg-9 pt-7 postion-relative z-index-2">
-      <div class="row">
-        <div class="col-md-6 mt-4">
-          <h3 class="text-white" style="font-size: 2.5rem; color: #000000">
-            {{
-              existingSlides[currentIndexHead]
-                ? existingSlides[currentIndexHead].text
-                : ""
-            }}
-          </h3>
-          <!-- <router-link :to="{ name: 'Signin Basic' }" class="mb-0 btn btn-sm me-1"
-            :class="btnBackground ? btnBackground : ' text-white'">
-            Book Now
-          </router-link> -->
-        </div>
+
+  <div class="container-fluid p-5">
+    <section class="cleaning-quote position-relative">
+      <div class="cleaning-thumbing">
+        <img decoding="async" src="../../../assets/img/2.png" alt="Contact Us" />
       </div>
-    </div>
-  </div>
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-lg-5">
+            <div class="cleaning-quote-content">
+              <div class="cmn-section-title" style="margin-top: 4.5rem;">
 
-  <TeamCard />
-
-
-  <section class="relative bg-cover bg-center py-7 mt-10" :style="{
-    backgroundImage: 'url(' + require('../../assets/img/bar.png') + ')',
-    backgroundAttachment: 'fixed',
-  }">
-
-    <div class="absolute inset-0"></div>
-    <div class="container mx-auto relative flex justify-center items-center text-center">
-      <div class="max-w-lg">
-        <h2 class="text-white text-3xl md:text-4xl font-bold mb-4">
-          Services Résidentiels
-        </h2>
-        <a href="/pages/reservation" class="bg-yellow-button text-gray-900 font-medium py-3 px-6 rounded">
-          Reserver Maintenant
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <div class="container">
-    <div class="work-wrapper1 mt-7">
-      <img decoding="async"
-        src="https://www.4damstheme.com/clenis/wp-content/plugins/clenis-toolkit/widgets/img/icon/flower.png"
-        alt="How It Works" class="follower-section" />
-      <div class="row justify-content-lg-between justify-content-center">
-        <div class="col-lg-7">
-          <div class="work-thumb">
-            <img decoding="async" src="../../assets/img/menage.png" alt="How It Works" />
-          </div>
-        </div>
-        <div class="col-lg-5 col-md-7">
-          <div class="howwork-content">
-            <div class="cmn-section-title">
-              <!-- <div class="cmn--btn cmn-alt1 wow fadeInDown" data-wow-delay="0.4"
-                style="visibility: visible; animation-name: fadeInDown">
-                <span> Working Process </span>
-              </div> -->
-              <h2 class="white mt-xxl-4 mt-2 wow fadeInUp" data-wow-delay="0.5" style="
-                  visibility: visible;
-                  animation-name: fadeInUp;
-                  color: #032b52;
-                ">
-                Service Resedentiel
-              </h2>
-              <!-- <p class="text-white wow fadeInDown" data-wow-delay="0.6"
-                style="visibility: visible; animation-name: fadeInDown">
-                We love help you get your clothes fresh and clean so we here for
-                you 24/7 for any question, concern or suggestion.
-              </p> -->
-            </div>
-            <div class="howit-work-info">
-              <div class="howit-item wow fadeInUp" data-wow-delay="0.7" style="
-                  visibility: visible;
-                  animation-name: fadeInUp;
-                  padding: 50px;
-                  padding-left: 20px;
-                  /* margin-top: 12rem; */
-                ">
-                <h3 class="title d-flex align-items-center gap-2" style="font-size: 1.3rem;">Service de Ménage
-                  Résidentiel : C'est l'heure du ménage, sans que vous ayez à lever le petit
-                  doigt !</h3>
-                <p class="pra">
-                  Entrez dans un foyer impeccable grâce à notre service de ménage résidentiel sur mesure.
-                </p>
-                <p class="pra">
-                  équipes expérimentées s'adaptent à vos besoins spécifiques pour vous offrir un environnement
-                  propre et confortable.
-                </p>
-                <p class="pra">
-                  Que ce soit pour un nettoyage régulier, ménage de printemps, postconstruction ou déménagement, nous
-                  sommes là pour vous.
-                </p>
-              </div>
-            </div>
-            <div class="cmn--btn cmn-alt2 wow fadeInDown" data-wow-delay="0.4s" style="
+                <h2 class="white mt-xxl-4 mt-2 mb-0 wow fadeInUp" data-wow-delay="0.6s" style="
+                    visibility: visible;
+                    animation-delay: 0.6s;
+                    animation-name: fadeInUp;
+                    color: white;
+                  ">
+                  Request a free cleaning quote today
+                </h2>
+                <div class="cmn--btn cmn-alt2 wow fadeInDown" data-wow-delay="0.4s" style="
                     visibility: visible;
                     animation-delay: 0.4s;
                     animation-name: fadeInDown;
                   ">
-              <a href="/pages/service-menage"> <span> Voir Plus </span></a>
-
+                  <span> Contact Us </span>
+                </div>
+              </div>
+              <div class="cleaning-info">
+                <div class="cleaning-info-item wow fadeInDown" data-wow-delay="0.7s" style="
+                    visibility: visible;
+                    animation-delay: 0.7s;
+                    animation-name: fadeInDown;
+                  ">
+                  <div class="c-info-icon d-flex align-items-center">
+                    <svg aria-hidden="true" class="e-font-icon-svg e-fas-map-marker-alt" viewBox="0 0 384 512"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M172.268 501.67C26.97 291.031 0 269.413 0 192 0 85.961 85.961 0 192 0s192 85.961 192 192c0 77.413-26.97 99.031-172.268 309.67-9.535 13.774-29.93 13.773-39.464 0zM192 272c44.183 0 80-35.817 80-80s-35.817-80-80-80-80 35.817-80 80 35.817 80 80 80z">
+                      </path>
+                    </svg>
+                    <span class="pra"> Telephone </span>
+                  </div>
+                  <h3 class="title" style="font-size: 1.5rem">
+                    +1 514-939-2020
+                  </h3>
+                </div>
+                <div class="cleaning-info-item wow fadeInDown" data-wow-delay="0.7s" style="
+                    visibility: visible;
+                    animation-delay: 0.7s;
+                    animation-name: fadeInDown;
+                  ">
+                  <div class="c-info-icon d-flex align-items-center">
+                    <svg aria-hidden="true" class="e-font-icon-svg e-fas-map-marker-alt" viewBox="0 0 384 512"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M172.268 501.67C26.97 291.031 0 269.413 0 192 0 85.961 85.961 0 192 0s192 85.961 192 192c0 77.413-26.97 99.031-172.268 309.67-9.535 13.774-29.93 13.773-39.464 0zM192 272c44.183 0 80-35.817 80-80s-35.817-80-80-80-80 35.817-80 80 35.817 80 80 80z">
+                      </path>
+                    </svg>
+                    <span class="pra"> Location </span>
+                  </div>
+                  <h3 class="title" style="font-size: 1.2rem">
+                    Montréal,Canada
+                    <span class="d-block">4260 Notre Dame,Ouest</span>
+                  </h3>
+                </div>
+                <div class="cleaning-info-item wow fadeInDown" data-wow-delay="0.7s" style="
+                    visibility: visible;
+                    animation-delay: 0.7s;
+                    animation-name: fadeInDown;
+                  ">
+                  <div class="c-info-icon d-flex align-items-center">
+                    <svg aria-hidden="true" class="e-font-icon-svg e-fas-envelope" viewBox="0 0 512 512"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z">
+                      </path>
+                    </svg>
+                    <span class="pra"> Mail Us </span>
+                  </div>
+                  <h3 class="title" style="font-size: 1.2rem">
+                    info@heygeco.ca
+                  </h3>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-7">
+            <div class="wpcf7 js" id="wpcf7-f9-p72-o1" lang="en-US" dir="ltr">
+              <div class="screen-reader-response">
+                <p role="status" aria-live="polite" aria-atomic="true"></p>
+                <ul></ul>
+              </div>
+              <form @submit.prevent="submitForm" class="wpcf7-form init clenis-cf7-form" aria-label="Contact form">
+                <div class="cleaning-form wow fadeInUp" data-wow-delay="0.6s"
+                  style="visibility: visible; animation-delay: 0.6s; animation-name: fadeInUp;">
+                  <div class="row g-4">
+                    <div class="col-lg-6 col-md-6">
+                      <div class="clean-form-grp">
+                        <p>
+                          <label>Nom complet</label><br />
+                          <input v-model="form.first_name" class="wpcf7-form-control wpcf7-text" aria-required="true"
+                            placeholder="Nom complet" type="text" name="first_name" />
+                          <span v-if="errors.first_name" class="error">{{ errors.first_name }}</span>
+                        </p>
+                      </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                      <div class="clean-form-grp">
+                        <p>
+                          <label>Adresse</label><br />
+                          <input v-model="form.address" class="wpcf7-form-control wpcf7-text" aria-required="true"
+                            placeholder="Adresse" type="text" name="address" />
+                          <span v-if="errors.address" class="error">{{ errors.address }}</span>
+                        </p>
+                      </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                      <div class="clean-form-grp">
+                        <p>
+                          <label>E-mail</label><br />
+                          <input v-model="form.email" class="wpcf7-form-control wpcf7-email" aria-required="true"
+                            placeholder="E-mail" type="email" name="email" />
+                          <span v-if="errors.email" class="error">{{ errors.email }}</span>
+                        </p>
+                      </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                      <div class="clean-form-grp">
+                        <p>
+                          <label>Objet</label><br />
+                          <input v-model="form.object" class="wpcf7-form-control wpcf7-email" aria-required="true"
+                            placeholder="Objet" type="text" name="object" />
+                          <span v-if="errors.object" class="error">{{ errors.object }}</span>
+                        </p>
+                      </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                      <div class="clean-form-grp">
+                        <p>
+                          <label>Service</label><br />
+                          <select v-model="form.service" class="wpcf7-form-control wpcf7-select" aria-invalid="false"
+                            name="service" style="
+                                border-radius: 10px;
+                                border: 1px solid rgba(255, 255, 255, 0.15);
+                                outline: none;
+                                color: rgba(255, 255, 255, 0.55);
+                                padding: 16px 23px;
+                                background: transparent;
+                                width: 100%;
+                              ">
+                            <option style="background-color: #30c7b5" value="" disabled>Sélectionner un service</option>
+                            <option style="background-color: #30c7b5" value="Menage">Menage</option>
+                            <option style="background-color: #30c7b5" value="Buandrie">Buandrie</option>
+                            <option style="background-color: #30c7b5" value="Commercial">Commercial</option>
+                            <!-- Add more options as needed -->
+                          </select>
+                          <span v-if="errors.service" class="error">{{ errors.service }}</span>
+                        </p>
+                      </div>
+                    </div>
+                    <div class="col-lg-12">
+                      <div class="clean-form-grp">
+                        <p>
+                          <label>Écrire une note</label><br />
+                          <textarea v-model="form.note" class="wpcf7-form-control wpcf7-textarea" aria-required="true"
+                            placeholder="Écrire une note" name="note"></textarea>
+                          <span v-if="errors.note" class="error">{{ errors.note }}</span>
+                        </p>
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="clean-form-grp">
+                        <p style="margin-bottom: 0px">
+                          <button class="wpcf7-form-control wpcf7-submit" type="submit" style="
+                              border: unset;
+                              color: white;
+                              background: #344767;
+                              border-radius: 87px;
+                              padding: 1rem;
+                              font-size: 16px;">Soumettre vos informations</button>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class=" wpcf7-response-output" aria-hidden="true">
+                </div>
+              </form>
             </div>
           </div>
         </div>
       </div>
       <img decoding="async"
         src="https://www.4damstheme.com/clenis/wp-content/plugins/clenis-toolkit/widgets/img/icon/working-ball.png"
-        alt="How It Works" class="working-bable" />
-    </div>
-  </div>
-  <section class="working-process" style="text-align: center; padding: 40px 20px; background-color: #f9f9f9">
-    <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 15px">
-      <div class="title-section" style="margin-bottom: 40px">
-        <h2 style="font-size: 2em; margin-bottom: 10px">Comment ça fonctionne ?</h2>
-        <!-- <p style="font-size: 1em; color: #666">
-          Perspiciatis unde omnis iste natus error sit voluptatem accusantium
-          dol oremque laudantium, totam remeaque ipsa.
-        </p> -->
-      </div>
-      <div class="process-steps" style="display: flex; flex-wrap: wrap; justify-content: space-between">
-        <div class="step">
-          <div class="icon">
-            <i class="fa fa-calendar-check-o"></i>
-          </div>
-          <h3><a href="#">Prenez votre rendez-vous</a></h3>
-          <p>
-            Choisissez le forfait de ménage et la fréquence qui vous conviennent à la date souhaitée.
-          </p>
-        </div>
-        <div class="step">
-          <div class="icon">
-            <i class="fa fa-envelope-o"></i>
-          </div>
-          <h3><a href="#">Recevez votre confirmation</a></h3>
-          <p>
-            Nous vous enverrons un
-            courriel instantané avec votre confirmation.
-          </p>
-        </div>
-        <div class="step">
-          <div class="icon">
-            <i class="fa fa-smile-o"></i>
-          </div>
-          <h3><a href="#">Détendez-vous !</a></h3>
-          <p>
-            Relaxez ou profitez de votre temps pour faire des
-            activités qui vous plaisent pendant que notre équipe transforme votre maison en un espace
-            impeccable.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section class="relative bg-cover bg-center py-7 mt-10" :style="{
-    backgroundImage: 'url(' + require('../../assets/img/bar.png') + ')',
-    backgroundAttachment: 'fixed',
-  }">
-    <div class="absolute inset-0"></div>
-    <div class="container mx-auto relative flex justify-center items-center text-center">
-      <div class="max-w-lg">
-        <h2 class="text-white  md:text-4xl font-bold mb-4" style="font-size: 3.875rem;">
-          Buanderie
-        </h2>
-        <a href="/pages/reservation-buanderie" class="bg-yellow-button text-gray-900 font-medium py-3 px-6 rounded">
-          Reserver Maintenant
-        </a>
-      </div>
-    </div>
-  </section>
-
-
-  <div class="container">
-    <img decoding="async"
-      src="https://www.4damstheme.com/clenis/wp-content/plugins/clenis-toolkit/widgets/img/icon/flower.png"
-      alt="How It Works" class="follower-section" style="position: relative; left: 30px; top: -27px" />
-    <div class="row justify-content-lg-between justify-content-center">
-      <div class="col-lg-5 col-md-7">
-        <div class="howwork-content">
-          <div class="cmn-section-title">
-            <!-- <div class="cmn--btn cmn-alt1 wow fadeInDown" data-wow-delay="0.4"
-              style="visibility: visible; animation-name: fadeInDown">
-              <span> Working Process </span>
-            </div> -->
-            <h2 class="white mt-xxl-4 mt-2 wow fadeInUp" data-wow-delay="0.5" style="
-                visibility: visible;
-                animation-name: fadeInUp;
-                color: #30c7b5;
-                margin-bottom: -62px;
-              ">
-              Buanderie
-            </h2>
-
-            <!-- <p class=" wow fadeInDown" data-wow-delay="0.6"
-                style="visibility: visible; animation-name: fadeInDown;color: #30c7b5;">
-                We love help you get your clothes fresh and clean so we here for
-                you 24/7 for any question, concern or suggestion.
-              </p> -->
-          </div>
-          <h3 class="title d-flex align-items-center gap-2" style="font-size: 1.3rem;margin-top: 4.5rem;">Service de
-            Buanderie: ça sent le linge frais et prêt à porter !</h3>
-          <div class="howit-work-info">
-            <div class="howit-item wow fadeInUp" data-wow-delay="0.7" style="
-                visibility: visible;
-                animation-name: fadeInUp;
-                padding: 35px;
-                padding-left: 17px;
-              ">
-              <p class="pra">
-                Dites adieu aux corvées de lessive avec notre service de buanderie pratique !
-              </p>
-              <p class="pra">
-                Que vous
-                préfériez une collecte et livraison à domicile ou que vous déposiez vos vêtements dans l'un de
-                nos points de service,nous nous assurons que vos vêtements sont traités avec le plus grand
-                soin et vous sont rendus frais et impeccables.
-              </p>
-
-            </div>
-          </div>
-          <div class="cmn--btn cmn-alt2 wow fadeInDown" data-wow-delay="0.4s" style="
-                    visibility: visible;
-                    animation-delay: 0.4s;
-                    animation-name: fadeInDown;
-                  ">
-            <a href="/pages/service-menage"> <span> Voir Plus </span></a>
-
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-7">
-        <div class="work-thumb">
-          <img decoding="async" src="../../assets/img/33.png" alt="How It Works"
-            style="width: 90%; border-radius: 60px" />
-        </div>
-      </div>
-    </div>
-    <img decoding="async"
-      src="https://www.4damstheme.com/clenis/wp-content/plugins/clenis-toolkit/widgets/img/icon/working-ball.png"
-      alt="How It Works" class="working-bable" />
-  </div>
-  <section class="working-process" style="text-align: center; padding: 40px 20px; background-color: #f9f9f9">
-    <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 15px">
-      <div class="title-section" style="margin-bottom: 40px">
-        <h2 style="font-size: 2em; margin-bottom: 10px">Comment ça fonctionne ?</h2>
-
-      </div>
-      <div class="process-steps" style="display: flex; flex-wrap: wrap; justify-content: space-between">
-        <div class="step">
-          <div class="icon">
-            <i class="fa fa-calendar-check-o"></i>
-          </div>
-          <h3><a href="#"> Planifiez votre collecte</a></h3>
-          <p>
-            Choisissez la date et l'heure qui vous
-            conviennent pour la collecte de votre linge via notre application ou notre site web. Vous
-            y êtes presque !
-
-          </p>
-        </div>
-        <div class="step">
-          <div class="icon">
-            <i class="fa fa-envelope-o"></i>
-          </div>
-          <h3><a href="#"> Recevez votre confirmation</a></h3>
-          <p>
-            Nous vous enverrons
-            une notification pour confirmer votre rendez-vous.
-          </p>
-        </div>
-        <div class="step">
-          <div class="icon">
-            <i class="fa fa-smile-o"></i>
-          </div>
-          <h3><a href="#"> Détendez-vous !</a></h3>
-          <p>
-            Profitez de votre temps pendant que notre
-            équipe s'occupe du nettoyage de votre linge.
-
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-  <div class="container">
-    <section class="counter-section pt-120 mt-7" style="background-color: #f8f9fa;">
-      <div class="container">
-        <div class="counter-wrapper">
-          <div class="counter__items odometer-item wow fadeInDown" data-wow-duration="0.4s" style="
-              visibility: visible;
-              animation-duration: 0.4s;
-              animation-name: fadeInDown;
-            ">
-            <div class="cont d-flex align-items-center">
-              <span class="odometer odometer-auto-theme" data-odometer-final="99">
-                <div class="odometer-inside">
-                  <span class="odometer-digit"><span class="odometer-digit-inner"><span class="odometer-ribbon"><span
-                          class="odometer-ribbon-inner"></span></span></span></span><span class="odometer-digit"><span
-                      class="odometer-digit-inner"><span class="odometer-ribbon"><span
-                          class="odometer-ribbon-inner"><span class="odometer-value">9</span>
-                          <span class="odometer-value">9</span>
-                          <span class="odometer-value">9</span></span></span></span></span>
-                </div>
-              </span>
-
-            </div>
-            <p>maison éclatante</p>
-          </div>
-          <div class="vline"></div>
-          <div class="text-center">
-            <h3>découvrez notre expertise en action chez
-              Hygeco ! </h3>
-          </div>
-          <div class="vline"></div>
-          <div class="counter__items odometer-item wow fadeInDown" data-wow-duration="0.4s" style="
-              visibility: visible;
-              animation-duration: 0.4s;
-              animation-name: fadeInDown;
-            ">
-            <div class="cont d-flex align-items-center">
-              <span class="odometer odometer-auto-theme" data-odometer-final="99">
-                <div class="odometer-inside">
-                  <span class="odometer-digit"><span class="odometer-digit-inner"><span class="odometer-ribbon"><span
-                          class="odometer-ribbon-inner"></span></span></span></span><span class="odometer-digit"><span
-                      class="odometer-digit-inner"><span class="odometer-ribbon"><span
-                          class="odometer-ribbon-inner"><span class="odometer-value">9</span>
-                          <span class="odometer-value">9</span>
-                          <span class="odometer-value">9</span></span></span></span></span>
-                </div>
-              </span>
-              <!-- <span class="plus__icon">
-                <svg aria-hidden="true" class="e-font-icon-svg e-fas-percent" viewBox="0 0 448 512"
-                  xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M112 224c61.9 0 112-50.1 112-112S173.9 0 112 0 0 50.1 0 112s50.1 112 112 112zm0-160c26.5 0 48 21.5 48 48s-21.5 48-48 48-48-21.5-48-48 21.5-48 48-48zm224 224c-61.9 0-112 50.1-112 112s50.1 112 112 112 112-50.1 112-112-50.1-112-112-112zm0 160c-26.5 0-48-21.5-48-48s21.5-48 48-48 48 21.5 48 48-21.5 48-48 48zM392.3.2l31.6-.1c19.4-.1 30.9 21.8 19.7 37.8L77.4 501.6a23.95 23.95 0 0 1-19.6 10.2l-33.4.1c-19.5 0-30.9-21.9-19.7-37.8l368-463.7C377.2 4 384.5.2 392.3.2z">
-                  </path>
-                </svg>
-              </span> -->
-            </div>
-            <p>clients satisfaits</p>
-          </div>
-
-        </div>
-      </div>
+        alt="Contact Us" class="cleaning-shape" />
+      <img decoding="async"
+        src="https://www.4damstheme.com/clenis/wp-content/plugins/clenis-toolkit/widgets/img/icon/cirs.png"
+        alt="Contact Us" class="working-cirs" />
     </section>
   </div>
-  <ProjectGallerie />
-  <Testimonials />
 
-
-
-  <Contact />
-  <footer class="footer__section position-relative">
-    <div class="container">
-      <div class="newsletter-section" style="padding-top: 130px; padding-bottom: 65px; text-align: center">
-        <div id="block-15" class="footer-top-widget widget_block">
-          <h3 class="title subcribe-title wow fadeInDown" data-wow-delay="0.4s" style="
-              visibility: visible;
-              animation-delay: 0.4s;
-              animation-name: fadeInDown;
-              font-size: 24px;
-              line-height: 120%;
-              font-weight: 700;
-            ">
-            Abonnez-vous à notre infolettre et ne ratez aucun de nos bons plans exclusifs !
-          </h3>
-          <div class="wp-widget-group__inner-blocks">
-            <p>
-              <!-- <script>
-                (function () {
-                  window.mc4wp = window.mc4wp || {
-                    listeners: [],
-                    forms: {
-                      on: function (evt, cb) {
-                        window.mc4wp.listeners.push({
-                          event: evt,
-                          callback: cb,
-                        });
-                      },
-                    },
-                  };
-                })();
-              </script> -->
-              <!-- Mailchimp for WordPress v4.9.12 - https://wordpress.org/plugins/mailchimp-for-wp/ -->
-            </p>
-            <form id="mc4wp-form-1" class="mc4wp-form mc4wp-form-227" method="post" data-id="227"
-              data-name="subscription">
-              <div class="mc4wp-form-fields">
-                <label class="fz-16 title fw-700 prafont" style="padding-right: 10px;">Entre Ton Email</label>
-                <input type="email" name="EMAIL" required="" style="
-                    width: 100%;
-                    max-width: 500px;
-                    border-radius: 10px;
-                    border: 1px solid rgba(0, 0, 0, 0.09);
-                    color: var(--pra);
-                    padding: 13px 16px;
-                    margin-bottom: 10px;
-                  " />
-                <input class="cmn--btn" type="submit" value="Decouvrir Nos Offers" style="
-                    padding: 12px 28px 15px;
-                    color: white;
-                    font-size: 16px;
-                    font-style: normal;
-                    font-weight: 500;
-                    line-height: 28px;
-                    display: inline-block;
-                    position: relative;
-                    background: #30c7b5;
-                    overflow: hidden;
-                    border-radius: 100px;
-                    transition: all 0.5s;
-                    border: unset;
-                    margin-top: 10px;
-                  " />
-              </div>
-              <label style="display: none !important">Leave this field empty if you're human:
-                <input type="text" name="_mc4wp_honeypot" value="" tabindex="-1" autocomplete="off" /></label><input
-                type="hidden" name="_mc4wp_timestamp" value="1715706989" /><input type="hidden" name="_mc4wp_form_id"
-                value="227" /><input type="hidden" name="_mc4wp_form_element_id" value="mc4wp-form-1" />
-              <div class="mc4wp-response"></div>
-            </form>
-            <!-- / Mailchimp for WordPress Plugin -->
-            <p></p>
-          </div>
-        </div>
-      </div>
-      <div class="footer__top pb-120" style="border-top: 1px solid rgba(0, 0, 0, 0.09); padding-top: 60px">
-        <div class="row g-4" style="margin-bottom: 30px">
-          <div class="col-xl-4 col-lg-3 col-md-5 col-sm-6 wow fadeInUp" data-wow-duration="2.1s" style="
-              visibility: visible;
-              animation-duration: 2.1s;
-              animation-name: fadeInUp;
-            ">
-            <div class="footer__item" style="margin-bottom: 24px; display: block">
-              <a href="https://www.4damstheme.com/clenis/" class="footer-logo"
-                style="margin-bottom: 24px; display: block">
-                <img src="../../assets/img/H-Logo.png" alt="Clenis" />
-              </a>
-              <div class="footer prag" style="
-                  color: #748aa0;
-                  font-size: 16px;
-                  font-style: normal;
-                  font-weight: 400;
-                  line-height: 28px;
-                  margin-bottom: 50px;
-                  max-width: 325px;
-                  margin-top: 40px;
-                ">
-                Avec une histoire riche s'étendant sur des décennies, notre club est devenu un symbole d'excellence dans
-                la communauté du golf. Il propose un gameplay stimulant mais gratifiant.
-              </div>
-              <ul class="footer-social d-flex align-items-center" style="gap: 24px">
-                <li style="list-style: none">
-                  <a href="" style="
-                      text-decoration: none;
-                      text-transform: capitalize;
-                      margin: 0;
-                      color: #30c7b5;
-                      transition: all 0.3s;
-                    ">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M9.69771 13.2478C9.62571 13.2478 8.04171 13.2478 7.32171 13.2478C6.93771 13.2478 6.81771 13.1038 6.81771 12.7438C6.81771 11.7838 6.81771 10.7998 6.81771 9.83983C6.81771 9.45583 6.96171 9.33583 7.32171 9.33583H9.69771C9.69771 9.26383 9.69771 7.87183 9.69771 7.22383C9.69771 6.26383 9.86571 5.35183 10.3457 4.51183C10.8497 3.64783 11.5697 3.07183 12.4817 2.73583C13.0817 2.51983 13.6817 2.42383 14.3297 2.42383H16.6817C17.0177 2.42383 17.1617 2.56783 17.1617 2.90383V5.63983C17.1617 5.97583 17.0177 6.11983 16.6817 6.11983C16.0337 6.11983 15.3857 6.11983 14.7377 6.14383C14.0897 6.14383 13.7537 6.45583 13.7537 7.12783C13.7297 7.84783 13.7537 8.54383 13.7537 9.28783H16.5377C16.9217 9.28783 17.0657 9.43183 17.0657 9.81583V12.7198C17.0657 13.1038 16.9457 13.2238 16.5377 13.2238C15.6737 13.2238 13.8257 13.2238 13.7537 13.2238V21.0478C13.7537 21.4558 13.6337 21.5998 13.2017 21.5998C12.1937 21.5998 11.2097 21.5998 10.2017 21.5998C9.84171 21.5998 9.69771 21.4558 9.69771 21.0958C9.69771 18.5758 9.69771 13.3198 9.69771 13.2478Z"
-                        fill="#30c7b5"></path>
-                    </svg>
-                  </a>
-                </li>
-                <li style="list-style: none">
-                  <a href="" style="
-                      text-decoration: none;
-                      text-transform: capitalize;
-                      margin: 0;
-                      color: #30c7b5;
-                      transition: all 0.3s;
-                    ">
-                    <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M18.8571 0H6.85714C3.49714 0 0.857143 2.64 0.857143 6V18C0.857143 21.36 3.49714 24 6.85714 24H18.8571C22.2171 24 24.8571 21.36 24.8571 18V6C24.8571 2.64 22.2171 0 18.8571 0ZM22.4571 18C22.4571 20.04 20.8971 21.6 18.8571 21.6H6.85714C4.81714 21.6 3.25714 20.04 3.25714 18V6C3.25714 3.96 4.81714 2.4 6.85714 2.4H18.8571C20.8971 2.4 22.4571 3.96 22.4571 6V18Z"
-                        fill="#30c7b5"></path>
-                      <path
-                        d="M12.8571 6C9.49714 6 6.85714 8.64 6.85714 12C6.85714 15.36 9.49714 18 12.8571 18C16.2171 18 18.8571 15.36 18.8571 12C18.8571 8.64 16.2171 6 12.8571 6ZM12.8571 15.6C10.8171 15.6 9.25714 14.04 9.25714 12C9.25714 9.96 10.8171 8.4 12.8571 8.4C14.8971 8.4 16.4571 9.96 16.4571 12C16.4571 14.04 14.8971 15.6 12.8571 15.6Z"
-                        fill="#30c7b5"></path>
-                      <path
-                        d="M18.8566 7.1998C19.5194 7.1998 20.0566 6.66255 20.0566 5.9998C20.0566 5.33706 19.5194 4.7998 18.8566 4.7998C18.1939 4.7998 17.6566 5.33706 17.6566 5.9998C17.6566 6.66255 18.1939 7.1998 18.8566 7.1998Z"
-                        fill="#30c7b5"></path>
-                    </svg>
-                  </a>
-                </li>
-                <li style="list-style: none">
-                  <a href="" style="
-                      text-decoration: none;
-                      text-transform: capitalize;
-                      margin: 0;
-                      color: #30c7b5;
-                      transition: all 0.3s;
-                    ">
-                    <svg width="23" height="20" viewBox="0 0 23 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M17.9178 0.25H21.2258L13.9988 8.51L22.5008 19.75H15.8438L10.6298 12.933L4.66383 19.75H1.35383L9.08383 10.915L0.927826 0.25H7.75383L12.4668 6.481L17.9178 0.25ZM16.7568 17.77H18.5898L6.75783 2.126H4.79083L16.7568 17.77Z"
-                        fill="#30c7b5"></path>
-                    </svg>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 wow fadeInUp" data-wow-duration="2.3s" style="
-              visibility: visible;
-              animation-duration: 2.3s;
-              animation-name: fadeInUp;
-            ">
-            <div id="block-16" class="widget-footer widget_block footer__item">
-              <h4 class="footer__title" style="
-                  font-weight: 700;
-                  text-transform: capitalize;
-                  color: #30c7b5;
-                  display: inline-block;
-                  margin-bottom: 41px;
-                ">
-                Liens rapides
-              </h4>
-              <div class="wp-widget-group__inner-blocks">
-                <ul style="padding: 0; margin: 0; list-style: none">
-                  <li>
-                    <a href="https://www.4damstheme.com/clenis/about-clenis/">A propos</a>
-                  </li>
-
-                  <li>
-                    <a href="https://www.4damstheme.com/clenis/contact-us/">Contact Nous</a>
-                  </li>
-
-
-                  <li>
-                    <a href="https://www.4damstheme.com/clenis/our-services/">Services</a>
-                  </li>
-
-
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 wow fadeInUp" data-wow-duration="2.3s" style="
-              visibility: visible;
-              animation-duration: 2.3s;
-              animation-name: fadeInUp;
-            ">
-            <div id="block-17" class="widget-footer widget_block footer__item">
-              <h4 class="footer__title" style="
-                  font-weight: 700;
-                  text-transform: capitalize;
-                  color: #30c7b5;
-                  display: inline-block;
-                  margin-bottom: 41px;
-                ">
-                Services
-              </h4>
-              <div class="wp-widget-group__inner-blocks">
-                <ul style="padding: 0; margin: 0; list-style: none">
-                  <li>
-                    <a href="https://www.4damstheme.com/clenis/our-project/">Menage</a>
-                  </li>
-
-                  <li>
-                    <a href="https://www.4damstheme.com/clenis/our-services/">buanderie</a>
-                  </li>
-
-                  <li>
-                    <a href="https://www.4damstheme.com/clenis/our-services/">Menage commercial</a>
-                  </li>
-
-
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 wow fadeInUp" data-wow-duration="2.3s" style="
-              visibility: visible;
-              animation-duration: 2.3s;
-              animation-name: fadeInUp;
-            ">
-            <div id="block-19" class="widget-footer widget_block footer__item">
-              <h4 class="footer__title" style="
-                  font-weight: 700;
-                  text-transform: capitalize;
-                  color: #30c7b5;
-                  display: inline-block;
-                  margin-bottom: 41px;
-                ">
-                Nos coordonnées
-              </h4>
-              <div class="wp-widget-group__inner-blocks">
-                <ul style="padding: 0; margin: 0; list-style: none">
-                  <li style="margin-bottom: 24px">
-                    <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M3.84091 12.25L0.5 14.875V1C0.5 0.58579 0.83579 0.25 1.25 0.25H14.75C15.1642 0.25 15.5 0.58579 15.5 1V11.5C15.5 11.9142 15.1642 12.25 14.75 12.25H3.84091ZM3.32211 10.75H14V1.75H2V11.7888L3.32211 10.75ZM7.25 5.5H8.75V7H7.25V5.5ZM4.25 5.5H5.75V7H4.25V5.5ZM10.25 5.5H11.75V7H10.25V5.5Z"
-                        fill="#30c7b5"></path>
-                    </svg>
-                    <a href="mailto:info@hygeco.ca" style="
-                        transition: all 0.4s;
-                        font-size: 16px;
-                        font-weight: 400;
-                        color: #748aa0;
-                      ">
-                      info@hygeco.ca
-                    </a>
-                  </li>
-                  <li style="margin-bottom: 24px">
-                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M5.02417 6.01158C5.7265 7.2466 6.7534 8.2735 7.98842 8.9758L8.6518 8.04708C8.87238 7.73838 9.2887 7.64297 9.6217 7.82485C10.6768 8.40123 11.8428 8.75148 13.0592 8.84778C13.4492 8.87868 13.75 9.20417 13.75 9.59545V12.9426C13.75 13.3271 13.4591 13.6493 13.0766 13.6886C12.6792 13.7295 12.2783 13.75 11.875 13.75C5.45469 13.75 0.25 8.5453 0.25 2.125C0.25 1.7217 0.270565 1.32078 0.311418 0.92332C0.350725 0.540812 0.672955 0.25 1.05749 0.25H4.40456C4.79583 0.25 5.12135 0.55078 5.15222 0.940817C5.2485 2.15716 5.59877 3.32323 6.17515 4.37833C6.35703 4.7113 6.26162 5.12766 5.95292 5.34818L5.02417 6.01158ZM3.13319 5.5189L4.55815 4.50107C4.1541 3.62885 3.87721 2.70387 3.73545 1.75H1.7568C1.75227 1.87474 1.75 1.99975 1.75 2.125C1.75 7.71685 6.28315 12.25 11.875 12.25C12.0002 12.25 12.1253 12.2478 12.25 12.2432V10.2645C11.2962 10.1228 10.3712 9.84587 9.49892 9.44185L8.4811 10.8668C8.06935 10.7069 7.6717 10.5186 7.29055 10.3046L7.24697 10.2797C5.77728 9.44402 4.55601 8.22272 3.72025 6.75303L3.69545 6.70945C3.48137 6.3283 3.29316 5.93065 3.13319 5.5189Z"
-                        fill="#30c7b5"></path>
-                    </svg>
-                    <span style="
-                        color: #748aa0;
-                        font-size: 16px;
-                        font-style: normal;
-                        font-weight: 400;
-                        line-height: 140%;
-                      ">
-                      +1 514-939-2020
-                    </span>
-                  </li>
-
-                  <li style="margin-bottom: 24px">
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M5.75 0.75V2.25H10.25V0.75H11.75V2.25H14.75C15.1642 2.25 15.5 2.58579 15.5 3V15C15.5 15.4142 15.1642 15.75 14.75 15.75H1.25C0.83579 15.75 0.5 15.4142 0.5 15V3C0.5 2.58579 0.83579 2.25 1.25 2.25H4.25V0.75H5.75ZM14 8.25H2V14.25H14V8.25ZM4.25 3.75H2V6.75H14V3.75H11.75V5.25H10.25V3.75H5.75V5.25H4.25V3.75Z"
-                        fill="#30c7b5"></path>
-                    </svg>
-                    <span style="
-                        color: #748aa0;
-                        font-size: 16px;
-                        font-style: normal;
-                        font-weight: 400;
-                        line-height: 140%;
-                      ">
-                      Lun - Ven 12:00 - 18:00
-                    </span>
-                  </li>
-                  <li style="margin-bottom: 24px">
-                    <svg width="14" height="17" viewBox="0 0 14 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M7 14.6746L10.7123 10.9623C12.7625 8.91208 12.7625 5.58794 10.7123 3.53769C8.66208 1.48744 5.33794 1.48744 3.28769 3.53769C1.23744 5.58794 1.23744 8.91208 3.28769 10.9623L7 14.6746ZM7 16.7959L2.22703 12.023C-0.40901 9.3869 -0.40901 5.11307 2.22703 2.47703C4.86307 -0.15901 9.1369 -0.15901 11.773 2.47703C14.409 5.11307 14.409 9.3869 11.773 12.023L7 16.7959ZM7 8.75C7.82845 8.75 8.5 8.07845 8.5 7.25C8.5 6.42157 7.82845 5.75 7 5.75C6.17155 5.75 5.5 6.42157 5.5 7.25C5.5 8.07845 6.17155 8.75 7 8.75ZM7 10.25C5.34314 10.25 4 8.90683 4 7.25C4 5.59314 5.34314 4.25 7 4.25C8.65683 4.25 10 5.59314 10 7.25C10 8.90683 8.65683 10.25 7 10.25Z"
-                        fill="#30c7b5"></path>
-                    </svg>
-                    <span style="
-                        color: #748aa0;
-                        font-size: 15px;
-                        font-style: normal;
-                        font-weight: 400;
-                        line-height: 140%;
-                      ">
-                      4260 Notre Dame,Ouest
-                    </span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="footer__bottom" style="background: #30c7b5">
-      <p style="
-          padding: 25px 5px;
-          color: #748aa0;
-          text-align: center;
-          font-size: 16px;
-          font-style: normal;
-          font-weight: 400;
-          line-height: 30px;
-          text-transform: capitalize;
-          margin: 0;
-        ">
-        © Hygeco All Rights Reserved Developed By GcsHolding
-      </p>
-    </div>
-    <img src="https://www.4damstheme.com/clenis/wp-content/themes/clenis/assets/images/footer/footer-spra.png"
-      alt="Footer backgound image" class="footer-spara" style="position: absolute; right: 60px; bottom: 220px" />
-    <img src="https://www.4damstheme.com/clenis/wp-content/themes/clenis/assets/images/icon/working-ball.png"
-      alt="Footer backgound image" class="footer-working" style="
-        position: absolute;
-        bottom: 420px;
-        left: 60px;
-        animation: updown 2s linear infinite;
-      " />
-  </footer>
-  <!-- <app-footer /> -->
 </template>
 <style scoped>
-#contactForm {
-  width: 100%;
-}
-
-#contactForm .form-control {
-  width: 100%;
-}
-
 .choose-section1::before {
   position: absolute;
   top: -200px;
@@ -1220,9 +727,9 @@ export default {
 .work-wrapper1::before {
   position: absolute;
   width: 100%;
-  height: 280px;
+  height: 360px;
   content: "";
-  top: 61px;
+  top: 0;
   left: 0;
   background: #30c7b5;
   z-index: 0;
@@ -1419,21 +926,19 @@ export default {
 }
 
 .bg-yellow-button {
-  background-color: #30c7b5;
+  background-color: #FFEA00;
   /* Yellow color */
   color: #333;
   /* Dark text color */
-  transition:
-    background-color 0.3s ease,
-    color 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease;
   /* Smooth transition */
 }
 
 /* Hover effect for button */
 .bg-yellow-button:hover {
-  background-color: #fff;
+  background-color: #FFF;
   /* White background color */
-  color: #30c7b5;
+  color: #FFEA00;
   /* Yellow text color */
 }
 
@@ -1998,7 +1503,7 @@ export default {
 }
 
 .callbox .call-item .icon {
-  background: #30c7b5;
+  background: var(--subtitle);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -2318,6 +1823,8 @@ export default {
   left: 30px;
   top: -151px;
 }
+
+
 
 .testimonail-items {
   border-radius: 10px;
@@ -2757,7 +2264,6 @@ export default {
 }
 
 .step {
-  margin-left: 1rem;
   flex: 1 1 calc(33.333% - 20px);
   box-sizing: border-box;
   margin-bottom: 40px;
@@ -2774,7 +2280,7 @@ export default {
 
 .icon {
   font-size: 48px;
-  color: #30c7b5;
+  color: #3498db;
   margin-bottom: 20px;
 }
 
@@ -2803,10 +2309,11 @@ export default {
   background: url("https://www.4damstheme.com/clenis/wp-content/plugins/clenis-toolkit/widgets/img/testimonail/testi-bg.png") center center no-repeat;
   background-size: cover;
   background-attachment: fixed;
-  padding: 32px 0 59px;
+  padding: 130px 0 150px;
   color: #ffffff;
   position: relative;
   margin-bottom: 90px;
+
 }
 
 .testimonials:before {
@@ -2935,12 +2442,11 @@ export default {
 }
 
 :where(h1, .title) {
-  font-family:
-    Josefin Sans,
-    sans-serif;
+  font-family: Josefin Sans, sans-serif;
   font-style: normal;
-
+  text-transform: uppercase;
 }
+
 
 :where(a) {
   color: inherit;
@@ -2987,7 +2493,8 @@ export default {
   padding: var(--gap);
   background: #0000001d;
   color: #70757e;
-} 
+}
+
 
 .link {
   --border: calc(100% - 2rem);
@@ -3022,6 +2529,7 @@ export default {
   }
 
   & span {
+
     background: var(--bg);
 
     &.subtitle {
@@ -3074,5 +2582,10 @@ export default {
   overflow: hidden;
   border-radius: 100px;
   transition: all 0.5s;
+}
+
+.error {
+  color: red;
+  font-weight: 600;
 }
 </style>

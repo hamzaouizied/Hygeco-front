@@ -42,47 +42,30 @@ defineProps({
 </script>
 <template>
   <div class="card">
-    <div class="pt-4 pb-3 text-center card-header">
-      <span class="text-uppercase " style="font-size: 1.5rem;color: #30c7b5;">{{ badge }}</span>
+    <div class="pt-4 pb-3 text-center card-header" style="background-color: #30c7b5;">
+      <span class="text-uppercase " style="font-size: 1.5rem;color: #fff;">{{ badge }}</span>
       <h1 class="mt-2 font-weight-bold">
-        <small>{{ price.currency }}</small
-        >{{ price.value }}
+        <small>{{ price.currency }}</small>{{ price.value }}
       </h1>
     </div>
-    <div class="pt-0 text-center card-body text-lg-start">
-      <div
-        v-for="({ label, includes }, index) of specifications"
-        :key="index"
-        class="p-2 d-flex justify-content-lg-start "
-      >
-        <div
-          class="text-center shadow icon icon-shape icon-xs rounded-circle"
-          :class="includes ? 'bg-gradient-success' : 'bg-gradient-secondary'"
-        >
-          <i
+    <div class="pt-0 text-center card-body text-lg-start" style="color: #fff;">
+      <div v-for="({ label, includes }, index) of specifications" :key="index"
+        class="p-2 d-flex justify-content-lg-start ">
+        <div class="text-center shadow icon icon-shape icon-xs rounded-circle"
+          :class="includes ? 'bg-gradient-success' : 'bg-gradient-secondary'">
+          <!-- <i
             :class="`fas ${includes ? 'fa-check' : 'fa-minus'} opacity-10`"
-          ></i>
+          ></i> -->
         </div>
         <div>
-          <span class="ps-3" style="color: gray" >{{ label }}</span>
+          <span class="ps-3" style="color: #fff">{{ label }}</span>
         </div>
       </div>
-      <a
-        :href="action.route"
-        class="mt-3 mb-0 btn btn-icon d-lg-block"
-        :class="`bg-gradient-${action.color}`"
-      >
+      <a :href="action.route" class="mt-3 mb-0 btn btn-icon d-lg-block" :class="`bg-gradient-${action.color}`">
         {{ action.label }}
-        <i class="fas fa-arrow-right ms-1"></i>
+        <!-- <i class="fas fa-arrow-right ms-1"></i> -->
       </a>
-      <a
-        :href="act.route"
-        class="mt-3 mb-0 btn btn-icon d-lg-block"
-        :class="`bg-gradient-${action.color}`"
-      >
-        {{ act.label }}
-        <i class="fas fa-arrow-right ms-1"></i>
-      </a>
+
     </div>
   </div>
 </template>

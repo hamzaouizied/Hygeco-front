@@ -1,19 +1,19 @@
 <script setup>
-import { useRoute } from "vue-router";
+// import { useRoute } from "vue-router";
 import { useStore } from "vuex";
 
 import SidenavItem from "./SidenavItem.vue";
-import SidenavCollapse from "./SidenavCollapse.vue";
+// import SidenavCollapse from "./SidenavCollapse.vue";
 // import SidenavCard from "./SidenavCard.vue";
 import SidenavCollapseItem from "./SidenavCollapseItem.vue";
 
 const store = useStore();
 
-const getRoute = () => {
-  const route = useRoute();
-  const routeArr = route.path.split("/");
-  return routeArr[1];
-};
+// const getRoute = () => {
+//   const route = useRoute();
+//   const routeArr = route.path.split("/");
+//   return routeArr[1];
+// };
 </script>
 <template>
   <div

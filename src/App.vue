@@ -40,17 +40,12 @@ export default {
 </script>
 
 <template>
-  <div
-    v-show="layout === 'landing'"
-    class="landing-bg h-100 bg-gradient-primary position-fixed w-100"
-  ></div>
+  <div v-show="layout === 'landing'" class="landing-bg h-100 bg-gradient-primary position-fixed w-100"></div>
   <sidenav v-if="showSidenav" />
   <main class="main-content position-relative max-height-vh-100 h-100">
     <navbar v-if="showNavbar" />
     <router-view />
     <app-footer v-show="showFooter" />
-    <configurator
-      :class="[showConfig ? 'show' : '', hideConfigButton ? 'd-none' : '']"
-    />
+    <configurator :class="[showConfig ? 'show' : '', hideConfigButton ? 'd-none' : '']" />
   </main>
 </template>
