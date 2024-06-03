@@ -48,7 +48,7 @@ defineProps({
         <small>{{ price.currency }}</small>{{ price.value }}
       </h1>
     </div>
-    <div class="pt-0 text-center card-body text-lg-start" style="color: #fff;">
+    <div class="pt-0 text-center card-body text-lg-start" >
       <div v-for="({ label, includes }, index) of specifications" :key="index"
         class="p-2 d-flex justify-content-lg-start ">
         <div class="text-center shadow icon icon-shape icon-xs rounded-circle"
@@ -58,7 +58,7 @@ defineProps({
           ></i> -->
         </div>
         <div>
-          <span class="ps-3" style="color: #fff">{{ label }}</span>
+          <span class="ps-3" >{{ label }}</span>
         </div>
       </div>
       <a :href="action.route" class="mt-3 mb-0 btn btn-icon d-lg-block" :class="`bg-gradient-${action.color}`">

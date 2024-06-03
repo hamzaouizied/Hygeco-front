@@ -104,15 +104,15 @@ onBeforeUnmount(() => {
         <div class="col-lg-6 about-images" data-aos="fade-up" data-aos-delay="200">
           <div class="row gy-4">
             <div class="col-lg-6">
-              <img src="../../assets/img/about-company-1.jpg" class="img-fluid" alt="">
+              <img src="../../assets/img/hygeco/11.png" class="img-fluid" alt="">
             </div>
             <div class="col-lg-6">
               <div class="row gy-4">
                 <div class="col-lg-12">
-                  <img src="../../assets/img/about-company-2.jpg" class="img-fluid" alt="">
+                  <img src="../../assets/img/hygeco/10.png" class="img-fluid" alt="">
                 </div>
                 <div class="col-lg-12">
-                  <img src="../../assets/img/about-company-3.jpg" class="img-fluid" alt="">
+                  <img src="../../assets/img/hygeco/11.png" class="img-fluid" alt="">
                 </div>
               </div>
             </div>
@@ -202,15 +202,15 @@ onBeforeUnmount(() => {
           <div class="tab-content" data-aos="fade-up" data-aos-delay="200">
 
             <div class="tab-pane fade active show" id="features-tab-1">
-              <img src="../../assets/img/tabs-1.jpg" alt="" class="img-fluid">
+              <img src="../../assets/img/hygeco/16.png" alt="" class="img-fluid">
             </div><!-- End Tab Content Item -->
 
             <div class="tab-pane fade" id="features-tab-2">
-              <img src="../../assets/img/tabs-2.jpg" alt="" class="img-fluid">
+              <img src="../../assets/img/hygeco/14.jpeg" alt="" class="img-fluid">
             </div><!-- End Tab Content Item -->
 
             <div class="tab-pane fade" id="features-tab-3">
-              <img src="../../assets/img/tabs-3.jpg" alt="" class="img-fluid">
+              <img src="../../assets/img/hygeco/8.png" alt="" class="img-fluid">
             </div><!-- End Tab Content Item -->
           </div>
 
@@ -230,7 +230,7 @@ onBeforeUnmount(() => {
       <div class="row gy-4 justify-content-between features-item">
 
         <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-          <img src="../../assets/img/features-1.jpg" class="img-fluid" alt="">
+          <img src="../../assets/img/hygeco/13.png" class="img-fluid" alt="">
         </div>
 
         <div class="col-lg-5 d-flex align-items-center" data-aos="fade-up" data-aos-delay="200">
@@ -373,7 +373,7 @@ onBeforeUnmount(() => {
         </div>
 
         <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-up" data-aos-delay="200">
-          <img src="../../assets/img/features-2.jpg" class="img-fluid" alt="">
+          <img src="../../assets/img/hygeco/3.png" class="img-fluid" alt="">
         </div>
 
       </div><!-- Features Item -->
@@ -532,7 +532,7 @@ onBeforeUnmount(() => {
         </div>
 
         <div class="features-image col-lg-5 order-1 order-lg-2" data-aos="fade-up" data-aos-delay="200">
-          <img src="../../assets/img/features-3.jpg" alt="">
+          <img src="../../assets/img/hygeco/4.png" alt="">
         </div>
 
       </div>
@@ -565,18 +565,18 @@ onBeforeUnmount(() => {
           <div class="tab-content" data-aos="fade-up" data-aos-delay="200">
 
             <div class="tab-pane fade active show" id="features-tab-11">
-              <img src="../../assets/img/tabs-1.jpg" alt="" class="img-fluid">
+              <img src="../../assets/img/hygeco/8.png" alt="" class="img-fluid">
             </div><!-- End Tab Content Item -->
 
             <div class="tab-pane fade" id="features-tab-22">
-              <img src="../../assets/img/tabs-2.jpg" alt="" class="img-fluid">
+              <img src="../../assets/img/hygeco/4.png" alt="" class="img-fluid">
             </div><!-- End Tab Content Item -->
 
             <div class="tab-pane fade" id="features-tab-33">
-              <img src="../../assets/img/tabs-3.jpg" alt="" class="img-fluid">
+              <img src="../../assets/img/hygeco/3.jpeg" alt="" class="img-fluid">
             </div><!-- End Tab Content Item -->
             <div class="tab-pane fade" id="features-tab-44">
-              <img src="../../assets/img/tabs-3.jpg" alt="" class="img-fluid">
+              <img src="../../assets/img/hygeco/1.jpeg" alt="" class="img-fluid">
             </div><!-- End Tab Content Item -->
           </div>
 

@@ -20,17 +20,17 @@ export default {
       landscapes: [
        
         {
-          image: require("../../../assets/img/f2.png"),
+          image: require("../../../assets/img/hygeco/1.png"),
           description: "Nous utilisons des sacs réutilisables pour la collecte linges,réduisant ainsi notre consommation de plastique et favorisant la durabilité. ",
           title: "Sacs réutilisables Hygeco"
         },
         {
-          image: require("../../../assets/img/f2.png"),
+          image: require("../../../assets/img/hygeco/2.jpeg"),
           description: "Nous utilisons exclusivement des produits de nettoyage certifiés écologiques, qui sont sûrs pour l'environnement et la santé de nos clients.  ",
           title: "Produits de nettoyage certifiés écologiques"
         },
         {
-          image: require("../../../assets/img/f2.png"),
+          image: require("../../../assets/img/hygeco/16.jpeg"),
           description: "Nos véhicules de transport sont électriques,contribuant ainsi à la réduction des émissions de carbone et à la préservation de l'air.",
           title: "Véhicules de transport électriques "
         },

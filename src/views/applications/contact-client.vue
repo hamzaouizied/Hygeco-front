@@ -14,9 +14,7 @@
                         <table id="datatable-basic" class="table table-flush">
                             <thead class="thead-light">
                                 <tr>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        Objet
-                                    </th>
+                                    
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                         Nom
                                     </th>
@@ -26,12 +24,17 @@
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                         Email
                                     </th>
+                                    
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                         Service
                                     </th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        Note
+                                        Objet
                                     </th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        created-at
+                                    </th>
+                                  
 
                                 </tr>
                             </thead>
@@ -89,7 +92,7 @@ export default {
             if (this.contacts.length > 0) {
                 const tableRows = this.contacts.map(contact => {
                     // assuming contact has properties like name, email, phone, etc.
-                    return [contact.object, contact.first_name, contact.address, contact.email, contact.service, contact.note]; // add more columns as needed
+                    return [ contact.first_name, contact.address, contact.email,contact.service,contact.object,contact.created_at]; // add more columns as needed
                 });
 
                 this.$nextTick(() => {

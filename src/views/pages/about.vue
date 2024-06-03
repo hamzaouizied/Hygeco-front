@@ -212,7 +212,8 @@ export default {
       <div class="process-steps" style="display: flex; flex-wrap: wrap; justify-content: space-between">
         <div class="step">
           <div class="icon">
-            <i class="fa fa-calendar-check-o"></i>
+            <i class="fa fa-smile-o"></i>
+
           </div>
           <h3><a href="#">ÉCORESPONSABILITÉ</a></h3>
           <p>
@@ -223,7 +224,8 @@ export default {
         </div>
         <div class="step">
           <div class="icon">
-            <i class="fa fa-envelope-o"></i>
+            <i class="fa fa-smile-o"></i>
+
           </div>
           <h3><a href="#">FIABILITÉ</a></h3>
           <p>

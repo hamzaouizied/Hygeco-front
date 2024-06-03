@@ -120,7 +120,7 @@ export default {
 
 
   <section class="relative bg-cover bg-center py-7 mt-10" :style="{
-    backgroundImage: 'url(' + require('../../assets/img/bar.png') + ')',
+    backgroundImage: 'url(' + require('../../assets/img/o2.png') + ')',
     backgroundAttachment: 'fixed',
   }">
 
@@ -252,7 +252,7 @@ export default {
     </div>
   </section>
   <section class="relative bg-cover bg-center py-7 mt-10" :style="{
-    backgroundImage: 'url(' + require('../../assets/img/bar.png') + ')',
+    backgroundImage: 'url(' + require('../../assets/img/banniere11.png') + ')',
     backgroundAttachment: 'fixed',
   }">
     <div class="absolute inset-0"></div>

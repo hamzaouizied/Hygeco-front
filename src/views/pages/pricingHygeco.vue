@@ -55,9 +55,9 @@ onBeforeUnmount(() => {
   </div>
   <div class="container ">
     <div class="text-center p-5">
-      <h3>See our pricing</h3>
+      <h3>Nos Bon Plans</h3>
       <p style="color: #30c7b5;">
-        You have Free Unlimited Updates and Premium Support on each package.
+        Découvrez nos offres spéciales et promotions exclusives !
       </p>
     </div>
 
@@ -65,7 +65,7 @@ onBeforeUnmount(() => {
       <div id="monthly" class="tab-pane active">
         <div class="row">
           <div class="mb-4 col-lg-4 mb-lg-0">
-            <pricing-card style="background-color: #30c7b5;" badge="Regular" :price="{ currency: '$', value: '59' }"
+            <pricing-card  badge="Regular" :price="{ currency: '$', value: '59' }"
               :specifications="[
                 { label: 'Regular cleaning', includes: true },
                 { label: 'Deep Cleaning', includes: true },
@@ -80,7 +80,7 @@ onBeforeUnmount(() => {
                 }" />
           </div>
           <div class="mb-4 col-lg-4 mb-lg-0">
-            <pricing-card style="background-color: #30c7b5;" badge="Deep Clean" :price="{ currency: '$', value: '89' }"
+            <pricing-card  badge="Deep Clean" :price="{ currency: '$', value: '89' }"
               :specifications="[
                 { label: 'Regular cleaning', includes: true },
                 { label: 'Deep Cleaning', includes: true },
@@ -96,7 +96,7 @@ onBeforeUnmount(() => {
           </div>
           <div class="mb-4 col-lg-4 mb-lg-0 kok">
             <div class="text-center">
-              <h2 style="color: #30c7b5;">Personaliser Votre Choix</h2>
+              <h2 style="color: #30c7b5;font-size: 1.75rem;">Personaliser Votre Choix</h2>
             </div>
             <div class="cardi">
               <div class="overplay">
