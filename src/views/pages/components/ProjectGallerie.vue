@@ -1,12 +1,5 @@
 <template>
   <div class="Main">
-    <!-- <div class="text-center" style="margin-bottom: 40px;">
-      <h2 style="font-size: 2em; margin-bottom: 10px;">Our Recent Work</h2>
-      <p style="font-size: 1em; color: #666;">
-        Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam remeaque ipsa.
-      </p>
-    </div> -->
-
     <section class="Carousel" ref="carousel" tabindex="-1">
       <h2 class="Hidden">Gallery</h2>
       <article v-for="(card, index) in cards" :key="index" :class="['Card', 'Card--overlay', card.type]" :id="card.id"
@@ -21,7 +14,6 @@
           </h2>
           <p>{{ card.description }}</p>
         </div>
-
       </article>
     </section>
 
@@ -44,7 +36,6 @@
       <div class="Dots">
         <a v-for="(card, index) in cards" :key="index" :href="`#${card.id}`" class="Dot" tabindex="-1">
           <span class="Hidden">Slide {{ index + 1 }}</span>
-
         </a>
       </div>
     </nav>
@@ -52,8 +43,6 @@
 </template>
 
 <script>
-// import { ref, computed } from 'vue';
-
 export default {
   data() {
     return {
@@ -425,7 +414,7 @@ a,
   max-width: 100%;
   overflow: hidden;
   position: relative;
-  z-index: -1;
+  z-index: 1;
 
   &>* {
     border-radius: inherit;
@@ -440,8 +429,6 @@ a,
   align-self: end;
   color: hsl(var(--card-foreground-color));
   grid-column: 1 / -1;
-  grid-row: main-start / main-end;
-  padding: 1.25rem;
 
   [href]:not(.Card__link) {
     position: relative;

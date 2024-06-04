@@ -117,13 +117,15 @@ export default {
                     animation-delay: 0.6s;
                     animation-name: fadeInUp;
                     color: white;
+                    margin: 1rem;
                   ">
-                  Request a free cleaning quote today
+                  Demandez un devis de nettoyage gratuit aujourd'hui
                 </h2>
                 <div class="cmn--btn cmn-alt2 wow fadeInDown" data-wow-delay="0.4s" style="
                     visibility: visible;
                     animation-delay: 0.4s;
                     animation-name: fadeInDown;
+                    margin-top: 14px;
                   ">
                   <span> Contact Us </span>
                 </div>
