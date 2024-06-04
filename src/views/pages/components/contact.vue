@@ -2018,7 +2018,7 @@ export default {
 }
 
 .cleaning-quote-content .cleaning-info {
-  margin-top: 110px;
+  margin-top: 120px;
 }
 
 @media (max-width: 1199px) {
@@ -2058,7 +2058,7 @@ export default {
 }
 
 .cleaning-info-item:not(:last-child) {
-  margin-bottom: 50px;
+  margin-bottom: 40px;
 }
 
 @media (max-width: 1199px) {

@@ -67,10 +67,9 @@ export default {
     <div class="container pb-10 pb-lg-9 pt-7 postion-relative z-index-2">
       <div class="row">
         <div class="mx-auto text-center col-md-6 mt-4">
-          <h3 class="text-white">About-Us </h3>
+          <h3 class="text-white">A Propos</h3>
           <p class="text-white">
-            Hygeco is a Montreal-based company that offers a range of professional cleaning and laundry
-            services
+            Hygeco est une entreprise basée à Montréal qui offre une gamme de services professionnels de nettoyage et de buanderie.
           </p>
         </div>
       </div>
@@ -90,31 +89,7 @@ export default {
               <div class="thumb1">
                 <img decoding="async" src="../../assets/img/a2.png" alt="Success Project " />
               </div>
-              <!-- <div class="prograss-box">
-                  <div
-                    class="icons d-flex align-items-center justify-content-center"
-                  >
-                    <svg
-                      width="87"
-                      height="91"
-                      viewBox="0 0 87 91"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        clip-rule="evenodd"
-                        d="M82.1357 59.7059C85.0651 59.7059 87.1191 62.5877 85.8233 65.2149C78.445 80.1742 63.0406 90.4652 45.2326 90.4652C20.2513 90.4652 0 70.2139 0 45.2326C0 20.2513 20.2513 0 45.2326 0C63.38 0 79.0313 10.6869 86.2364 26.1106C87.4589 28.7277 85.4107 31.5427 82.5221 31.5427C80.7738 31.5427 79.2229 30.4657 78.4502 28.8974C72.4161 16.6502 59.8084 8.22388 45.2326 8.22388C24.7934 8.22388 8.22409 24.7931 8.22409 45.2324C8.22409 65.6716 24.7934 82.2408 45.2326 82.2408C59.5292 82.2408 71.9324 74.1342 78.0962 62.2669C78.8877 60.7431 80.4186 59.7059 82.1357 59.7059Z"
-                        fill="#F3CB5F"
-                      ></path>
-                    </svg>
-                    <span class="texts"> 85% </span>
-                  </div>
-                  <div class="content">
-                    <h3 class="title">Success Project</h3>
-                    <p>We completed 85% success project in business.</p>
-                  </div>
-                </div> -->
+            
             </div>
           </div>
           <div class="col-xxl-7 col-xl-7 col-lg-7">
@@ -134,7 +109,9 @@ export default {
                 </h2>
 
                 <h2 class="title mt-xxl-4 mt-2 mb-0 wow fadeInDown" data-wow-delay="1.5"
-                  style="visibility: visible; animation-name: fadeInDown;font-weight: 700;font-size: 18px;">
+                  style="visibility: visible; animation-name: fadeInDown;font-weight: 700;font-size: 18px;
+   
+    font-family: 'Geologica', sans-serif;">
                   Hygeco est votre partenaire local pour tous vos besoins en matière de nettoyage. Fondée
                   sur un engagement envers l'excellence et la satisfaction client, notre entreprise spécialisée
                   offre une gamme complète de services pour rendre votre vie plus facile et votre
@@ -162,7 +139,7 @@ export default {
                     </div>
                     <div class="conts">
                       <h3 class="title" style="font-weight: 700;font-size: 18px;">Mission</h3>
-                      <p>
+                      <p style="font-size: 1.25rem;" >
                         Apporter confort et sérénité à votre quotidien grâce à des services de nettoyage
                         personnalisés et durables, offrant à nos clients du temps pour profiter pleinement de la vie.
                       </p>
@@ -176,7 +153,7 @@ export default {
                     </div>
                     <div class="conts">
                       <h3 class="title" style="font-weight: 700;font-size: 18px;">Vision</h3>
-                      <p>
+                      <p style="font-size: 1.25rem;">
                         Faire la différence dans le monde en privilégiant des pratiques écoresponsables et
                         en offrant des foyers où la propreté rime avec bien-être.
                       </p>
@@ -203,16 +180,31 @@ export default {
         alt="This Service Focus on Clean &amp; Maintaining Homes" class="ripple-ps" />
     </div>
   </section>
-  <section class="working-process" style="text-align: center; padding: 40px 20px; background-color: #f9f9f9">
-    <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 15px">
+  <section class="relative bg-cover bg-center py-7 mt-10" :style="{
+    backgroundImage: 'url(' + require('../../assets/img/122.jpg') + ')',
+    backgroundAttachment: 'fixed',
+  }">
+    <div class="absolute inset-0"></div>
+    <div class="container mx-auto relative flex justify-center items-center text-center">
+      <div class="max-w-lg">
+        <h2 class="  md:text-4xl font-bold mb-4" style="font-size: 3.875rem;color:#30c7b5">
+          Nos Valeurs
+        </h2>
+       
+      </div>
+    </div>
+  </section>
+  <section class="working-process" style="text-align: center; padding: 2px 20px; background-color: #f9f9f9">
+    <div class="container" style="margin: 0 auto;max-width: 1200px; padding: 1px 15px;border-radius: 2rem;">
       <div class="title-section" style="margin-bottom: 40px">
-        <h2 style="font-size: 51px; margin-bottom: 10px;color:#30c7b5">Nos Valeurs</h2>
+        <h2 style="font-size: 51px; margin-bottom: 10px;color:#ffffff"></h2>
 
       </div>
       <div class="process-steps" style="display: flex; flex-wrap: wrap; justify-content: space-between">
         <div class="step">
           <div class="icon">
-            <i class="fa fa-calendar-check-o"></i>
+            <i class="fa fa-smile-o"></i>
+
           </div>
           <h3><a href="#">ÉCORESPONSABILITÉ</a></h3>
           <p>
@@ -223,7 +215,8 @@ export default {
         </div>
         <div class="step">
           <div class="icon">
-            <i class="fa fa-envelope-o"></i>
+            <i class="fa fa-smile-o"></i>
+
           </div>
           <h3><a href="#">FIABILITÉ</a></h3>
           <p>
@@ -266,8 +259,6 @@ export default {
       </div>
     </div>
   </section>
-
-
   <div class="container ">
     <div class="row g-lg-4 g-4  align-items-center mb-60 ">
       <div class="col-xl-4 col-lg-4 col-md-5 col-sm-5">
@@ -483,7 +474,7 @@ export default {
           </accordion-item>
           <accordion-item accordion-id="headingFifth" collapse-id="collapseNine">
             <template #question>Que faire si je ne suis pas satisfait du service ?</template>
-            <template #answer>
+            <template #answer
               Votre satisfaction est importante pour nous. Si vous n'êtes pas satisfait du service reçu, veuillez nous
               contacter dans les 24 heures suivant le service. Nous ferons de notre mieux pour résoudre le problème, y
               compris offrir une nouvelle prestation si nécessaire.
@@ -848,6 +839,14 @@ export default {
     margin-top: -58rem;
   }
 }
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 
 .cmn--btn.cmn-alt2 {
   background: #30c7b5;
@@ -1039,12 +1038,12 @@ export default {
 
 .prograss-box {
   border-radius: 10px;
-  background: #fff;
+  background:transparent;
   padding: 24px 24px;
   display: flex;
   align-items: center;
   gap: 11px;
-  margin-left: 23px;
+  margin-left: 10px;
   margin-top: 38px;
   z-index: 2;
   position: relative;
@@ -1437,6 +1436,9 @@ export default {
   .work-thumb {
     padding-right: 20px;
   }
+}
+p {
+  font-size: 1.25rem;
 }
 
 .howwork-content {

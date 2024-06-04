@@ -5,6 +5,8 @@ import Navbar from "@/examples/PageLayout/NavbarHygeco.vue";
 import PricingCard from "./components/PricingCard.vue";
 import AccordionItem from "./components/AccordionItem.vue";
 import setNavPills from "@/assets/js/nav-pills.js";
+import Cardi from "./components/Card.vue";
+
 
 const store = useStore();
 
@@ -55,9 +57,10 @@ onBeforeUnmount(() => {
   </div>
   <div class="container ">
     <div class="text-center p-5">
-      <h3>See our pricing</h3>
+      <h3>Nos Bon Plans</h3>
       <p style="color: #30c7b5;">
-        You have Free Unlimited Updates and Premium Support on each package.
+        Découvrez nos offres spéciales et promotions exclusives !
+
       </p>
     </div>
 
@@ -65,7 +68,8 @@ onBeforeUnmount(() => {
       <div id="monthly" class="tab-pane active">
         <div class="row">
           <div class="mb-4 col-lg-4 mb-lg-0">
-            <pricing-card style="background-color: #30c7b5;" badge="Regular" :price="{ currency: '$', value: '59' }"
+            <pricing-card  badge="Regular" :price="{ currency: '$', value: '59' }"
+
               :specifications="[
                 { label: 'Regular cleaning', includes: true },
                 { label: 'Deep Cleaning', includes: true },
@@ -80,7 +84,8 @@ onBeforeUnmount(() => {
                 }" />
           </div>
           <div class="mb-4 col-lg-4 mb-lg-0">
-            <pricing-card style="background-color: #30c7b5;" badge="Deep Clean" :price="{ currency: '$', value: '89' }"
+            <pricing-card  badge="Deep Clean" :price="{ currency: '$', value: '89' }"
+
               :specifications="[
                 { label: 'Regular cleaning', includes: true },
                 { label: 'Deep Cleaning', includes: true },
@@ -94,16 +99,13 @@ onBeforeUnmount(() => {
                   label: 'Reserver',
                 }" />
           </div>
-          <div class="mb-4 col-lg-4 mb-lg-0 kok">
-            <div class="text-center">
-              <h2 style="color: #30c7b5;">Personaliser Votre Choix</h2>
-            </div>
-            <div class="cardi">
-              <div class="overplay">
-                <h1>HYGECO</h1>
-                <a href="#" class="btn"> Personaliser</a>
-              </div>
-            </div>
+          <div class="mb-4 col-lg-4 mb-lg-0 ">
+            
+            <Cardi
+  badge="Personaliser Votre Choix"
+  
+/>
+
           </div>
         </div>
       </div>
@@ -186,8 +188,15 @@ onBeforeUnmount(() => {
               Oui, nous offrons également des services pour les entreprises, y compris le nettoyage de bureaux et de
               locaux commerciaux ainsi que la gestion du linge pour les entreprises. Contactez-nous pour un devis
               personnalisé.
+
             </template>
           </accordion-item>
+          <accordion-item accordion-id="headingFifth" collapse-id="collapseSeven">
+            <template #question>Que dois-je faire avant l'arrivée de l'équipe de nettoyage ?</template>
+            <template #answer>
+              Nous vous recommandons de ranger les objets personnels et de fournir un accès facile aux zones à nettoyer.
+              Si vous avez des instructions spécifiques, veuillez les mentionner lors de la réservation ou informer
+              notre équipe à leur arrivée.
 
           <accordion-item accordion-id="headingFifth" collapse-id="collapseFifth">
             <template #question>Quelles sont les mesures d'hygiène que vous prenez ?</template>
@@ -225,6 +234,7 @@ onBeforeUnmount(() => {
           <accordion-item accordion-id="headingFifth" collapse-id="collapseNine">
             <template #question>Que faire si je ne suis pas satisfait du service ?</template>
             <template #answer>
+
               Votre satisfaction est importante pour nous. Si vous n'êtes pas satisfait du service reçu, veuillez nous
               contacter dans les 24 heures suivant le service. Nous ferons de notre mieux pour résoudre le problème, y
               compris offrir une nouvelle prestation si nécessaire.

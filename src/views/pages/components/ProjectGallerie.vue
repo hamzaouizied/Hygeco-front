@@ -1,50 +1,27 @@
 <template>
   <div class="Main">
-    <section class="Carousel" ref="carousel" tabindex="-1" style="background-color: #f8f9fa;">
-      <h2 class="Hidden">Gallerie</h2>
-      <article class="Card Card--overlay Card--square" id="card-1" @click="navigateToCard('card-1')">
+    <!-- <div class="text-center" style="margin-bottom: 40px;">
+      <h2 style="font-size: 2em; margin-bottom: 10px;">Our Recent Work</h2>
+      <p style="font-size: 1em; color: #666;">
+        Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam remeaque ipsa.
+      </p>
+    </div> -->
+
+    <section class="Carousel" ref="carousel" tabindex="-1">
+      <h2 class="Hidden">Gallery</h2>
+      <article v-for="(card, index) in cards" :key="index" :class="['Card', 'Card--overlay', card.type]" :id="card.id"
+        @click="navigateToCard(card.id)">
         <div class="Card__media">
-          <img class="Card__image"
-            src="https://radiustheme.com/demo/wordpress/themes/clenix/wp-content/uploads/2019/07/window-620x672.jpg"
-            alt="Card image description" width="480" height="480" loading="lazy" />
+          <img class="Card__image" :src="card.imageUrl" :alt="card.imageAlt" :width="card.imageWidth"
+            :height="card.imageHeight" loading="lazy" />
         </div>
         <div class="Card__main">
-          <h2 class="Card__heading"><a href="#" class="Card__link">Prefer 1/1 aspect ratio</a></h2>
-          <p>This is a demo card with 1/1 aspect ratio.</p>
+          <h2 class="Card__heading">
+            <a :href="card.linkUrl" class="Card__link">{{ card.title }}</a>
+          </h2>
+          <p>{{ card.description }}</p>
         </div>
-      </article>
-      <article class="Card Card--overlay Card--wide" id="card-2" @click="navigateToCard('card-2')">
-        <div class="Card__media">
-          <img class="Card__image"
-            src="https://radiustheme.com/demo/wordpress/themes/clenix/wp-content/uploads/2019/07/house5-620x672.jpg"
-            alt="Card image description" width="960" height="480" loading="lazy" />
-        </div>
-        <div class="Card__main">
-          <h2 class="Card__heading"><a href="#" class="Card__link">Wide aspect ratio</a></h2>
-          <p>This is a demo card with a wide aspect ratio.</p>
-        </div>
-      </article>
-      <article class="Card Card--overlay Card--tall" id="card-3" @click="navigateToCard('card-3')">
-        <div class="Card__media">
-          <img class="Card__image"
-            src="https://radiustheme.com/demo/wordpress/themes/clenix/wp-content/uploads/2019/10/bedroom-620x672.jpg"
-            alt="Card image description" width="400" height="800" loading="lazy" />
-        </div>
-        <div class="Card__main">
-          <h2 class="Card__heading"><a href="#" class="Card__link">Tall aspect ratio</a></h2>
-          <p>This is a demo card with a tall aspect ratio.</p>
-        </div>
-      </article>
-      <article class="Card Card--overlay Card--tall" id="card-4" @click="navigateToCard('card-4')">
-        <div class="Card__media">
-          <img class="Card__image"
-            src="https://images.unsplash.com/photo-1621160471147-c5be030e199b?crop=entropy&cs=srgb&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTYyMzMxMTEzMw&ixlib=rb-1.2.1&q=85&height=480"
-            alt="Card image description" width="400" height="800" loading="lazy" />
-        </div>
-        <div class="Card__main">
-          <h2 class="Card__heading"><a href="#" class="Card__link">Tall aspect ratio</a></h2>
-          <p>This is a demo card with a tall aspect ratio.</p>
-        </div>
+
       </article>
     </section>
 
@@ -65,17 +42,9 @@
         <span class="Hidden">Next slide</span>
       </button>
       <div class="Dots">
-        <a href="#card-1" class="Dot" tabindex="-1">
-          <span class="Hidden">Slide 1</span>
-        </a>
-        <a href="#card-2" class="Dot" tabindex="-1">
-          <span class="Hidden">Slide 2</span>
-        </a>
-        <a href="#card-3" class="Dot" tabindex="-1">
-          <span class="Hidden">Slide 3</span>
-        </a>
-        <a href="#card-4" class="Dot" tabindex="-1">
-          <span class="Hidden">Slide 4</span>
+        <a v-for="(card, index) in cards" :key="index" :href="`#${card.id}`" class="Dot" tabindex="-1">
+          <span class="Hidden">Slide {{ index + 1 }}</span>
+
         </a>
       </div>
     </nav>
@@ -83,10 +52,57 @@
 </template>
 
 <script>
+// import { ref, computed } from 'vue';
+
 export default {
   data() {
     return {
-
+      cards: [
+        {
+          id: 'card-1',
+          type: 'Card--square',
+          imageUrl: 'https://radiustheme.com/demo/wordpress/themes/clenix/wp-content/uploads/2019/07/window-620x672.jpg',
+          imageAlt: 'Card image description',
+          imageWidth: '480',
+          imageHeight: '480',
+          title: 'Prefer 1/1 aspect ratio',
+          linkUrl: '#',
+          description: 'This is a demo card with 1/1 aspect ratio.',
+        },
+        {
+          id: 'card-2',
+          type: 'Card--wide',
+          imageUrl: 'https://radiustheme.com/demo/wordpress/themes/clenix/wp-content/uploads/2019/07/house5-620x672.jpg',
+          imageAlt: 'Card image description',
+          imageWidth: '960',
+          imageHeight: '480',
+          title: 'Wide aspect ratio',
+          linkUrl: '#',
+          description: 'This is a demo card with a wide aspect ratio.',
+        },
+        {
+          id: 'card-3',
+          type: 'Card--tall',
+          imageUrl: 'https://radiustheme.com/demo/wordpress/themes/clenix/wp-content/uploads/2019/10/bedroom-620x672.jpg',
+          imageAlt: 'Card image description',
+          imageWidth: '400',
+          imageHeight: '800',
+          title: 'Tall aspect ratio',
+          linkUrl: '#',
+          description: 'This is a demo card with a tall aspect ratio.',
+        },
+        {
+          id: 'card-4',
+          type: 'Card--tall',
+          imageUrl: 'https://images.unsplash.com/photo-1621160471147-c5be030e199b?crop=entropy&cs=srgb&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTYyMzMxMTEzMw&ixlib=rb-1.2.1&q=85&height=480',
+          imageAlt: 'Card image description',
+          imageWidth: '400',
+          imageHeight: '800',
+          title: 'Tall aspect ratio',
+          linkUrl: '#',
+          description: 'This is a demo card with a tall aspect ratio.',
+        },
+      ],
 
     };
   },
@@ -95,8 +111,12 @@ export default {
       return this.$refs.carousel?.scrollLeft === 0;
     },
     isLastCard() {
-      return this.$refs.carousel?.scrollLeft >= this.$refs.carousel?.scrollWidth;
-    }
+      const carousel = this.$refs.carousel;
+      if (carousel) {
+        return carousel.scrollLeft + carousel.clientWidth >= carousel.scrollWidth;
+      }
+      return false;
+    },
   },
   methods: {
     previousCard() {
@@ -104,7 +124,7 @@ export default {
       if (carousel) {
         carousel.scrollTo({
           left: carousel.scrollLeft - carousel.clientWidth,
-          behavior: 'smooth'
+          behavior: 'smooth',
         });
       }
     },
@@ -113,21 +133,23 @@ export default {
       if (carousel) {
         carousel.scrollTo({
           left: carousel.scrollLeft + carousel.clientWidth,
-          behavior: 'smooth'
+          behavior: 'smooth',
         });
       }
     },
-    navigateToCard(id) {
-      const card = document.getElementById(id);
+    navigateToCard(id)
+ {
+      const card = document.getElementById(id)
+;
       if (card) {
         card.scrollIntoView({
           behavior: 'smooth',
           block: 'center',
-          inline: 'nearest'
+          inline: 'nearest',
         });
       }
-    }
-  }
+    },
+  },
 };
 </script>
 

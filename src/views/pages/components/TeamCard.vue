@@ -140,12 +140,12 @@ section h2 {
   margin-top: 3rem;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(12rem, 100%), 1fr));
-  gap: 2rem;
+  gap: 4rem;
 }
 
 @media screen and (min-width: 51rem) {
   .cards {
-    gap: 0;
+    gap: 0.5rem;
     padding-bottom: 2.5rem;
   }
 }
