@@ -183,6 +183,7 @@ onBeforeUnmount(() => {
 
     </div>
 
+
   </section><!-- /Features Section -->
   
   <section id="features" class="features section" style="background-color: #f8f9fa;">
@@ -295,8 +296,22 @@ onBeforeUnmount(() => {
           </li>
         </ul><!-- End Tab Nav -->
 
+
     </div>
 
+        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
+          <div class="service-item item-teal position-relative">
+            <div class="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-broadcast"
+                viewBox="0 0 16 16">
+                <path
+                  d="M3.05 3.05a7 7 0 0 0 0 9.9.5.5 0 0 1-.707.707 8 8 0 0 1 0-11.314.5.5 0 0 1 .707.707m2.122 2.122a4 4 0 0 0 0 5.656.5.5 0 1 1-.708.708 5 5 0 0 1 0-7.072.5.5 0 0 1 .708.708m5.656-.708a.5.5 0 0 1 .708 0 5 5 0 0 1 0 7.072.5.5 0 1 1-.708-.708 4 4 0 0 0 0-5.656.5.5 0 0 1 0-.708m2.122-2.12a.5.5 0 0 1 .707 0 8 8 0 0 1 0 11.313.5.5 0 0 1-.707-.707 7 7 0 0 0 0-9.9.5.5 0 0 1 0-.707zM10 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0" />
+              </svg>
+            </div>
+            <div>
+              <h3>Nettoyage des appareils électroménagers</h3>
+              <p>Nettoyer en profondeur et désinfecter les
+                appareils de cuisine.</p>
 
 
   </div>
@@ -695,6 +710,7 @@ onBeforeUnmount(() => {
 </div>
 
 </div>
+
 
       </div>
 

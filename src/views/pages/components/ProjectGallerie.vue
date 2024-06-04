@@ -21,6 +21,7 @@
           </h2>
           <p>{{ card.description }}</p>
         </div>
+
       </article>
     </section>
 
@@ -43,6 +44,7 @@
       <div class="Dots">
         <a v-for="(card, index) in cards" :key="index" :href="`#${card.id}`" class="Dot" tabindex="-1">
           <span class="Hidden">Slide {{ index + 1 }}</span>
+
         </a>
       </div>
     </nav>
@@ -101,6 +103,7 @@ export default {
           description: 'This is a demo card with a tall aspect ratio.',
         },
       ],
+
     };
   },
   computed: {

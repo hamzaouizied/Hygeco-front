@@ -259,8 +259,6 @@ export default {
       </div>
     </div>
   </section>
-
-
   <div class="container ">
     <div class="row g-lg-4 g-4  align-items-center mb-60 ">
       <div class="col-xl-4 col-lg-4 col-md-5 col-sm-5">
@@ -476,7 +474,7 @@ export default {
           </accordion-item>
           <accordion-item accordion-id="headingFifth" collapse-id="collapseNine">
             <template #question>Que faire si je ne suis pas satisfait du service ?</template>
-            <template #answer>
+            <template #answer
               Votre satisfaction est importante pour nous. Si vous n'êtes pas satisfait du service reçu, veuillez nous
               contacter dans les 24 heures suivant le service. Nous ferons de notre mieux pour résoudre le problème, y
               compris offrir une nouvelle prestation si nécessaire.
@@ -849,6 +847,7 @@ export default {
     opacity: 1;
   }
 }
+
 .cmn--btn.cmn-alt2 {
   background: #30c7b5;
   ;

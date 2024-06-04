@@ -16,6 +16,9 @@
                                 <tr>
                                     
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        Objet
+                                    </th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                         Nom
                                     </th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
@@ -34,8 +37,6 @@
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                         created-at
                                     </th>
-                                  
-
                                 </tr>
                             </thead>
                             <tbody>

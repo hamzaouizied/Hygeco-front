@@ -60,6 +60,7 @@ onBeforeUnmount(() => {
       <h3>Nos Bon Plans</h3>
       <p style="color: #30c7b5;">
         Découvrez nos offres spéciales et promotions exclusives !
+
       </p>
     </div>
 
@@ -68,6 +69,7 @@ onBeforeUnmount(() => {
         <div class="row">
           <div class="mb-4 col-lg-4 mb-lg-0">
             <pricing-card  badge="Regular" :price="{ currency: '$', value: '59' }"
+
               :specifications="[
                 { label: 'Regular cleaning', includes: true },
                 { label: 'Deep Cleaning', includes: true },
@@ -83,6 +85,7 @@ onBeforeUnmount(() => {
           </div>
           <div class="mb-4 col-lg-4 mb-lg-0">
             <pricing-card  badge="Deep Clean" :price="{ currency: '$', value: '89' }"
+
               :specifications="[
                 { label: 'Regular cleaning', includes: true },
                 { label: 'Deep Cleaning', includes: true },
@@ -102,6 +105,7 @@ onBeforeUnmount(() => {
   badge="Personaliser Votre Choix"
   
 />
+
           </div>
         </div>
       </div>
@@ -184,8 +188,15 @@ onBeforeUnmount(() => {
               Oui, nous offrons également des services pour les entreprises, y compris le nettoyage de bureaux et de
               locaux commerciaux ainsi que la gestion du linge pour les entreprises. Contactez-nous pour un devis
               personnalisé.
+
             </template>
           </accordion-item>
+          <accordion-item accordion-id="headingFifth" collapse-id="collapseSeven">
+            <template #question>Que dois-je faire avant l'arrivée de l'équipe de nettoyage ?</template>
+            <template #answer>
+              Nous vous recommandons de ranger les objets personnels et de fournir un accès facile aux zones à nettoyer.
+              Si vous avez des instructions spécifiques, veuillez les mentionner lors de la réservation ou informer
+              notre équipe à leur arrivée.
 
           <accordion-item accordion-id="headingFifth" collapse-id="collapseFifth">
             <template #question>Quelles sont les mesures d'hygiène que vous prenez ?</template>
@@ -223,6 +234,7 @@ onBeforeUnmount(() => {
           <accordion-item accordion-id="headingFifth" collapse-id="collapseNine">
             <template #question>Que faire si je ne suis pas satisfait du service ?</template>
             <template #answer>
+
               Votre satisfaction est importante pour nous. Si vous n'êtes pas satisfait du service reçu, veuillez nous
               contacter dans les 24 heures suivant le service. Nous ferons de notre mieux pour résoudre le problème, y
               compris offrir une nouvelle prestation si nécessaire.
