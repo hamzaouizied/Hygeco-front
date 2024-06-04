@@ -230,16 +230,6 @@ export default {
                     <div class="col-lg-6 col-md-6">
                       <div class="clean-form-grp">
                         <p>
-                          <label>Objet</label><br />
-                          <input v-model="form.object" class="wpcf7-form-control wpcf7-email" aria-required="true"
-                            placeholder="Objet" type="text" name="object" />
-                          <span v-if="errors.object" class="error">{{ errors.object }}</span>
-                        </p>
-                      </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6">
-                      <div class="clean-form-grp">
-                        <p>
                           <label>Service</label><br />
                           <select v-model="form.service" class="wpcf7-form-control wpcf7-select" aria-invalid="false"
                             name="service" style="
@@ -255,12 +245,23 @@ export default {
                             <option style="background-color: #30c7b5" value="Menage">Menage</option>
                             <option style="background-color: #30c7b5" value="Buandrie">Buandrie</option>
                             <option style="background-color: #30c7b5" value="Commercial">Commercial</option>
-                            <!-- Add more options as needed -->
+                            <!-- Add more options as FFeeded -->
                           </select>
                           <span v-if="errors.service" class="error">{{ errors.service }}</span>
                         </p>
                       </div>
                     </div>
+                    <div class="col-lg-6 col-md-6">
+                      <div class="clean-form-grp">
+                        <p>
+                          <label>Objet</label><br />
+                          <input v-model="form.object" class="wpcf7-form-control wpcf7-email" aria-required="true"
+                            placeholder="Objet" type="text" name="object" />
+                          <span v-if="errors.object" class="error">{{ errors.object }}</span>
+                        </p>
+                      </div>
+                    </div>
+
                     <div class="col-lg-12">
                       <div class="clean-form-grp">
                         <p>

@@ -137,10 +137,9 @@ export default {
         });
       }
     },
-    navigateToCard(id)
- {
+    navigateToCard(id) {
       const card = document.getElementById(id)
-;
+        ;
       if (card) {
         card.scrollIntoView({
           behavior: 'smooth',
