@@ -1,11 +1,11 @@
 <template>
   <div class="Main">
-    <div class="text-center" style="margin-bottom: 40px;">
+    <!-- <div class="text-center" style="margin-bottom: 40px;">
       <h2 style="font-size: 2em; margin-bottom: 10px;">Our Recent Work</h2>
       <p style="font-size: 1em; color: #666;">
         Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam remeaque ipsa.
       </p>
-    </div>
+    </div> -->
 
     <section class="Carousel" ref="carousel" tabindex="-1">
       <h2 class="Hidden">Gallery</h2>
@@ -172,180 +172,505 @@ export default {
 a {
   color: hsl(var(--theme-blue));
   transition: color 150ms, text-decoration-color 150ms;
-}
 
-a:active,
-a:visited {
-  color: hsl(var(--theme-blue));
-}
+  &:active,
+  &:visited {
+    color: hsl(var(--theme-blue));
+  }
 
-a:hover {
-  color: hsl(var(--theme-red));
-}
+  &:hover {
+    color: hsl(var(--theme-red));
+  }
 
-a:focus,
-a:hover {
-  text-decoration-color: transparent;
+  &:focus,
+  &:hover {
+    text-decoration-color: transparent;
+  }
 }
 
 a,
-[tabindex='-1']:focus {
-  outline: 0.125rem solid hsl(var(--theme-pink));
-}
+[tabindex='-1'] {
+  &:focus {
+    outline: 0.125rem solid hsl(var(--theme-pink));
 
-button {
-  background: transparent;
-  border: none;
-  cursor: pointer;
-}
-
-button[disabled] {
-  cursor: not-allowed;
-}
-
-button:focus-visible,
-button:hover {
-  color: hsl(var(--theme-red));
-}
-
-.Hidden {
-  border: 0;
-  clip: rect(0, 0, 0, 0);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
-}
-
-.Main {
-  max-width: 80rem;
-  margin: 0 auto;
-  padding: 2rem;
+    &:not(:focus-visible) {
+      outline: none;
+    }
+  }
 }
 
 .Carousel {
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: 80%;
-  grid-gap: 0.75rem;
-  overflow-x: scroll;
+  --carousel-gap: 1rem;
+  border-radius: 1rem;
+  display: flex;
+  gap: var(--carousel-gap);
+  overflow-y: hidden;
+  overflow-x: auto;
+  position: relative;
+  scroll-behavior: auto;
   scroll-snap-type: x mandatory;
-  scroll-padding: 0 0.5rem;
-  padding: 0 0.5rem;
-  padding-bottom: 2.5rem;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  height: 50vw;
+  outline: none !important;
+  min-height: 20rem;
+  max-height: 30rem;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  .Card {
+    aspect-ratio: var(--card-ratio);
+    flex: 1 0 auto;
+    min-height: 100%;
+    scroll-snap-align: start;
+  }
+
+  .Card__media {
+    aspect-ratio: auto;
+  }
+
+  &>div:empty {
+    position: relative;
+
+    &:first-child {
+      inset-inline-start: 10%;
+      margin-inline-end: calc(-1 * var(--carousel-gap));
+    }
+
+    &:last-child {
+      inset-inline-end: 10%;
+      margin-inline-start: calc(-1 * var(--carousel-gap));
+    }
+  }
 }
 
-.Card {
-  display: grid;
-  grid-template-rows: minmax(0, 1fr) auto;
-  scroll-snap-align: center;
-  background: hsl(var(--theme-white));
-  border-radius: 0.75rem;
-  overflow: hidden;
-  position: relative;
-  outline: none;
+.Carousel--single {
+  .Card {
+    --card-ratio: auto;
+    flex: 1 0 100%;
+  }
 }
 
-.Card__media {
-  margin: 0;
-  padding-top: 100%;
-  position: relative;
+@media (prefers-reduced-motion: reduce) {
+  .Carousel {
+    scroll-behavior: auto;
+  }
 }
 
-.Card__image {
-  height: 100%;
-  left: 0;
-  object-fit: cover;
-  object-position: center;
-  position: absolute;
-  top: 0;
-  width: 100%;
-}
+@supports not (aspect-ratio: 1/1) {
+  .Carousel {
+    .Card__media {
+      padding-block-end: 0 !important;
+    }
 
-.Card__main {
-  padding: 0.75rem;
-}
-
-.Card__heading {
-  font-size: 1.5rem;
-  line-height: 1;
-}
-
-.Card__link {
-  text-decoration: none;
-}
-
-.Card__link:focus,
-.Card__link:hover {
-  text-decoration: underline;
-  text-decoration-color: hsl(var(--theme-blue));
-}
-
-.Card__link:focus-visible,
-.Card__link:hover {
-  text-decoration-color: hsl(var(--theme-red));
-}
-
-.Card--overlay::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  background: linear-gradient(to top,
-      hsla(var(--theme-black), 0.75) 0%,
-      hsla(var(--theme-black), 0) 50%);
-}
-
-.Card--overlay * {
-  color: hsl(var(--theme-white));
-  position: relative;
-  z-index: 1;
-}
-
-.Card--overlay .Card__media {
-  margin-top: auto;
-}
-
-.Pagination {
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: min-content;
-  gap: 0.25rem;
-  justify-content: center;
-  margin-top: -2rem;
-  padding-bottom: 2rem;
-}
-
-.Arrow {
-  background: hsl(var(--theme-light));
-  border-radius: 50%;
-  display: grid;
-  padding: 0.25rem;
+    .Card__image {
+      position: relative !important;
+    }
+  }
 }
 
 .Dots {
-  display: grid;
-  grid-auto-flow: column;
-  gap: 0.25rem;
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .Dot {
-  background: hsla(var(--theme-dark), 0.1);
-  border-radius: 50%;
+  border-radius: 100%;
   display: block;
-  height: 0.75rem;
-  width: 0.75rem;
+  height: 1.5rem;
+  width: 1.5rem;
+  position: relative;
+
+  &::after {
+    background: currentColor;
+    border-radius: 100%;
+    content: '';
+    display: block;
+    height: 0.375rem;
+    width: 0.375rem;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+  }
 }
 
-.Dot:focus,
-.Dot:hover {
-  background: hsla(var(--theme-dark), 0.25);
+.Dot--active {
+  color: hsl(var(--theme-pink)) !important;
 }
 
-.Dot:focus-visible,
-.Dot:hover {
-  background: hsl(var(--theme-pink));
+.Pagination {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin: 1rem -0.5rem;
+
+  .Arrow {
+    flex: 0 0 auto;
+
+    &:first-of-type {
+      margin-inline-end: auto;
+      order: -1;
+    }
+
+    &:last-of-type {
+      margin-inline-start: auto;
+      order: 1;
+    }
+  }
+}
+
+.Arrow {
+  align-items: center;
+  appearance: none;
+  background: transparent;
+  border: none;
+  border-radius: 0.125rem;
+  cursor: pointer;
+  color: hsl(var(--theme-blue));
+  display: flex;
+  height: 3rem;
+  justify-content: center;
+  opacity: 1;
+  padding: 0.5rem;
+  transition: opacity 150ms, color 150ms;
+  width: 3rem;
+
+  &:hover {
+    color: hsl(var(--theme-red));
+  }
+
+  &:focus {
+    color: hsl(var(--theme-pink));
+    outline: none;
+
+    svg {
+      box-shadow: 0 0 0 0.125rem hsla(var(--theme-white), 1),
+        0 0 0 0.25rem currentColor;
+    }
+
+    &:not(:focus-visible) {
+      color: hsl(var(--theme-red));
+
+      svg {
+        box-shadow: none;
+      }
+    }
+  }
+
+  &[disabled] {
+    color: hsl(var(--theme-dark));
+    opacity: 0.4;
+    pointer-events: none;
+  }
+
+  svg {
+    border-radius: 100%;
+    fill: currentColor;
+    height: 100%;
+    width: 100%;
+    transition: box-shadow 150ms;
+
+    [dir='rtl'] & {
+      transform: scaleX(-1);
+    }
+  }
+}
+
+.Hidden {
+  border: 0 !important;
+  clip: rect(0 0 0 0) !important;
+  clip-path: inset(50%) !important;
+  height: 1px !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  position: absolute !important;
+  width: 1px !important;
+  white-space: nowrap !important;
+}
+
+
+:root {
+  --card-link-color: var(--theme-blue);
+  --card-hover-color: var(--theme-red);
+  --card-focus-color: var(--theme-pink);
+  --card-inner-focus-color: var(--theme-white);
+  --card-shadow-color: var(--theme-black);
+  --card-foreground-color: var(--theme-dark);
+  --card-background-color: var(--theme-dark);
+}
+
+.Card {
+  --card-ratio: auto 1/1;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: [media-start] auto [media-end main-start] auto [main-end];
+  max-width: 100%;
+  position: relative;
+}
+
+.Card__media {
+  aspect-ratio: var(--card-ratio);
+  background: hsla(var(--card-background-color), 0.5);
+  border-radius: 1rem;
+  grid-column: 1 / -1;
+  grid-row: media-start / media-end;
+  max-width: 100%;
+  overflow: hidden;
+  position: relative;
+  z-index: -1;
+
+  &>* {
+    border-radius: inherit;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    width: 100%;
+  }
+}
+
+.Card__main {
+  align-self: end;
+  color: hsl(var(--card-foreground-color));
+  grid-column: 1 / -1;
+  grid-row: main-start / main-end;
+  padding: 1.25rem;
+
+  [href]:not(.Card__link) {
+    position: relative;
+    z-index: 2;
+  }
+
+  &>* {
+    margin: 0;
+  }
+}
+
+.Card__link {
+  color: hsl(var(--card-link-color));
+  font-weight: 600;
+  text-decoration-line: underline;
+  text-decoration-color: hsla(var(--card-link-color), 0.2);
+  text-decoration-thickness: 0.125rem;
+  text-decoration-skip: ink;
+  text-decoration-skip-ink: all;
+  text-decoration-offset: 100%;
+
+  &::after {
+    border: 0.125rem solid hsl(var(--card-focus-color));
+    box-shadow: inset 0 0 0 0.125rem hsla(var(--card-inner-focus-color), 1);
+    border-radius: 1rem;
+    bottom: 0;
+    content: '';
+    display: block;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: border-color 150ms, opacity 150ms;
+    z-index: 1;
+  }
+
+  &:hover,
+  &:focus {
+    text-decoration-color: hsla(var(--card-hover-color), 1);
+
+    &::after {
+      opacity: 1;
+    }
+  }
+
+  &:focus {
+    outline: none;
+    text-decoration-color: currentColor;
+  }
+}
+
+.Card__heading {
+  line-height: 1.25;
+  margin-block-end: 0.5rem;
+}
+
+.Card--border {
+  .Card__link {
+    &::after {
+      opacity: 1;
+    }
+
+    &:not(:focus):not(:hover) {
+      &::after {
+        border-color: hsla(var(--card-foreground-color), 0.5);
+      }
+    }
+  }
+}
+
+.Card--overlay {
+  --card-shadow-color: var(--theme-black);
+  --card-foreground-color: var(--theme-white);
+  --card-background-color: var(--theme-dark);
+  --card-link-color: var(--theme-white);
+  --card-hover-color: var(--theme-white);
+
+  grid-template-rows:
+    [media-start] 1fr [overlay-start] 1rem [main-start] auto [main-end overlay-end media-end];
+
+  &::before {
+    background: linear-gradient(to top,
+        hsla(var(--card-shadow-color), 0.8) 20%,
+        hsla(var(--card-shadow-color), 0.3) 60%,
+        transparent);
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    content: '';
+    display: block;
+    grid-column: 1 / -1;
+    grid-row: overlay-start / overlay-end;
+    overflow: hidden;
+  }
+
+  .Card__main {
+    p {
+      text-shadow: 0 0.0625rem 0.0625rem hsl(var(--card-shadow-color));
+    }
+
+    a {
+      color: hsl(var(--card-link-color));
+
+      &:active,
+      &:visited {
+        color: hsl(var(--card-link-color));
+      }
+
+      &:hover,
+      &:focus {
+        color: hsl(var(--card-hover-color));
+      }
+    }
+  }
+}
+
+.Card--square {
+  --card-ratio: auto 1/1;
+}
+
+.Card--photo {
+  --card-ratio: auto 4/3;
+}
+
+.Card--portrait {
+  --card-ratio: auto 3/4;
+}
+
+.Card--wide {
+  --card-ratio: auto 16/9;
+}
+
+@supports not (aspect-ratio: 1/1) {
+  .Card__media {
+    height: 100%;
+    padding-block-end: calc(100% * (1 / 1));
+  }
+
+  .Card--square {
+    .Card__media {
+      padding-block-end: calc(100% * (1 / 1));
+    }
+  }
+
+  .Card--photo {
+    .Card__media {
+      padding-block-end: calc(100% * (3 / 4));
+    }
+  }
+
+  .Card--portrait {
+    .Card__media {
+      padding-block-end: calc(100% * (4 / 3));
+    }
+  }
+
+  .Card--wide {
+    .Card__media {
+      padding-block-end: calc(100% * (9 / 16));
+    }
+  }
+}
+
+
+@font-face {
+  font-family: 'Raleway';
+  src: url('https://assets.codepen.io/85421/Raleway-VariableFont.woff2') format('woff2');
+  font-display: swap;
+  font-weight: 1 900;
+  font-style: normal;
+  unicode-range: U+0020-007F, U+00A0-00FF, U+0100-017F, U+2000-206F;
+}
+
+@font-face {
+  font-family: 'Fallback';
+  size-adjust: 104%;
+  ascent-override: 96%;
+  src: local('Arial');
+}
+
+html {
+  line-height: 1.5;
+  font-family: Raleway, Fallback, sans-serif;
+}
+
+body {
+  margin: 0;
+}
+
+img {
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
+
+.Main {
+  margin: 0 auto;
+  max-width: calc(90rem + 10vw);
+  padding: 1.5rem 5vw;
+  width: 100%;
+
+  &>*:first-child {
+    margin-block-start: 0;
+  }
+
+  &>h1 {
+    font-weight: 800;
+  }
+
+  &>h1,
+  &>h2,
+  &>h3 {
+    line-height: 1.25;
+    margin-block: 1.5rem 1rem;
+  }
+
+  &>ul {
+    margin-block: 1.5rem;
+    padding-inline: 2rem 0;
+
+    li {
+      margin-block: 0.5rem;
+    }
+  }
+
+  &>p {
+    margin-block: 1rem;
+  }
+
+  a:not([class]) {
+    font-weight: 500;
+  }
 }
 </style>

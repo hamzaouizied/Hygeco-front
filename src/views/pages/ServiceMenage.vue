@@ -65,8 +65,7 @@ onBeforeUnmount(() => {
         <div class="mx-auto text-center col-md-6 mt-4">
           <h3 class="text-white">Services </h3>
           <p class="text-white">
-            Hygeco is a Montreal-based company that offers a range of professional cleaning and laundry
-            services
+            Hygeco est une entreprise basée à Montréal qui offre une gamme de services professionnels de nettoyage et de buanderie.
           </p>
         </div>
       </div>
@@ -80,50 +79,7 @@ onBeforeUnmount(() => {
 
 
 
-  <!-- About Section -->
-  <section id="about" class="about section" style="background-color: #f8f9fa;">
 
-    <div class="container">
-
-      <div class="row gy-4">
-
-        <div class="col-lg-6 content" data-aos="fade-up" data-aos-delay="100">
-          <p style="font-size: 40px;color: #30c7b5;">Nos Service</p>
-          <h3>Ménage Régulier</h3>
-          <p class="fst-italic">
-            Notre service de nettoyage régulier est conçu pour vous offrir un entretien constant et fiable de
-            votre espace résidentiel, vous permettant ainsi de profiter pleinement de votre temps libre. Que
-            vous soyez un propriétaire occupé ou souhaitiez simplement maintenir un environnement propre
-            et organisé sans les tracas du ménage, notre service de nettoyage régulier est là pour dépasser
-            vos attentes
-          </p>
-
-          <a href="#" class="read-more"><span>Contactez Nous</span><i class="bi bi-arrow-right"></i></a>
-        </div>
-
-        <div class="col-lg-6 about-images" data-aos="fade-up" data-aos-delay="200">
-          <div class="row gy-4">
-            <div class="col-lg-6">
-              <img src="../../assets/img/hygeco/11.png" class="img-fluid" alt="">
-            </div>
-            <div class="col-lg-6">
-              <div class="row gy-4">
-                <div class="col-lg-12">
-                  <img src="../../assets/img/hygeco/10.png" class="img-fluid" alt="">
-                </div>
-                <div class="col-lg-12">
-                  <img src="../../assets/img/hygeco/11.png" class="img-fluid" alt="">
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-  </section><!-- /About Section -->
 
 
 
@@ -131,7 +87,14 @@ onBeforeUnmount(() => {
   <section id="features" class="features section" style="background-color: #f8f9fa;">
 
 
-
+    <div class="container section-title" data-aos="fade-up">
+  <h2 class="">Ménage Régulier</h2>
+  <p> Notre service de nettoyage régulier est conçu pour vous offrir un entretien constant et fiable de
+            votre espace résidentiel, vous permettant ainsi de profiter pleinement de votre temps libre. Que
+            vous soyez un propriétaire occupé ou souhaitiez simplement maintenir un environnement propre
+            et organisé sans les tracas du ménage, notre service de nettoyage régulier est là pour dépasser
+            vos attentes  </p>
+</div>
     <div class="container">
       <div class="row justify-content-between">
 
@@ -202,15 +165,15 @@ onBeforeUnmount(() => {
           <div class="tab-content" data-aos="fade-up" data-aos-delay="200">
 
             <div class="tab-pane fade active show" id="features-tab-1">
-              <img src="../../assets/img/hygeco/16.png" alt="" class="img-fluid">
+              <img src="../../assets/img/hygeco/100.jpeg" alt="" class="img-fluid">
             </div><!-- End Tab Content Item -->
 
             <div class="tab-pane fade" id="features-tab-2">
-              <img src="../../assets/img/hygeco/14.jpeg" alt="" class="img-fluid">
+              <img src="../../assets/img/hygeco/100.jpeg" alt="" class="img-fluid">
             </div><!-- End Tab Content Item -->
 
             <div class="tab-pane fade" id="features-tab-3">
-              <img src="../../assets/img/hygeco/8.png" alt="" class="img-fluid">
+              <img src="../../assets/img/hygeco/100.jpeg" alt="" class="img-fluid">
             </div><!-- End Tab Content Item -->
           </div>
 
@@ -221,90 +184,165 @@ onBeforeUnmount(() => {
     </div>
 
   </section><!-- /Features Section -->
+  
+  <section id="features" class="features section" style="background-color: #f8f9fa;">
 
-  <!-- Features Details Section -->
-  <section id="features-details" class="features-details section" style="background-color: #f8f9fa;">
+<!-- Section Title -->
+<div class="container section-title" data-aos="fade-up">
+  <h2 class="">Ménage En Profondeur</h2>
+  <p>Notre service de nettoyage en profondeur est méticuleusement conçu pour offrir un nettoyage complet et
+        exhaustif de votre espace. Pourquoi passer vos fins de semaine à vous occuper des tâches ménagères lorsque vous
+        pourriez les consacrer à des activités en famille ou entre amis ?  </p>
+</div><!-- End Section Title -->
 
-    <div class="container">
+<div class="container">
+  <div class="row justify-content-between">
+    <div class="col-lg-6">
 
-      <div class="row gy-4 justify-content-between features-item">
+      <div class="tab-content" data-aos="fade-up" data-aos-delay="200">
 
-        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-          <img src="../../assets/img/hygeco/13.png" class="img-fluid" alt="">
-        </div>
+        <div class="tab-pane fade active show" id="features-tab-111">
+          <img src="../../assets/img/hygeco/100.jpeg" alt="" class="img-fluid">
+        </div><!-- End Tab Content Item -->
 
-        <div class="col-lg-5 d-flex align-items-center" data-aos="fade-up" data-aos-delay="200">
-          <div class="content">
-            <h3>Ménage En Profondeur</h3>
-            <p>
-              Notre service de nettoyage en profondeur est méticuleusement conçu pour offrir un nettoyage
-              complet et exhaustif de votre espace. Pourquoi passer vos fins de semaine à vous occuper des
-              tâches ménagères lorsque vous pourriez les consacrer à des activités en famille ou entre amis ?
-            </p>
-            <a href="#" class="btn more-btn">Voir Plus</a>
-          </div>
-        </div>
+        <div class="tab-pane fade" id="features-tab-222">
+          <img src="../../assets/img/hygeco/100.jpeg" alt="" class="img-fluid">
+        </div><!-- End Tab Content Item -->
 
-      </div><!-- Features Item -->
-
-
+        <div class="tab-pane fade" id="features-tab-333">
+          <img src="../../assets/img/hygeco/100.jpeg" alt="" class="img-fluid">
+        </div><!-- End Tab Content Item -->
+        <div class="tab-pane fade" id="features-tab-444">
+          <img src="../../assets/img/hygeco/100.jpeg" alt="" class="img-fluid">
+        </div><!-- End Tab Content Item -->
+      </div>
 
     </div>
 
-  </section><!-- /Features Details Section -->
+    <div class="col-lg-5 d-flex align-items-center">
+
+      <ul class="nav nav-tabs" data-aos="fade-up" data-aos-delay="100">
+          <li class="nav-item">
+            <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#features-tab-111"
+              style="margin-bottom: 0px;">
+              <div class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor"
+                  class="bi bi-binoculars" viewBox="0 0 16 16">
+                  <path
+                    d="M3 2.5A1.5 1.5 0 0 1 4.5 1h1A1.5 1.5 0 0 1 7 2.5V5h2V2.5A1.5 1.5 0 0 1 10.5 1h1A1.5 1.5 0 0 1 13 2.5v2.382a.5.5 0 0 0 .276.447l.895.447A1.5 1.5 0 0 1 15 7.118V14.5a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 14.5v-3a.5.5 0 0 1 .146-.354l.854-.853V9.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v.793l.854.853A.5.5 0 0 1 7 11.5v3A1.5 1.5 0 0 1 5.5 16h-3A1.5 1.5 0 0 1 1 14.5V7.118a1.5 1.5 0 0 1 .83-1.342l.894-.447A.5.5 0 0 0 3 4.882zM4.5 2a.5.5 0 0 0-.5.5V3h2v-.5a.5.5 0 0 0-.5-.5zM6 4H4v.882a1.5 1.5 0 0 1-.83 1.342l-.894.447A.5.5 0 0 0 2 7.118V13h4v-1.293l-.854-.853A.5.5 0 0 1 5 10.5v-1A1.5 1.5 0 0 1 6.5 8h3A1.5 1.5 0 0 1 11 9.5v1a.5.5 0 0 1-.146.354l-.854.853V13h4V7.118a.5.5 0 0 0-.276-.447l-.895-.447A1.5 1.5 0 0 1 12 4.882V4h-2v1.5a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5zm4-1h2v-.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5zm4 11h-4v.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5zm-8 0H2v.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5z" />
+                </svg>
+              </div>
+              <div>
+                <h4 class="d-none d-lg-block">Nettoyage des appareils électroménagers</h4>
+                <p>
+                  Essuyer et dépoussiérer toutes les surfaces, y compris les étagères, les
+                  comptoirs et les meubles
+                </p>
+              </div>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#features-tab-222" style="margin-bottom: 0px;">
+              <div class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-box"
+                  viewBox="0 0 16 16">
+                  <path
+                    d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5 8 5.961 14.154 3.5zM15 4.239l-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464z" />
+                </svg>
+              </div>
+              <div>
+                <h4 class="d-none d-lg-block">Dépoussiérage détaillé</h4>
+                <p>
+                  Essuyer et dépoussiérer toutes les surfaces, y compris les zones difficiles d'accès
+                </p>
+              </div>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#features-tab-333" style="margin-bottom: 0px;">
+              <div class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor"
+                  class="bi bi-brightness-high-fill" viewBox="0 0 16 16">
+                  <path
+                    d="M12 8a4 4 0 1 1-8 0 4 4 0 0 1 8 0M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0m9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708" />
+                </svg>
+              </div>
+              <div>
+                <h4 class="d-none d-lg-block">Nettoyage des sols</h4>
+                <p>
+                  Frotter les sols durs.
+                </p>
+              </div>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#features-tab-444" style="margin-bottom: 0px;">
+              <div class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor"
+                  class="bi bi-brightness-high-fill" viewBox="0 0 16 16">
+                  <path
+                    d="M12 8a4 4 0 1 1-8 0 4 4 0 0 1 8 0M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0m9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708" />
+                </svg>
+              </div>
+              <div>
+                <h4 class="d-none d-lg-block">Désinfection des salles de bains</h4>
+                <p>
+                  Nettoyer et désinfecter les installations sanitaires, les carreaux et les surfaces de la salle de
+                  bains.
+                </p>
+              </div>
+            </a>
+          </li>
+        </ul><!-- End Tab Nav -->
+
+    </div>
 
 
-  <!-- Services Section -->
-  <section id="services" class="services section" style="background-color: #f8f9fa;">
 
+  </div>
 
+</div>
 
-    <div class="container">
+</section>
+<section id="features" class="features section" style="background-color: #f8f9fa;">
 
-      <div class="row g-5">
+<!-- Section Title -->
+<div class="container section-title" data-aos="fade-up">
+  <h2 class="">Ménage Déménagement/Emménagement</h2>
+  <p>Notre service de nettoyage lors d'un déménagement est votre partenaire de confiance pour
+        garantir une transition en douceur lors de votre emménagement dans une nouvelle maison ou de
+        votre préparation à quitter votre ancien logement. Avec un déménagement, la liste des tâches ne
+        finit jamais. Laissez-nous  </p>
+</div><!-- End Section Title -->
 
-        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-          <div class="service-item item-cyan position-relative">
+<div class="container">
+  <div class="row justify-content-between">
+    
+
+    <div class="col-lg-5 d-flex align-items-center">
+
+      <ul class="nav nav-tabs" data-aos="fade-up" data-aos-delay="100">
+        <li class="nav-item">
+          <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#features-tabs-11"
+            style="margin-bottom: 0px;">
             <div class="icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-activity"
-                viewBox="0 0 16 16">
+              <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor"
+                class="bi bi-activity" viewBox="0 0 16 16">
                 <path fill-rule="evenodd"
                   d="M6 2a.5.5 0 0 1 .47.33L10 12.036l1.53-4.208A.5.5 0 0 1 12 7.5h3.5a.5.5 0 0 1 0 1h-3.15l-1.88 5.17a.5.5 0 0 1-.94 0L6 3.964 4.47 8.171A.5.5 0 0 1 4 8.5H.5a.5.5 0 0 1 0-1h3.15l1.88-5.17A.5.5 0 0 1 6 2" />
               </svg>
             </div>
             <div>
-              <h3>Dépoussiérage détaillé</h3>
-              <p>Essuyer et dépoussiérer toutes les surfaces, y compris les zones
-                difficiles d'accès</p>
-
+              <h4 class="d-none d-lg-block">Nettoyage complet </h4>
+              <p>
+                Nous offrons un service de nettoyage complet et exhaustif
+              pour la propriété que vous quittez et celle dans laquelle vous emménagez. 
+              </p>
             </div>
-          </div>
-        </div><!-- End Service Item -->
-
-
-
-        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
-          <div class="service-item item-teal position-relative">
-            <div class="icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-broadcast"
-                viewBox="0 0 16 16">
-                <path
-                  d="M3.05 3.05a7 7 0 0 0 0 9.9.5.5 0 0 1-.707.707 8 8 0 0 1 0-11.314.5.5 0 0 1 .707.707m2.122 2.122a4 4 0 0 0 0 5.656.5.5 0 1 1-.708.708 5 5 0 0 1 0-7.072.5.5 0 0 1 .708.708m5.656-.708a.5.5 0 0 1 .708 0 5 5 0 0 1 0 7.072.5.5 0 1 1-.708-.708 4 4 0 0 0 0-5.656.5.5 0 0 1 0-.708m2.122-2.12a.5.5 0 0 1 .707 0 8 8 0 0 1 0 11.313.5.5 0 0 1-.707-.707 7 7 0 0 0 0-9.9.5.5 0 0 1 0-.707zM10 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0" />
-              </svg>
-            </div>
-            <div>
-              <h3>Nettoyage des appareils électroménagers</h3>
-              <p>Nettoyer en profondeur et désinfecter les
-                appareils de cuisine.</p>
-
-            </div>
-          </div>
-        </div><!-- End Service Item -->
-
-
-
-        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="500">
-          <div class="service-item item-indigo position-relative">
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-bs-toggle="tab" data-bs-target="#features-tabs-22" style="margin-bottom: 0px;">
             <div class="icon">
               <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-easel"
                 viewBox="0 0 16 16">
@@ -313,233 +351,227 @@ onBeforeUnmount(() => {
               </svg>
             </div>
             <div>
-              <h3>Nettoyage des sols</h3>
-              <p>Frotter les sols durs.</p>
-
+              <h4 class="d-none d-lg-block">Attention aux détails </h4>
+              <p>
+                Nous faisons attention à chaque recoin, en veillant à ce que
+              toutes les surfaces, les installations et les appareils soient nettoyés et désinfectés.
+              </p>
             </div>
-          </div>
-        </div><!-- End Service Item -->
-
-
-        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="500">
-          <div class="service-item item-indigo position-relative">
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-bs-toggle="tab" data-bs-target="#features-tabs-33" style="margin-bottom: 0px;">
             <div class="icon">
               <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor"
-                class="bi bi-bounding-box-circles" viewBox="0 0 16 16">
+                class="bi bi-broadcast" viewBox="0 0 16 16">
                 <path
-                  d="M2 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2M0 2a2 2 0 0 1 3.937-.5h8.126A2 2 0 1 1 14.5 3.937v8.126a2 2 0 1 1-2.437 2.437H3.937A2 2 0 1 1 1.5 12.063V3.937A2 2 0 0 1 0 2m2.5 1.937v8.126c.703.18 1.256.734 1.437 1.437h8.126a2 2 0 0 1 1.437-1.437V3.937A2 2 0 0 1 12.063 2.5H3.937A2 2 0 0 1 2.5 3.937M14 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2M2 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2m12 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2" />
+                  d="M3.05 3.05a7 7 0 0 0 0 9.9.5.5 0 0 1-.707.707 8 8 0 0 1 0-11.314.5.5 0 0 1 .707.707m2.122 2.122a4 4 0 0 0 0 5.656.5.5 0 1 1-.708.708 5 5 0 0 1 0-7.072.5.5 0 0 1 .708.708m5.656-.708a.5.5 0 0 1 .708 0 5 5 0 0 1 0 7.072.5.5 0 1 1-.708-.708 4 4 0 0 0 0-5.656.5.5 0 0 1 0-.708m2.122-2.12a.5.5 0 0 1 .707 0 8 8 0 0 1 0 11.313.5.5 0 0 1-.707-.707 7 7 0 0 0 0-9.9.5.5 0 0 1 0-.707zM10 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0" />
               </svg>
             </div>
             <div>
-              <h3>Désinfection des salles de bains</h3>
-              <p>Nettoyer et désinfecter les installations sanitaires, les
-                carreaux et les surfaces de la salle de bains.</p>
-
+              <h4 class="d-none d-lg-block">Déménagement sans stress</h4>
+              <p>
+                Avec notre service, vous pouvez vous concentrer sur
+              la logistique de votre déménagement pendant que nous nous occupons du
+              nettoyage.
+              </p>
             </div>
-          </div>
-        </div><!-- End Service Item -->
-
-
-
-      </div>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-bs-toggle="tab" data-bs-target="#features-tabs-44" style="margin-bottom: 0px;">
+            <div class="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor"
+                class="bi bi-activity" viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                  d="M6 2a.5.5 0 0 1 .47.33L10 12.036l1.53-4.208A.5.5 0 0 1 12 7.5h3.5a.5.5 0 0 1 0 1h-3.15l-1.88 5.17a.5.5 0 0 1-.94 0L6 3.964 4.47 8.171A.5.5 0 0 1 4 8.5H.5a.5.5 0 0 1 0-1h3.15l1.88-5.17A.5.5 0 0 1 6 2" />
+              </svg>
+            </div>
+            <div>
+              <h4 class="d-none d-lg-block">Délai rapide</h4>
+              <p>
+                Notre équipe efficace assure un délai rapide, pour que vous
+              puissiez vous installer dans votre nouveau logement ou remettre l'ancien en toute
+              confiance
+              </p>
+            </div>
+          </a>
+        </li>
+      </ul><!-- End Tab Nav -->
 
     </div>
 
-  </section><!-- /Services Section -->
-  <!-- Features Details Section -->
-  <section id="features-details" class="features-details section" style="background-color: #f8f9fa;">
+    <div class="col-lg-6">
 
-    <div class="container">
+<div class="tab-content" data-aos="fade-up" data-aos-delay="200">
 
+<div class="tab-pane fade active show" id="features-tabs-11">
+<img src="../../assets/img/hygeco/100.jpeg" alt="" class="img-fluid">
+</div><!-- End Tab Content Item -->
 
+<div class="tab-pane fade" id="features-tabs-22">
+<img src="../../assets/img/hygeco/100.jpeg" alt="" class="img-fluid">
+</div><!-- End Tab Content Item -->
 
-      <div class="row gy-4 justify-content-between features-item">
+<div class="tab-pane fade" id="features-tabs-33">
+<img src="../../assets/img/hygeco/100.jpeg" alt="" class="img-fluid">
+</div><!-- End Tab Content Item -->
+<div class="tab-pane fade" id="features-tabs-44">
+<img src="../../assets/img/hygeco/100.jpeg" alt="" class="img-fluid">
+</div><!-- End Tab Content Item -->
+</div>
 
-        <div class="col-lg-5 d-flex align-items-center order-2 order-lg-1" data-aos="fade-up" data-aos-delay="100">
+</div>
 
-          <div class="content">
-            <h3>Nettoyage De Meubles En Tissu Et De Tapis</h3>
-            <p>
-              Quand avez-vous pour la dernière fois pris le temps de nettoyer vos meubles et tapis ? Craignezvous
+  </div>
+
+</div>
+
+</section>
+ 
+
+<section class="relative bg-cover bg-center py-7 mt-10" :style="{
+    backgroundImage: 'url(' + require('../../assets/img/banniere11.png') + ')',
+    backgroundAttachment: 'fixed',
+  }">
+    <div class="absolute inset-0"></div>
+    <div class="container mx-auto relative flex justify-center items-center text-center">
+      <div class="max-w-lg">
+        <h2 class="text-white  md:text-4xl font-bold mb-4" style="font-size: 3.875rem;">
+          Ménage
+        </h2>
+        <a href="/pages/reservation-buanderie" class="bg-yellow-button text-gray-900 font-medium py-3 px-6 rounded">
+          Reserver Maintenant
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="features" class="features section" style="background-color: #f8f9fa;">
+
+<!-- Section Title -->
+<div class="container section-title" data-aos="fade-up">
+  <h2 class="">Nettoyage De Meubles En Tissu Et De Tapis</h2>
+  <p> Quand avez-vous pour la dernière fois pris le temps de nettoyer vos meubles et tapis ? Craignezvous
               d'abîmer votre canape que vous avez payé cher ? Avec Hygeco, vous pouvez compter sur
               notre équipe professionnelle pour prendre soin de vos meubles en tissu délicats et de vos tapis
-              nécessitant un soin particulier
-            </p>
+              nécessitant un soin particulier  </p>
+</div><!-- End Section Title -->
 
-            <p></p>
-            <a href="#" class="btn more-btn">Voir Plus</a>
-          </div>
+<div class="container">
+  <div class="row justify-content-between">
+    <div class="col-lg-6">
 
-        </div>
+      <div class="tab-content" data-aos="fade-up" data-aos-delay="200">
 
-        <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-up" data-aos-delay="200">
-          <img src="../../assets/img/hygeco/3.png" class="img-fluid" alt="">
-        </div>
+        <div class="tab-pane fade active show" id="features-tab-1111">
+          <img src="../../assets/img/hygeco/100.jpeg" alt="" class="img-fluid">
+        </div><!-- End Tab Content Item -->
 
-      </div><!-- Features Item -->
+        <div class="tab-pane fade" id="features-tab-2222">
+          <img src="../../assets/img/hygeco/100.jpeg" alt="" class="img-fluid">
+        </div><!-- End Tab Content Item -->
+
+        <div class="tab-pane fade" id="features-tab-3333">
+          <img src="../../assets/img/hygeco/100.jpeg" alt="" class="img-fluid">
+        </div><!-- End Tab Content Item -->
+        <div class="tab-pane fade" id="features-tab-4444">
+          <img src="../../assets/img/hygeco/100.jpeg" alt="" class="img-fluid">
+        </div><!-- End Tab Content Item -->
+      </div>
 
     </div>
 
-  </section><!-- /Features Details Section -->
+    <div class="col-lg-5 d-flex align-items-center">
 
-
-  <!-- Services Section -->
-  <section id="services" class="services section" style="background-color: #f8f9fa;">
-
-
-
-    <div class="container">
-
-      <div class="row g-5">
-
-
-
-        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-          <div class="service-item item-orange position-relative">
-            <div class="icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor"
-                class="bi bi-bounding-box-circles" viewBox="0 0 16 16">
-                <path
-                  d="M2 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2M0 2a2 2 0 0 1 3.937-.5h8.126A2 2 0 1 1 14.5 3.937v8.126a2 2 0 1 1-2.437 2.437H3.937A2 2 0 1 1 1.5 12.063V3.937A2 2 0 0 1 0 2m2.5 1.937v8.126c.703.18 1.256.734 1.437 1.437h8.126a2 2 0 0 1 1.437-1.437V3.937A2 2 0 0 1 12.063 2.5H3.937A2 2 0 0 1 2.5 3.937M14 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2M2 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2m12 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2" />
-              </svg>
-            </div>
-            <div>
-              <h3>Nettoyage complet</h3>
-              <p>Nous offrons un service de nettoyage complet et exhaustif pour vos
-                meubles en tissu et vos tapis, en éliminant la saleté, les taches et les allergènes.</p>
-            </div>
-          </div>
-        </div><!-- End Service Item -->
-
-
-        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
-          <div class="service-item item-red position-relative">
-            <div class="icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-easel"
-                viewBox="0 0 16 16">
-                <path
-                  d="M8 0a.5.5 0 0 1 .473.337L9.046 2H14a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1h-1.85l1.323 3.837a.5.5 0 1 1-.946.326L11.092 11H8.5v3a.5.5 0 0 1-1 0v-3H4.908l-1.435 4.163a.5.5 0 1 1-.946-.326L3.85 11H2a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h4.954L7.527.337A.5.5 0 0 1 8 0M2 3v7h12V3z" />
-              </svg>
-            </div>
-            <div>
-              <h3>Attention aux détails</h3>
-              <p>Nous prêtons une attention particulière à chaque pièce, en veillant
-                à ce que tous les matériaux soient nettoyés avec soin et désinfectés</p>
-            </div>
-          </div>
-        </div><!-- End Service Item -->
-
-
-        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="600">
-          <div class="service-item item-pink position-relative">
-            <div class="icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-broadcast"
-                viewBox="0 0 16 16">
-                <path
-                  d="M3.05 3.05a7 7 0 0 0 0 9.9.5.5 0 0 1-.707.707 8 8 0 0 1 0-11.314.5.5 0 0 1 .707.707m2.122 2.122a4 4 0 0 0 0 5.656.5.5 0 1 1-.708.708 5 5 0 0 1 0-7.072.5.5 0 0 1 .708.708m5.656-.708a.5.5 0 0 1 .708 0 5 5 0 0 1 0 7.072.5.5 0 1 1-.708-.708 4 4 0 0 0 0-5.656.5.5 0 0 1 0-.708m2.122-2.12a.5.5 0 0 1 .707 0 8 8 0 0 1 0 11.313.5.5 0 0 1-.707-.707 7 7 0 0 0 0-9.9.5.5 0 0 1 0-.707zM10 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0" />
-              </svg>
-            </div>
-            <div>
-              <h3>Propreté durable</h3>
-              <p>Grâce à notre service, vos meubles et tapis resteront propres et frais
-                plus longtemps, améliorant ainsi la qualité de l'air intérieur et l'apparence de votre maison</p>
-            </div>
-          </div>
-        </div><!-- End Service Item -->
-
-
-        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="600">
-          <div class="service-item item-pink position-relative">
-            <div class="icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-activity"
-                viewBox="0 0 16 16">
-                <path fill-rule="evenodd"
-                  d="M6 2a.5.5 0 0 1 .47.33L10 12.036l1.53-4.208A.5.5 0 0 1 12 7.5h3.5a.5.5 0 0 1 0 1h-3.15l-1.88 5.17a.5.5 0 0 1-.94 0L6 3.964 4.47 8.171A.5.5 0 0 1 4 8.5H.5a.5.5 0 0 1 0-1h3.15l1.88-5.17A.5.5 0 0 1 6 2" />
-              </svg>
-            </div>
-            <div>
-              <h3>Délai rapide</h3>
-              <p>Nous comprenons l'importance de la rapidité. Notre équipe efficace assure
+      <ul class="nav nav-tabs" data-aos="fade-up" data-aos-delay="100">
+          <li class="nav-item">
+            <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#features-tab-1111"
+              style="margin-bottom: 0px;">
+              <div class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor"
+                  class="bi bi-binoculars" viewBox="0 0 16 16">
+                  <path
+                    d="M3 2.5A1.5 1.5 0 0 1 4.5 1h1A1.5 1.5 0 0 1 7 2.5V5h2V2.5A1.5 1.5 0 0 1 10.5 1h1A1.5 1.5 0 0 1 13 2.5v2.382a.5.5 0 0 0 .276.447l.895.447A1.5 1.5 0 0 1 15 7.118V14.5a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 14.5v-3a.5.5 0 0 1 .146-.354l.854-.853V9.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v.793l.854.853A.5.5 0 0 1 7 11.5v3A1.5 1.5 0 0 1 5.5 16h-3A1.5 1.5 0 0 1 1 14.5V7.118a1.5 1.5 0 0 1 .83-1.342l.894-.447A.5.5 0 0 0 3 4.882zM4.5 2a.5.5 0 0 0-.5.5V3h2v-.5a.5.5 0 0 0-.5-.5zM6 4H4v.882a1.5 1.5 0 0 1-.83 1.342l-.894.447A.5.5 0 0 0 2 7.118V13h4v-1.293l-.854-.853A.5.5 0 0 1 5 10.5v-1A1.5 1.5 0 0 1 6.5 8h3A1.5 1.5 0 0 1 11 9.5v1a.5.5 0 0 1-.146.354l-.854.853V13h4V7.118a.5.5 0 0 0-.276-.447l-.895-.447A1.5 1.5 0 0 1 12 4.882V4h-2v1.5a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5zm4-1h2v-.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5zm4 11h-4v.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5zm-8 0H2v.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5z" />
+                </svg>
+              </div>
+              <div>
+                <h4 class="d-none d-lg-block">Nettoyage complet</h4>
+                <p>
+                  Nous offrons un service de nettoyage complet et exhaustif pour vos
+                meubles en tissu et vos tapis, en éliminant la saleté, les taches et les allergènes.
+                </p>
+              </div>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#features-tab-2222" style="margin-bottom: 0px;">
+              <div class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-box"
+                  viewBox="0 0 16 16">
+                  <path
+                    d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5 8 5.961 14.154 3.5zM15 4.239l-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464z" />
+                </svg>
+              </div>
+              <div>
+                <h4 class="d-none d-lg-block">Attention aux détails</h4>
+                <p>
+                  Nous prêtons une attention particulière à chaque pièce, en veillant
+                à ce que tous les matériaux soient nettoyés avec soin et désinfectés
+                </p>
+              </div>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#features-tab-3333" style="margin-bottom: 0px;">
+              <div class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor"
+                  class="bi bi-brightness-high-fill" viewBox="0 0 16 16">
+                  <path
+                    d="M12 8a4 4 0 1 1-8 0 4 4 0 0 1 8 0M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0m9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708" />
+                </svg>
+              </div>
+              <div>
+                <h4 class="d-none d-lg-block">Propreté durable</h4>
+                <p>
+                  Grâce à notre service, vos meubles et tapis resteront propres et frais
+                plus longtemps, améliorant ainsi la qualité de l'air intérieur et l'apparence de votre maison                </p>
+              </div>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#features-tab-4444" style="margin-bottom: 0px;">
+              <div class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor"
+                  class="bi bi-brightness-high-fill" viewBox="0 0 16 16">
+                  <path
+                    d="M12 8a4 4 0 1 1-8 0 4 4 0 0 1 8 0M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0m9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708" />
+                </svg>
+              </div>
+              <div>
+                <h4 class="d-none d-lg-block">Délai rapide</h4>
+                <p>
+                  Nous comprenons l'importance de la rapidité. Notre équipe efficace assure
                 un nettoyage rapide, pour que vous puissiez profiter de votre espace de vie sans
-                interruption.</p>
-            </div>
-          </div>
-        </div><!-- End Service Item -->
-
-      </div>
+                interruption.
+                </p>
+              </div>
+            </a>
+          </li>
+        </ul><!-- End Tab Nav -->
 
     </div>
 
-  </section><!-- /Services Section -->
 
-  <!-- More Features Section -->
-  <section id="more-features" class="more-features section" style="background-color: #f8f9fa;">
 
-    <div class="container">
+  </div>
 
-      <div class="row justify-content-around gy-4">
+</div>
 
-        <div class="col-lg-6 d-flex flex-column justify-content-center order-2 order-lg-1" data-aos="fade-up"
-          data-aos-delay="100">
-          <h3>Ménage Déménagement/Emménagement </h3>
-          <p>Notre service de nettoyage lors d'un déménagement est votre partenaire de confiance pour
-            garantir une transition en douceur lors de votre emménagement dans une nouvelle maison ou de
-            votre préparation à quitter votre ancien logement. Avec un déménagement, la liste des tâches ne
-            finit jamais. Laissez-nous :</p>
+</section>
 
-          <div class="row">
 
-            <div class="col-lg-5 icon-box d-flex ">
-              <i class="bi bi-easel flex-shrink-0"></i>
-              <div>
-                <h4>Nettoyage complet</h4>
-                <p>Nous offrons un service de nettoyage complet et exhaustif
-                  pour la propriété que vous quittez et celle dans laquelle vous emménagez. </p>
-              </div>
-            </div><!-- End Icon Box -->
-
-            <div class="col-lg-5 icon-box d-flex ">
-              <i class="bi bi-patch-check flex-shrink-0"></i>
-              <div>
-                <h4>Attention aux détails </h4>
-                <p>Nous faisons attention à chaque recoin, en veillant à ce que
-                  toutes les surfaces, les installations et les appareils soient nettoyés et désinfectés.</p>
-              </div>
-            </div><!-- End Icon Box -->
-
-            <div class="col-lg-5 icon-box d-flex">
-              <i class="bi bi-brightness-high flex-shrink-0"></i>
-              <div>
-                <h4>Déménagement sans stress</h4>
-                <p>Avec notre service, vous pouvez vous concentrer sur
-                  la logistique de votre déménagement pendant que nous nous occupons du
-                  nettoyage.</p>
-              </div>
-            </div><!-- End Icon Box -->
-
-            <div class="col-lg-5 icon-box d-flex">
-              <i class="bi bi-brightness-high flex-shrink-0"></i>
-              <div>
-                <h4>Délai rapide</h4>
-                <p> Notre équipe efficace assure un délai rapide, pour que vous
-                  puissiez vous installer dans votre nouveau logement ou remettre l'ancien en toute
-                  confiance</p>
-              </div>
-            </div><!-- End Icon Box -->
-
-          </div>
-
-        </div>
-
-        <div class="features-image col-lg-5 order-1 order-lg-2" data-aos="fade-up" data-aos-delay="200">
-          <img src="../../assets/img/hygeco/4.png" alt="">
-        </div>
-
-      </div>
-
-    </div>
-
-  </section><!-- /More Features Section -->
+ 
 
 
   <argon-alert class="font-weight-light" color="danger" dismissible style="margin-top: -2rem;">
@@ -560,27 +592,7 @@ onBeforeUnmount(() => {
 
     <div class="container">
       <div class="row justify-content-between">
-        <div class="col-lg-6">
-
-          <div class="tab-content" data-aos="fade-up" data-aos-delay="200">
-
-            <div class="tab-pane fade active show" id="features-tab-11">
-              <img src="../../assets/img/hygeco/8.png" alt="" class="img-fluid">
-            </div><!-- End Tab Content Item -->
-
-            <div class="tab-pane fade" id="features-tab-22">
-              <img src="../../assets/img/hygeco/4.png" alt="" class="img-fluid">
-            </div><!-- End Tab Content Item -->
-
-            <div class="tab-pane fade" id="features-tab-33">
-              <img src="../../assets/img/hygeco/3.jpeg" alt="" class="img-fluid">
-            </div><!-- End Tab Content Item -->
-            <div class="tab-pane fade" id="features-tab-44">
-              <img src="../../assets/img/hygeco/1.jpeg" alt="" class="img-fluid">
-            </div><!-- End Tab Content Item -->
-          </div>
-
-        </div>
+        
 
         <div class="col-lg-5 d-flex align-items-center">
 
@@ -662,7 +674,27 @@ onBeforeUnmount(() => {
 
         </div>
 
+        <div class="col-lg-6">
 
+<div class="tab-content" data-aos="fade-up" data-aos-delay="200">
+
+  <div class="tab-pane fade active show" id="features-tab-11">
+    <img src="../../assets/img/hygeco/100.jpeg" alt="" class="img-fluid">
+  </div><!-- End Tab Content Item -->
+
+  <div class="tab-pane fade" id="features-tab-22">
+    <img src="../../assets/img/hygeco/100.jpeg" alt="" class="img-fluid">
+  </div><!-- End Tab Content Item -->
+
+  <div class="tab-pane fade" id="features-tab-33">
+    <img src="../../assets/img/hygeco/100.jpeg" alt="" class="img-fluid">
+  </div><!-- End Tab Content Item -->
+  <div class="tab-pane fade" id="features-tab-44">
+    <img src="../../assets/img/hygeco/100.jpeg" alt="" class="img-fluid">
+  </div><!-- End Tab Content Item -->
+</div>
+
+</div>
 
       </div>
 
@@ -670,43 +702,59 @@ onBeforeUnmount(() => {
 
   </section>
 
-  <!-- Clients Section -->
-  <section id="clients" class="clients section" style="background-color: #f8f9fa;">
-
-    <div class="container" data-aos="fade-up">
-
-      <div class="row gy-4">
-
-        <div class="col-xl-2 col-md-3 col-6 client-logo">
-          <img src="../../assets/img/clients/client-1.png" class="img-fluid" alt="">
-        </div><!-- End Client Item -->
-
-        <div class="col-xl-2 col-md-3 col-6 client-logo">
-          <img src="../../assets/img/clients/client-2.png" class="img-fluid" alt="">
-        </div><!-- End Client Item -->
-
-        <div class="col-xl-2 col-md-3 col-6 client-logo">
-          <img src="../../assets/img/clients/client-3.png" class="img-fluid" alt="">
-        </div><!-- End Client Item -->
-
-        <div class="col-xl-2 col-md-3 col-6 client-logo">
-          <img src="../../assets/img/clients/client-4.png" class="img-fluid" alt="">
-        </div><!-- End Client Item -->
-
-        <div class="col-xl-2 col-md-3 col-6 client-logo">
-          <img src="../../assets/img/clients/client-5.png" class="img-fluid" alt="">
-        </div><!-- End Client Item -->
-
-        <div class="col-xl-2 col-md-3 col-6 client-logo">
-          <img src="../../assets/img/clients/client-6.png" class="img-fluid" alt="">
-        </div><!-- End Client Item -->
-
+ 
+  <section class="relative bg-cover bg-center py-7 mt-10" :style="{
+    backgroundImage: 'url(' + require('../../assets/img/o2.png') + ')',
+    backgroundAttachment: 'fixed',
+  }">
+    <div class="absolute inset-0"></div>
+    <div class="container mx-auto relative flex justify-center items-center text-center">
+      <div class="max-w-lg">
+        <h2 class="text-white  md:text-4xl font-bold mb-4" style="font-size: 3.875rem;">
+          Nettoyage
+        </h2>
+        <a href="/pages/reservation-buanderie" class="bg-yellow-button text-gray-900 font-medium py-3 px-6 rounded">
+          Reserver Maintenant
+        </a>
       </div>
-
     </div>
+  </section>
+   <!-- Clients Section -->
+   <section id="clients" class="clients section" style="background-color: #f8f9fa;">
 
-  </section><!-- /Clients Section -->
+<div class="container" data-aos="fade-up">
 
+  <div class="row gy-4">
+
+    <div class="col-xl-2 col-md-3 col-6 client-logo">
+      <img src="../../assets/img/clients/client-1.png" class="img-fluid" alt="">
+    </div><!-- End Client Item -->
+
+    <div class="col-xl-2 col-md-3 col-6 client-logo">
+      <img src="../../assets/img/clients/client-2.png" class="img-fluid" alt="">
+    </div><!-- End Client Item -->
+
+    <div class="col-xl-2 col-md-3 col-6 client-logo">
+      <img src="../../assets/img/clients/client-3.png" class="img-fluid" alt="">
+    </div><!-- End Client Item -->
+
+    <div class="col-xl-2 col-md-3 col-6 client-logo">
+      <img src="../../assets/img/clients/client-4.png" class="img-fluid" alt="">
+    </div><!-- End Client Item -->
+
+    <div class="col-xl-2 col-md-3 col-6 client-logo">
+      <img src="../../assets/img/clients/client-5.png" class="img-fluid" alt="">
+    </div><!-- End Client Item -->
+
+    <div class="col-xl-2 col-md-3 col-6 client-logo">
+      <img src="../../assets/img/clients/client-6.png" class="img-fluid" alt="">
+    </div><!-- End Client Item -->
+
+  </div>
+
+</div>
+
+</section><!-- /Clients Section -->
   <Contact />
 
 

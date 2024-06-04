@@ -5,6 +5,8 @@ import Navbar from "@/examples/PageLayout/NavbarHygeco.vue";
 import PricingCard from "./components/PricingCard.vue";
 import AccordionItem from "./components/AccordionItem.vue";
 import setNavPills from "@/assets/js/nav-pills.js";
+import Cardi from "./components/Card.vue";
+
 
 const store = useStore();
 
@@ -94,16 +96,12 @@ onBeforeUnmount(() => {
                   label: 'Reserver',
                 }" />
           </div>
-          <div class="mb-4 col-lg-4 mb-lg-0 kok">
-            <div class="text-center">
-              <h2 style="color: #30c7b5;font-size: 1.75rem;">Personaliser Votre Choix</h2>
-            </div>
-            <div class="cardi">
-              <div class="overplay">
-                <h1>HYGECO</h1>
-                <a href="#" class="btn"> Personaliser</a>
-              </div>
-            </div>
+          <div class="mb-4 col-lg-4 mb-lg-0 ">
+            
+            <Cardi
+  badge="Personaliser Votre Choix"
+  
+/>
           </div>
         </div>
       </div>
