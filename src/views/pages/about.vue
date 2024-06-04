@@ -69,7 +69,8 @@ export default {
         <div class="mx-auto text-center col-md-6 mt-4">
           <h3 class="text-white">A Propos</h3>
           <p class="text-white">
-            Hygeco est une entreprise basée à Montréal qui offre une gamme de services professionnels de nettoyage et de buanderie.
+            Hygeco est une entreprise basée à Montréal qui offre une gamme de services professionnels de nettoyage et de
+            buanderie.
           </p>
         </div>
       </div>
@@ -89,7 +90,7 @@ export default {
               <div class="thumb1">
                 <img decoding="async" src="../../assets/img/a2.png" alt="Success Project " />
               </div>
-            
+
             </div>
           </div>
           <div class="col-xxl-7 col-xl-7 col-lg-7">
@@ -108,8 +109,7 @@ export default {
                   Qui Somme Nous ?
                 </h2>
 
-                <h2 class="title mt-xxl-4 mt-2 mb-0 wow fadeInDown" data-wow-delay="1.5"
-                  style="visibility: visible; animation-name: fadeInDown;font-weight: 700;font-size: 18px;
+                <h2 class="title mt-xxl-4 mt-2 mb-0 wow fadeInDown" data-wow-delay="1.5" style="visibility: visible; animation-name: fadeInDown;font-weight: 700;font-size: 18px;
    
     font-family: 'Geologica', sans-serif;">
                   Hygeco est votre partenaire local pour tous vos besoins en matière de nettoyage. Fondée
@@ -139,7 +139,7 @@ export default {
                     </div>
                     <div class="conts">
                       <h3 class="title" style="font-weight: 700;font-size: 18px;">Mission</h3>
-                      <p style="font-size: 1.25rem;" >
+                      <p style="font-size: 16px;">
                         Apporter confort et sérénité à votre quotidien grâce à des services de nettoyage
                         personnalisés et durables, offrant à nos clients du temps pour profiter pleinement de la vie.
                       </p>
@@ -153,7 +153,7 @@ export default {
                     </div>
                     <div class="conts">
                       <h3 class="title" style="font-weight: 700;font-size: 18px;">Vision</h3>
-                      <p style="font-size: 1.25rem;">
+                      <p style="font-size: 16px;">
                         Faire la différence dans le monde en privilégiant des pratiques écoresponsables et
                         en offrant des foyers où la propreté rime avec bien-être.
                       </p>
@@ -190,7 +190,7 @@ export default {
         <h2 class="  md:text-4xl font-bold mb-4" style="font-size: 3.875rem;color:#30c7b5">
           Nos Valeurs
         </h2>
-       
+
       </div>
     </div>
   </section>
@@ -259,14 +259,13 @@ export default {
       </div>
     </div>
   </section>
-  <div class="container ">
+  <div class="container content-background">
     <div class="row g-lg-4 g-4  align-items-center mb-60 ">
       <div class="col-xl-4 col-lg-4 col-md-5 col-sm-5">
         <div class="thumb-about2">
           <img style="width: 100%;border-radius: 60px;" decoding="async" src="../../assets/img/f1.png"
             alt="Cleaning Today for Making Your Future Excellent">
         </div>
-
       </div>
       <div class="col-xl-5 col-lg-5 col-md-6 col-sm-7">
         <div class="about-content-head2" style="margin-left: 25px;">
@@ -283,7 +282,6 @@ export default {
         </div>
       </div>
       <div class="col-xl-2 col-lg-3 col-md-3">
-
         <div class="about-textcircle">
           <a href="" target="_self" class="text-circles video-btn">
             <div class="text-ani">
@@ -296,27 +294,21 @@ export default {
                 alt="Cleaning Today for Making Your Future Excellent">
             </div>
             <span class="icon">
-              <!-- <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M9.69771 13.2478C9.62571 13.2478 8.04171 13.2478 7.32171 13.2478C6.93771 13.2478 6.81771 13.1038 6.81771 12.7438C6.81771 11.7838 6.81771 10.7998 6.81771 9.83983C6.81771 9.45583 6.96171 9.33583 7.32171 9.33583H9.69771C9.69771 9.26383 9.69771 7.87183 9.69771 7.22383C9.69771 6.26383 9.86571 5.35183 10.3457 4.51183C10.8497 3.64783 11.5697 3.07183 12.4817 2.73583C13.0817 2.51983 13.6817 2.42383 14.3297 2.42383H16.6817C17.0177 2.42383 17.1617 2.56783 17.1617 2.90383V5.63983C17.1617 5.97583 17.0177 6.11983 16.6817 6.11983C16.0337 6.11983 15.3857 6.11983 14.7377 6.14383C14.0897 6.14383 13.7537 6.45583 13.7537 7.12783C13.7297 7.84783 13.7537 8.54383 13.7537 9.28783H16.5377C16.9217 9.28783 17.0657 9.43183 17.0657 9.81583V12.7198C17.0657 13.1038 16.9457 13.2238 16.5377 13.2238C15.6737 13.2238 13.8257 13.2238 13.7537 13.2238V21.0478C13.7537 21.4558 13.6337 21.5998 13.2017 21.5998C12.1937 21.5998 11.2097 21.5998 10.2017 21.5998C9.84171 21.5998 9.69771 21.4558 9.69771 21.0958C9.69771 18.5758 9.69771 13.3198 9.69771 13.2478Z"
-                  fill="#30c7b5"></path>
-              </svg> -->
               <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
                 class="bi bi-globe-americas" viewBox="0 0 16 16">
                 <path
                   d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0M2.04 4.326c.325 1.329 2.532 2.54 3.717 3.19.48.263.793.434.743.484q-.121.12-.242.234c-.416.396-.787.749-.758 1.266.035.634.618.824 1.214 1.017.577.188 1.168.38 1.286.983.082.417-.075.988-.22 1.52-.215.782-.406 1.48.22 1.48 1.5-.5 3.798-3.186 4-5 .138-1.243-2-2-3.5-2.5-.478-.16-.755.081-.99.284-.172.15-.322.279-.51.216-.445-.148-2.5-2-1.5-2.5.78-.39.952-.171 1.227.182.078.099.163.208.273.318.609.304.662-.132.723-.633.039-.322.081-.671.277-.867.434-.434 1.265-.791 2.028-1.12.712-.306 1.365-.587 1.579-.88A7 7 0 1 1 2.04 4.327Z"
                   fill="#30c7b5" />
               </svg>
-
             </span>
           </a>
         </div>
       </div>
-      <div class="row g-4 justify-content-center position-relative">
-        <Valeur />
-
-
-      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row g-4 justify-content-center position-relative">
+      <Valeur />
     </div>
   </div>
   <div class="container">
@@ -390,9 +382,9 @@ export default {
     <div class="mt-8 row">
       <div class="mx-auto text-center col-md-6">
         <h2>Questions Fréquemment Posées</h2>
-        <p>
+        <p class="typo-word">
           Beaucoup de gens n'apprécient pas l'instant présent jusqu'à ce qu'il soit passé. Je ne fais pas de mon mieux
-          et je n'essaie pas de faire
+          et je n'essaie pas de fair
         </p>
       </div>
     </div>
@@ -474,7 +466,7 @@ export default {
           </accordion-item>
           <accordion-item accordion-id="headingFifth" collapse-id="collapseNine">
             <template #question>Que faire si je ne suis pas satisfait du service ?</template>
-            <template #answer
+            <template #answer>
               Votre satisfaction est importante pour nous. Si vous n'êtes pas satisfait du service reçu, veuillez nous
               contacter dans les 24 heures suivant le service. Nous ferons de notre mieux pour résoudre le problème, y
               compris offrir une nouvelle prestation si nécessaire.
@@ -533,21 +525,24 @@ export default {
               <div class="mc4wp-form-fields">
                 <label class="fz-16 title fw-700 prafont" style="padding-right: 10px;">Entre Ton Email</label>
                 <input type="email" name="EMAIL" required="" style="
-                    width: 100%;
-                    max-width: 500px;
-                    border-radius: 10px;
-                    border: 1px solid rgba(0, 0, 0, 0.09);
-                    color: var(--pra);
-                    padding: 13px 16px;
-                    margin-bottom: 10px;
+                        width: 100%;
+                        max-width: 500px;
+                        border: 1px solid rgba(0, 0, 0, 0.09);
+                        color: var(--pra);
+                        padding: 13px 16px;
+                        margin-bottom: 10px;
+                        border-bottom-left-radius: 0px;
+                        border-top-left-radius: 0px;
+                        border-bottom-left-radius: 25px;
+                        border-top-left-radius: 25px;
                   " />
                 <input class="cmn--btn" type="submit" value="Decouvrir Nos Offers" style="
-                    padding: 12px 28px 15px;
+                    padding: 13px 28px 15px;
                     color: white;
                     font-size: 16px;
                     font-style: normal;
                     font-weight: 500;
-                    line-height: 28px;
+                    line-height: 24px;
                     display: inline-block;
                     position: relative;
                     background: #30c7b5;
@@ -556,6 +551,8 @@ export default {
                     transition: all 0.5s;
                     border: unset;
                     margin-top: 10px;
+                    border-bottom-left-radius: 0px;
+                    border-top-left-radius: 0px;
                   " />
               </div>
               <label style="display: none !important">Leave this field empty if you're human:
@@ -839,10 +836,12 @@ export default {
     margin-top: -58rem;
   }
 }
+
 @keyframes fadeIn {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -1038,7 +1037,7 @@ export default {
 
 .prograss-box {
   border-radius: 10px;
-  background:transparent;
+  background: transparent;
   padding: 24px 24px;
   display: flex;
   align-items: center;
@@ -1437,6 +1436,7 @@ export default {
     padding-right: 20px;
   }
 }
+
 p {
   font-size: 1.25rem;
 }
@@ -3253,5 +3253,14 @@ p {
 
 
   }
+}
+
+.content-background {
+  border-radius: 60px;
+  background-color: #fff;
+}
+
+p.typo-word {
+  font-size: 16px;
 }
 </style>

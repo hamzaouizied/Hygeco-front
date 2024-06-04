@@ -204,29 +204,32 @@ img {
       <a class="ref" href="/pages/service-menage">
 
         <div class="card">
-          <img src="../../../assets/img/hygeco/11.jpeg" alt="Franklin Carlson">
+          <img src="../../../assets/img/hygeco/1.png" alt="Franklin Carlson">
           <p style="  margin-top: -10rem;
-">Nous utilisons des sacs réutilisables pour la collecte linges,réduisant ainsi notre consommation de plastique et favorisant la durabilité.</p>
+">Nous utilisons des sacs réutilisables pour la collecte linges,réduisant ainsi notre consommation de plastique et
+            favorisant la durabilité.</p>
           <h3 class="service">Sacs réutilisables Hygeco</h3>
-          
+
         </div>
       </a>
 
       <div class="card">
-        <img src="../../../assets/img/hygeco/11.jpeg" alt="Antonia Moore">
+        <img src="../../../assets/img/hygeco/2.jpeg" alt="Antonia Moore">
         <p style="  margin-top: -10rem;
-">Nous utilisons exclusivement des produits de nettoyage certifiés écologiques, qui sont sûrs pour l'environnement et la santé de nos clients.</p>
+">Nous utilisons exclusivement des produits de nettoyage certifiés écologiques, qui sont sûrs pour l'environnement et
+          la santé de nos clients.</p>
         <h3 class="service">Produits de nettoyage certifiés écologiques</h3>
-        
+
       </div>
 
       <a class="ref" href="/pages/menage-commercial">
         <div class="card">
-          <img src="../../../assets/img/hygeco/11.jpeg" alt="Travis Lynch">
+          <img src="../../../assets/img/hygeco/15.png" alt="Travis Lynch">
           <p style="  margin-top: -10rem;
-">Nos véhicules de transport sont électriques,contribuant ainsi à la réduction des émissions de carbone et à la préservation de l'air.</p>
+">Nos véhicules de transport sont électriques,contribuant ainsi à la réduction des émissions de carbone et à la
+            préservation de l'air.</p>
           <h3 class="service">Véhicules de transport électriques </h3>
-          
+
         </div>
       </a>
 
@@ -258,6 +261,7 @@ export default {
   color: #30c7b5;
   margin-top: 3.5rem;
 }
+
 .services {
   color: #30c7b5;
   margin-top: 4.5rem;
@@ -452,6 +456,7 @@ section h2 {
   top: -0.375rem;
   left: -0.375rem;
 }
+
 .card p {
   opacity: 0;
   transform: translateY(100%);
@@ -462,5 +467,4 @@ section h2 {
   opacity: 1;
   transform: translateY(0);
 }
-
 </style>

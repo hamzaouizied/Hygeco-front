@@ -68,43 +68,36 @@ onBeforeUnmount(() => {
       <div id="monthly" class="tab-pane active">
         <div class="row">
           <div class="mb-4 col-lg-4 mb-lg-0">
-            <pricing-card  badge="Regular" :price="{ currency: '$', value: '59' }"
-
-              :specifications="[
-                { label: 'Regular cleaning', includes: true },
-                { label: 'Deep Cleaning', includes: true },
-                { label: 'Construction Cleaning', includes: false },
-                { label: 'Windows Cleanig', includes: false },
-                { label: 'Deep Cleaning', includes: false },
-                { label: 'Regular cleaning', includes: false },
-              ]" :action="{
-                  color: 'success',
-                  route: 'javascript:;',
-                  label: 'Reserver',
-                }" />
+            <pricing-card badge="Regular" :price="{ currency: '$', value: '59' }" :specifications="[
+              { label: 'Regular cleaning', includes: true },
+              { label: 'Deep Cleaning', includes: true },
+              { label: 'Construction Cleaning', includes: false },
+              { label: 'Windows Cleanig', includes: false },
+              { label: 'Deep Cleaning', includes: false },
+              { label: 'Regular cleaning', includes: false },
+            ]" :action="{
+              color: 'success',
+              route: 'javascript:;',
+              label: 'Reserver',
+            }" />
           </div>
           <div class="mb-4 col-lg-4 mb-lg-0">
-            <pricing-card  badge="Deep Clean" :price="{ currency: '$', value: '89' }"
-
-              :specifications="[
-                { label: 'Regular cleaning', includes: true },
-                { label: 'Deep Cleaning', includes: true },
-                { label: 'Construction Cleaning', includes: true },
-                { label: 'Windows Cleanig', includes: true },
-                { label: 'Deep Cleaning', includes: false },
-                { label: 'Regular cleaning', includes: false },
-              ]" :action="{
-                  color: 'success',
-                  route: 'javascript:;',
-                  label: 'Reserver',
-                }" />
+            <pricing-card badge="Deep Clean" :price="{ currency: '$', value: '89' }" :specifications="[
+              { label: 'Regular cleaning', includes: true },
+              { label: 'Deep Cleaning', includes: true },
+              { label: 'Construction Cleaning', includes: true },
+              { label: 'Windows Cleanig', includes: true },
+              { label: 'Deep Cleaning', includes: false },
+              { label: 'Regular cleaning', includes: false },
+            ]" :action="{
+              color: 'success',
+              route: 'javascript:;',
+              label: 'Reserver',
+            }" />
           </div>
           <div class="mb-4 col-lg-4 mb-lg-0 ">
-            
-            <Cardi
-  badge="Personaliser Votre Choix"
-  
-/>
+
+            <Cardi badge="Personaliser Votre Choix" />
 
           </div>
         </div>
@@ -142,7 +135,7 @@ onBeforeUnmount(() => {
     <div class="mt-8 row">
       <div class="mx-auto text-center col-md-6">
         <h2>Questions Fréquemment Posées</h2>
-        <p>
+        <p class="typo-word">
           Beaucoup de gens n'apprécient pas l'instant présent jusqu'à ce qu'il soit passé. Je ne fais pas de mon mieux
           et je n'essaie pas de faire
         </p>
@@ -198,54 +191,62 @@ onBeforeUnmount(() => {
               Si vous avez des instructions spécifiques, veuillez les mentionner lors de la réservation ou informer
               notre équipe à leur arrivée.
 
-          <accordion-item accordion-id="headingFifth" collapse-id="collapseFifth">
-            <template #question>Quelles sont les mesures d'hygiène que vous prenez ?</template>
-            <template #answer>
-              La propreté et la sécurité sont nos priorités. Nous utilisons des produits de nettoyage de haute qualité
-              et respectueux de l'environnement. Nos équipes sont formées aux protocoles de nettoyage et d'hygiène
-              stricts, notamment en ce qui concerne la désinfection des surfaces.
+              <accordion-item accordion-id="headingFifth" collapse-id="collapseFifth">
+                <template #question>Quelles sont les mesures d'hygiène que vous prenez ?</template>
+                <template #answer>
+                  La propreté et la sécurité sont nos priorités. Nous utilisons des produits de nettoyage de haute
+                  qualité
+                  et respectueux de l'environnement. Nos équipes sont formées aux protocoles de nettoyage et d'hygiène
+                  stricts, notamment en ce qui concerne la désinfection des surfaces.
 
-            </template>
-          </accordion-item>
-          <accordion-item accordion-id="headingFifth" collapse-id="collapseSexth">
-            <template #question>Puis-je annuler ou modifier ma réservation ?</template>
-            <template #answer>
-              Oui, vous pouvez annuler ou modifier votre réservation jusqu'à 24 heures avant l'heure prévue du service.
-              Connectez-vous à votre compte sur notre site pour effectuer les modifications nécessaires ou contactez
-              notre service client.
-            </template>
-          </accordion-item>
-          <accordion-item accordion-id="headingFifth" collapse-id="collapseSeven">
-            <template #question>Que dois-je faire avant l'arrivée de l'équipe de nettoyage ?</template>
-            <template #answer>
-              Nous vous recommandons de ranger les objets personnels et de fournir un accès facile aux zones à nettoyer.
-              Si vous avez des instructions spécifiques, veuillez les mentionner lors de la réservation ou informer
-              notre équipe à leur arrivée.
+                </template>
+              </accordion-item>
+              <accordion-item accordion-id="headingFifth" collapse-id="collapseSexth">
+                <template #question>Puis-je annuler ou modifier ma réservation ?</template>
+                <template #answer>
+                  Oui, vous pouvez annuler ou modifier votre réservation jusqu'à 24 heures avant l'heure prévue du
+                  service.
+                  Connectez-vous à votre compte sur notre site pour effectuer les modifications nécessaires ou contactez
+                  notre service client.
+                </template>
+              </accordion-item>
+              <accordion-item accordion-id="headingFifth" collapse-id="collapseSeven">
+                <template #question>Que dois-je faire avant l'arrivée de l'équipe de nettoyage ?</template>
+                <template #answer>
+                  Nous vous recommandons de ranger les objets personnels et de fournir un accès facile aux zones à
+                  nettoyer.
+                  Si vous avez des instructions spécifiques, veuillez les mentionner lors de la réservation ou informer
+                  notre équipe à leur arrivée.
 
-            </template>
-          </accordion-item>
-          <accordion-item accordion-id="headingFifth" collapse-id="collapseEight">
-            <template #question>Quels moyens de paiement acceptez-vous ?</template>
-            <template #answer>
-              Nous acceptons les paiements par carte de crédit, PayPal et virements bancaires. Le paiement est requis
-              lors de la réservation en ligne pour garantir le service.
-            </template>
-          </accordion-item>
-          <accordion-item accordion-id="headingFifth" collapse-id="collapseNine">
-            <template #question>Que faire si je ne suis pas satisfait du service ?</template>
-            <template #answer>
+                </template>
+              </accordion-item>
+              <accordion-item accordion-id="headingFifth" collapse-id="collapseEight">
+                <template #question>Quels moyens de paiement acceptez-vous ?</template>
+                <template #answer>
+                  Nous acceptons les paiements par carte de crédit, PayPal et virements bancaires. Le paiement est
+                  requis
+                  lors de la réservation en ligne pour garantir le service.
+                </template>
+              </accordion-item>
+              <accordion-item accordion-id="headingFifth" collapse-id="collapseNine">
+                <template #question>Que faire si je ne suis pas satisfait du service ?</template>
+                <template #answer>
 
-              Votre satisfaction est importante pour nous. Si vous n'êtes pas satisfait du service reçu, veuillez nous
-              contacter dans les 24 heures suivant le service. Nous ferons de notre mieux pour résoudre le problème, y
-              compris offrir une nouvelle prestation si nécessaire.
-            </template>
-          </accordion-item>
-          <accordion-item accordion-id="headingFifth" collapse-id="collapseTen">
-            <template #question>Comment puis-je contacter le service client ?</template>
-            <template #answer>
-              Vous pouvez nous contacter par téléphone, par e-mail ou via le formulaire de contact sur notre site
-              internet. Notre équipe de service client est disponible du lundi au samedi de 8h à 18h pour répondre à
-              toutes vos questions.
+                  Votre satisfaction est importante pour nous. Si vous n'êtes pas satisfait du service reçu, veuillez
+                  nous
+                  contacter dans les 24 heures suivant le service. Nous ferons de notre mieux pour résoudre le problème,
+                  y
+                  compris offrir une nouvelle prestation si nécessaire.
+                </template>
+              </accordion-item>
+              <accordion-item accordion-id="headingFifth" collapse-id="collapseTen">
+                <template #question>Comment puis-je contacter le service client ?</template>
+                <template #answer>
+                  Vous pouvez nous contacter par téléphone, par e-mail ou via le formulaire de contact sur notre site
+                  internet. Notre équipe de service client est disponible du lundi au samedi de 8h à 18h pour répondre à
+                  toutes vos questions.
+                </template>
+              </accordion-item>
             </template>
           </accordion-item>
         </div>
@@ -290,21 +291,24 @@ onBeforeUnmount(() => {
               <div class="mc4wp-form-fields">
                 <label class="fz-16 title fw-700 prafont" style="padding-right: 10px;">Entre Ton Email</label>
                 <input type="email" name="EMAIL" required="" style="
-                    width: 100%;
-                    max-width: 500px;
-                    border-radius: 10px;
-                    border: 1px solid rgba(0, 0, 0, 0.09);
-                    color: var(--pra);
-                    padding: 13px 16px;
-                    margin-bottom: 10px;
+                        width: 100%;
+                        max-width: 500px;
+                        border: 1px solid rgba(0, 0, 0, 0.09);
+                        color: var(--pra);
+                        padding: 13px 16px;
+                        margin-bottom: 10px;
+                        border-bottom-left-radius: 0px;
+                        border-top-left-radius: 0px;
+                        border-bottom-left-radius: 25px;
+                        border-top-left-radius: 25px;
                   " />
                 <input class="cmn--btn" type="submit" value="Decouvrir Nos Offers" style="
-                    padding: 12px 28px 15px;
+                    padding: 13px 28px 15px;
                     color: white;
                     font-size: 16px;
                     font-style: normal;
                     font-weight: 500;
-                    line-height: 28px;
+                    line-height: 24px;
                     display: inline-block;
                     position: relative;
                     background: #30c7b5;
@@ -313,6 +317,8 @@ onBeforeUnmount(() => {
                     transition: all 0.5s;
                     border: unset;
                     margin-top: 10px;
+                    border-bottom-left-radius: 0px;
+                    border-top-left-radius: 0px;
                   " />
               </div>
               <label style="display: none !important">Leave this field empty if you're human:
@@ -718,5 +724,9 @@ onBeforeUnmount(() => {
 .cardi:hover .btn,
 .cardi:hover h1 {
   transform: translateY(0);
+}
+
+p.typo-word {
+  font-size: 16px;
 }
 </style>

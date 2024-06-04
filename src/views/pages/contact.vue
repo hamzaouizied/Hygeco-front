@@ -95,7 +95,7 @@ export default {
   <Contact />
 
 
-  
+
   <div class="container">
     <div class="row">
       <div class="col-12">
@@ -142,21 +142,24 @@ export default {
               <div class="mc4wp-form-fields">
                 <label class="fz-16 title fw-700 prafont" style="padding-right: 10px;">Entre Ton Email</label>
                 <input type="email" name="EMAIL" required="" style="
-                    width: 100%;
-                    max-width: 500px;
-                    border-radius: 10px;
-                    border: 1px solid rgba(0, 0, 0, 0.09);
-                    color: var(--pra);
-                    padding: 13px 16px;
-                    margin-bottom: 10px;
+                        width: 100%;
+                        max-width: 500px;
+                        border: 1px solid rgba(0, 0, 0, 0.09);
+                        color: var(--pra);
+                        padding: 13px 16px;
+                        margin-bottom: 10px;
+                        border-bottom-left-radius: 0px;
+                        border-top-left-radius: 0px;
+                        border-bottom-left-radius: 25px;
+                        border-top-left-radius: 25px;
                   " />
                 <input class="cmn--btn" type="submit" value="Decouvrir Nos Offers" style="
-                    padding: 12px 28px 15px;
+                    padding: 13px 28px 15px;
                     color: white;
                     font-size: 16px;
                     font-style: normal;
                     font-weight: 500;
-                    line-height: 28px;
+                    line-height: 24px;
                     display: inline-block;
                     position: relative;
                     background: #30c7b5;
@@ -165,6 +168,8 @@ export default {
                     transition: all 0.5s;
                     border: unset;
                     margin-top: 10px;
+                    border-bottom-left-radius: 0px;
+                    border-top-left-radius: 0px;
                   " />
               </div>
               <label style="display: none !important">Leave this field empty if you're human:
@@ -327,7 +332,7 @@ export default {
               </div>
             </div>
           </div>
-         
+
           <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 wow fadeInUp" data-wow-duration="2.3s" style="
               visibility: visible;
               animation-duration: 2.3s;
