@@ -1,8 +1,10 @@
 <script setup>
-import { computed, ref, onBeforeUpdate } from "vue";
+import { computed, ref, onBeforeUpdate,onMounted } from "vue";
 import { useStore } from "vuex";
 import { useRoute } from "vue-router";
 import Breadcrumbs from "../Breadcrumbs.vue";
+import axios from "axios";
+import NotificationModal from "./Notifications.vue";
 
 const showMenu = ref(false);
 const store = useStore();
@@ -11,6 +13,37 @@ const isNavFixed = computed(() => store.state.isNavFixed);
 const darkMode = computed(() => store.state.darkMode);
 
 const route = useRoute();
+// const message = ref(null);
+const token = localStorage.getItem("token");
+const notifications = ref([]);
+const showModal = ref(false);
+const selectedNotification = ref(null);
+
+onMounted(async () => {
+  try {
+    const response = await axios.get("https://hygeco-back.test/api/auth/notifications/contact-created", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    notifications.value = response.data;
+  } catch (error) {
+    console.error(error);
+  }
+});
+
+const formatTime = (timestamp) => {
+  const now = new Date();
+  const createdAt = new Date(timestamp);
+  const diff = Math.floor((now - createdAt) / (1000 * 60)); // diff in minutes
+  if (diff < 60) {
+    return `${diff} minutes ago`;
+  } else if (diff < 1440) {
+    return `${Math.floor(diff / 60)} hours ago`;
+  } else {
+    return `${Math.floor(diff / 1440)} days ago`;
+  }
+};
 
 const currentRouteName = computed(() => {
   return route.name;
@@ -33,6 +66,15 @@ const closeMenu = () => {
   setTimeout(() => {
     showMenu.value = false;
   }, 100);
+};
+const openModal = (notification) => {
+  selectedNotification.value = notification;
+  showModal.value = true;
+};
+
+const closeModal = () => {
+  showModal.value = false;
+  selectedNotification.value = null;
 };
 onBeforeUpdate(() => {
   toggleNavigationOnMobile();
@@ -110,7 +152,7 @@ onBeforeUpdate(() => {
         <ul class="navbar-nav justify-content-end">
           <li class="nav-item d-flex align-items-center">
             <router-link
-              :to="{ name: 'Signin Basic' }"
+              :to="{ name: 'Signin Illustration' }"
               class="px-0 nav-link font-weight-bold"
               :class="
                 isNavFixed && !darkMode ? ' opacity-8 text-dark' : 'text-white'
@@ -174,13 +216,9 @@ onBeforeUpdate(() => {
             >
               <i class="cursor-pointer fa fa-bell"></i>
             </a>
-            <ul
-              class="px-2 py-3 dropdown-menu dropdown-menu-end me-sm-n4"
-              :class="showMenu && 'show'"
-              aria-labelledby="dropdownMenuButton"
-            >
-              <li class="mb-2">
-                <a class="dropdown-item border-radius-md" href="#">
+            <ul class="px-2 py-3 dropdown-menu dropdown-menu-end me-sm-n4" :class="{ 'show': showMenu }" aria-labelledby="dropdownMenuButton">
+              <li v-for="notification in notifications" :key="notification.id" class="mb-2">
+                <a class="dropdown-item border-radius-md" href="#" @click="openModal(notification)">
                   <div class="py-1 d-flex">
                     <div class="my-auto">
                       <img
@@ -191,90 +229,11 @@ onBeforeUpdate(() => {
                     </div>
                     <div class="d-flex flex-column justify-content-center">
                       <h6 class="mb-1 text-sm font-weight-normal">
-                        <span class="font-weight-bold">New message</span> from
-                        Laur
+                        <span class="font-weight-bold">{{ notification.data.message }}</span>
                       </h6>
                       <p class="mb-0 text-xs text-secondary">
                         <i class="fa fa-clock me-1"></i>
-                        13 minutes ago
-                      </p>
-                    </div>
-                  </div>
-                </a>
-              </li>
-              <li class="mb-2">
-                <a class="dropdown-item border-radius-md" href="javascript:;">
-                  <div class="py-1 d-flex">
-                    <div class="my-auto">
-                      <img
-                        src="../../assets/img/small-logos/logo-spotify.svg"
-                        class="avatar avatar-sm bg-gradient-dark me-3"
-                        alt="logo spotify"
-                      />
-                    </div>
-                    <div class="d-flex flex-column justify-content-center">
-                      <h6 class="mb-1 text-sm font-weight-normal">
-                        <span class="font-weight-bold">New album</span> by
-                        Travis Scott
-                      </h6>
-                      <p class="mb-0 text-xs text-secondary">
-                        <i class="fa fa-clock me-1"></i>
-                        1 day
-                      </p>
-                    </div>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item border-radius-md" href="javascript:;">
-                  <div class="py-1 d-flex">
-                    <div
-                      class="my-auto avatar avatar-sm bg-gradient-secondary me-3"
-                    >
-                      <svg
-                        width="12px"
-                        height="12px"
-                        viewBox="0 0 43 36"
-                        version="1.1"
-                        xmlns="http://www.w3.org/2000/svg"
-                        xmlns:xlink="http://www.w3.org/1999/xlink"
-                      >
-                        <title>credit-card</title>
-                        <g
-                          stroke="none"
-                          stroke-width="1"
-                          fill="none"
-                          fill-rule="evenodd"
-                        >
-                          <g
-                            transform="translate(-2169.000000, -745.000000)"
-                            fill="#FFFFFF"
-                            fill-rule="nonzero"
-                          >
-                            <g transform="translate(1716.000000, 291.000000)">
-                              <g transform="translate(453.000000, 454.000000)">
-                                <path
-                                  class="color-background"
-                                  d="M43,10.7482083 L43,3.58333333 C43,1.60354167 41.3964583,0 39.4166667,0 L3.58333333,0 C1.60354167,0 0,1.60354167 0,3.58333333 L0,10.7482083 L43,10.7482083 Z"
-                                  opacity="0.593633743"
-                                />
-                                <path
-                                  class="color-background"
-                                  d="M0,16.125 L0,32.25 C0,34.2297917 1.60354167,35.8333333 3.58333333,35.8333333 L39.4166667,35.8333333 C41.3964583,35.8333333 43,34.2297917 43,32.25 L43,16.125 L0,16.125 Z M19.7083333,26.875 L7.16666667,26.875 L7.16666667,23.2916667 L19.7083333,23.2916667 L19.7083333,26.875 Z M35.8333333,26.875 L28.6666667,26.875 L28.6666667,23.2916667 L35.8333333,23.2916667 L35.8333333,26.875 Z"
-                                />
-                              </g>
-                            </g>
-                          </g>
-                        </g>
-                      </svg>
-                    </div>
-                    <div class="d-flex flex-column justify-content-center">
-                      <h6 class="mb-1 text-sm font-weight-normal">
-                        Payment successfully completed
-                      </h6>
-                      <p class="mb-0 text-xs text-secondary">
-                        <i class="fa fa-clock me-1"></i>
-                        2 days
+                        {{ formatTime(notification.created_at) }}
                       </p>
                     </div>
                   </div>
@@ -286,4 +245,6 @@ onBeforeUpdate(() => {
       </div>
     </div>
   </nav>
+
+  <NotificationModal :show="showModal" :notification="selectedNotification" @close="closeModal" />
 </template>

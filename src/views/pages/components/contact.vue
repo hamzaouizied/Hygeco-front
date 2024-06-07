@@ -8,7 +8,7 @@ export default {
   data() {
     return {
       form: {
-        firstName: '',
+        first_name: '',
         address: '',
         email: '',
         service: '',
@@ -78,7 +78,7 @@ export default {
     async submitForm() {
       if (this.validateForm()) {
         try {
-          const response = await axios.post('https://hygeco-back.test/api/submit-contact-form', this.form);
+          const response = await axios.post('https://hygeco-back.test/api/submit-form', this.form);
           this.$swal('Formulaire soumis avec succès');
           console.log('Form submitted successfully:', response.data);
           this.reinitialiserFormulaire();

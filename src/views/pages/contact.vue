@@ -5,6 +5,7 @@ import setNavPills from "@/assets/js/nav-pills.js";
 import PlayerCard from "@/views/dashboards/components/PlayerCard.vue";
 // import axios from 'axios';
 import Contact from "./components/contact.vue";
+// import Notification from "@/views/applications/notification.vue";
 
 
 export default {
@@ -12,6 +13,7 @@ export default {
     Navbar,
     PlayerCard,
     Contact,
+    // Notification
   },
   data() {
     return {
@@ -79,9 +81,9 @@ export default {
       <div class="row">
         <div class="mx-auto text-center col-md-6 mt-4">
           <h3 class="text-white">Contactez-Nous </h3>
-          <p class="text-white">
-            Hygeco is a Montreal-based company that offers a range of professional cleaning and laundry
-            services
+          <p class="text-white" style="font-size: 1.25rem;">
+            Hygeco est une entreprise basée à Montréal qui offre une gamme de services professionnels de nettoyage et de
+            buanderie.
           </p>
         </div>
       </div>
@@ -93,6 +95,7 @@ export default {
     </div>
   </div>
   <Contact />
+  <!-- <Notification /> -->
 
 
 
@@ -281,16 +284,16 @@ export default {
               <div class="wp-widget-group__inner-blocks">
                 <ul style="padding: 0; margin: 0; list-style: none">
                   <li>
-                    <a href="https://www.4damstheme.com/clenis/about-clenis/">A propos</a>
+                    <a href="/pages/about">A propos</a>
                   </li>
 
                   <li>
-                    <a href="https://www.4damstheme.com/clenis/contact-us/">Contact Nous</a>
+                    <a href="/pages/contact">Contact Nous</a>
                   </li>
 
 
                   <li>
-                    <a href="https://www.4damstheme.com/clenis/our-services/">Services</a>
+                    <a href="/pages/service-menage">Services</a>
                   </li>
 
 
@@ -316,15 +319,15 @@ export default {
               <div class="wp-widget-group__inner-blocks">
                 <ul style="padding: 0; margin: 0; list-style: none">
                   <li>
-                    <a href="https://www.4damstheme.com/clenis/our-project/">Menage</a>
+                    <a href="/pages/reservation">Menage</a>
                   </li>
 
                   <li>
-                    <a href="https://www.4damstheme.com/clenis/our-services/">buanderie</a>
+                    <a href="/pages/reservation-buandrie">buanderie</a>
                   </li>
 
                   <li>
-                    <a href="https://www.4damstheme.com/clenis/our-services/">Menage commercial</a>
+                    <a href="/pages/menage-commercial">Menage commercial</a>
                   </li>
 
 
@@ -346,7 +349,7 @@ export default {
                   display: inline-block;
                   margin-bottom: 41px;
                 ">
-                Nos coordonnées
+                Coordonnées
               </h4>
               <div class="wp-widget-group__inner-blocks">
                 <ul style="padding: 0; margin: 0; list-style: none">
