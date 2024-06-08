@@ -4,7 +4,7 @@
             <div class="row text-center">
                 <div class="col-md-12">
                     <div class="heading">
-                        <h2>What our clients say?</h2>
+                        <h2>Avis clients ?</h2>
                     </div>
                 </div>
             </div>
@@ -15,31 +15,28 @@
                             <div class="carousel-item active">
                                 <div class="testimonial">
                                     <img src="https://i.ibb.co/8x9xK4H/team.jpg" class="team" alt="Client Image">
-                                    <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
-                                        porttitordapibus dictum. Fusce faucibus ligula scelerisque, eleifend turpis in"
+                                    <p>"Excellent service, je recommande fortement le service de lavage et pliage avec ramassage et livraison. Il sont très méticuleux et ponctuels"
                                     </p>
-                                    <h3>Alamin Musa</h3>
-                                    <p>Front End Developer</p>
+                                    <h3>chedy gannoun</h3>
+                                    <p>il y a un mois</p>
                                 </div>
                             </div>
                             <div class="carousel-item">
                                 <div class="testimonial">
-                                    <img src="https://i.ibb.co/8x9xK4H/team.jpg" class="team" alt="Client Image">
-                                    <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
-                                        porttitordapibus dictum. Fusce faucibus ligula scelerisque, eleifend turpis in"
+                                    <img src="https://lh3.googleusercontent.com/a-/ALV-UjVNf5KTqtG1h2zYQkc4thUiSQL98uPg0mwhhBvf5AjmNmg=s120-c-rp-mo-br100" class="team" alt="Client Image">
+                                    <p>"Très bon service. Je leur fais confiance chaque deux semaines pour le ménage et la lessive de ma grand-mère, ils ne déçoivent jamais. Ils s'occupent de tout comme si c'était chez eux. "
                                     </p>
-                                    <h3>John Doe</h3>
-                                    <p>Back End Developer</p>
+                                    <h3>Cinthya González Fernández</h3>
+                                    <p>il y a 9 mois</p>
                                 </div>
                             </div>
                             <div class="carousel-item">
                                 <div class="testimonial">
-                                    <img src="https://i.ibb.co/8x9xK4H/team.jpg" class="team" alt="Client Image">
-                                    <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
-                                        porttitordapibus dictum. Fusce faucibus ligula scelerisque, eleifend turpis in"
+                                    <img src="https://lh3.googleusercontent.com/a-/ALV-UjV-dMPbzYBsaeoe9iAW0-pIsTya5KGqJFcTvsQnUQ9bhaw=s120-c-rp-mo-br100" class="team" alt="Client Image">
+                                    <p>"Mon expérience dans cette laverie a été excellente en termes de ponctualité du service. Ils ont respecté l'heure promise pour laver et sécher mes vêtements, ce qui était très pratique. "
                                     </p>
-                                    <h3>Jane Smith</h3>
-                                    <p>Full Stack Developer</p>
+                                    <h3>Andrea Morales</h3>
+                                    <p>il y a 6 mois</p>
                                 </div>
                             </div>
                         </div>

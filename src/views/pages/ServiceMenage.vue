@@ -62,7 +62,7 @@ onBeforeUnmount(() => {
       <div class="row">
         <div class="mx-auto text-center col-md-6 mt-4">
           <h3 class="text-white">Services </h3>
-          <p class="text-white">
+          <p class="text-white" style="font-size: 1.25rem;">
             Hygeco est une entreprise basée à Montréal qui offre une gamme de services professionnels de nettoyage et de
             buanderie.
           </p>
@@ -298,25 +298,7 @@ onBeforeUnmount(() => {
 
         </div>
 
-        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
-          <div class="service-item item-teal position-relative">
-            <div class="icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-broadcast"
-                viewBox="0 0 16 16">
-                <path
-                  d="M3.05 3.05a7 7 0 0 0 0 9.9.5.5 0 0 1-.707.707 8 8 0 0 1 0-11.314.5.5 0 0 1 .707.707m2.122 2.122a4 4 0 0 0 0 5.656.5.5 0 1 1-.708.708 5 5 0 0 1 0-7.072.5.5 0 0 1 .708.708m5.656-.708a.5.5 0 0 1 .708 0 5 5 0 0 1 0 7.072.5.5 0 1 1-.708-.708 4 4 0 0 0 0-5.656.5.5 0 0 1 0-.708m2.122-2.12a.5.5 0 0 1 .707 0 8 8 0 0 1 0 11.313.5.5 0 0 1-.707-.707 7 7 0 0 0 0-9.9.5.5 0 0 1 0-.707zM10 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0" />
-              </svg>
-            </div>
-            <div>
-              <h3>Nettoyage des appareils électroménagers</h3>
-              <p>Nettoyer en profondeur et désinfecter les
-                appareils de cuisine.</p>
-
-
-            </div>
-
-          </div>
-        </div>
+        
       </div>
     </div>
 
@@ -956,16 +938,16 @@ onBeforeUnmount(() => {
               <div class="wp-widget-group__inner-blocks">
                 <ul style="padding: 0; margin: 0; list-style: none">
                   <li>
-                    <a href="https://www.4damstheme.com/clenis/about-clenis/">A propos</a>
+                    <a href="/pages/about">A propos</a>
                   </li>
 
                   <li>
-                    <a href="https://www.4damstheme.com/clenis/contact-us/">Contact Nous</a>
+                    <a href="/pages/contact">Contact Nous</a>
                   </li>
 
 
                   <li>
-                    <a href="https://www.4damstheme.com/clenis/our-services/">Services</a>
+                    <a href="/pages/service-menage">Services</a>
                   </li>
 
 
@@ -991,15 +973,15 @@ onBeforeUnmount(() => {
               <div class="wp-widget-group__inner-blocks">
                 <ul style="padding: 0; margin: 0; list-style: none">
                   <li>
-                    <a href="https://www.4damstheme.com/clenis/our-project/">Menage</a>
+                    <a href="/pages/reservation">Menage</a>
                   </li>
 
                   <li>
-                    <a href="https://www.4damstheme.com/clenis/our-services/">buanderie</a>
+                    <a href="/pages/reservation-buandrie">buanderie</a>
                   </li>
 
                   <li>
-                    <a href="https://www.4damstheme.com/clenis/our-services/">Menage commercial</a>
+                    <a href="/pages/menage-commercial">Menage commercial</a>
                   </li>
 
 
@@ -1021,7 +1003,7 @@ onBeforeUnmount(() => {
                   display: inline-block;
                   margin-bottom: 41px;
                 ">
-                Nos coordonnées
+                Coordonnées
               </h4>
               <div class="wp-widget-group__inner-blocks">
                 <ul style="padding: 0; margin: 0; list-style: none">
@@ -1659,11 +1641,7 @@ section,
   }
 }
 
-.nav-tabs .nav-link.active {
-  color: #495057;
-  background-color: #30c7b5;
-  border-color: #dee2e6 #dee2e6 #fff;
-}
+
 
 
 /*--------------------------------------------------------------
@@ -1694,7 +1672,7 @@ section,
   border: 0;
   padding: 30px;
   transition: 0.3s;
-  border-radius: 10px;
+  /* border-radius: 10px; */
   display: flex;
   cursor: pointer;
 }
@@ -1733,18 +1711,21 @@ section,
   font-size: 15px;
   margin: 0;
 }
-
-.features .nav-link:hover {
-  background: #30c7b5;
+.nav-link:hover {
+  color:black;
 }
+
+/* .features .nav-link:hover {
+  background: #30c7b5;
+} */
 
 .features .nav-link.active {
-  background: #30c7b5;
+    background: 
+color-mix(in srgb, var(--accent-color), transparent 92%);
 }
-
-.features .tab-pane img {
+/* .features .tab-pane img {
   border-radius: 15px;
-}
+} */
 
 /*--------------------------------------------------------------
 # Features Details Section

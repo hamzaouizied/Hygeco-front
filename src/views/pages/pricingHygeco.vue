@@ -1,14 +1,18 @@
 <script setup>
-import { onMounted, onBeforeUnmount } from "vue";
+import { ref, onMounted, onBeforeUnmount } from "vue";
 import { useStore } from "vuex";
 import Navbar from "@/examples/PageLayout/NavbarHygeco.vue";
-import PricingCard from "./components/PricingCard.vue";
 import AccordionItem from "./components/AccordionItem.vue";
+import PricingCard from "./components/PricingCard.vue";
 import setNavPills from "@/assets/js/nav-pills.js";
 import Cardi from "./components/Card.vue";
 
-
 const store = useStore();
+const showMore = ref(false);
+
+const toggleShowMore = () => {
+  showMore.value = !showMore.value;
+};
 
 onMounted(() => {
   store.state.showSidenav = false;
@@ -16,6 +20,7 @@ onMounted(() => {
   store.state.showFooter = false;
   setNavPills();
 });
+
 onBeforeUnmount(() => {
   store.state.showSidenav = true;
   store.state.showNavbar = true;
@@ -45,24 +50,24 @@ onBeforeUnmount(() => {
   }">
     <div class="container pb-10 pb-lg-9 pt-7 postion-relative z-index-2">
       <div class="row">
-        <!-- <div class="mx-auto text-center col-md-6 mt-4">
-          <h3 class="text-start" style="color: #30c7b5;" >See our pricing</h3>
-          <p class="text-white">
-            You have Free Unlimited Updates and Premium Support on each package.
+        <div class="mx-auto text-center col-md-6 mt-4">
+          <h3 class="text-white" >Nos Bon Plans</h3>
+          <p class="text-white" style="font-size: 1.25rem;">
+            Découvrez nos offres spéciales et promotions exclusives !
           </p>
-        </div> -->
+        </div>
       </div>
 
     </div>
   </div>
-  <div class="container ">
-    <div class="text-center p-5">
+  <div class="container p-5 ">
+    <!-- <div class="text-center p-5">
       <h3>Nos Bon Plans</h3>
       <p style="color: #30c7b5;">
         Découvrez nos offres spéciales et promotions exclusives !
 
       </p>
-    </div>
+    </div> -->
 
     <div class="tab-content tab-space">
       <div id="monthly" class="tab-pane active">
@@ -97,7 +102,12 @@ onBeforeUnmount(() => {
           </div>
           <div class="mb-4 col-lg-4 mb-lg-0 ">
 
-            <Cardi badge="Personaliser Votre Choix" />
+            <Cardi badge="Personaliser Votre Choix" 
+            :action="{
+              color: 'success',
+              route: 'javascript:;',
+              label: 'Personaliser',
+            }"/>
 
           </div>
         </div>
@@ -132,12 +142,16 @@ onBeforeUnmount(() => {
         <img class="w-100 opacity-9" src="../../assets/img/logos/gray-logos/logo-vodafone.svg" alt="logo_vodafone" />
       </div>
     </div>
+  
+    
+  </div>
+  <div class="container my-6">
     <div class="mt-8 row">
       <div class="mx-auto text-center col-md-6">
         <h2>Questions Fréquemment Posées</h2>
         <p class="typo-word">
           Beaucoup de gens n'apprécient pas l'instant présent jusqu'à ce qu'il soit passé. Je ne fais pas de mon mieux
-          et je n'essaie pas de faire
+          et je n'essaie pas de fair
         </p>
       </div>
     </div>
@@ -164,91 +178,72 @@ onBeforeUnmount(() => {
               informations nécessaires. Vous recevrez une confirmation par e-mail une fois la réservation effectuée.
             </template>
           </accordion-item>
-
           <accordion-item accordion-id="headingThree" collapse-id="collapseThree">
             <template #question>Quels sont vos tarifs ?</template>
             <template #answer>
               Nos tarifs varient en fonction du service et de la durée. Vous pouvez consulter notre grille tarifaire sur
               la page "Tarifs" de notre site ou lors de la réservation en ligne. Nous offrons également des forfaits et
               des réductions pour des services réguliers.
-
             </template>
           </accordion-item>
-
           <accordion-item accordion-id="headingFour" collapse-id="collapseFour">
             <template #question>Proposez-vous des services de ménage et de buanderie pour les entreprises ?</template>
             <template #answer>
               Oui, nous offrons également des services pour les entreprises, y compris le nettoyage de bureaux et de
               locaux commerciaux ainsi que la gestion du linge pour les entreprises. Contactez-nous pour un devis
               personnalisé.
-
             </template>
           </accordion-item>
-          <accordion-item accordion-id="headingFifth" collapse-id="collapseSeven">
+          <accordion-item v-if="showMore" accordion-id="headingFifth" collapse-id="collapseFifth">
+            <template #question>Quelles sont les mesures d'hygiène que vous prenez ?</template>
+            <template #answer>
+              La propreté et la sécurité sont nos priorités. Nous utilisons des produits de nettoyage de haute qualité
+              et respectueux de l'environnement. Nos équipes sont formées aux protocoles de nettoyage et d'hygiène
+              stricts, notamment en ce qui concerne la désinfection des surfaces.
+            </template>
+          </accordion-item>
+          <accordion-item v-if="showMore" accordion-id="headingSixth" collapse-id="collapseSixth">
+            <template #question>Puis-je annuler ou modifier ma réservation ?</template>
+            <template #answer>
+              Oui, vous pouvez annuler ou modifier votre réservation jusqu'à 24 heures avant l'heure prévue du service.
+              Connectez-vous à votre compte sur notre site pour effectuer les modifications nécessaires ou contactez
+              notre service client.
+            </template>
+          </accordion-item>
+          <accordion-item v-if="showMore" accordion-id="headingSeventh" collapse-id="collapseSeventh">
             <template #question>Que dois-je faire avant l'arrivée de l'équipe de nettoyage ?</template>
             <template #answer>
               Nous vous recommandons de ranger les objets personnels et de fournir un accès facile aux zones à nettoyer.
               Si vous avez des instructions spécifiques, veuillez les mentionner lors de la réservation ou informer
               notre équipe à leur arrivée.
-
-              <accordion-item accordion-id="headingFifth" collapse-id="collapseFifth">
-                <template #question>Quelles sont les mesures d'hygiène que vous prenez ?</template>
-                <template #answer>
-                  La propreté et la sécurité sont nos priorités. Nous utilisons des produits de nettoyage de haute
-                  qualité
-                  et respectueux de l'environnement. Nos équipes sont formées aux protocoles de nettoyage et d'hygiène
-                  stricts, notamment en ce qui concerne la désinfection des surfaces.
-
-                </template>
-              </accordion-item>
-              <accordion-item accordion-id="headingFifth" collapse-id="collapseSexth">
-                <template #question>Puis-je annuler ou modifier ma réservation ?</template>
-                <template #answer>
-                  Oui, vous pouvez annuler ou modifier votre réservation jusqu'à 24 heures avant l'heure prévue du
-                  service.
-                  Connectez-vous à votre compte sur notre site pour effectuer les modifications nécessaires ou contactez
-                  notre service client.
-                </template>
-              </accordion-item>
-              <accordion-item accordion-id="headingFifth" collapse-id="collapseSeven">
-                <template #question>Que dois-je faire avant l'arrivée de l'équipe de nettoyage ?</template>
-                <template #answer>
-                  Nous vous recommandons de ranger les objets personnels et de fournir un accès facile aux zones à
-                  nettoyer.
-                  Si vous avez des instructions spécifiques, veuillez les mentionner lors de la réservation ou informer
-                  notre équipe à leur arrivée.
-
-                </template>
-              </accordion-item>
-              <accordion-item accordion-id="headingFifth" collapse-id="collapseEight">
-                <template #question>Quels moyens de paiement acceptez-vous ?</template>
-                <template #answer>
-                  Nous acceptons les paiements par carte de crédit, PayPal et virements bancaires. Le paiement est
-                  requis
-                  lors de la réservation en ligne pour garantir le service.
-                </template>
-              </accordion-item>
-              <accordion-item accordion-id="headingFifth" collapse-id="collapseNine">
-                <template #question>Que faire si je ne suis pas satisfait du service ?</template>
-                <template #answer>
-
-                  Votre satisfaction est importante pour nous. Si vous n'êtes pas satisfait du service reçu, veuillez
-                  nous
-                  contacter dans les 24 heures suivant le service. Nous ferons de notre mieux pour résoudre le problème,
-                  y
-                  compris offrir une nouvelle prestation si nécessaire.
-                </template>
-              </accordion-item>
-              <accordion-item accordion-id="headingFifth" collapse-id="collapseTen">
-                <template #question>Comment puis-je contacter le service client ?</template>
-                <template #answer>
-                  Vous pouvez nous contacter par téléphone, par e-mail ou via le formulaire de contact sur notre site
-                  internet. Notre équipe de service client est disponible du lundi au samedi de 8h à 18h pour répondre à
-                  toutes vos questions.
-                </template>
-              </accordion-item>
             </template>
           </accordion-item>
+          <accordion-item v-if="showMore" accordion-id="headingEighth" collapse-id="collapseEighth">
+            <template #question>Quels moyens de paiement acceptez-vous ?</template>
+            <template #answer>
+              Nous acceptons les paiements par carte de crédit, PayPal et virements bancaires. Le paiement est requis
+              lors de la réservation en ligne pour garantir le service.
+            </template>
+          </accordion-item>
+          <accordion-item v-if="showMore" accordion-id="headingNinth" collapse-id="collapseNinth">
+            <template #question>Que faire si je ne suis pas satisfait du service ?</template>
+            <template #answer>
+              Votre satisfaction est importante pour nous. Si vous n'êtes pas satisfait du service reçu, veuillez nous
+              contacter dans les 24 heures suivant le service. Nous ferons de notre mieux pour résoudre le problème, y
+              compris offrir une nouvelle prestation si nécessaire.
+            </template>
+          </accordion-item>
+          <accordion-item v-if="showMore" accordion-id="headingTenth" collapse-id="collapseTenth">
+            <template #question>Comment puis-je contacter le service client ?</template>
+            <template #answer>
+              Vous pouvez nous contacter par téléphone, par e-mail ou via le formulaire de contact sur notre site
+              internet. Notre équipe de service client est disponible du lundi au samedi de 8h à 18h pour répondre à
+              toutes vos questions.
+            </template>
+          </accordion-item>
+        </div>
+        <div class="text-center mt-4">
+          <button @click="toggleShowMore" class="btn btn-primary" style="background-color: #30c7b5;">{{ showMore ? 'Voir moins' : 'Voir plus' }}</button>
         </div>
       </div>
     </div>
@@ -430,16 +425,16 @@ onBeforeUnmount(() => {
               <div class="wp-widget-group__inner-blocks">
                 <ul style="padding: 0; margin: 0; list-style: none">
                   <li>
-                    <a href="https://www.4damstheme.com/clenis/about-clenis/">A propos</a>
+                    <a href="/pages/about">A propos</a>
                   </li>
 
                   <li>
-                    <a href="https://www.4damstheme.com/clenis/contact-us/">Contact Nous</a>
+                    <a href="/pages/contact">Contact Nous</a>
                   </li>
 
 
                   <li>
-                    <a href="https://www.4damstheme.com/clenis/our-services/">Services</a>
+                    <a href="/pages/service-menage">Services</a>
                   </li>
 
 
@@ -465,15 +460,15 @@ onBeforeUnmount(() => {
               <div class="wp-widget-group__inner-blocks">
                 <ul style="padding: 0; margin: 0; list-style: none">
                   <li>
-                    <a href="https://www.4damstheme.com/clenis/our-project/">Menage</a>
+                    <a href="/pages/reservation">Menage</a>
                   </li>
 
                   <li>
-                    <a href="https://www.4damstheme.com/clenis/our-services/">buanderie</a>
+                    <a href="/pages/reservation-buandrie">buanderie</a>
                   </li>
 
                   <li>
-                    <a href="https://www.4damstheme.com/clenis/our-services/">Menage commercial</a>
+                    <a href="/pages/menage-commercial">Menage commercial</a>
                   </li>
 
 
@@ -495,7 +490,7 @@ onBeforeUnmount(() => {
                   display: inline-block;
                   margin-bottom: 41px;
                 ">
-                Nos coordonnées
+                Coordonnées
               </h4>
               <div class="wp-widget-group__inner-blocks">
                 <ul style="padding: 0; margin: 0; list-style: none">

@@ -204,7 +204,7 @@ img {
       <a class="ref" href="/pages/service-menage">
 
         <div class="card">
-          <img src="../../../assets/img/hygeco/1.png" alt="Franklin Carlson">
+          <img src="../../../assets/img/hygeco/100.jpeg" alt="Franklin Carlson">
           <p style="  margin-top: -10rem;
 ">Nous utilisons des sacs réutilisables pour la collecte linges,réduisant ainsi notre consommation de plastique et
             favorisant la durabilité.</p>
@@ -214,7 +214,7 @@ img {
       </a>
 
       <div class="card">
-        <img src="../../../assets/img/hygeco/2.jpeg" alt="Antonia Moore">
+        <img src="../../../assets/img/hygeco/100.jpeg" alt="Antonia Moore">
         <p style="  margin-top: -10rem;
 ">Nous utilisons exclusivement des produits de nettoyage certifiés écologiques, qui sont sûrs pour l'environnement et
           la santé de nos clients.</p>
@@ -224,7 +224,7 @@ img {
 
       <a class="ref" href="/pages/menage-commercial">
         <div class="card">
-          <img src="../../../assets/img/hygeco/15.png" alt="Travis Lynch">
+          <img src="../../../assets/img/hygeco/100.jpeg" alt="Travis Lynch">
           <p style="  margin-top: -10rem;
 ">Nos véhicules de transport sont électriques,contribuant ainsi à la réduction des émissions de carbone et à la
             préservation de l'air.</p>

@@ -862,16 +862,16 @@ export default {
               <div class="wp-widget-group__inner-blocks">
                 <ul style="padding: 0; margin: 0; list-style: none">
                   <li>
-                    <a href="https://www.4damstheme.com/clenis/about-clenis/">A propos</a>
+                    <a href="/pages/about">A propos</a>
                   </li>
 
                   <li>
-                    <a href="https://www.4damstheme.com/clenis/contact-us/">Contact Nous</a>
+                    <a href="/pages/contact">Contact Nous</a>
                   </li>
 
 
                   <li>
-                    <a href="https://www.4damstheme.com/clenis/our-services/">Services</a>
+                    <a href="/pages/service-menage">Services</a>
                   </li>
 
 
@@ -897,15 +897,15 @@ export default {
               <div class="wp-widget-group__inner-blocks">
                 <ul style="padding: 0; margin: 0; list-style: none">
                   <li>
-                    <a href="https://www.4damstheme.com/clenis/our-project/">Menage</a>
+                    <a href="/pages/reservation">Menage</a>
                   </li>
 
                   <li>
-                    <a href="https://www.4damstheme.com/clenis/our-services/">buanderie</a>
+                    <a href="/pages/reservation-buandrie">buanderie</a>
                   </li>
 
                   <li>
-                    <a href="https://www.4damstheme.com/clenis/our-services/">Menage commercial</a>
+                    <a href="/pages/menage-commercial">Menage commercial</a>
                   </li>
 
 
@@ -927,7 +927,7 @@ export default {
                   display: inline-block;
                   margin-bottom: 41px;
                 ">
-                Nos coordonnées
+                Coordonnées
               </h4>
               <div class="wp-widget-group__inner-blocks">
                 <ul style="padding: 0; margin: 0; list-style: none">

@@ -43,6 +43,9 @@
 </template>
 
 <script>
+import img1 from '@/assets/img/pr1.png';
+import img2 from '@/assets/img/pr2.png';
+
 export default {
   data() {
     return {
@@ -50,7 +53,7 @@ export default {
         {
           id: 'card-1',
           type: 'Card--square',
-          imageUrl: 'https://radiustheme.com/demo/wordpress/themes/clenix/wp-content/uploads/2019/07/window-620x672.jpg',
+          imageUrl: img1,
           imageAlt: 'Card image description',
           imageWidth: '480',
           imageHeight: '480',
@@ -61,7 +64,7 @@ export default {
         {
           id: 'card-2',
           type: 'Card--wide',
-          imageUrl: 'https://radiustheme.com/demo/wordpress/themes/clenix/wp-content/uploads/2019/07/house5-620x672.jpg',
+          imageUrl:img2,
           imageAlt: 'Card image description',
           imageWidth: '960',
           imageHeight: '480',
@@ -72,7 +75,7 @@ export default {
         {
           id: 'card-3',
           type: 'Card--tall',
-          imageUrl: 'https://radiustheme.com/demo/wordpress/themes/clenix/wp-content/uploads/2019/10/bedroom-620x672.jpg',
+          imageUrl: img1,
           imageAlt: 'Card image description',
           imageWidth: '400',
           imageHeight: '800',
@@ -83,7 +86,7 @@ export default {
         {
           id: 'card-4',
           type: 'Card--tall',
-          imageUrl: 'https://images.unsplash.com/photo-1621160471147-c5be030e199b?crop=entropy&cs=srgb&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTYyMzMxMTEzMw&ixlib=rb-1.2.1&q=85&height=480',
+          imageUrl: img2,
           imageAlt: 'Card image description',
           imageWidth: '400',
           imageHeight: '800',
