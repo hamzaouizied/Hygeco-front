@@ -1,5 +1,5 @@
 <script setup>
-import { computed, ref, onBeforeUpdate,onMounted } from "vue";
+import { computed, ref, onBeforeUpdate, onMounted } from "vue";
 import { useStore } from "vuex";
 import { useRoute } from "vue-router";
 import Breadcrumbs from "../Breadcrumbs.vue";
@@ -13,11 +13,12 @@ const isNavFixed = computed(() => store.state.isNavFixed);
 const darkMode = computed(() => store.state.darkMode);
 
 const route = useRoute();
-// const message = ref(null);
 const token = localStorage.getItem("token");
 const notifications = ref([]);
 const showModal = ref(false);
 const selectedNotification = ref(null);
+
+const notificationLimit = ref(4);
 
 onMounted(async () => {
   try {
@@ -27,6 +28,7 @@ onMounted(async () => {
       },
     });
     notifications.value = response.data;
+    console.log("your notification", notifications);
   } catch (error) {
     console.error(error);
   }
@@ -79,7 +81,12 @@ const closeModal = () => {
 onBeforeUpdate(() => {
   toggleNavigationOnMobile();
 });
+
+const loadMoreNotifications = () => {
+  notificationLimit.value += 4;
+};
 </script>
+
 <template>
   <nav
     id="navbarBlur"
@@ -217,7 +224,7 @@ onBeforeUpdate(() => {
               <i class="cursor-pointer fa fa-bell"></i>
             </a>
             <ul class="px-2 py-3 dropdown-menu dropdown-menu-end me-sm-n4" :class="{ 'show': showMenu }" aria-labelledby="dropdownMenuButton">
-              <li v-for="notification in notifications" :key="notification.id" class="mb-2">
+              <li v-for="notification in notifications.slice(0, notificationLimit)" :key="notification.id" class="mb-2">
                 <a class="dropdown-item border-radius-md" href="#" @click="openModal(notification)">
                   <div class="py-1 d-flex">
                     <div class="my-auto">
@@ -229,7 +236,8 @@ onBeforeUpdate(() => {
                     </div>
                     <div class="d-flex flex-column justify-content-center">
                       <h6 class="mb-1 text-sm font-weight-normal">
-                        <span class="font-weight-bold">{{ notification.data.message }}</span>
+                        <span class="font-weight-bold">{{ JSON.parse(notification.data).email }}</span>
+                        <span class="font-weight-bold" style="color: red">{{ JSON.parse(notification.data).message }}</span>
                       </h6>
                       <p class="mb-0 text-xs text-secondary">
                         <i class="fa fa-clock me-1"></i>
@@ -238,6 +246,9 @@ onBeforeUpdate(() => {
                     </div>
                   </div>
                 </a>
+              </li>
+              <li v-if="notifications.length > notificationLimit" class="text-center">
+                <a class="dropdown-item text-primary" href="#" @click.prevent="loadMoreNotifications">Voir Plus</a>
               </li>
             </ul>
           </li>
@@ -248,3 +259,4 @@ onBeforeUpdate(() => {
 
   <NotificationModal :show="showModal" :notification="selectedNotification" @close="closeModal" />
 </template>
+
