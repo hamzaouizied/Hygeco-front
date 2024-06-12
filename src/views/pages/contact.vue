@@ -72,7 +72,7 @@ export default {
 
 
   <div class="page-header position-relative" :style="{
-    backgroundImage: 'url(' + require('../../assets/img/header2.png') + ')',
+    backgroundImage: 'url(' + require('../../assets/img/300.png') + ')',
     backgroundSize: 'cover',
     padding: '100px',
   }">
@@ -80,8 +80,8 @@ export default {
     <div class="container pb-10 pb-lg-9 pt-7 postion-relative z-index-2">
       <div class="row">
         <div class="mx-auto text-center col-md-6 mt-4">
-          <h3 class="text-white">Contactez-Nous </h3>
-          <p class="text-white" style="font-size: 1.25rem;">
+          <h3 class="text-center" style="color: #30c7b5;">Contactez-Nous </h3>
+          <p class="text-center" style="color: #30c7b5;" >
             Hygeco est une entreprise basée à Montréal qui offre une gamme de services professionnels de nettoyage et de
             buanderie.
           </p>
@@ -143,7 +143,7 @@ export default {
             <form id="mc4wp-form-1" class="mc4wp-form mc4wp-form-227" method="post" data-id="227"
               data-name="subscription">
               <div class="mc4wp-form-fields">
-                <label class="fz-16 title fw-700 prafont" style="padding-right: 10px;">Entre Ton Email</label>
+                <label class="fz-16 title fw-700 prafont" style="padding-right: 10px;">Veuillez insérer votre email ici</label>
                 <input type="email" name="EMAIL" required="" style="
                         width: 100%;
                         max-width: 500px;
