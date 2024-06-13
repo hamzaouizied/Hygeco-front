@@ -76,6 +76,7 @@ export default {
     backgroundSize: 'cover',
     padding: '100px',
   }">
+  <span class="mask bg-light  opacity-4"></span>
 
     <div class="container pb-10 pb-lg-9 pt-7 postion-relative z-index-2">
       <div class="row">

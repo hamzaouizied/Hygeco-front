@@ -175,6 +175,7 @@ export default {
     backgroundSize: 'cover',
     padding: '100px',
   }">
+    <span class="mask bg-light  opacity-4"></span>
 
     <div class="container pb-10 pb-lg-9 pt-7 postion-relative z-index-2">
       <div class="row">
@@ -189,8 +190,8 @@ export default {
 
     </div>
   </div>
-  <div class="container-fluid p-5 d-flex justify-content-center align-items-center" style="background-color: #30c7b5;border-radius: 4rem;
-" >
+  <div class="container-fluid p-5 d-flex justify-content-center align-items-center" style="background-color: #30c7b5
+">
     <div class="row justify-content-center">
       <div class="col-sm-6  form-section shadow-border booking-panel card ">
         <div class="text-center">
@@ -571,7 +572,7 @@ export default {
       </div>
 
       <div class="col-sm-2  card " style="margin-left: 20px;">
-        
+
         <div class="booking-summary-container">
           <div class="booking-summary">
             <div class="text-center">
@@ -646,7 +647,8 @@ export default {
             <form id="mc4wp-form-1" class="mc4wp-form mc4wp-form-227" method="post" data-id="227"
               data-name="subscription">
               <div class="mc4wp-form-fields">
-                <label class="fz-16 title fw-700 prafont" style="padding-right: 10px;">Veuillez insérer votre email ici</label>
+                <label class="fz-16 title fw-700 prafont" style="padding-right: 10px;">Veuillez insérer votre email
+                  ici</label>
                 <input type="email" name="EMAIL" required="" style="
                         width: 100%;
                         max-width: 500px;
@@ -955,7 +957,6 @@ export default {
 
 </template>
 <style scoped>
-
 .card {
   border: 1px solid #ccc;
   /* Define the border color */
