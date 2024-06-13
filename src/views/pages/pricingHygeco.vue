@@ -44,15 +44,15 @@ onBeforeUnmount(() => {
     :dark-mode="true" style="position: absolute;" />
   <div class="page-header position-relative" :style="{
     backgroundImage:
-      'url(' + require('../../assets/img/header1.png') + ')',
+      'url(' + require('../../assets/img/500.png') + ')',
     backgroundSize: 'cover',
     padding: '100px',
   }">
     <div class="container pb-10 pb-lg-9 pt-7 postion-relative z-index-2">
       <div class="row">
         <div class="mx-auto text-center col-md-6 mt-4">
-          <h3 class="text-white" >Nos Bon Plans</h3>
-          <p class="text-white" style="font-size: 1.25rem;">
+          <h3 class="text-center" style="color: #30c7b5;" >Nos Bon Plans</h3>
+          <p class="text-center" style="color: #30c7b5;">
             Découvrez nos offres spéciales et promotions exclusives !
           </p>
         </div>
@@ -102,7 +102,7 @@ onBeforeUnmount(() => {
           </div>
           <div class="mb-4 col-lg-4 mb-lg-0 ">
 
-            <Cardi badge="Personaliser Votre Choix" 
+            <Cardi badge="Personaliser Votre Ménage" 
             :action="{
               color: 'success',
               route: 'javascript:;',
@@ -284,7 +284,7 @@ onBeforeUnmount(() => {
             <form id="mc4wp-form-1" class="mc4wp-form mc4wp-form-227" method="post" data-id="227"
               data-name="subscription">
               <div class="mc4wp-form-fields">
-                <label class="fz-16 title fw-700 prafont" style="padding-right: 10px;">Entre Ton Email</label>
+                <label class="fz-16 title fw-700 prafont" style="padding-right: 10px;">Veuillez insérer votre email ici</label>
                 <input type="email" name="EMAIL" required="" style="
                         width: 100%;
                         max-width: 500px;

@@ -119,7 +119,7 @@ export default {
                     color: white;
                     margin: 1rem;
                   ">
-                  Demandez un devis de nettoyage gratuit aujourd'hui
+                  Vous Avez Des Questions ?
                 </h2>
                 <div class="cmn--btn cmn-alt2 wow fadeInDown" data-wow-delay="0.4s" style="
                     visibility: visible;
@@ -296,12 +296,7 @@ export default {
           </div>
         </div>
       </div>
-      <img decoding="async"
-        src="https://www.4damstheme.com/clenis/wp-content/plugins/clenis-toolkit/widgets/img/icon/working-ball.png"
-        alt="Contact Us" class="cleaning-shape" />
-      <img decoding="async"
-        src="https://www.4damstheme.com/clenis/wp-content/plugins/clenis-toolkit/widgets/img/icon/cirs.png"
-        alt="Contact Us" class="working-cirs" />
+     
     </section>
   </div>
 
