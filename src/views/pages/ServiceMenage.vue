@@ -58,6 +58,7 @@ onBeforeUnmount(() => {
     backgroundSize: 'cover',
     padding: '100px',
   }">
+    <span class="mask bg-light  opacity-4"></span>
 
     <div class="container pb-10 pb-lg-9 pt-7 postion-relative z-index-2">
       <div class="row">
@@ -4601,34 +4602,144 @@ onBeforeUnmount(() => {
   <!-- Clients Section -->
   <section id="clients" class="clients section" style="background-color: #f8f9fa;">
 
-    <div class="container" data-aos="fade-up">
+    <div class="container-fluid" data-aos="fade-up">
 
-      <div class="row gy-4">
+      <div class="logos">
+        <div class="logos-slide">
 
-        <div class="col-xl-2 col-md-3 col-6 client-logo">
-          <img src="../../assets/img/clients/client-1.png" class="img-fluid" alt="">
-        </div><!-- End Client Item -->
 
-        <div class="col-xl-2 col-md-3 col-6 client-logo">
-          <img src="../../assets/img/clients/client-2.png" class="img-fluid" alt="">
-        </div><!-- End Client Item -->
+          <img src="../../assets/img/clients/l1.png">
 
-        <div class="col-xl-2 col-md-3 col-6 client-logo">
-          <img src="../../assets/img/clients/client-3.png" class="img-fluid" alt="">
-        </div><!-- End Client Item -->
 
-        <div class="col-xl-2 col-md-3 col-6 client-logo">
-          <img src="../../assets/img/clients/client-4.png" class="img-fluid" alt="">
-        </div><!-- End Client Item -->
+          <img src="../../assets/img/clients/l2.png">
 
-        <div class="col-xl-2 col-md-3 col-6 client-logo">
-          <img src="../../assets/img/clients/client-5.png" class="img-fluid" alt="">
-        </div><!-- End Client Item -->
 
-        <div class="col-xl-2 col-md-3 col-6 client-logo">
-          <img src="../../assets/img/clients/client-6.png" class="img-fluid" alt="">
-        </div><!-- End Client Item -->
 
+          <img src="../../assets/img/clients/l3.png">
+
+
+
+          <img src="../../assets/img/clients/l4.png">
+
+
+
+          <img src="../../assets/img/clients/l5.png">
+
+
+
+          <img src="../../assets/img/clients/l6.png">
+
+
+          <img src="../../assets/img/clients/l7.png">
+
+
+          <img src="../../assets/img/clients/l8.png">
+
+
+          <img src="../../assets/img/clients/l9.png">
+
+
+          <img src="../../assets/img/clients/l10.png">
+
+          <img src="../../assets/img/clients/l11.png">
+
+
+          <img src="../../assets/img/clients/l12.png">
+
+
+
+          <img src="../../assets/img/clients/l13.png">
+
+
+
+          <img src="../../assets/img/clients/l14.png">
+
+
+
+          <img src="../../assets/img/clients/l15.png">
+
+
+
+          <img src="../../assets/img/clients/l16.png">
+
+
+          <img src="../../assets/img/clients/l17.png">
+
+
+          <img src="../../assets/img/clients/l18.png">
+
+
+          <img src="../../assets/img/clients/l19.png">
+
+
+        </div>
+        <div class="logos-slide">
+
+
+          <img src="../../assets/img/clients/l1.png">
+
+
+          <img src="../../assets/img/clients/l2.png">
+
+
+
+          <img src="../../assets/img/clients/l3.png">
+
+
+
+          <img src="../../assets/img/clients/l4.png">
+
+
+
+          <img src="../../assets/img/clients/l5.png">
+
+
+
+          <img src="../../assets/img/clients/l6.png">
+
+
+          <img src="../../assets/img/clients/l7.png">
+
+
+          <img src="../../assets/img/clients/l8.png">
+
+
+          <img src="../../assets/img/clients/l9.png">
+
+
+          <img src="../../assets/img/clients/l10.png">
+
+          <img src="../../assets/img/clients/l11.png">
+
+
+          <img src="../../assets/img/clients/l12.png">
+
+
+
+          <img src="../../assets/img/clients/l13.png">
+
+
+
+          <img src="../../assets/img/clients/l14.png">
+
+
+
+          <img src="../../assets/img/clients/l15.png">
+
+
+
+          <img src="../../assets/img/clients/l16.png">
+
+
+          <img src="../../assets/img/clients/l17.png">
+
+
+          <img src="../../assets/img/clients/l18.png">
+
+
+          <img src="../../assets/img/clients/l19.png">
+
+        </div>
       </div>
 
     </div>
@@ -4676,7 +4787,8 @@ onBeforeUnmount(() => {
             <form id="mc4wp-form-1" class="mc4wp-form mc4wp-form-227" method="post" data-id="227"
               data-name="subscription">
               <div class="mc4wp-form-fields">
-                <label class="fz-16 title fw-700 prafont" style="padding-right: 10px;">Veuillez insérer votre email ici</label>
+                <label class="fz-16 title fw-700 prafont" style="padding-right: 10px;">Veuillez insérer votre email
+                  ici</label>
                 <input type="email" name="EMAIL" required="" style="
                         width: 100%;
                         max-width: 500px;
@@ -4985,6 +5097,61 @@ onBeforeUnmount(() => {
   <!-- <app-footer /> -->
 </template>
 <style scooped>
+@keyframes slide {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.logos {
+  overflow: hidden;
+  padding: 60px 0;
+  background: white;
+  white-space: nowrap;
+  position: relative;
+}
+
+.logos:before,
+.logos:after {
+  position: absolute;
+  top: 0;
+  width: 250px;
+  height: 100%;
+  content: "";
+  z-index: 2;
+
+}
+
+.logos:before {
+  left: 0;
+  background: linear-gradient(to left, rgba(255, 255, 255, 0), white);
+
+}
+
+.logos:after {
+  right: 0;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0), white);
+
+}
+
+.logos:hover .logos-slide {
+  animation-play-state: paused;
+}
+
+.logos-slide {
+  display: inline-block;
+  animation: 20s slide infinite linear;
+}
+
+.logos-slide img {
+  height: 80px;
+  margin: 0 40px;
+}
+
 a {
   color: var(--accent-color);
   text-decoration: none;

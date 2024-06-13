@@ -145,7 +145,7 @@ export default {
       <div class="row justify-content-lg-between justify-content-center">
         <div class="col-lg-7">
           <div class="work-thumb">
-            <img decoding="async" src="../../assets/img/menage.png" alt="How It Works" />
+            <img decoding="async" src="../../assets/img/900.png" alt="How It Works" />
           </div>
         </div>
         <div class="col-lg-5 col-md-7">

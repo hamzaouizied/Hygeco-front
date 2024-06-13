@@ -48,10 +48,12 @@ onBeforeUnmount(() => {
     backgroundSize: 'cover',
     padding: '100px',
   }">
+    <span class="mask bg-light  opacity-4"></span>
+
     <div class="container pb-10 pb-lg-9 pt-7 postion-relative z-index-2">
       <div class="row">
         <div class="mx-auto text-center col-md-6 mt-4">
-          <h3 class="text-center" style="color: #30c7b5;" >Nos Bon Plans</h3>
+          <h3 class="text-center" style="color: #30c7b5;">Nos Bon Plans</h3>
           <p class="text-center" style="color: #30c7b5;">
             Découvrez nos offres spéciales et promotions exclusives !
           </p>
@@ -102,12 +104,11 @@ onBeforeUnmount(() => {
           </div>
           <div class="mb-4 col-lg-4 mb-lg-0 ">
 
-            <Cardi badge="Personaliser Votre Ménage" 
-            :action="{
+            <Cardi badge="Personaliser Votre Ménage" :action="{
               color: 'success',
               route: 'javascript:;',
               label: 'Personaliser',
-            }"/>
+            }" />
 
           </div>
         </div>
@@ -116,35 +117,151 @@ onBeforeUnmount(() => {
     </div>
   </div>
 
-  <div class="container my-6">
-    <div class="row">
-      <div class="mx-auto text-center col-8">
-        <h6 class="opacity-5">More than 50+ brands trust Hygeco</h6>
+  <section id="clients" class="clients section" style="background-color: #f8f9fa;">
+
+    <div class="container-fluid" data-aos="fade-up">
+
+      <div class="logos">
+        <div class="logos-slide">
+
+
+          <img src="../../assets/img/clients/l1.png">
+
+
+          <img src="../../assets/img/clients/l2.png">
+
+
+
+          <img src="../../assets/img/clients/l3.png">
+
+
+
+          <img src="../../assets/img/clients/l4.png">
+
+
+
+          <img src="../../assets/img/clients/l5.png">
+
+
+
+          <img src="../../assets/img/clients/l6.png">
+
+
+          <img src="../../assets/img/clients/l7.png">
+
+
+          <img src="../../assets/img/clients/l8.png">
+
+
+          <img src="../../assets/img/clients/l9.png">
+
+
+          <img src="../../assets/img/clients/l10.png">
+
+          <img src="../../assets/img/clients/l11.png">
+
+
+          <img src="../../assets/img/clients/l12.png">
+
+
+
+          <img src="../../assets/img/clients/l13.png">
+
+
+
+          <img src="../../assets/img/clients/l14.png">
+
+
+
+          <img src="../../assets/img/clients/l15.png">
+
+
+
+          <img src="../../assets/img/clients/l16.png">
+
+
+          <img src="../../assets/img/clients/l17.png">
+
+
+          <img src="../../assets/img/clients/l18.png">
+
+
+          <img src="../../assets/img/clients/l19.png">
+
+
+        </div>
+        <div class="logos-slide">
+
+
+          <img src="../../assets/img/clients/l1.png">
+
+
+          <img src="../../assets/img/clients/l2.png">
+
+
+
+          <img src="../../assets/img/clients/l3.png">
+
+
+
+          <img src="../../assets/img/clients/l4.png">
+
+
+
+          <img src="../../assets/img/clients/l5.png">
+
+
+
+          <img src="../../assets/img/clients/l6.png">
+
+
+          <img src="../../assets/img/clients/l7.png">
+
+
+          <img src="../../assets/img/clients/l8.png">
+
+
+          <img src="../../assets/img/clients/l9.png">
+
+
+          <img src="../../assets/img/clients/l10.png">
+
+          <img src="../../assets/img/clients/l11.png">
+
+
+          <img src="../../assets/img/clients/l12.png">
+
+
+
+          <img src="../../assets/img/clients/l13.png">
+
+
+
+          <img src="../../assets/img/clients/l14.png">
+
+
+
+          <img src="../../assets/img/clients/l15.png">
+
+
+
+          <img src="../../assets/img/clients/l16.png">
+
+
+          <img src="../../assets/img/clients/l17.png">
+
+
+          <img src="../../assets/img/clients/l18.png">
+
+
+          <img src="../../assets/img/clients/l19.png">
+
+        </div>
       </div>
+
     </div>
-    <div class="mt-4 row">
-      <div class="mb-4 col-lg-2 col-md-4 col-6">
-        <img class="w-100 opacity-9" src="../../assets/img/logos/gray-logos/logo-coinbase.svg" alt="logo_coinbase" />
-      </div>
-      <div class="mb-4 col-lg-2 col-md-4 col-6">
-        <img class="w-100 opacity-9" src="../../assets/img/logos/gray-logos/logo-nasa.svg" alt="logo_nasa" />
-      </div>
-      <div class="mb-4 col-lg-2 col-md-4 col-6">
-        <img class="w-100 opacity-9" src="../../assets/img/logos/gray-logos/logo-netflix.svg" alt="logo_netflix" />
-      </div>
-      <div class="mb-4 col-lg-2 col-md-4 col-6">
-        <img class="w-100 opacity-9" src="../../assets/img/logos/gray-logos/logo-pinterest.svg" alt="logo_pinterest" />
-      </div>
-      <div class="mb-4 col-lg-2 col-md-4 col-6">
-        <img class="w-100 opacity-9" src="../../assets/img/logos/gray-logos/logo-spotify.svg" alt="logo_spotify" />
-      </div>
-      <div class="mb-4 col-lg-2 col-md-4 col-6">
-        <img class="w-100 opacity-9" src="../../assets/img/logos/gray-logos/logo-vodafone.svg" alt="logo_vodafone" />
-      </div>
-    </div>
-  
-    
-  </div>
+
+  </section><!-- /Clients Section -->
   <div class="container my-6">
     <div class="mt-8 row">
       <div class="mx-auto text-center col-md-6">
@@ -284,7 +401,8 @@ onBeforeUnmount(() => {
             <form id="mc4wp-form-1" class="mc4wp-form mc4wp-form-227" method="post" data-id="227"
               data-name="subscription">
               <div class="mc4wp-form-fields">
-                <label class="fz-16 title fw-700 prafont" style="padding-right: 10px;">Veuillez insérer votre email ici</label>
+                <label class="fz-16 title fw-700 prafont" style="padding-right: 10px;">Veuillez insérer votre email
+                  ici</label>
                 <input type="email" name="EMAIL" required="" style="
                         width: 100%;
                         max-width: 500px;

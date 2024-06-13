@@ -128,6 +128,7 @@ export default {
     backgroundSize: 'cover',
     padding: '100px',
   }">
+    <span class="mask bg-light  opacity-4"></span>
 
     <div class="container pb-10 pb-lg-9 pt-7 postion-relative z-index-2">
       <div class="row">
@@ -398,125 +399,151 @@ export default {
         alt="Contact Us" class="working-cirs" />
     </section>
   </div>
-  <div class="container my-6">
-    <div class="row">
-      <div class="mx-auto text-center col-8">
-        <h6 class="opacity-5">More than 50+ brands trust Hygeco</h6>
-      </div>
-    </div>
-    <div class="mt-4 row">
-      <div class="mb-4 col-lg-2 col-md-4 col-6">
-        <img class="w-100 opacity-9" src="../../assets/img/logos/gray-logos/logo-coinbase.svg" alt="logo_coinbase" />
-      </div>
-      <div class="mb-4 col-lg-2 col-md-4 col-6">
-        <img class="w-100 opacity-9" src="../../assets/img/logos/gray-logos/logo-nasa.svg" alt="logo_nasa" />
-      </div>
-      <div class="mb-4 col-lg-2 col-md-4 col-6">
-        <img class="w-100 opacity-9" src="../../assets/img/logos/gray-logos/logo-netflix.svg" alt="logo_netflix" />
-      </div>
-      <div class="mb-4 col-lg-2 col-md-4 col-6">
-        <img class="w-100 opacity-9" src="../../assets/img/logos/gray-logos/logo-pinterest.svg" alt="logo_pinterest" />
-      </div>
-      <div class="mb-4 col-lg-2 col-md-4 col-6">
-        <img class="w-100 opacity-9" src="../../assets/img/logos/gray-logos/logo-spotify.svg" alt="logo_spotify" />
-      </div>
-      <div class="mb-4 col-lg-2 col-md-4 col-6">
-        <img class="w-100 opacity-9" src="../../assets/img/logos/gray-logos/logo-vodafone.svg" alt="logo_vodafone" />
-      </div>
-    </div>
-    <div class="mt-8 row">
-      <!-- <div class="mx-auto text-center col-md-6">
-        <h2>Frequently Asked Questions</h2>
-        <p>
-          A lot of people don&#39;t appreciate the moment until it’s passed.
-          I&#39;m not trying my hardest, and I&#39;m not trying to do
-        </p>
-      </div> -->
-    </div>
-    <div class="row">
-      <div class="mx-auto col-md-10">
-        <div id="accordionRental" class="accordion">
-          <accordion-item accordion-id="headingOne" collapse-id="collapseOne" active>
-            <template #question>How do I order?</template>
-            <template #answer>
-              We’re not always in the position that we want to be at. We’re
-              constantly growing. We’re constantly making mistakes. We’re
-              constantly trying to express ourselves and actualize our dreams.
-              If you have the opportunity to play this game of life you need to
-              appreciate every moment. A lot of people don’t appreciate the
-              moment until it’s passed.
-            </template>
-          </accordion-item>
-          <accordion-item accordion-id="headingTwo" collapse-id="collapseTwo">
-            <template #question>How can i make the payment?</template>
-            <template #answer>
-              It really matters and then like it really doesn’t matter. What
-              matters is the people who are sparked by it. And the people who
-              are like offended by it, it doesn’t matter. Because it&#39;s
-              motivating the doers. Because I’m here to follow my dreams and and
-              inspire other people to follow their dreams, too.
-              <br />We’re not always in the position that we want to be at.
-              We’re constantly growing. We’re constantly making mistakes. We’re
-              constantly trying to express ourselves and actualize our dreams.
-              If you have the opportunity to play this game of life you need to
-              appreciate every moment. A lot of people don’t appreciate the
-              moment until it’s passed.
-            </template>
-          </accordion-item>
+  <section id="clients" class="clients section" style="background-color: #f8f9fa;">
 
-          <accordion-item accordion-id="headingThree" collapse-id="collapseThree">
-            <template #question>How much time does it take to receive the order?</template>
-            <template #answer>
-              The time is now for it to be okay to be great. People in this
-              world shun people for being great. For being a bright color. For
-              standing out. But the time is now to be okay to be the greatest
-              you. Would you believe in what you believe in, if you were the
-              only one who believed it? If everything I did failed - which it
-              doesn&#39;t, it actually succeeds - just the fact that I&#39;m
-              willing to fail is an inspiration. People are so scared to lose
-              that they don&#39;t even try. Like, one thing people can&#39;t say
-              is that I&#39;m not trying, and I&#39;m not trying my hardest, and
-              I&#39;m not trying to do the best way I know how.
-            </template>
-          </accordion-item>
+    <div class="container-fluid" data-aos="fade-up">
 
-          <accordion-item accordion-id="headingFour" collapse-id="collapseFour">
-            <template #question>Can I resell the products?</template>
-            <template #answer>
-              I always felt like I could do anything. That’s the main thing
-              people are controlled by! Thoughts- their perception of
-              themselves! They&#39;re slowed down by their perception of
-              themselves. If you&#39;re taught you can’t do anything, you won’t
-              do anything. I was taught I could do everything.
-              <br />
-              <br />If everything I did failed - which it doesn&#39;t, it
-              actually succeeds - just the fact that I&#39;m willing to fail is
-              an inspiration. People are so scared to lose that they don&#39;t
-              even even try. Like, one thing people can&#39;t say is that
-              I&#39;m not trying, and I&#39;m not trying my hardest, and I&#39;m
-              not trying trying to do the best way I know how.
-            </template>
-          </accordion-item>
+      <div class="logos">
+        <div class="logos-slide">
 
-          <accordion-item accordion-id="headingFifth" collapse-id="collapseFifth">
-            <template #question>Where do I find the shipping details?</template>
-            <template #answer>
-              There’s nothing I really wanted to do in life that I wasn’t able
-              to get good at. That’s my skill. I’m not really specifically
-              talented at anything except for the ability to learn. That’s what
-              I do. That’s what I’m here for. Don’t be afraid to be wrong
-              because you can’t learn anything from a compliment. I always felt
-              like I could do anything. That’s the main thing people are
-              controlled by! Thoughts- their perception of themselves!
-              They&#39;re slowed down by their perception of themselves. If
-              you&#39;re taught you can’t do anything, you won’t do anything. I
-              was taught I could do everything.
-            </template>
-          </accordion-item>
+
+          <img src="../../assets/img/clients/l1.png">
+
+
+          <img src="../../assets/img/clients/l2.png">
+
+
+
+          <img src="../../assets/img/clients/l3.png">
+
+
+
+          <img src="../../assets/img/clients/l4.png">
+
+
+
+          <img src="../../assets/img/clients/l5.png">
+
+
+
+          <img src="../../assets/img/clients/l6.png">
+
+
+          <img src="../../assets/img/clients/l7.png">
+
+
+          <img src="../../assets/img/clients/l8.png">
+
+
+          <img src="../../assets/img/clients/l9.png">
+
+
+          <img src="../../assets/img/clients/l10.png">
+
+          <img src="../../assets/img/clients/l11.png">
+
+
+          <img src="../../assets/img/clients/l12.png">
+
+
+
+          <img src="../../assets/img/clients/l13.png">
+
+
+
+          <img src="../../assets/img/clients/l14.png">
+
+
+
+          <img src="../../assets/img/clients/l15.png">
+
+
+
+          <img src="../../assets/img/clients/l16.png">
+
+
+          <img src="../../assets/img/clients/l17.png">
+
+
+          <img src="../../assets/img/clients/l18.png">
+
+
+          <img src="../../assets/img/clients/l19.png">
+
+
+        </div>
+        <div class="logos-slide">
+
+
+          <img src="../../assets/img/clients/l1.png">
+
+
+          <img src="../../assets/img/clients/l2.png">
+
+
+
+          <img src="../../assets/img/clients/l3.png">
+
+
+
+          <img src="../../assets/img/clients/l4.png">
+
+
+
+          <img src="../../assets/img/clients/l5.png">
+
+
+
+          <img src="../../assets/img/clients/l6.png">
+
+
+          <img src="../../assets/img/clients/l7.png">
+
+
+          <img src="../../assets/img/clients/l8.png">
+
+
+          <img src="../../assets/img/clients/l9.png">
+
+
+          <img src="../../assets/img/clients/l10.png">
+
+          <img src="../../assets/img/clients/l11.png">
+
+
+          <img src="../../assets/img/clients/l12.png">
+
+
+
+          <img src="../../assets/img/clients/l13.png">
+
+
+
+          <img src="../../assets/img/clients/l14.png">
+
+
+
+          <img src="../../assets/img/clients/l15.png">
+
+
+
+          <img src="../../assets/img/clients/l16.png">
+
+
+          <img src="../../assets/img/clients/l17.png">
+
+
+          <img src="../../assets/img/clients/l18.png">
+
+
+          <img src="../../assets/img/clients/l19.png">
+
         </div>
       </div>
+
     </div>
-  </div>
+
+  </section><!-- /Clients Section -->
   <div class="container">
     <div class="row">
       <div class="col-12">
@@ -561,7 +588,8 @@ export default {
             <form id="mc4wp-form-1" class="mc4wp-form mc4wp-form-227" method="post" data-id="227"
               data-name="subscription">
               <div class="mc4wp-form-fields">
-                <label class="fz-16 title fw-700 prafont" style="padding-right: 10px;">Veuillez insérer votre email ici</label>
+                <label class="fz-16 title fw-700 prafont" style="padding-right: 10px;">Veuillez insérer votre email
+                  ici</label>
                 <input type="email" name="EMAIL" required="" style="
                         width: 100%;
                         max-width: 500px;
