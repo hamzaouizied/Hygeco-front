@@ -22,7 +22,7 @@
         <img src="../../../assets/img/t-1.png" alt="Antonia Moore">
 
         <h3 class="service">Services Résidentiels</h3>
-        <p>Forfait Complet</p>
+       
       </div>
 
       <a class="ref" href="/pages/menage-commercial">
@@ -30,7 +30,7 @@
           <img src="../../../assets/img/t-3.png" alt="Travis Lynch">
 
           <h3 class="service">Services Commerciaux</h3>
-          <p>Forfait Complet</p>
+         
         </div>
       </a>
 

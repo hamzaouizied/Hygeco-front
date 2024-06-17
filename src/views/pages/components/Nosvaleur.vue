@@ -204,7 +204,7 @@ img {
       <a class="ref" href="/pages/service-menage">
 
         <div class="card">
-          <img src="../../../assets/img/1000.png" alt="Franklin Carlson">
+          <img src="../../../assets/img/1000.jpeg" alt="Franklin Carlson">
           <p style="  margin-top: -10rem;
 ">Nous utilisons des sacs réutilisables pour la collecte linges,réduisant ainsi notre consommation de plastique et
             favorisant la durabilité.</p>
@@ -214,7 +214,7 @@ img {
       </a>
 
       <div class="card">
-        <img src="../../../assets/img/1200.png" alt="Antonia Moore">
+        <img src="../../../assets/img/1200.jpeg" alt="Antonia Moore">
         <p style="  margin-top: -10rem;
 ">Nous utilisons exclusivement des produits de nettoyage certifiés écologiques, qui sont sûrs pour l'environnement et
           la santé de nos clients.</p>
@@ -224,7 +224,7 @@ img {
 
       <a class="ref" href="/pages/menage-commercial">
         <div class="card">
-          <img src="../../../assets/img/1100.png" alt="Travis Lynch">
+          <img src="../../../assets/img/1100.jpeg" alt="Travis Lynch">
           <p style="  margin-top: -10rem;
 ">Nos véhicules de transport sont électriques,contribuant ainsi à la réduction des émissions de carbone et à la
             préservation de l'air.</p>
@@ -259,7 +259,7 @@ export default {
 
 .service {
   color: #30c7b5;
-  margin-top: 3.5rem;
+  margin-top: 4.5rem;
 }
 
 .services {
@@ -403,7 +403,7 @@ section h2 {
 }
 
 .card img {
-  /* filter: grayscale(100%); */
+  
 
   transition: transform 0.3s ease;
 }
@@ -429,6 +429,7 @@ section h2 {
 
 .card:hover img {
   transform: scale(1.1);
+  /* filter: grayscale(100%); */
 }
 
 .card:hover::before {

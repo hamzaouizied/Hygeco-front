@@ -223,9 +223,9 @@ const loadMoreNotifications = () => {
             >
               <i class="cursor-pointer fa fa-bell"></i>
             </a>
-            <ul class="px-2 py-3 dropdown-menu dropdown-menu-end me-sm-n4" :class="{ 'show': showMenu }" aria-labelledby="dropdownMenuButton">
+            <ul class="dropdown-menu dropdown-menu-end" :class="{ 'show': showMenu }" aria-labelledby="dropdownMenuButton">
               <li v-for="notification in notifications.slice(0, notificationLimit)" :key="notification.id" class="mb-2">
-                <a class="dropdown-item border-radius-md" href="#" @click="openModal(notification)">
+                <div class="dropdown-item border-radius-md"  @click="openModal(notification)">
                   <div class="py-1 d-flex">
                     <div class="my-auto">
                       <img
@@ -245,7 +245,7 @@ const loadMoreNotifications = () => {
                       </p>
                     </div>
                   </div>
-                </a>
+                </div>
               </li>
               <li v-if="notifications.length > notificationLimit" class="text-center">
                 <a class="dropdown-item text-primary" href="#" @click.prevent="loadMoreNotifications">Voir Plus</a>

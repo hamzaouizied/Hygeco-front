@@ -25,7 +25,7 @@ defineProps({
 
 <template>
     <div class="card" style="height: 84%;">
-      <div class="pt-4  text-center card-header d-flex justify-content-center align-items-center" style="background-color: #30c7b5;padding-bottom: 3.40rem;">
+      <div class="pt-4  text-center card-header d-flex justify-content-center align-items-center" style="background-color: #30c7b5;padding-bottom: 2.40rem;">
         <span class="text-uppercase" style="font-size: 1.5rem;color: #fff;">{{ badge }}</span>
       </div>
       <div class="pt-0 text-center card-body text-lg-start" style="padding: 0px;" >

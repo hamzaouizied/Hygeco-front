@@ -44,7 +44,7 @@ defineProps({
   <div class="card">
     <div class="pt-4 pb-3 text-center card-header" style="background-color: #30c7b5;">
       <span class="text-uppercase " style="font-size: 1.5rem;color: #fff;">{{ badge }}</span>
-      <h1 class="mt-2 font-weight-bold">
+      <h1 class="mt-2 " style=" font-weight:600;font-size: 2.4rem;" >
         <small>{{ price.currency }}</small>{{ price.value }}
       </h1>
     </div>

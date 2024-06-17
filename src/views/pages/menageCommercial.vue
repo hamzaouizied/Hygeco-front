@@ -128,7 +128,7 @@ export default {
     backgroundSize: 'cover',
     padding: '100px',
   }">
-    <span class="mask bg-light  opacity-4"></span>
+    <span class="mask   opacity-8" style="background-color: #bfbfbf;"></span>
 
     <div class="container pb-10 pb-lg-9 pt-7 postion-relative z-index-2">
       <div class="row">
@@ -148,13 +148,18 @@ export default {
     </div>
   </div>
 
-  <div class="container-fluid p-5">
+  <div class="container-fluid p-5" style="background-color: white">
     <div class="text-center">
       <!-- <h3>Menage Commercial</h3> -->
-      <!-- <p style="color: #30c7b5;">
-        Hygeco is a Montreal-based company that offers a range of professional cleaning and laundry
-        services
-      </p> -->
+      <p style="font-weight: bold;" >
+        Chez Hygeco, nous savons que la propreté de votre espace de travail est essentielle pour
+le bien-être de vos employés et la satisfaction de vos clients. Que vous gériez des bureaux,
+des hôtels, des espaces de travail partagés, des instituts ou tout autre type
+d'établissement, nous offrons des services de ménage commercial sur mesure pour
+répondre à vos attentes spécifiques. Notre équipe se déplace pour évaluer vos besoins et
+vous proposer des solutions adaptées.
+
+      </p>
     </div>
     <section class="cleaning-quote position-relative">
       <div class="cleaning-thumbing">
@@ -172,7 +177,7 @@ export default {
                     animation-name: fadeInUp;
                     color: white;
                   ">
-                  Demandez soumission gratuite pour nettoyage
+                  Demandez une soumission gratuite!
 
 
 
@@ -271,7 +276,7 @@ export default {
                     <div class="col-lg-6 col-md-6">
                       <div class="clean-form-grp">
                         <p>
-                          <label>E-mail</label><br />
+                          <label>Adresse courriel</label><br />
                           <input v-model="form.email" class="wpcf7-form-control wpcf7-email" aria-required="true"
                             placeholder="E-mail" type="email" name="email" />
                           <span v-if="errors.email" class="error">{{ errors.email }}</span>
@@ -281,7 +286,7 @@ export default {
                     <div class="col-lg-6 col-md-6">
                       <div class="clean-form-grp">
                         <p>
-                          <label>Telephone</label><br />
+                          <label>Téléphone</label><br />
                           <input v-model="form.telephone" class="wpcf7-form-control wpcf7-email" aria-required="true"
                             placeholder="Telephone" type="text" name="telephone" />
                           <span v-if="errors.telephone" class="error">{{ errors.telephone }}</span>
@@ -291,7 +296,7 @@ export default {
                     <div class="col-lg-6 col-md-6">
                       <div class="clean-form-grp">
                         <p>
-                          <label>Nom de Responsable</label><br />
+                          <label>Nom du responsable </label><br />
                           <input v-model="form.nom_responsable" class="wpcf7-form-control wpcf7-email"
                             aria-required="true" placeholder="Nom de Responsable" type="text" name="nom_responsable" />
                           <span v-if="errors.nom_responsable" class="error">{{ errors.nom_responsable }}</span>
@@ -588,8 +593,7 @@ export default {
             <form id="mc4wp-form-1" class="mc4wp-form mc4wp-form-227" method="post" data-id="227"
               data-name="subscription">
               <div class="mc4wp-form-fields">
-                <label class="fz-16 title fw-700 prafont" style="padding-right: 10px;">Veuillez insérer votre email
-                  ici</label>
+                <label class="fz-16 title fw-700 prafont" style="padding-right: 10px;font-size: 0.75rem;">Adresse courriel</label>
                 <input type="email" name="EMAIL" required="" style="
                         width: 100%;
                         max-width: 500px;
@@ -602,7 +606,7 @@ export default {
                         border-bottom-left-radius: 25px;
                         border-top-left-radius: 25px;
                   " />
-                <input class="cmn--btn" type="submit" value="Decouvrir Nos Offers" style="
+                <input class="cmn--btn" type="submit" value="S’abonner" style="
                     padding: 13px 28px 15px;
                     color: white;
                     font-size: 16px;
@@ -654,8 +658,8 @@ export default {
                   max-width: 325px;
                   margin-top: 40px;
                 ">
-                Avec une histoire riche s'étendant sur des décennies, notre club est devenu un symbole d'excellence dans
-                la communauté du golf. Il propose un gameplay stimulant mais gratifiant.
+                D’un linge frais a un ménage parfait, Hygeco prend le relais!
+                 Liens Rapides à enlever
               </div>
               <ul class="footer-social d-flex align-items-center" style="gap: 24px">
                 <li style="list-style: none">
@@ -730,7 +734,7 @@ export default {
               <div class="wp-widget-group__inner-blocks">
                 <ul style="padding: 0; margin: 0; list-style: none">
                   <li>
-                    <a href="/pages/about">A propos</a>
+                    <a href="/pages/about">À propos</a>
                   </li>
 
                   <li>
@@ -844,7 +848,7 @@ export default {
                         font-weight: 400;
                         line-height: 140%;
                       ">
-                      Lun - Ven 12:00 - 18:00
+                      12:00 - 18:00
                     </span>
                   </li>
                   <li style="margin-bottom: 24px">
@@ -894,7 +898,7 @@ export default {
         left: 60px;
         animation: updown 2s linear infinite;
       " />
-  </footer>
+</footer>
   <!-- <app-footer /> -->
 </template>
 <style scoped>
@@ -2622,7 +2626,7 @@ export default {
 }
 
 .cleaning-quote-content .cleaning-info {
-  margin-top: 150px;
+  margin-top: 180px;
 }
 
 @media (max-width: 1199px) {

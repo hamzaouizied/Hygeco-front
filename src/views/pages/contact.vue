@@ -144,7 +144,7 @@ export default {
             <form id="mc4wp-form-1" class="mc4wp-form mc4wp-form-227" method="post" data-id="227"
               data-name="subscription">
               <div class="mc4wp-form-fields">
-                <label class="fz-16 title fw-700 prafont" style="padding-right: 10px;">Veuillez insérer votre email ici</label>
+                <label class="fz-16 title fw-700 prafont" style="padding-right: 10px;font-size: 0.75rem;">Adresse courriel</label>
                 <input type="email" name="EMAIL" required="" style="
                         width: 100%;
                         max-width: 500px;
@@ -157,7 +157,7 @@ export default {
                         border-bottom-left-radius: 25px;
                         border-top-left-radius: 25px;
                   " />
-                <input class="cmn--btn" type="submit" value="Decouvrir Nos Offers" style="
+                <input class="cmn--btn" type="submit" value="S’abonner" style="
                     padding: 13px 28px 15px;
                     color: white;
                     font-size: 16px;
@@ -209,8 +209,8 @@ export default {
                   max-width: 325px;
                   margin-top: 40px;
                 ">
-                Avec une histoire riche s'étendant sur des décennies, notre club est devenu un symbole d'excellence dans
-                la communauté du golf. Il propose un gameplay stimulant mais gratifiant.
+                D’un linge frais a un ménage parfait, Hygeco prend le relais!
+                 Liens Rapides à enlever
               </div>
               <ul class="footer-social d-flex align-items-center" style="gap: 24px">
                 <li style="list-style: none">
@@ -285,7 +285,7 @@ export default {
               <div class="wp-widget-group__inner-blocks">
                 <ul style="padding: 0; margin: 0; list-style: none">
                   <li>
-                    <a href="/pages/about">A propos</a>
+                    <a href="/pages/about">À propos</a>
                   </li>
 
                   <li>
@@ -399,7 +399,7 @@ export default {
                         font-weight: 400;
                         line-height: 140%;
                       ">
-                      Lun - Ven 12:00 - 18:00
+                      12:00 - 18:00
                     </span>
                   </li>
                   <li style="margin-bottom: 24px">
@@ -449,7 +449,7 @@ export default {
         left: 60px;
         animation: updown 2s linear infinite;
       " />
-  </footer>
+</footer>
   <!-- <app-footer /> -->
 </template>
 <style scoped>

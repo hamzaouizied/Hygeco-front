@@ -2,11 +2,7 @@
 import { onMounted, onBeforeUnmount } from "vue";
 import { useStore } from "vuex";
 import Navbar from "@/examples/PageLayout/NavbarHygeco.vue";
-// import PricingCard from "./components/PricingCard.vue";
-// import AppFooter from "@/examples/PageLayout/Footer.vue";
-// import AccordionItem from "./components/AccordionItem.vue";
 import setNavPills from "@/assets/js/nav-pills.js";
-// import ProjectGallerie from "./components/ProjectGallerie.vue";
 import ArgonAlert from "@/components/ArgonAlert.vue";
 import Contact from "./components/contact.vue";
 
@@ -19,8 +15,7 @@ import Contact from "./components/contact.vue";
 const store = useStore();
 
 
-// const slides = [...existingSlides, ...testimonialSlides];
-// const currentIndex = ref(0);
+
 
 onMounted(() => {
   store.state.showSidenav = false;
@@ -43,6 +38,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
+
   <div class="container-fluid" style="background-color: #30c7b5;height: 41px;">
     <div class="text-center">
       <h3 style="color: white;">50% OFF</h3>
@@ -94,7 +90,7 @@ onBeforeUnmount(() => {
         votre espace résidentiel, vous permettant ainsi de profiter pleinement de votre temps libre. Que
         vous soyez un propriétaire occupé ou souhaitiez simplement maintenir un environnement propre
         et organisé sans les tracas du ménage, notre service de nettoyage régulier est là pour dépasser
-        vos attentes </p>
+        vos attentes. </p>
     </div>
     <div class="container">
       <div class="row justify-content-between">
@@ -342,7 +338,7 @@ onBeforeUnmount(() => {
             </div><!-- End Tab Content Item -->
 
             <div class="tab-pane fade" id="features-tab-333">
-              <img src="../../assets/img/h7.png" alt="" class="img-fluid">
+              <img src="../../assets/img/h6.png" alt="" class="img-fluid">
             </div><!-- End Tab Content Item -->
             <div class="tab-pane fade" id="features-tab-444">
               <img src="../../assets/img/h17.png" alt="" class="img-fluid">
@@ -1752,7 +1748,7 @@ onBeforeUnmount(() => {
           Ménage
         </h2>
         <a href="/pages/reservation-buanderie" class="bg-yellow-button text-gray-900 font-medium py-3 px-6 rounded">
-          Reserver Maintenant
+          Réserver
         </a>
       </div>
     </div>
@@ -2785,11 +2781,23 @@ onBeforeUnmount(() => {
 
 
 
-  <argon-alert class="font-weight-light" color="danger" dismissible style="margin-top: -2rem;">
-    ce service exclut le nettoyage des fenêtres situées à une hauteur
-    inaccessible sans équipement spécialisé.
+  <div class="container-fluid py-4">
+    <div class="row">
+      <div class="col-md-8 mx-auto">
 
-  </argon-alert>
+        <argon-alert class="font-weight-light" color="danger" dismissible>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+            class="bi bi-exclamation-triangle" viewBox="0 0 16 16">
+            <path
+              d="M7.938 2.016A.13.13 0 0 1 8.002 2a.13.13 0 0 1 .063.016.15.15 0 0 1 .054.057l6.857 11.667c.036.06.035.124.002.183a.2.2 0 0 1-.054.06.1.1 0 0 1-.066.017H1.146a.1.1 0 0 1-.066-.017.2.2 0 0 1-.054-.06.18.18 0 0 1 .002-.183L7.884 2.073a.15.15 0 0 1 .054-.057m1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767z" />
+            <path
+              d="M7.002 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0M7.1 5.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0z" />
+          </svg>
+          ce service exclut le nettoyage des fenêtres situées à une hauteur inaccessible sans équipement spécialisé.
+        </argon-alert>
+      </div>
+    </div>
+  </div>
 
   <section id="features" class="features section" style="background-color: #f8f9fa;">
 
@@ -4594,7 +4602,7 @@ onBeforeUnmount(() => {
           Nettoyage
         </h2>
         <a href="/pages/reservation-buanderie" class="bg-yellow-button text-gray-900 font-medium py-3 px-6 rounded">
-          Reserver Maintenant
+          Réserver
         </a>
       </div>
     </div>
@@ -4751,7 +4759,7 @@ onBeforeUnmount(() => {
 
 
 
-  <footer class="footer__section position-relative">
+<footer class="footer__section position-relative">
     <div class="container">
       <div class="newsletter-section" style="padding-top: 130px; padding-bottom: 65px; text-align: center">
         <div id="block-15" class="footer-top-widget widget_block">
@@ -4787,8 +4795,7 @@ onBeforeUnmount(() => {
             <form id="mc4wp-form-1" class="mc4wp-form mc4wp-form-227" method="post" data-id="227"
               data-name="subscription">
               <div class="mc4wp-form-fields">
-                <label class="fz-16 title fw-700 prafont" style="padding-right: 10px;">Veuillez insérer votre email
-                  ici</label>
+                <label class="fz-16 title fw-700 prafont" style="padding-right: 10px;font-size: 0.75rem;">Adresse courriel</label>
                 <input type="email" name="EMAIL" required="" style="
                         width: 100%;
                         max-width: 500px;
@@ -4801,7 +4808,7 @@ onBeforeUnmount(() => {
                         border-bottom-left-radius: 25px;
                         border-top-left-radius: 25px;
                   " />
-                <input class="cmn--btn" type="submit" value="Decouvrir Nos Offers" style="
+                <input class="cmn--btn" type="submit" value="S’abonner" style="
                     padding: 13px 28px 15px;
                     color: white;
                     font-size: 16px;
@@ -4853,8 +4860,8 @@ onBeforeUnmount(() => {
                   max-width: 325px;
                   margin-top: 40px;
                 ">
-                Avec une histoire riche s'étendant sur des décennies, notre club est devenu un symbole d'excellence dans
-                la communauté du golf. Il propose un gameplay stimulant mais gratifiant.
+                D’un linge frais a un ménage parfait, Hygeco prend le relais!
+                 Liens Rapides à enlever
               </div>
               <ul class="footer-social d-flex align-items-center" style="gap: 24px">
                 <li style="list-style: none">
@@ -4929,7 +4936,7 @@ onBeforeUnmount(() => {
               <div class="wp-widget-group__inner-blocks">
                 <ul style="padding: 0; margin: 0; list-style: none">
                   <li>
-                    <a href="/pages/about">A propos</a>
+                    <a href="/pages/about">À propos</a>
                   </li>
 
                   <li>
@@ -5043,7 +5050,7 @@ onBeforeUnmount(() => {
                         font-weight: 400;
                         line-height: 140%;
                       ">
-                      Lun - Ven 12:00 - 18:00
+                      12:00 - 18:00
                     </span>
                   </li>
                   <li style="margin-bottom: 24px">
@@ -5093,8 +5100,7 @@ onBeforeUnmount(() => {
         left: 60px;
         animation: updown 2s linear infinite;
       " />
-  </footer>
-  <!-- <app-footer /> -->
+</footer>
 </template>
 <style scooped>
 @keyframes slide {
@@ -5740,8 +5746,8 @@ section,
 }
 
 .features .nav-link .icon {
-  background-color: var(--contrast-color);
-  color: var(--accent-color);
+  background-color: #005029;
+  color: white;
   display: flex;
   align-items: center;
   justify-content: center;

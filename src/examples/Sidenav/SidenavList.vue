@@ -859,15 +859,6 @@ const getRoute = () => {
     />
   </div>
 </template>
-<style>
-#sidenav-collapse-main {
-  height: 100vh; /* Full height of the viewport */
-  overflow: hidden; /* Hide any overflow content */
-}
+<style scoped>
 
-.navbar-nav {
-  max-height: 100%;
-  
- 
-}
 </style>
