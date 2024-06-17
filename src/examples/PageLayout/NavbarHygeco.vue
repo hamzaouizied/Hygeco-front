@@ -1,6 +1,5 @@
 <script setup>
-// import downArrWhite from "@/assets/img/down-arrow-white.svg";
-// import downArrBlack from "@/assets/img/down-arrow-dark.svg";
+
 import { computed } from "vue";
 import { useStore } from "vuex";
 import { useRouter } from "vue-router";
@@ -88,8 +87,8 @@ function logout() {
               Reservation
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown"  >
-              <router-link class="dropdown-item" :to="{ name: 'reservation' }"  active-class="active" :style="{ color: activeNavItemColor }">Menage</router-link>
-              <router-link class="dropdown-item" :to="{ name: 'reservation buandrie' }"  active-class="active" :style="{ color: activeNavItemColor }">Buandrie</router-link>
+              <router-link class="dropdown-item" :to="{ name: 'reservation' }"  active-class="active" :style="{ color: activeNavItemColor }">Ménage</router-link>
+              <router-link class="dropdown-item" :to="{ name: 'reservation buandrie' }"  active-class="active" :style="{ color: activeNavItemColor }">Buanderie</router-link>
             </div>
           </li>
           <li class="mx-2 nav-item">
@@ -105,7 +104,7 @@ function logout() {
       class="mb-0 btn btn-sm me-1"
       :class="btnBackground? btnBackground : 'bg-white text-dark'"
     >
-      Sign In
+      Se connecter
     </router-link>
     <button
       v-else
@@ -113,7 +112,7 @@ function logout() {
       class="mb-0 btn btn-sm me-1"
       :class="btnBackground? btnBackground : 'bg-white text-dark'"
     >
-      Log Out
+      Se Déconnecter 
     </button>
       </div>
     </div>

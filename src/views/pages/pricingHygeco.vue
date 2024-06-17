@@ -48,7 +48,7 @@ onBeforeUnmount(() => {
     backgroundSize: 'cover',
     padding: '100px',
   }">
-    <span class="mask bg-light  opacity-4"></span>
+    <span class="mask   opacity-8" style="background-color: #bfbfbf;"></span>
 
     <div class="container pb-10 pb-lg-9 pt-7 postion-relative z-index-2">
       <div class="row">
@@ -75,30 +75,30 @@ onBeforeUnmount(() => {
       <div id="monthly" class="tab-pane active">
         <div class="row">
           <div class="mb-4 col-lg-4 mb-lg-0">
-            <pricing-card badge="Regular" :price="{ currency: '$', value: '59' }" :specifications="[
-              { label: 'Regular cleaning', includes: true },
-              { label: 'Deep Cleaning', includes: true },
-              { label: 'Construction Cleaning', includes: false },
-              { label: 'Windows Cleanig', includes: false },
-              { label: 'Deep Cleaning', includes: false },
-              { label: 'Regular cleaning', includes: false },
+            <pricing-card badge="Ménage Régulier" :price="{ currency: 'À partir de $', value: '120/Mois' }" :specifications="[
+              { label: 'Dépoussiérage', includes: true },
+              { label: 'Aspiration', includes: true },
+              { label: 'Nettoyage des sols', includes: false },
+              { label: 'Nettoyage tapis', includes: false },
+              { label: 'Nettoyage Après Construction', includes: false },
+              { label: 'Ménage Déménagement', includes: false },
             ]" :action="{
               color: 'success',
-              route: 'javascript:;',
+              route: '/pages/contact',
               label: 'Reserver',
             }" />
           </div>
           <div class="mb-4 col-lg-4 mb-lg-0">
-            <pricing-card badge="Deep Clean" :price="{ currency: '$', value: '89' }" :specifications="[
-              { label: 'Regular cleaning', includes: true },
-              { label: 'Deep Cleaning', includes: true },
-              { label: 'Construction Cleaning', includes: true },
-              { label: 'Windows Cleanig', includes: true },
-              { label: 'Deep Cleaning', includes: false },
-              { label: 'Regular cleaning', includes: false },
+            <pricing-card badge="Ménage En Profondeur" :price="{ currency: 'À partir de $', value: '220/Mois' }" :specifications="[
+              { label: 'Appareils électroménagers', includes: true },
+              { label: 'Dépoussiérage détaillé', includes: true },
+              { label: 'Nettoyage des sols', includes: true },
+              { label: 'Désinfection des salles de bains', includes: true },
+              { label: 'Nettoyage Après Construction', includes: false },
+              { label: 'Ménage Déménagement', includes: false },
             ]" :action="{
               color: 'success',
-              route: 'javascript:;',
+              route: '/pages/contact',
               label: 'Reserver',
             }" />
           </div>
@@ -106,7 +106,7 @@ onBeforeUnmount(() => {
 
             <Cardi badge="Personaliser Votre Ménage" :action="{
               color: 'success',
-              route: 'javascript:;',
+              route: '/pages/contact',
               label: 'Personaliser',
             }" />
 
@@ -266,10 +266,7 @@ onBeforeUnmount(() => {
     <div class="mt-8 row">
       <div class="mx-auto text-center col-md-6">
         <h2>Questions Fréquemment Posées</h2>
-        <p class="typo-word">
-          Beaucoup de gens n'apprécient pas l'instant présent jusqu'à ce qu'il soit passé. Je ne fais pas de mon mieux
-          et je n'essaie pas de fair
-        </p>
+     
       </div>
     </div>
     <div class="row">
@@ -401,8 +398,7 @@ onBeforeUnmount(() => {
             <form id="mc4wp-form-1" class="mc4wp-form mc4wp-form-227" method="post" data-id="227"
               data-name="subscription">
               <div class="mc4wp-form-fields">
-                <label class="fz-16 title fw-700 prafont" style="padding-right: 10px;">Veuillez insérer votre email
-                  ici</label>
+                <label class="fz-16 title fw-700 prafont" style="padding-right: 10px;font-size: 0.75rem;">Adresse courriel</label>
                 <input type="email" name="EMAIL" required="" style="
                         width: 100%;
                         max-width: 500px;
@@ -415,7 +411,7 @@ onBeforeUnmount(() => {
                         border-bottom-left-radius: 25px;
                         border-top-left-radius: 25px;
                   " />
-                <input class="cmn--btn" type="submit" value="Decouvrir Nos Offers" style="
+                <input class="cmn--btn" type="submit" value="S’abonner" style="
                     padding: 13px 28px 15px;
                     color: white;
                     font-size: 16px;
@@ -467,8 +463,8 @@ onBeforeUnmount(() => {
                   max-width: 325px;
                   margin-top: 40px;
                 ">
-                Avec une histoire riche s'étendant sur des décennies, notre club est devenu un symbole d'excellence dans
-                la communauté du golf. Il propose un gameplay stimulant mais gratifiant.
+                D’un linge frais a un ménage parfait, Hygeco prend le relais!
+                 Liens Rapides à enlever
               </div>
               <ul class="footer-social d-flex align-items-center" style="gap: 24px">
                 <li style="list-style: none">
@@ -543,7 +539,7 @@ onBeforeUnmount(() => {
               <div class="wp-widget-group__inner-blocks">
                 <ul style="padding: 0; margin: 0; list-style: none">
                   <li>
-                    <a href="/pages/about">A propos</a>
+                    <a href="/pages/about">À propos</a>
                   </li>
 
                   <li>
@@ -657,7 +653,7 @@ onBeforeUnmount(() => {
                         font-weight: 400;
                         line-height: 140%;
                       ">
-                      Lun - Ven 12:00 - 18:00
+                      12:00 - 18:00
                     </span>
                   </li>
                   <li style="margin-bottom: 24px">
@@ -707,7 +703,7 @@ onBeforeUnmount(() => {
         left: 60px;
         animation: updown 2s linear infinite;
       " />
-  </footer>
+</footer>
 </template>
 <style scoped>
 @media (max-width: 767px) {

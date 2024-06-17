@@ -43,8 +43,12 @@
 </template>
 
 <script>
-import img1 from '@/assets/img/pr1.png';
-import img2 from '@/assets/img/pr2.png';
+import img1 from '@/assets/img/pr1.jpeg';
+import img2 from '@/assets/img/pr2.jpeg';
+import img3 from '@/assets/img/pr3.jpeg';
+import img4 from '@/assets/img/pr4.jpeg';
+import img5 from '@/assets/img/pr5.jpeg';
+import img6 from '@/assets/img/pr6.jpeg';
 
 export default {
   data() {
@@ -57,9 +61,9 @@ export default {
           imageAlt: 'Card image description',
           imageWidth: '480',
           imageHeight: '480',
-          title: 'Prefer 1/1 aspect ratio',
+          title: 'Services Résidentiels',
           linkUrl: '#',
-          description: 'This is a demo card with 1/1 aspect ratio.',
+          description: 'Before/After',
         },
         {
           id: 'card-2',
@@ -68,31 +72,53 @@ export default {
           imageAlt: 'Card image description',
           imageWidth: '960',
           imageHeight: '480',
-          title: 'Wide aspect ratio',
+          title: 'Services Résidentiels',
           linkUrl: '#',
-          description: 'This is a demo card with a wide aspect ratio.',
+          description: 'Before/After',
         },
         {
           id: 'card-3',
           type: 'Card--tall',
-          imageUrl: img1,
+          imageUrl: img3,
           imageAlt: 'Card image description',
           imageWidth: '400',
           imageHeight: '800',
-          title: 'Tall aspect ratio',
+          title: 'Services Résidentiels',
           linkUrl: '#',
-          description: 'This is a demo card with a tall aspect ratio.',
+          description: 'Before/After',
         },
         {
           id: 'card-4',
           type: 'Card--tall',
-          imageUrl: img2,
+          imageUrl: img4,
           imageAlt: 'Card image description',
           imageWidth: '400',
           imageHeight: '800',
-          title: 'Tall aspect ratio',
+          title: 'Services Résidentiels',
           linkUrl: '#',
-          description: 'This is a demo card with a tall aspect ratio.',
+          description: 'Before/After',
+        },
+        {
+          id: 'card-5',
+          type: 'Card--wide',
+          imageUrl:img5,
+          imageAlt: 'Card image description',
+          imageWidth: '960',
+          imageHeight: '480',
+          title: 'Services Résidentiels',
+          linkUrl: '#',
+          description: 'Before/After',
+        },
+        {
+          id: 'card-6',
+          type: 'Card--tall',
+          imageUrl: img6,
+          imageAlt: 'Card image description',
+          imageWidth: '400',
+          imageHeight: '800',
+          title: 'Services Résidentiels',
+          linkUrl: '#',
+          description: 'Before/After',
         },
       ],
 

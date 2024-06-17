@@ -131,7 +131,7 @@ export default {
           Services Résidentiels
         </h2>
         <a href="/pages/reservation" class="bg-yellow-button text-gray-900 font-medium py-3 px-6 rounded">
-          Reserver Maintenant
+          Réserver
         </a>
       </div>
     </div>
@@ -160,8 +160,7 @@ export default {
                   animation-name: fadeInUp;
                   color: #032b52;
                 ">
-                Service Resedentiel
-              </h2>
+                Services Résidentiels </h2>
               <!-- <p class="text-white wow fadeInDown" data-wow-delay="0.6"
                 style="visibility: visible; animation-name: fadeInDown">
                 We love help you get your clothes fresh and clean so we here for
@@ -176,14 +175,14 @@ export default {
                   padding-left: 20px;
                   /* margin-top: 12rem; */
                 ">
-                <h3 class="title d-flex align-items-center gap-2" style="font-size: 1.3rem;">Service de Ménage
-                  Résidentiel : C'est l'heure du ménage, sans que vous ayez à lever le petit
+                <h3 class="title d-flex align-items-center gap-2" style="font-size: 1.3rem;">
+                  C'est l'heure du ménage, sans que vous ayez à lever le petit
                   doigt !</h3>
                 <p class="pra">
-                  Entrez dans un foyer impeccable grâce à notre service de ménage résidentiel sur mesure.
+                  Entrez dans un foyer impeccable grâce à nos services de ménage résidentiels sur mesure.
                 </p>
                 <p class="pra">
-                  équipes expérimentées s'adaptent à vos besoins spécifiques pour vous offrir un environnement
+                  Nos équipes expérimentées s'adaptent à vos besoins spécifiques pour vous offrir un environnement
                   propre et confortable.
                 </p>
                 <p class="pra">
@@ -262,7 +261,7 @@ export default {
           Buanderie
         </h2>
         <a href="/pages/reservation-buanderie" class="bg-yellow-button text-gray-900 font-medium py-3 px-6 rounded">
-          Reserver Maintenant
+          Réserver
         </a>
       </div>
     </div>
@@ -287,7 +286,7 @@ export default {
                 color: #30c7b5;
                 margin-bottom: -62px;
               ">
-              Buanderie
+              Service de Buanderie: Collecte & Livraison
             </h2>
 
             <!-- <p class=" wow fadeInDown" data-wow-delay="0.6"
@@ -296,8 +295,8 @@ export default {
                 you 24/7 for any question, concern or suggestion.
               </p> -->
           </div>
-          <h3 class="title d-flex align-items-center gap-2" style="font-size: 1.3rem;margin-top: 4.5rem;">Service de
-            Buanderie: ça sent le linge frais et prêt à porter !</h3>
+          <h3 class="title d-flex align-items-center gap-2" style="font-size: 1.3rem;margin-top: 4.5rem;"> ça sent le
+            linge frais et prêt à porter !</h3>
           <div class="howit-work-info">
             <div class="howit-item wow fadeInUp" data-wow-delay="0.7" style="
                 visibility: visible;
@@ -396,9 +395,10 @@ export default {
                   <span class="odometer-digit"><span class="odometer-digit-inner"><span class="odometer-ribbon"><span
                           class="odometer-ribbon-inner"></span></span></span></span><span class="odometer-digit"><span
                       class="odometer-digit-inner"><span class="odometer-ribbon"><span
-                          class="odometer-ribbon-inner"><span class="odometer-value">9</span>
-                          <span class="odometer-value">9</span>
-                          <span class="odometer-value">9</span></span></span></span></span>
+                          class="odometer-ribbon-inner"><span class="odometer-value">1</span>
+                          <span class="odometer-value">8</span>
+                          <span class="odometer-value">2</span>
+                          <span class="odometer-value">5</span></span></span></span></span>
                 </div>
               </span>
 
@@ -407,7 +407,7 @@ export default {
           </div>
           <div class="vline"></div>
           <div class="text-center">
-            <h3>découvrez notre expertise en action chez
+            <h3>Découvrez notre expertise en action chez
               Hygeco ! </h3>
           </div>
           <div class="vline"></div>
@@ -485,7 +485,7 @@ export default {
             <form id="mc4wp-form-1" class="mc4wp-form mc4wp-form-227" method="post" data-id="227"
               data-name="subscription">
               <div class="mc4wp-form-fields">
-                <label class="fz-16 title fw-700 prafont" style="padding-right: 10px;">Veuillez insérer votre email ici</label>
+                <label class="fz-16 title fw-700 prafont" style="padding-right: 10px;font-size: 0.75rem;">Adresse courriel</label>
                 <input type="email" name="EMAIL" required="" style="
                         width: 100%;
                         max-width: 500px;
@@ -498,7 +498,7 @@ export default {
                         border-bottom-left-radius: 25px;
                         border-top-left-radius: 25px;
                   " />
-                <input class="cmn--btn" type="submit" value="Decouvrir Nos Offers" style="
+                <input class="cmn--btn" type="submit" value="S’abonner" style="
                     padding: 13px 28px 15px;
                     color: white;
                     font-size: 16px;
@@ -550,8 +550,8 @@ export default {
                   max-width: 325px;
                   margin-top: 40px;
                 ">
-                Avec une histoire riche s'étendant sur des décennies, notre club est devenu un symbole d'excellence dans
-                la communauté du golf. Il propose un gameplay stimulant mais gratifiant.
+                D’un linge frais a un ménage parfait, Hygeco prend le relais!
+                 Liens Rapides à enlever
               </div>
               <ul class="footer-social d-flex align-items-center" style="gap: 24px">
                 <li style="list-style: none">
@@ -626,7 +626,7 @@ export default {
               <div class="wp-widget-group__inner-blocks">
                 <ul style="padding: 0; margin: 0; list-style: none">
                   <li>
-                    <a href="/pages/about">A propos</a>
+                    <a href="/pages/about">À propos</a>
                   </li>
 
                   <li>
@@ -740,7 +740,7 @@ export default {
                         font-weight: 400;
                         line-height: 140%;
                       ">
-                      Lun - Ven 12:00 - 18:00
+                      12:00 - 18:00
                     </span>
                   </li>
                   <li style="margin-bottom: 24px">
@@ -790,7 +790,7 @@ export default {
         left: 60px;
         animation: updown 2s linear infinite;
       " />
-  </footer>
+</footer>
   <!-- <app-footer /> -->
 </template>
 <style scoped>
