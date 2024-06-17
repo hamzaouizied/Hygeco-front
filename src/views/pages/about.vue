@@ -1479,7 +1479,7 @@ export default {
               </span>
 
             </div>
-            <p>maison éclatante</p>
+            <p>maison éclatantes</p>
           </div>
           <div class="vline"></div>
           <div class="text-center">
@@ -1666,7 +1666,7 @@ export default {
             <form id="mc4wp-form-1" class="mc4wp-form mc4wp-form-227" method="post" data-id="227"
               data-name="subscription">
               <div class="mc4wp-form-fields">
-                <label class="fz-16 title fw-700 prafont" style="padding-right: 10px;">Veuillez insérer votre email ici</label>
+                <label class="fz-16 title fw-700 prafont" style="padding-right: 10px;font-size: 0.75rem;">Adresse courriel</label>
                 <input type="email" name="EMAIL" required="" style="
                         width: 100%;
                         max-width: 500px;
@@ -1679,7 +1679,7 @@ export default {
                         border-bottom-left-radius: 25px;
                         border-top-left-radius: 25px;
                   " />
-                <input class="cmn--btn" type="submit" value="Decouvrir Nos Offers" style="
+                <input class="cmn--btn" type="submit" value="S’abonner" style="
                     padding: 13px 28px 15px;
                     color: white;
                     font-size: 16px;
@@ -1731,8 +1731,8 @@ export default {
                   max-width: 325px;
                   margin-top: 40px;
                 ">
-                Avec une histoire riche s'étendant sur des décennies, notre club est devenu un symbole d'excellence dans
-                la communauté du golf. Il propose un gameplay stimulant mais gratifiant.
+                D’un linge frais a un ménage parfait, Hygeco prend le relais!
+                 
               </div>
               <ul class="footer-social d-flex align-items-center" style="gap: 24px">
                 <li style="list-style: none">
@@ -1807,7 +1807,7 @@ export default {
               <div class="wp-widget-group__inner-blocks">
                 <ul style="padding: 0; margin: 0; list-style: none">
                   <li>
-                    <a href="/pages/about">A propos</a>
+                    <a href="/pages/about">À propos</a>
                   </li>
 
                   <li>
@@ -1846,7 +1846,7 @@ export default {
                   </li>
 
                   <li>
-                    <a href="/pages/reservation-buandrie">buanderie</a>
+                    <a href="/pages/reservation-buandrie">Buanderie</a>
                   </li>
 
                   <li>
@@ -1908,22 +1908,7 @@ export default {
                     </span>
                   </li>
 
-                  <li style="margin-bottom: 24px">
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M5.75 0.75V2.25H10.25V0.75H11.75V2.25H14.75C15.1642 2.25 15.5 2.58579 15.5 3V15C15.5 15.4142 15.1642 15.75 14.75 15.75H1.25C0.83579 15.75 0.5 15.4142 0.5 15V3C0.5 2.58579 0.83579 2.25 1.25 2.25H4.25V0.75H5.75ZM14 8.25H2V14.25H14V8.25ZM4.25 3.75H2V6.75H14V3.75H11.75V5.25H10.25V3.75H5.75V5.25H4.25V3.75Z"
-                        fill="#30c7b5"></path>
-                    </svg>
-                    <span style="
-                        color: #748aa0;
-                        font-size: 16px;
-                        font-style: normal;
-                        font-weight: 400;
-                        line-height: 140%;
-                      ">
-                      Lun - Ven 12:00 - 18:00
-                    </span>
-                  </li>
+               
                   <li style="margin-bottom: 24px">
                     <svg width="14" height="17" viewBox="0 0 14 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path
@@ -1971,7 +1956,7 @@ export default {
         left: 60px;
         animation: updown 2s linear infinite;
       " />
-  </footer>
+</footer>
 </template>
 <style scoped>
 .valeur {
